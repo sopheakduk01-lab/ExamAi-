@@ -17,8 +17,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '១. ក្នុងថ្នាក់រៀនមួយមានសិស្សសរុប ៤០ នាក់ ក្នុងនោះមានសិស្សស្រី ២៤ នាក់។ តើសិស្សស្រីស្មើនឹងប៉ុន្មានភាគរយ (%) នៃសិស្សសរុប?',
-      options: ['៤០%', '៥០%', '៦០%', '៧៥%'],
-      correctAnswerIndex: 2,
+      options: [ '៦០%', '៥០%', '៤០%', '៧៥%' ],
+      correctAnswerIndex: 0,
       explanation: 'អត្រាភាគរយសិស្សស្រី = (២៤ ÷ ៤០) × ១០០% = ០.៦ × ១០០% = ៦០%។'
     },
     {
@@ -26,7 +26,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '២. រថយន្តមួយបើកបរដោយល្បឿនមធ្យម ៦០ km/h រយៈពេល ២.៥ ម៉ោង។ តើរថយន្តនោះជិះបានចម្ងាយប៉ុន្មានគីឡូម៉ែត្រ?',
-      options: ['១២០ km', '១៥០ km', '១៨០ km', '២០០ km'],
+      options: [ '១២០ km', '១៥០ km', '១៨០ km', '២០០ km' ],
       correctAnswerIndex: 1,
       explanation: 'ចម្ងាយ (d) = ល្បឿន (v) × រយៈពេល (t) = ៦០ km/h × ២.៥ h = ១៥០ km។'
     },
@@ -35,7 +35,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៣. គណនាតម្លៃនៃកន្សោមប្រភាគ៖ (៣/៤) + (១/២) ÷ (២/៣)',
-      options: ['៥/៤', '៦/៤', '៣/២', '៧/៦'],
+      options: [ '៥/៤', '៦/៤', '៣/២', '៧/៦' ],
       correctAnswerIndex: 2,
       explanation: 'ធ្វើវិធីចែកប្រភាគមុន៖ (១/២) ÷ (២/៣) = (១/២) × (៣/២) = ៣/៤។ បន្ទាប់មកបូកប្រភាគ៖ (៣/៤) + (៣/៤) = ៦/៤ = ៣/២ (ឬ ១.៥)។'
     },
@@ -44,8 +44,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៤. គណនាពិន្ទុមធ្យមភាគរបស់សិស្សម្នាក់ដែលប្រឡងបានពិន្ទុ៖ ៧, ៨, ៩ និង ១០',
-      options: ['៨.០', '៨.៥', '៩.០', '៧.៥'],
-      correctAnswerIndex: 1,
+      options: [ '៨.០', '៧.៥', '៩.០', '៨.៥' ],
+      correctAnswerIndex: 3,
       explanation: 'មធ្យមភាគ = ផលបូកទិន្នន័យ ÷ ចំនួនទិន្នន័យ = (៧ + ៨ + ៩ + ១០) ÷ ៤ = ៣៤ ÷ ៤ = ៨.៥។'
     },
     {
@@ -53,7 +53,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៥. ប្រអប់កែងមួយមានបណ្ដោយ ៨cm, ទទឹង ៥cm និងកម្ពស់ ៤cm។ តើមាឌប្រអប់កែងនោះស្មើប៉ុន្មាន?',
-      options: ['១៦០ cm³', '៤០ cm³', '១៦ cm³', '៣២០ cm³'],
+      options: [ '១៦០ cm³', '៤០ cm³', '១៦ cm³', '៣២០ cm³' ],
       correctAnswerIndex: 0,
       explanation: 'មាឌប្រអប់កែង (V) = បណ្ដោយ × ទទឹង × កម្ពស់ = ៨ × ៥ × ៤ = ៤០ × ៤ = ១៦០ cm³។'
     },
@@ -62,7 +62,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៦. លើផែនទីមួយដែលមានមាត្រដ្ឋាន ១ : ១,០០០,០០០ ចម្ងាយរវាងក្រុងពីរគឺ ៤cm។ តើចម្ងាយពិតប្រាកដដីស្មើប៉ុន្មានគីឡូម៉ែត្រ?',
-      options: ['៤ km', '៤០ km', '៤០០ km', '៤០,០០០ km'],
+      options: [ '៤ km', '៤០ km', '៤០០ km', '៤០,០០០ km' ],
       correctAnswerIndex: 1,
       explanation: 'ចម្ងាយពិតប្រាកដ = ៤cm × ១,០០០,០០០ = ៤,០០០,០០០ cm = ៤០,០០០ m = ៤០ km។'
     },
@@ -71,8 +71,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៧. ផលធៀបរវាងចំនួនផ្លែប៉ោម និងផ្លែស្វាយ គឺ ៣ : ៥។ បើមានផ្លែប៉ោម ១៥ ផ្លែ តើមានផ្លែស្វាយប៉ុន្មានផ្លែ?',
-      options: ['២០ ផ្លែ', '២៥ ផ្លែ', '៣០ ផ្លែ', '៣៥ ផ្លែ'],
-      correctAnswerIndex: 1,
+      options: [ '២០ ផ្លែ', '៣០ ផ្លែ', '២៥ ផ្លែ', '៣៥ ផ្លែ' ],
+      correctAnswerIndex: 2,
       explanation: 'តាមសមមាត្រ ៣/៥ = ១៥/x ➔ x = (៥ × ១៥) ÷ ៣ = ៧៥ ÷ ៣ = ២៥ ផ្លែ។'
     },
     {
@@ -80,8 +80,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៨. ដោះស្រាយសមីការរកតម្លៃអថេរ x៖ ២x + ១០ = ៣០',
-      options: ['x = ៥', 'x = ១០', 'x = ១៥', 'x = ២០'],
-      correctAnswerIndex: 1,
+      options: [ 'x = ៥', 'x = ២០', 'x = ១៥', 'x = ១០' ],
+      correctAnswerIndex: 3,
       explanation: '២x = ៣០ - ១០ ➔ ២x = ២០ ➔ x = ២០ ÷ ២ = ១០។'
     },
 
@@ -93,8 +93,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '១. ផ្គូផ្គង៖ រូបមន្តគណនាល្បឿនមធ្យម (v)',
-      options: ['v = d × t', 'v = d ÷ t', 'v = t ÷ d', 'v = d + t'],
-      correctAnswerIndex: 1,
+      options: [ 'v = d ÷ t', 'v = d × t', 'v = t ÷ d', 'v = d + t' ],
+      correctAnswerIndex: 0,
       explanation: 'ល្បឿនមធ្យម (v) = ចម្ងាយ (d) ÷ រយៈពេល (t)។'
     },
     {
@@ -102,8 +102,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '២. ផ្គូផ្គង៖ រូបមន្តគណនាមាឌកូប (V) ដែលមានជ្រុង a',
-      options: ['V = a × ៤', 'V = a × a', 'V = a × a × a (a³)', 'V = a ÷ ៣'],
-      correctAnswerIndex: 2,
+      options: [ 'V = a × ៤', 'V = a × a × a (a³)', 'V = a × a', 'V = a ÷ ៣' ],
+      correctAnswerIndex: 1,
       explanation: 'មាឌកូប (V) = ជ្រុង × ជ្រុង × ជ្រុង = a³។'
     },
     {
@@ -111,8 +111,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៣. ផ្គូផ្គង៖ រូបមន្តផ្ទៃក្រឡារង្វង់ (S)',
-      options: ['S = π × r × r', 'S = 2 × π × r', 'S = π × d', 'S = r × r'],
-      correctAnswerIndex: 0,
+      options: [ 'S = π × d', 'S = 2 × π × r', 'S = π × r × r', 'S = r × r' ],
+      correctAnswerIndex: 2,
       explanation: 'ផ្ទៃក្រឡារង្វង់ = π × r² (ដោយ π ≈ ៣.១៤, r ជាកាំ)។'
     },
     {
@@ -120,8 +120,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៤. ផ្គូផ្គង៖ រូបមន្តបរិមាត្ររង្វង់ (C)',
-      options: ['C = π × r × r', 'C = 2 × π × r', 'C = π ÷ d', 'C = ៤ × r'],
-      correctAnswerIndex: 1,
+      options: [ 'C = π × r × r', 'C = ៤ × r', 'C = π ÷ d', 'C = 2 × π × r' ],
+      correctAnswerIndex: 3,
       explanation: 'បរិមាត្ររង្វង់ (ប្រវែងក្រឡារង្វង់) C = 2 × π × r = π × d (d ជាអង្កត់ផ្ចិត)។'
     },
     {
@@ -129,8 +129,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៥. ផ្គូផ្គង៖ រកតម្លៃ x ក្នុងសមមាត្រ ២/៥ = x/២០',
-      options: ['x = ៤', 'x = ៦', 'x = ៨', 'x = ១០'],
-      correctAnswerIndex: 2,
+      options: [ 'x = ៨', 'x = ៦', 'x = ៤', 'x = ១០' ],
+      correctAnswerIndex: 0,
       explanation: 'x = (២ × ២០) ÷ ៥ = ៤០ ÷ ៥ = ៨។'
     },
     {
@@ -138,8 +138,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៦. ផ្គូផ្គង៖ បំប្លែង ៧៥% ទៅជាប្រភាគសម្រួល',
-      options: ['១/៤', '១/២', '៣/៤', '៤/៥'],
-      correctAnswerIndex: 2,
+      options: [ '១/៤', '៣/៤', '១/២', '៤/៥' ],
+      correctAnswerIndex: 1,
       explanation: '៧៥% = ៧៥/១០០ = (៧៥÷២៥)/(១០០÷២៥) = ៣/៤។'
     },
     {
@@ -147,8 +147,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៧. ផ្គូផ្គង៖ រូបមន្តគណនាការប្រាក់សាមញ្ញ (I)',
-      options: ['I = P × r × t', 'I = P ÷ (r × t)', 'I = P + r + t', 'I = P × t ÷ r'],
-      correctAnswerIndex: 0,
+      options: [ 'I = P + r + t', 'I = P ÷ (r × t)', 'I = P × r × t', 'I = P × t ÷ r' ],
+      correctAnswerIndex: 2,
       explanation: 'ការប្រាក់ (I) = ប្រាក់ដើម (P) × អត្រាការប្រាក់ (r) × រយៈពេល (t)។'
     },
     {
@@ -156,8 +156,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៨. ផ្គូផ្គង៖ ផលបូកមុំបំពេញបន្ថែមពីរ (Supplementary angles)',
-      options: ['៩០°', '១៨០°', '៣៦០°', '២៧០°'],
-      correctAnswerIndex: 1,
+      options: [ '៩០°', '២៧០°', '៣៦០°', '១៨០°' ],
+      correctAnswerIndex: 3,
       explanation: 'មុំបំពេញបន្ថែមពីរ គឺជាមុំពីរដែលមានផលបូករង្វាស់ស្មើនឹង ១៨០°។'
     },
 
@@ -169,7 +169,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '១. [ខុស ឬ ត្រូវ] ផលបូករង្វាស់មុំក្នុងទាំងបួននៃចតុកោណណាក៏ដោយ គឺស្មើនឹង ៣៦០°។',
-      options: ['ត្រូវ (True)', 'ខុស (False)'],
+      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
       correctAnswerIndex: 0,
       explanation: 'ត្រូវ៖ ចតុកោណគ្រប់ប្រភេទ (ការេ, ចតុកោណកែង, ប្រឡេឡូក្រាម...) មានផលបូកមុំក្នុងស្មើ ៣៦០°។'
     },
@@ -178,7 +178,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '២. [ខុស ឬ ត្រូវ] មាឌប្រអប់កែង ស្មើនឹង បណ្ដោយ បូក ទទឹង បូក កម្ពស់។',
-      options: ['ត្រូវ (True)', 'ខុស (False)'],
+      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
       correctAnswerIndex: 1,
       explanation: 'ខុស៖ មាឌប្រអប់កែង ស្មើនឹង «បណ្ដោយ គុណ ទទឹង គុណ កម្ពស់» (មិនមែនវិធីបូកទេ)។'
     },
@@ -187,7 +187,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '៣. [ខុស ឬ ត្រូវ] កាលណាពីរមាត្រធៀបសមមាត្រផ្ទាល់នឹងគ្នា បើបរិមាណមួយកើនឡើង ២ ដង បរិមាណមួយទៀតក៏កើនឡើង ២ ដងដែរ។',
-      options: ['ត្រូវ (True)', 'ខុស (False)'],
+      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
       correctAnswerIndex: 0,
       explanation: 'ត្រូវ៖ ក្នុងសមមាត្រផ្ទាល់ បរិមាណទាំងពីរប្រែប្រួលក្នុងទិសដៅតែមួយ និងក្នុងផលធៀបដូចគ្នា។'
     },
@@ -196,7 +196,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '៤. [ខុស ឬ ត្រូវ] ល្បឿនមធ្យម អាចរកបានដោយយក រយៈពេល ចែកនឹង ចម្ងាយផ្លូវ។',
-      options: ['ត្រូវ (True)', 'ខុស (False)'],
+      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
       correctAnswerIndex: 1,
       explanation: 'ខុស៖ ល្បឿនមធ្យម រកបានដោយយក «ចម្ងាយផ្លូវ ចែកនឹង រយៈពេល» (v = d / t)។'
     },
@@ -209,7 +209,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៤៖ បំពេញចន្លោះ',
       text: '១. បំពេញចន្លោះ៖ «ការតាងចំនួនមិនស្គាល់តម្លៃដោយអក្សរ (ដូចជា x, y, a...) ក្នុងគណិតវិទ្យា ហៅថា ......»',
-      options: ['អថេរ ឬ អញ្ញាត', 'មេគុណ', 'កត្តា', 'ពហុគុណ'],
+      options: [ 'អថេរ ឬ អញ្ញាត', 'មេគុណ', 'កត្តា', 'ពហុគុណ' ],
       correctAnswerIndex: 0,
       explanation: 'អថេរ ឬ អញ្ញាត ជាអក្សរតំណាងឱ្យចំនួនមិនស្គាល់តម្លៃក្នុងកន្សោម ឬសមីការ។'
     },
@@ -218,8 +218,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៤៖ បំពេញចន្លោះ',
       text: '២. បំពេញចន្លោះ៖ «ឌីយ៉ាក្រាមផ្លិត (ក្រាហ្វិចដុំ) ប្រើប្រាស់ ...... ដើម្បីបង្ហាញភាគរយនៃទិន្នន័យនីមួយៗ»',
-      options: ['មុំនៅផ្ចិតនៃរង្វង់', 'ប្រវែងរបារ', 'ចំណុចកូអរដោនេ', 'អង្កត់ទ្រូង'],
-      correctAnswerIndex: 0,
+      options: [ 'ប្រវែងរបារ', 'មុំនៅផ្ចិតនៃរង្វង់', 'ចំណុចកូអរដោនេ', 'អង្កត់ទ្រូង' ],
+      correctAnswerIndex: 1,
       explanation: 'ឌីយ៉ាក្រាមផ្លិត បែងចែកផ្ទៃរង្វង់តាមផលធៀបមុំនៅផ្ចិត (សរុប ៣៦០°) ស្របតាមភាគរយទិន្នន័យ។'
     },
     {
@@ -227,8 +227,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៤៖ បំពេញចន្លោះ',
       text: '៣. បំពេញចន្លោះ៖ «សមមាត្រ គឺជាសមភាពនៃ ...... ពីរ»',
-      options: ['ផលធៀប', 'ផលបូក', 'ផលដក', 'ផលគុណ'],
-      correctAnswerIndex: 0,
+      options: [ 'ផលដក', 'ផលបូក', 'ផលធៀប', 'ផលគុណ' ],
+      correctAnswerIndex: 2,
       explanation: 'សមមាត្រ (Proportion) គឺជាសមភាពនៃផលធៀបពីរ ឬច្រើន (ឧ. a/b = c/d)។'
     },
     {
@@ -236,8 +236,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៤៖ បំពេញចន្លោះ',
       text: '៤. បំពេញចន្លោះ៖ «ផ្ទៃក្រឡាខាងនៃប្រអប់កែង ស្មើនឹង បរិមាត្របាត គុណនឹង ......»',
-      options: ['កម្ពស់', 'បណ្ដោយ', 'ទទឹង', 'ផ្ទៃបាត'],
-      correctAnswerIndex: 0,
+      options: [ 'ផ្ទៃបាត', 'បណ្ដោយ', 'ទទឹង', 'កម្ពស់' ],
+      correctAnswerIndex: 3,
       explanation: 'ផ្ទៃក្រឡាខាងប្រអប់កែង = បរិមាត្របាត × កម្ពស់ = ២ × (បណ្ដោយ + ទទឹង) × កម្ពស់។'
     },
 
@@ -249,7 +249,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៥៖ លំហាត់ដោះស្រាយ',
       text: '១. ចំណោទភាគរយ៖ ទំនិញមួយមានតម្លៃដើម ៨០,០០០ រៀល។ ហាងបានប្រកាសបញ្ចុះតម្លៃ ២៥%។ តើអ្នកទិញត្រូវបង់ប្រាក់ថ្លៃទំនិញនោះប៉ុន្មានរៀល?',
-      options: ['៦០,០០០ រៀល', '៦៥,០០០ រៀល', '៧០,០០០ រៀល', '៥៥,០០០ រៀល'],
+      options: [ '៦០,០០០ រៀល', '៦៥,០០០ រៀល', '៧០,០០០ រៀល', '៥៥,០០០ រៀល' ],
       correctAnswerIndex: 0,
       explanation: `ដំណោះស្រាយជំហានៗ៖
 ១. គណនាប្រាក់ដែលបានបញ្ចុះ៖
@@ -264,8 +264,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៥៖ លំហាត់ដោះស្រាយ',
       text: '២. ចំណោទល្បឿន៖ អ្នកប្រណាំងកង់ម្នាក់ជិះបានចម្ងាយ ៩០ km ដោយប្រើរយៈពេល ២ ម៉ោង ៣០ នាទី (២.៥ ម៉ោង)។ គណនាល្បឿនមធ្យមរបស់អ្នកប្រណាំងកង់នោះជា km/h។',
-      options: ['៣៦ km/h', '៤០ km/h', '៣០ km/h', '៤៥ km/h'],
-      correctAnswerIndex: 0,
+      options: [ '៤០ km/h', '៣៦ km/h', '៣០ km/h', '៤៥ km/h' ],
+      correctAnswerIndex: 1,
       explanation: `ដំណោះស្រាយជំហានៗ៖
 ១. រយៈពេល t = ២ ម៉ោង ៣០ នាទី = ២.៥ ម៉ោង
 ២. ល្បឿនមធ្យម v = d ÷ t
@@ -278,12 +278,12 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       category: 'ផ្នែកទី៥៖ លំហាត់ដោះស្រាយ',
       text: '៣. ចំណោទធរណីមាត្រ៖ អាងទឹកមួយមានរាងជាប្រអប់កែង មានបណ្ដោយ ៤m, ទទឹង ២.៥m និងជម្រៅ (កម្ពស់) ១.៨m។ គណនាមាឌអាងទឹកជា m³ និងចំណុះជាលីត្រ (១ m³ = ១,០០០ លីត្រ)។',
       options: [
-        'មាឌ = ១៨ m³, ចំណុះ = ១៨,០០០ លីត្រ',
-        'មាឌ = ២០ m³, ចំណុះ = ២០,០០០ លីត្រ',
         'មាឌ = ១៥ m³, ចំណុះ = ១៥,០០០ លីត្រ',
+        'មាឌ = ២០ m³, ចំណុះ = ២០,០០០ លីត្រ',
+        'មាឌ = ១៨ m³, ចំណុះ = ១៨,០០០ លីត្រ',
         'មាឌ = ១៨.៥ m³, ចំណុះ = ១៨,៥០០ លីត្រ'
       ],
-      correctAnswerIndex: 0,
+      correctAnswerIndex: 2,
       explanation: `ដំណោះស្រាយជំហានៗ៖
 ១. គណនាមាឌអាងទឹក V = បណ្ដោយ × ទទឹង × កម្ពស់
    V = ៤m × ២.៥m × ១.៨m = ១០m² × ១.៨m = ១៨ m³
@@ -296,8 +296,8 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៥៖ លំហាត់ដោះស្រាយ',
       text: '៤. ចំណោទស្ថិតិ និងមធ្យមភាគ៖ សិស្ស ៥ នាក់ប្រឡងគណិតវិទ្យាបានពិន្ទុរៀងគ្នា៖ ១២, ១៥, ១៤, ១៨ និង ២១ (ពិន្ទុពេញ ២៥)។ គណនាពិន្ទុមធ្យមភាគរបស់សិស្សទាំង ៥ នាក់នោះ។',
-      options: ['១៦ ពិន្ទុ', '១៥ ពិន្ទុ', '១៧ ពិន្ទុ', '១៤.៥ ពិន្ទុ'],
-      correctAnswerIndex: 0,
+      options: [ '១៤.៥ ពិន្ទុ', '១៥ ពិន្ទុ', '១៧ ពិន្ទុ', '១៦ ពិន្ទុ' ],
+      correctAnswerIndex: 3,
       explanation: `ដំណោះស្រាយជំហានៗ៖
 ១. គណនាផលបូកពិន្ទុទាំង ៥ នាក់៖
    ១២ + ១៥ + ១៤ + ១៨ + ២១ = ៨០ ពិន្ទុ

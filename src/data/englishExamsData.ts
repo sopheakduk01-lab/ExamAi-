@@ -19,7 +19,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: school / happy / watch / television / bath',
         text: '1. My friends go to __________.',
-        options: ['school', 'happy', 'watch', 'bath'],
+        options: [ 'school', 'happy', 'watch', 'bath' ],
         correctAnswerIndex: 0,
         explanation: 'The sentence describes going to a place ➔ "school".'
       },
@@ -28,7 +28,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: school / happy / watch / television / bath',
         text: '2. I __________ television.',
-        options: ['happy', 'watch', 'bath', 'school'],
+        options: [ 'happy', 'watch', 'bath', 'school' ],
         correctAnswerIndex: 1,
         explanation: 'The verb used with television is "watch" (មើលទូរទស្សន៍) ➔ "I watch television."'
       },
@@ -37,7 +37,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: school / happy / watch / television / bath',
         text: '3. He takes a cold __________.',
-        options: ['television', 'watch', 'bath', 'happy'],
+        options: [ 'television', 'watch', 'bath', 'happy' ],
         correctAnswerIndex: 2,
         explanation: 'The phrase for bathing is "take a cold bath" (ងូតទឹកត្រជាក់).'
       },
@@ -46,8 +46,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: school / happy / watch / television / bath',
         text: '4. We look at a big __________.',
-        options: ['happy', 'bath', 'television', 'watch'],
-        correctAnswerIndex: 2,
+        options: [ 'happy', 'bath', 'watch', 'television' ],
+        correctAnswerIndex: 3,
         explanation: 'We look at a big "television" (ទូរទស្សន៍ធំ).'
       },
       {
@@ -55,8 +55,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: school / happy / watch / television / bath',
         text: '5. My mother is very __________.',
-        options: ['watch', 'television', 'bath', 'happy'],
-        correctAnswerIndex: 3,
+        options: [ 'happy', 'television', 'bath', 'watch' ],
+        correctAnswerIndex: 0,
         explanation: 'The adjective describing feeling or emotion is "happy" (សប្បាយចិត្ត).'
       },
 
@@ -66,8 +66,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: What time / How / When / Who',
         text: '1. __________ do you get up? -> I get up at five o\'clock.',
-        options: ['What time', 'How', 'When', 'Who'],
-        correctAnswerIndex: 0,
+        options: [ 'How', 'What time', 'When', 'Who' ],
+        correctAnswerIndex: 1,
         explanation: 'Since the response specifies a clock time ("at five o\'clock"), the question uses "What time".'
       },
       {
@@ -75,8 +75,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: What time / How / When / Who',
         text: '2. __________ do you go to school? -> I go to school on foot.',
-        options: ['What time', 'How', 'When', 'Who'],
-        correctAnswerIndex: 1,
+        options: [ 'What time', 'When', 'How', 'Who' ],
+        correctAnswerIndex: 2,
         explanation: 'The response states the means of travel ("on foot"), so the question uses "How".'
       },
       {
@@ -84,8 +84,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: What time / How / When / Who',
         text: '3. __________ do you play badminton? -> I play badminton at half past four.',
-        options: ['What time', 'How', 'When', 'Who'],
-        correctAnswerIndex: 2,
+        options: [ 'What time', 'How', 'Who', 'When' ],
+        correctAnswerIndex: 3,
         explanation: 'The question asks about time/schedule ("at half past four"), using "When" (or What time).'
       },
       {
@@ -93,8 +93,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: What time / How / When / Who',
         text: '4. __________ do you play with? -> I play with my mother.',
-        options: ['What time', 'How', 'When', 'Who'],
-        correctAnswerIndex: 3,
+        options: [ 'Who', 'How', 'When', 'What time' ],
+        correctAnswerIndex: 0,
         explanation: 'The response mentions a person ("my mother"), so the question uses "Who".'
       },
 
@@ -104,8 +104,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: Dara is my best friend. He studies in Grade 6 with me. He has a new bicycle. He goes to school with his sister. Every day he goes to school on time. He is a punctual student and helpful friend. He spends his free time on his studies and family. After dinner, he reads books and does homework. He sometimes watches television and does housework. He is a smart student in the class. All classmates love him very much. His parents are really happy with his activities and study record.',
         text: '1. Dara studies in Grade 6.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text says: "He studies in Grade 6 with me."'
       },
       {
@@ -113,8 +113,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. Dara goes to school alone.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 1,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 0,
         explanation: 'False! The text states: "He goes to school with his sister."'
       },
       {
@@ -122,8 +122,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. After dinner, he reads books and does homework.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text states: "After dinner, he reads books and does homework."'
       },
       {
@@ -131,8 +131,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. Dara never watches television.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 1,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 0,
         explanation: 'False! The text says: "He sometimes watches television and does housework."'
       },
       {
@@ -140,8 +140,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. His parents are really happy.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text states: "His parents are really happy with his activities and study record."'
       },
 
@@ -152,12 +152,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '1. What time do you get up in the morning?',
         options: [
-          'I get up at five o\'clock in the morning.',
-          'I getting up five o\'clock.',
           'Get up five o\'clock.',
+          'I getting up five o\'clock.',
+          'I get up at five o\'clock in the morning.',
           'I am get up at night.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 2,
         explanation: 'A complete, grammatically correct answer is "I get up at five o\'clock in the morning."'
       },
       {
@@ -166,12 +166,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '2. How do you go to school? (On foot, by bicycle, or by motorbike?)',
         options: [
-          'I go to school by bicycle.',
+          'I goes to school on motorbike.',
           'Go school bicycle.',
           'By bicycle I going.',
-          'I goes to school on motorbike.'
+          'I go to school by bicycle.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 3,
         explanation: 'The proper full-sentence answer is "I go to school by bicycle."'
       },
       {
@@ -209,8 +209,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: board / classroom / library / sports / attendance list',
         text: '1. Every morning, I go to school early to clean the __________.',
-        options: ['classroom', 'board', 'library', 'sports'],
-        correctAnswerIndex: 0,
+        options: [ 'board', 'classroom', 'library', 'sports' ],
+        correctAnswerIndex: 1,
         explanation: 'Students go to school early to clean the "classroom" (បន្ទប់រៀន).'
       },
       {
@@ -218,7 +218,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: board / classroom / library / sports / attendance list',
         text: '2. My teacher uses a marker to write the lesson on the __________.',
-        options: ['library', 'sports', 'board', 'attendance list'],
+        options: [ 'library', 'sports', 'board', 'attendance list' ],
         correctAnswerIndex: 2,
         explanation: 'Teachers write lessons on the "board" (ក្ដារខៀន).'
       },
@@ -227,8 +227,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: board / classroom / library / sports / attendance list',
         text: '3. Ratha often goes to the __________ to read books.',
-        options: ['sports', 'library', 'board', 'classroom'],
-        correctAnswerIndex: 1,
+        options: [ 'sports', 'classroom', 'board', 'library' ],
+        correctAnswerIndex: 3,
         explanation: 'We go to read books at the "library" (បណ្ណាល័យ).'
       },
       {
@@ -236,7 +236,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: board / classroom / library / sports / attendance list',
         text: '4. Before the lesson starts, my teacher checks the __________.',
-        options: ['attendance list', 'sports', 'board', 'library'],
+        options: [ 'attendance list', 'sports', 'board', 'library' ],
         correctAnswerIndex: 0,
         explanation: 'Teachers check the "attendance list" (បញ្ជីវត្តមាន) before lessons.'
       },
@@ -245,8 +245,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: board / classroom / library / sports / attendance list',
         text: '5. At breaktime, I like to play __________ with my friends.',
-        options: ['attendance list', 'board', 'library', 'sports'],
-        correctAnswerIndex: 3,
+        options: [ 'attendance list', 'sports', 'library', 'board' ],
+        correctAnswerIndex: 1,
         explanation: 'During breaktime, students like to play "sports" (កីឡា).'
       },
 
@@ -256,8 +256,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: What / When / What time',
         text: '1. __________ do you do before class? -> I clean the classroom and water the flowers.',
-        options: ['What', 'When', 'What time', 'Who'],
-        correctAnswerIndex: 0,
+        options: [ 'What time', 'When', 'What', 'Who' ],
+        correctAnswerIndex: 2,
         explanation: 'Asking about an action/activity uses "What": "What do you do before class?".'
       },
       {
@@ -265,8 +265,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: What / When / What time',
         text: '2. __________ do you go to school? -> I go to school at 6:30 AM.',
-        options: ['When', 'What', 'Who', 'How'],
-        correctAnswerIndex: 0,
+        options: [ 'How', 'What', 'Who', 'When' ],
+        correctAnswerIndex: 3,
         explanation: 'Asking about time/schedule uses "When" (or What time).'
       },
       {
@@ -274,7 +274,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: What / When / What time',
         text: '3. __________ does the class start? -> It starts at 7:00 AM.',
-        options: ['What time', 'What', 'Who', 'Where'],
+        options: [ 'What time', 'What', 'Who', 'Where' ],
         correctAnswerIndex: 0,
         explanation: 'Asking for specific clock time uses "What time".'
       },
@@ -283,8 +283,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: What / When / What time',
         text: '4. __________ does your teacher do first? -> She checks the attendance list.',
-        options: ['What', 'When', 'What time', 'Where'],
-        correctAnswerIndex: 0,
+        options: [ 'When', 'What', 'What time', 'Where' ],
+        correctAnswerIndex: 1,
         explanation: 'Asking about the initial action performed uses "What".'
       },
 
@@ -294,7 +294,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: Ratha is a class leader and a good student. Everyone at school knows her well because she works hard. She always goes to school early to clean the classroom and water the flowers. She often reads books in the library. From three o\'clock to half past four in the afternoon, she joins the study club. She is the club leader because she is a smart student. She sometimes plays sports with her friends. She has a lot of things to do, but she is happy.',
         text: '1. Ratha is a class leader and a good student.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
+        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text says: "Ratha is a class leader and a good student."'
       },
@@ -303,7 +303,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. She goes to school late every day.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
+        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
         correctAnswerIndex: 1,
         explanation: 'False! The text says: "She always goes to school early..."'
       },
@@ -312,7 +312,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. Ratha often reads books in the library.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
+        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text states: "She often reads books in the library."'
       },
@@ -321,8 +321,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. She is the leader of the study club.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text says: "She is the club leader because she is a smart student."'
       },
       {
@@ -330,8 +330,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. Ratha is unhappy because she is very busy.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 1,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 0,
         explanation: 'False! The text states: "She has a lot of things to do, but she is happy."'
       },
 
@@ -342,12 +342,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '1. What do you do before class?',
         options: [
-          'Before class, I clean the classroom and prepare my books.',
+          'I am no do anything before class.',
           'I cleaning before class.',
           'Clean classroom before class.',
-          'I am no do anything before class.'
+          'Before class, I clean the classroom and prepare my books.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 3,
         explanation: 'The complete grammatically correct sentence is "Before class, I clean the classroom and prepare my books."'
       },
       {
@@ -370,12 +370,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '3. What do you do in the library?',
         options: [
-          'In the library, I read storybooks and study quietly.',
           'Library read book.',
+          'In the library, I read storybooks and study quietly.',
           'I am read books in library.',
           'Reading storybook library.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 1,
         explanation: 'The complete proper sentence is "In the library, I read storybooks and study quietly."'
       }
     ]
@@ -399,8 +399,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: eyes / straight / helmet / pullover / ears',
         text: '1. I have two __________ to see things around me.',
-        options: ['eyes', 'ears', 'helmet', 'pullover'],
-        correctAnswerIndex: 0,
+        options: [ 'helmet', 'ears', 'eyes', 'pullover' ],
+        correctAnswerIndex: 2,
         explanation: 'We use our "eyes" (ភ្នែក) to see things.'
       },
       {
@@ -408,8 +408,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: eyes / straight / helmet / pullover / ears',
         text: '2. We listen to music with our __________.',
-        options: ['pullover', 'ears', 'eyes', 'straight'],
-        correctAnswerIndex: 1,
+        options: [ 'pullover', 'straight', 'eyes', 'ears' ],
+        correctAnswerIndex: 3,
         explanation: 'We listen to music with our "ears" (ត្រចៀក).'
       },
       {
@@ -417,8 +417,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: eyes / straight / helmet / pullover / ears',
         text: '3. She has long, black __________ hair.',
-        options: ['helmet', 'pullover', 'straight', 'eyes'],
-        correctAnswerIndex: 2,
+        options: [ 'straight', 'pullover', 'helmet', 'eyes' ],
+        correctAnswerIndex: 0,
         explanation: 'Hair style adjective is "straight" (សក់ត្រង់).'
       },
       {
@@ -426,8 +426,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: eyes / straight / helmet / pullover / ears',
         text: '4. You should wear a __________ to protect your head when riding a bicycle.',
-        options: ['helmet', 'pullover', 'eyes', 'straight'],
-        correctAnswerIndex: 0,
+        options: [ 'pullover', 'helmet', 'eyes', 'straight' ],
+        correctAnswerIndex: 1,
         explanation: 'We wear a "helmet" (មួកសុវត្ថិភាព) to protect our head.'
       },
       {
@@ -435,8 +435,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: eyes / straight / helmet / pullover / ears',
         text: '5. When it is cold in winter, I wear a warm __________.',
-        options: ['eyes', 'straight', 'helmet', 'pullover'],
-        correctAnswerIndex: 3,
+        options: [ 'eyes', 'straight', 'pullover', 'helmet' ],
+        correctAnswerIndex: 2,
         explanation: 'In cold weather, we wear a warm "pullover" (អាវរងា).'
       },
 
@@ -446,8 +446,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: This is / These are / should / How many',
         text: '1. __________ is my left arm.',
-        options: ['This is', 'These are', 'Should', 'How many'],
-        correctAnswerIndex: 0,
+        options: [ 'How many', 'These are', 'Should', 'This is' ],
+        correctAnswerIndex: 3,
         explanation: 'For a singular noun ("my left arm"), we use "This is".'
       },
       {
@@ -455,7 +455,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: This is / These are / should / How many',
         text: '2. __________ my ten fingers.',
-        options: ['These are', 'This is', 'Should', 'How many'],
+        options: [ 'These are', 'This is', 'Should', 'How many' ],
         correctAnswerIndex: 0,
         explanation: 'For plural nouns ("my ten fingers"), we use "These are".'
       },
@@ -464,8 +464,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: This is / These are / should / How many',
         text: '3. __________ eyes do you have? -> I have two eyes.',
-        options: ['How many', 'This is', 'These are', 'Should'],
-        correctAnswerIndex: 0,
+        options: [ 'This is', 'How many', 'These are', 'Should' ],
+        correctAnswerIndex: 1,
         explanation: 'Asking about count/quantity uses "How many".'
       },
       {
@@ -473,8 +473,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: This is / These are / should / How many',
         text: '4. You __________ wear a mask and wash your hands every day.',
-        options: ['should', 'This is', 'These are', 'How many'],
-        correctAnswerIndex: 0,
+        options: [ 'These are', 'This is', 'should', 'How many' ],
+        correctAnswerIndex: 2,
         explanation: 'Modal verb "should" is used for good advice and hygiene.'
       },
 
@@ -484,8 +484,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: Vichet is twelve years old. He is tall and thin. He has an oval face and short black hair. Vichet likes playing basketball and running in the morning. Every day, he brushes his teeth three times, washes his face, and takes a bath to keep his body clean. When he rides his bicycle, he always wears a helmet. Vichet’s parents are proud of him because he takes good care of his health.',
         text: '1. Vichet is twelve years old.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text states: "Vichet is twelve years old."'
       },
       {
@@ -493,8 +493,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. Vichet has long curly hair.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 1,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 0,
         explanation: 'False! The text says: "He has an oval face and short black hair."'
       },
       {
@@ -502,8 +502,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. He brushes his teeth three times a day.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text states: "he brushes his teeth three times..."'
       },
       {
@@ -511,8 +511,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. Vichet never wears a helmet when riding his bicycle.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 1,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 0,
         explanation: 'False! The text states: "When he rides his bicycle, he always wears a helmet."'
       },
       {
@@ -520,8 +520,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. His parents are proud of him for taking care of his health.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text states: "Vichet’s parents are proud of him because he takes good care of his health."'
       },
 
@@ -546,12 +546,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '2. What do you look like? (Describe your height and hair)',
         options: [
-          'I am tall and I have short black hair.',
           'I tall short hair.',
+          'I am tall and I have short black hair.',
           'Look like tall hair.',
           'I am look like black hair.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 1,
         explanation: 'The complete proper sentence is "I am tall and I have short black hair."'
       },
       {
@@ -560,12 +560,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '3. What should you wear when it is cold in winter?',
         options: [
-          'When it is cold, I should wear a pullover and socks.',
-          'Cold wear pullover.',
           'I wearing pullover cold.',
+          'Cold wear pullover.',
+          'When it is cold, I should wear a pullover and socks.',
           'Should wear swimsuit.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 2,
         explanation: 'The complete grammatically correct response is "When it is cold, I should wear a pullover and socks."'
       }
     ]
@@ -589,8 +589,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: dog / monkey / whale / farmer / dangerous',
         text: '1. A domestic pet raised in many homes is a __________.',
-        options: ['dog', 'monkey', 'whale', 'dangerous'],
-        correctAnswerIndex: 0,
+        options: [ 'dangerous', 'monkey', 'whale', 'dog' ],
+        correctAnswerIndex: 3,
         explanation: 'A common domestic pet raised at home is a "dog" (ឆ្កែ).'
       },
       {
@@ -598,8 +598,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: dog / monkey / whale / farmer / dangerous',
         text: '2. A baby __________ clings to its mother in the forest.',
-        options: ['whale', 'monkey', 'farmer', 'dog'],
-        correctAnswerIndex: 1,
+        options: [ 'monkey', 'whale', 'farmer', 'dog' ],
+        correctAnswerIndex: 0,
         explanation: 'A baby "monkey" (ស្វា) clings to its mother.'
       },
       {
@@ -607,8 +607,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: dog / monkey / whale / farmer / dangerous',
         text: '3. The largest sea creature that eats small fish is the __________.',
-        options: ['dangerous', 'dog', 'whale', 'farmer'],
-        correctAnswerIndex: 2,
+        options: [ 'dangerous', 'whale', 'dog', 'farmer' ],
+        correctAnswerIndex: 1,
         explanation: 'The largest sea creature is the "whale" (ត្រីបាឡែន).'
       },
       {
@@ -616,8 +616,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: dog / monkey / whale / farmer / dangerous',
         text: '4. The __________ is ploughing the field and feeding ducks.',
-        options: ['farmer', 'dog', 'monkey', 'whale'],
-        correctAnswerIndex: 0,
+        options: [ 'monkey', 'dog', 'farmer', 'whale' ],
+        correctAnswerIndex: 2,
         explanation: 'The person working on the farm is a "farmer" (កសិករ).'
       },
       {
@@ -625,7 +625,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: dog / monkey / whale / farmer / dangerous',
         text: '5. The cobra and female mosquitoes are __________ to people.',
-        options: ['dog', 'farmer', 'whale', 'dangerous'],
+        options: [ 'dog', 'farmer', 'whale', 'dangerous' ],
         correctAnswerIndex: 3,
         explanation: 'Cobras and mosquitoes are "dangerous" (គ្រោះថ្នាក់).'
       },
@@ -636,7 +636,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: like / its / their / is ploughing',
         text: '1. The bear catches fish for __________ baby.',
-        options: ['its', 'their', 'like', 'is ploughing'],
+        options: [ 'its', 'their', 'like', 'is ploughing' ],
         correctAnswerIndex: 0,
         explanation: 'For a singular animal owner ("The bear"), we use possessive "its".'
       },
@@ -645,8 +645,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: like / its / their / is ploughing',
         text: '2. Birds lay eggs in __________ nests.',
-        options: ['their', 'its', 'like', 'is ploughing'],
-        correctAnswerIndex: 0,
+        options: [ 'its', 'their', 'like', 'is ploughing' ],
+        correctAnswerIndex: 1,
         explanation: 'For plural animal owners ("Birds"), we use possessive "their".'
       },
       {
@@ -654,8 +654,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: like / its / their / is ploughing',
         text: '3. I __________ dogs and cats, but I don\'t like mice.',
-        options: ['like', 'its', 'their', 'is ploughing'],
-        correctAnswerIndex: 0,
+        options: [ 'their', 'its', 'like', 'is ploughing' ],
+        correctAnswerIndex: 2,
         explanation: 'Expressing preference uses verb "like".'
       },
       {
@@ -663,8 +663,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: like / its / their / is ploughing',
         text: '4. Look! The farmer __________ the rice field right now.',
-        options: ['is ploughing', 'its', 'their', 'like'],
-        correctAnswerIndex: 0,
+        options: [ 'like', 'its', 'their', 'is ploughing' ],
+        correctAnswerIndex: 3,
         explanation: 'Present Continuous for singular subject "The farmer" is "is ploughing".'
       },
 
@@ -674,7 +674,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: On Sunday, Rithy and his friends visit Phnom Tamao Zoo in Takeo province. At the zoo, they see many wild animals such as monkeys, deer, elephants, bears, and tigers. Rithy sees a baby monkey clinging to its mother. He buys bananas for the monkeys. Near the zoo, there is a big farm where farmers are feeding cows and ducks. Rithy loves animals very much and wants to have his own farm in the future.',
         text: '1. Rithy visits Phnom Tamao Zoo on Sunday.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
+        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text says: "On Sunday, Rithy and his friends visit Phnom Tamao Zoo..."'
       },
@@ -683,7 +683,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. Phnom Tamao Zoo is located in Siem Reap province.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
+        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
         correctAnswerIndex: 1,
         explanation: 'False! The text says Phnom Tamao Zoo is in Takeo province.'
       },
@@ -692,7 +692,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. Rithy sees a baby monkey clinging to its mother.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
+        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text states: "Rithy sees a baby monkey clinging to its mother."'
       },
@@ -701,7 +701,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. He buys meat for the monkeys.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
+        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
         correctAnswerIndex: 1,
         explanation: 'False! The text says: "He buys bananas for the monkeys."'
       },
@@ -710,7 +710,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. Rithy wants to have his own farm in the future.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
+        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text states: "...and wants to have his own farm in the future."'
       },
@@ -722,12 +722,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '1. What pets do you like to raise at home?',
         options: [
-          'I like to raise dogs and cats at my home.',
           'Like dog and cat.',
+          'I like to raise dogs and cats at my home.',
           'I am raising pets home.',
           'Raise dog cat yes.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 1,
         explanation: 'The full proper sentence response is "I like to raise dogs and cats at my home."'
       },
       {
@@ -736,12 +736,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '2. What animal is dangerous to people?',
         options: [
-          'The cobra and female mosquitoes are dangerous to people.',
-          'Cobra dangerous people.',
           'Is dangerous mosquito.',
+          'Cobra dangerous people.',
+          'The cobra and female mosquitoes are dangerous to people.',
           'Dangerous animal cobra yes.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 2,
         explanation: 'The complete grammatically correct response is "The cobra and female mosquitoes are dangerous to people."'
       },
       {
@@ -750,12 +750,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '3. What sea creature do you like best?',
         options: [
-          'I like dolphins best because they are smart and friendly.',
+          'I am like dolphin.',
           'Like dolphin best.',
           'Dolphin is best sea.',
-          'I am like dolphin.'
+          'I like dolphins best because they are smart and friendly.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 3,
         explanation: 'The complete full sentence is "I like dolphins best because they are smart and friendly."'
       }
     ]
@@ -779,7 +779,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: celebrate / birthday / market / October / village',
         text: '1. I celebrate my __________ on March 13th every year.',
-        options: ['birthday', 'market', 'October', 'village'],
+        options: [ 'birthday', 'market', 'October', 'village' ],
         correctAnswerIndex: 0,
         explanation: 'The annual event of one\'s birth is "birthday" (ខួបកំណើត).'
       },
@@ -788,7 +788,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: celebrate / birthday / market / October / village',
         text: '2. We invite our friends to __________ my birthday party.',
-        options: ['village', 'celebrate', 'market', 'October'],
+        options: [ 'village', 'celebrate', 'market', 'October' ],
         correctAnswerIndex: 1,
         explanation: 'The verb for holding or organizing a celebration is "celebrate" (ប្រារព្ធ).'
       },
@@ -797,7 +797,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: celebrate / birthday / market / October / village',
         text: '3. My mother goes to the local __________ in our village to buy fresh food.',
-        options: ['October', 'birthday', 'market', 'village'],
+        options: [ 'October', 'birthday', 'market', 'village' ],
         correctAnswerIndex: 2,
         explanation: 'The place where people buy and sell food is the "market" (ផ្សារ).'
       },
@@ -806,8 +806,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: celebrate / birthday / market / October / village',
         text: '4. The tenth month of the year is __________.',
-        options: ['October', 'market', 'birthday', 'village'],
-        correctAnswerIndex: 0,
+        options: [ 'village', 'market', 'birthday', 'October' ],
+        correctAnswerIndex: 3,
         explanation: 'The 10th month of the calendar year is "October" (ខែតុលា).'
       },
       {
@@ -815,8 +815,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 1: Vocabulary (២.៥ ពិន្ទុ) - Words: celebrate / birthday / market / October / village',
         text: '5. My hometown is a beautiful green __________ in Takeo province.',
-        options: ['birthday', 'market', 'October', 'village'],
-        correctAnswerIndex: 3,
+        options: [ 'village', 'market', 'October', 'birthday' ],
+        correctAnswerIndex: 0,
         explanation: 'A rural community or hometown location is a "village" (ភូមិ).'
       },
 
@@ -826,8 +826,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: on / in / at / was born',
         text: '1. I was born _____ October 15th, 2004.',
-        options: ['on', 'in', 'at', 'was born'],
-        correctAnswerIndex: 0,
+        options: [ 'in', 'on', 'at', 'was born' ],
+        correctAnswerIndex: 1,
         explanation: 'We use preposition "on" before a specific full date (on October 15th).'
       },
       {
@@ -835,8 +835,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: on / in / at / was born',
         text: '2. She _____ on March 11th, 2005.',
-        options: ['was born', 'on', 'in', 'at'],
-        correctAnswerIndex: 0,
+        options: [ 'in', 'on', 'was born', 'at' ],
+        correctAnswerIndex: 2,
         explanation: 'The past verb phrase for birth is "was born".'
       },
       {
@@ -844,8 +844,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: on / in / at / was born',
         text: '3. We study English _____ Tuesday and Friday.',
-        options: ['on', 'in', 'at', 'was born'],
-        correctAnswerIndex: 0,
+        options: [ 'was born', 'in', 'at', 'on' ],
+        correctAnswerIndex: 3,
         explanation: 'We use "on" for days of the week (on Tuesday and Friday).'
       },
       {
@@ -853,7 +853,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 2: Grammar (២ ពិន្ទុ) - Options: on / in / at / was born',
         text: '4. The class starts _____ 7:00 AM in the morning.',
-        options: ['at', 'on', 'in', 'was born'],
+        options: [ 'at', 'on', 'in', 'was born' ],
         correctAnswerIndex: 0,
         explanation: 'We use preposition "at" for specific clock times (at 7:00 AM).'
       },
@@ -864,8 +864,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: Borith lives in a quiet village in Siem Reap province. He was born on March 15th, 2004. In his village, there is a busy market where his mother sells fruits and vegetables. Every year on March 15th, Borith celebrates his birthday with his family and classmates. His parents buy a cake, candles, balloons, and delicious food. All his friends sing the birthday song and give him nice gifts. Borith feels very happy on his special day.',
         text: '1. Borith lives in Siem Reap province.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text says: "Borith lives in a quiet village in Siem Reap province."'
       },
       {
@@ -873,8 +873,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. Borith was born on October 15th, 2004.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 1,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 0,
         explanation: 'False! The text says: "He was born on March 15th, 2004."'
       },
       {
@@ -882,8 +882,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. His mother sells fruits and vegetables at the village market.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text states: "...his mother sells fruits and vegetables."'
       },
       {
@@ -891,8 +891,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. Borith’s friends never come to his birthday party.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 1,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 0,
         explanation: 'False! The text states that his classmates and friends sing the birthday song and give him gifts.'
       },
       {
@@ -900,8 +900,8 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. Borith feels very happy on his birthday.',
-        options: ['True (ត្រូវ)', 'False (ខុស)'],
-        correctAnswerIndex: 0,
+        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        correctAnswerIndex: 1,
         explanation: 'True! The text ends with: "Borith feels very happy on his special day."'
       },
 
@@ -912,12 +912,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '1. When were you born?',
         options: [
-          'I was born on March 15th, 2004.',
-          'Born March 15th.',
           'I am born March 2004.',
+          'Born March 15th.',
+          'I was born on March 15th, 2004.',
           'When born March.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 2,
         explanation: 'The complete grammatically correct sentence is "I was born on March 15th, 2004."'
       },
       {
@@ -926,12 +926,12 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         category: 'Part 4: Writing (៣ ពិន្ទុ) - Answer in complete sentences',
         text: '2. Where do you live?',
         options: [
-          'I live in a peaceful village in Cambodia.',
+          'Where live village.',
           'Live village Cambodia.',
           'I am living in home.',
-          'Where live village.'
+          'I live in a peaceful village in Cambodia.'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 3,
         explanation: 'The full proper sentence response is "I live in a peaceful village in Cambodia."'
       },
       {

@@ -18,8 +18,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ក្នុងចំនួន 870 465 250 តើលេខ 7 ស្ថិតនៅខ្ទង់ណា?',
-        options: ['ខ្ទង់រយពាន់', 'ខ្ទង់ដប់លាន', 'ខ្ទង់លាន', 'ខ្ទង់រយលាន'],
-        correctAnswerIndex: 1,
+        options: [ 'ខ្ទង់ដប់លាន', 'ខ្ទង់រយពាន់', 'ខ្ទង់លាន', 'ខ្ទង់រយលាន' ],
+        correctAnswerIndex: 0,
         explanation: 'ក្នុងចំនួន 870 465 250 លេខ 0 នៅខ្ទង់លាន, លេខ 7 នៅខ្ទង់ដប់លាន (មានតម្លៃ 70 000 000)។'
       },
       {
@@ -27,8 +27,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ក្នុងចំនួន 870 465 250 តើតម្លៃនៃលេខ 7 ស្មើនឹងប៉ុន្មាន?',
-        options: ['700 000', '7 000 000', '70 000 000', '700 000 000'],
-        correctAnswerIndex: 2,
+        options: [ '700 000', '70 000 000', '7 000 000', '700 000 000' ],
+        correctAnswerIndex: 1,
         explanation: 'លេខ 7 នៅខ្ទង់ដប់លាន ដូច្នេះវាមានតម្លៃ 70 000 000។'
       },
       {
@@ -36,8 +36,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'សរសេរចំនួន «បីលាន ម្ភៃបួនពាន់ មួយរយបី» ជាតួរលេខ៖',
-        options: ['3 240 103', '3 024 103', '3 240 003', '30 024 103'],
-        correctAnswerIndex: 1,
+        options: [ '3 240 103', '3 240 003', '3 024 103', '30 024 103' ],
+        correctAnswerIndex: 2,
         explanation: 'បីលាន = 3 000 000, ម្ភៃបួនពាន់ = 24 000, មួយរយបី = 103 ➔ 3 024 103។'
       },
       {
@@ -47,11 +47,11 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         text: 'សរសេរចំនួន 3 024 103 ជាទម្រង់ពង្រាយ៖',
         options: [
           '3 000 000 + 200 000 + 4000 + 100 + 3',
-          '3 000 000 + 20 000 + 4000 + 100 + 3',
+          '3 000 000 + 24 000 + 130',
           '300 000 + 20 000 + 4000 + 100 + 3',
-          '3 000 000 + 24 000 + 130'
+          '3 000 000 + 20 000 + 4000 + 100 + 3'
         ],
-        correctAnswerIndex: 1,
+        correctAnswerIndex: 3,
         explanation: '3 024 103 = 3 000 000 + 20 000 + 4000 + 100 + 3។'
       },
       {
@@ -59,8 +59,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ប្រៀបធៀបចំនួនពីរ 3 256 401 និង 3 257 250 ៖',
-        options: ['3 256 401 > 3 257 250', '3 256 401 = 3 257 250', '3 256 401 < 3 257 250', '3 256 401 ≈ 3 257 250'],
-        correctAnswerIndex: 2,
+        options: [ '3 256 401 < 3 257 250', '3 256 401 = 3 257 250', '3 256 401 > 3 257 250', '3 256 401 ≈ 3 257 250' ],
+        correctAnswerIndex: 0,
         explanation: 'ខ្ទង់ពាន់ 6 < 7 ដូច្នេះ 3 256 401 < 3 257 250។'
       },
       {
@@ -68,8 +68,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'បង្គត់ចំនួន 2 782 150 ត្រឹមខ្ទង់លាន៖',
-        options: ['2 000 000', '2 800 000', '3 000 000', '2 700 000'],
-        correctAnswerIndex: 2,
+        options: [ '2 000 000', '3 000 000', '2 800 000', '2 700 000' ],
+        correctAnswerIndex: 1,
         explanation: 'ខ្ទង់រយពាន់ជាលេខ 7 (≥ 5) ដូច្នេះបង្គត់ឡើងបាន 3 000 000។'
       },
       {
@@ -77,8 +77,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'បង្គត់ចំនួន 5 623 501 ត្រឹមខ្ទង់សែន (រយពាន់)៖',
-        options: ['5 600 000', '5 700 000', '6 000 000', '5 620 000'],
-        correctAnswerIndex: 0,
+        options: [ '6 000 000', '5 700 000', '5 600 000', '5 620 000' ],
+        correctAnswerIndex: 2,
         explanation: 'ខ្ទង់ដប់ពាន់ជាលេខ 2 (< 5) ដូច្នេះបង្គត់ចុះបាន 5 600 000។'
       },
       {
@@ -87,12 +87,12 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'រៀបលំដាប់ចំនួនពីតូចទៅធំ ៖ 2 510 571 ; 2 538 505 ; 2 530 295 ; 263 895',
         options: [
-          '263 895 ; 2 510 571 ; 2 530 295 ; 2 538 505',
+          '263 895 ; 2 530 295 ; 2 510 571 ; 2 538 505',
           '2 538 505 ; 2 530 295 ; 2 510 571 ; 263 895',
           '2 510 571 ; 263 895 ; 2 530 295 ; 2 538 505',
-          '263 895 ; 2 530 295 ; 2 510 571 ; 2 538 505'
+          '263 895 ; 2 510 571 ; 2 530 295 ; 2 538 505'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 3,
         explanation: 'ចំនួនតូចបំផុតគឺ 263 895 (មានតែ 6 ខ្ទង់) បន្ទាប់មក 2 510 571 < 2 530 295 < 2 538 505។'
       },
       {
@@ -100,8 +100,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ក្នុងចំនួន 125 243 102 តើលេខ 5 ស្ថិតនៅខ្ទង់ណា?',
-        options: ['ខ្ទង់ពាន់', 'ខ្ទង់ដប់ពាន់', 'ខ្ទង់លាន', 'ខ្ទង់រយពាន់'],
-        correctAnswerIndex: 2,
+        options: [ 'ខ្ទង់លាន', 'ខ្ទង់ដប់ពាន់', 'ខ្ទង់ពាន់', 'ខ្ទង់រយពាន់' ],
+        correctAnswerIndex: 0,
         explanation: 'ខ្ទង់លានគឺលេខ 5 (5 000 000)។'
       },
       {
@@ -109,8 +109,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'សរសេរចំនួន «ប្រាំពីររយប៉ែតសិបពីរពាន់ មួយរយហាសិប» ជាតួរលេខ៖',
-        options: ['782 150', '78 215', '7 820 150', '782 015'],
-        correctAnswerIndex: 0,
+        options: [ '78 215', '782 150', '7 820 150', '782 015' ],
+        correctAnswerIndex: 1,
         explanation: 'ប្រាំពីររយប៉ែតសិបពីរពាន់ = 782 000, មួយរយហាសិប = 150 ➔ 782 150។'
       },
       {
@@ -118,8 +118,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'តើចំនួនណាធំជាងគេក្នុងចំណោម៖ 405 276 930 , 405 726 930 , 405 267 930 ?',
-        options: ['405 276 930', '405 726 930', '405 267 930', 'ស្មើគ្នាទាំងអស់'],
-        correctAnswerIndex: 1,
+        options: [ '405 276 930', '405 267 930', '405 726 930', 'ស្មើគ្នាទាំងអស់' ],
+        correctAnswerIndex: 2,
         explanation: '405 726 930 មានខ្ទង់រយពាន់ 7 > 2 ដូច្នេះវាធំជាងគេ។'
       },
       {
@@ -127,8 +127,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ប្រទេសកម្ពុជាមានប្រជាជនប្រមាណ 13 395 682 នាក់។ បង្គត់ចំនួននេះត្រឹមខ្ទង់លាន៖',
-        options: ['13 000 000 នាក់', '14 000 000 នាក់', '13 400 000 នាក់', '13 300 000 នាក់'],
-        correctAnswerIndex: 0,
+        options: [ '13 300 000 នាក់', '14 000 000 នាក់', '13 400 000 នាក់', '13 000 000 នាក់' ],
+        correctAnswerIndex: 3,
         explanation: 'ខ្ទង់រយពាន់ជាលេខ 3 (< 5) ដូច្នេះបង្គត់ចុះបាន 13 000 000 នាក់។'
       },
       {
@@ -136,7 +136,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ប្រទេសកម្ពុជាមានផ្ទៃដី 181 035 km²។ បង្គត់ចំនួននេះត្រឹមខ្ទង់ម៉ឺន (ដប់ពាន់)៖',
-        options: ['180 000 km²', '190 000 km²', '181 000 km²', '200 000 km²'],
+        options: [ '180 000 km²', '190 000 km²', '181 000 km²', '200 000 km²' ],
         correctAnswerIndex: 0,
         explanation: 'ខ្ទង់ពាន់ជាលេខ 1 (< 5) ដូច្នេះបង្គត់ចុះបាន 180 000 km²។'
       },
@@ -145,7 +145,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'តើចំនួន 8593 456 បង្គត់ត្រឹមខ្ទង់លាន ទទួលបានចំនួនប៉ុន្មាន?',
-        options: ['8 000 000', '9 000 000', '8 600 000', '8 500 000'],
+        options: [ '8 000 000', '9 000 000', '8 600 000', '8 500 000' ],
         correctAnswerIndex: 1,
         explanation: 'ខ្ទង់រយពាន់ជាលេខ 5 (≥ 5) ដូច្នេះបង្គត់ឡើងបាន 9 000 000។'
       },
@@ -154,7 +154,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ចំនួន 4 376 718 360 មានចំនួនប៉ុន្មានខ្ទង់?',
-        options: ['8 ខ្ទង់', '9 ខ្ទង់', '10 ខ្ទង់', '11 ខ្ទង់'],
+        options: [ '8 ខ្ទង់', '9 ខ្ទង់', '10 ខ្ទង់', '11 ខ្ទង់' ],
         correctAnswerIndex: 2,
         explanation: 'ចំនួននេះមាន 10 ខ្ទង់ (រហូតដល់ថ្នាក់កោដិ/ពាន់លាន)។'
       },
@@ -163,8 +163,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ក្នុងចំនួន 4 376 718 360 តើលេខ 4 នៅខ្ទង់ណា?',
-        options: ['ខ្ទង់រយលាន', 'ខ្ទង់ពាន់លាន (កោដិ)', 'ខ្ទង់ដប់លាន', 'ខ្ទង់លាន'],
-        correctAnswerIndex: 1,
+        options: [ 'ខ្ទង់រយលាន', 'ខ្ទង់លាន', 'ខ្ទង់ដប់លាន', 'ខ្ទង់ពាន់លាន (កោដិ)' ],
+        correctAnswerIndex: 3,
         explanation: 'លេខ 4 នៅខ្ទង់ពាន់លាន ឬថ្នាក់កោដិ (4 000 000 000)។'
       },
       {
@@ -172,8 +172,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ស្វែងរកចំនួនដែលបាត់ក្នុងសមភាព 3 024 103 = 3 000 000 + ...... + 4 000 + 100 + 3 ៖',
-        options: ['200 000', '20 000', '2000', '200'],
-        correctAnswerIndex: 1,
+        options: [ '20 000', '200 000', '2000', '200' ],
+        correctAnswerIndex: 0,
         explanation: 'ខ្ទង់ដប់ពាន់គឺលេខ 2 មានតម្លៃ 20 000។'
       },
       {
@@ -181,7 +181,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'តើចំនួនណាដែលមានតម្លៃធំជាងគេ?',
-        options: ['6 053 871 189', '6 053 871 918', '6 053 817 981', '6 053 871 891'],
+        options: [ '6 053 871 189', '6 053 871 918', '6 053 817 981', '6 053 871 891' ],
         correctAnswerIndex: 1,
         explanation: '6 053 871 918 មានខ្ទង់រយ 9 > 1 និង 8 ដូច្នេះធំជាងគេ។'
       },
@@ -190,8 +190,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'បើសរសេរចំនួន 2 871 135 463 តាមថ្នាក់ចំនួន តើថ្នាក់លានមានចំនួនប៉ុន្មាន?',
-        options: ['871 លាន', '2871 លាន', '71 លាន', '871 135 លាន'],
-        correctAnswerIndex: 0,
+        options: [ '71 លាន', '2871 លាន', '871 លាន', '871 135 លាន' ],
+        correctAnswerIndex: 2,
         explanation: 'ថ្នាក់លានរួមមាន 871 លាន (8 រយលាន, 7 ដប់លាន, 1 លាន)។'
       },
       {
@@ -199,8 +199,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'វិធានបង្គត់ចំនួនគត់៖ បើខ្ទង់បន្ទាប់ពីខ្ទង់ត្រូវបង្គត់ជាលេខ 0, 1, 2, 3, 4 តើត្រូវធ្វើយ៉ាងណា?',
-        options: ['បង្គត់ឡើង', 'បង្គត់ចុះ (រក្សាខ្ទង់បង្គត់ដដែល ហើយជំនួសខ្ទង់ខាងស្ដាំដោយលេខ 0)', 'បូក 1 ថែម', 'គុណនឹង 10'],
-        correctAnswerIndex: 1,
+        options: [ 'បង្គត់ឡើង', 'គុណនឹង 10', 'បូក 1 ថែម', 'បង្គត់ចុះ (រក្សាខ្ទង់បង្គត់ដដែល ហើយជំនួសខ្ទង់ខាងស្ដាំដោយលេខ 0)' ],
+        correctAnswerIndex: 3,
         explanation: 'បើលេខបន្ទាប់តូចជាង 5 (0,1,2,3,4) ត្រូវបង្គត់ចុះ។'
       }
     ]
@@ -223,8 +223,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'សរសេរប្រភាគ 1025 / 1000 ជាចំនួនទសភាគ៖',
-        options: ['10.25', '1.025', '0.1025', '102.5'],
-        correctAnswerIndex: 1,
+        options: [ '1.025', '10.25', '0.1025', '102.5' ],
+        correctAnswerIndex: 0,
         explanation: '1025 / 1000 = 1.025 (មាន 3 ខ្ទង់ទសភាគ)។'
       },
       {
@@ -232,8 +232,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'សរសេរប្រភាគ 135 / 1000 ជាចំនួនទសភាគ៖',
-        options: ['0.135', '1.35', '13.5', '0.0135'],
-        correctAnswerIndex: 0,
+        options: [ '1.35', '0.135', '13.5', '0.0135' ],
+        correctAnswerIndex: 1,
         explanation: '135 / 1000 = 0.135។'
       },
       {
@@ -241,8 +241,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'ក្នុងចំនួនទសភាគ 36.458 តើលេខ 5 ស្ថិតនៅខ្ទង់ណា?',
-        options: ['ខ្ទង់ភាគដប់', 'ខ្ទង់ភាគរយ', 'ខ្ទង់ភាគពាន់', 'ខ្ទង់រយ'],
-        correctAnswerIndex: 1,
+        options: [ 'ខ្ទង់ភាគដប់', 'ខ្ទង់ភាគពាន់', 'ខ្ទង់ភាគរយ', 'ខ្ទង់រយ' ],
+        correctAnswerIndex: 2,
         explanation: '4 នៅខ្ទង់ភាគដប់, 5 នៅខ្ទង់ភាគរយ (0.05), 8 នៅខ្ទង់ភាគពាន់ (0.008)។'
       },
       {
@@ -250,8 +250,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'ក្នុងចំនួន 36.458 តើតម្លៃលេខ 5 ស្មើនឹងប៉ុន្មាន?',
-        options: ['0.5', '0.05', '0.005', '50'],
-        correctAnswerIndex: 1,
+        options: [ '0.5', '50', '0.005', '0.05' ],
+        correctAnswerIndex: 3,
         explanation: 'លេខ 5 នៅខ្ទង់ភាគរយ មានតម្លៃ 0.05 ឬ 5/100។'
       },
       {
@@ -273,7 +273,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'តើចំនួនទសភាគមួយណាស្មើនឹង 0.9 ?',
-        options: ['0.09', '0.900', '9.0', '0.009'],
+        options: [ '0.09', '0.900', '9.0', '0.009' ],
         correctAnswerIndex: 1,
         explanation: 'បន្ថែមលេខ 0 នៅចុងផ្នែកទសភាគ មិនប្រែប្រួលតម្លៃទេ (0.9 = 0.90 = 0.900)។'
       },
@@ -282,8 +282,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'បង្គត់ចំនួន 2.362 ត្រឹមខ្ទង់ភាគរយ (២ ខ្ទង់ទសភាគ)៖',
-        options: ['2.30', '2.36', '2.37', '2.40'],
-        correctAnswerIndex: 1,
+        options: [ '2.30', '2.37', '2.36', '2.40' ],
+        correctAnswerIndex: 2,
         explanation: 'ខ្ទង់ភាគពាន់ជាលេខ 2 (< 5) ដូច្នេះបង្គត់ចុះបាន 2.36។'
       },
       {
@@ -291,8 +291,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'បង្គត់ចំនួន 15.385 ត្រឹមខ្ទង់ភាគដប់ (១ ខ្ទង់ទសភាគ)៖',
-        options: ['15.3', '15.4', '15.38', '15.0'],
-        correctAnswerIndex: 1,
+        options: [ '15.3', '15.0', '15.38', '15.4' ],
+        correctAnswerIndex: 3,
         explanation: 'ខ្ទង់ភាគរយជាលេខ 8 (≥ 5) ដូច្នេះបង្គត់ឡើងបាន 15.4។'
       },
       {
@@ -300,7 +300,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'សរសេរប្រភាគ 152 / 1000 ជាចំនួនទសភាគ៖',
-        options: ['0.152', '1.52', '15.2', '0.0152'],
+        options: [ '0.152', '1.52', '15.2', '0.0152' ],
         correctAnswerIndex: 0,
         explanation: '152 / 1000 = 0.152។'
       },
@@ -309,7 +309,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'សរសេរប្រភាគ 2630 / 1000 ជាចំនួនទសភាគ៖',
-        options: ['0.263', '2.63', '26.3', '263.0'],
+        options: [ '0.263', '2.63', '26.3', '263.0' ],
         correctAnswerIndex: 1,
         explanation: '2630 / 1000 = 2.630 = 2.63។'
       },
@@ -319,12 +319,12 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'អានចំនួនទសភាគ 1.025 ជាអក្សរខ្មែរ ៖',
         options: [
-          'មួយចុចសូន្យម្ភៃប្រាំ',
-          'មួយចុចសូន្យពីរបួន',
           'មួយចុចមួយរយ',
+          'មួយចុចសូន្យពីរបួន',
+          'មួយចុចសូន្យម្ភៃប្រាំ',
           'មួយទសភាគម្ភៃ'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 2,
         explanation: 'អានថា «មួយចុចសូន្យម្ភៃប្រាំ»។'
       },
       {
@@ -332,8 +332,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'ក្នុងចំនួន 183.645 តើលេខ 1 ស្ថិតនៅខ្ទង់ណា?',
-        options: ['ខ្ទង់រយ', 'ខ្ទង់ដប់', 'ខ្ទង់រាយ', 'ខ្ទង់ភាគដប់'],
-        correctAnswerIndex: 0,
+        options: [ 'ខ្ទង់ភាគដប់', 'ខ្ទង់ដប់', 'ខ្ទង់រាយ', 'ខ្ទង់រយ' ],
+        correctAnswerIndex: 3,
         explanation: '1 ស្ថិតនៅផ្នែកគត់ ខ្ទង់រយ (100)។'
       },
       {
@@ -341,8 +341,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'ក្នុងចំនួន 183.645 តើលេខ 4 ស្ថិតនៅខ្ទង់ណា?',
-        options: ['ខ្ទង់ភាគដប់', 'ខ្ទង់ភាគរយ', 'ខ្ទង់ភាគពាន់', 'ខ្ទង់ដប់'],
-        correctAnswerIndex: 1,
+        options: [ 'ខ្ទង់ភាគរយ', 'ខ្ទង់ភាគដប់', 'ខ្ទង់ភាគពាន់', 'ខ្ទង់ដប់' ],
+        correctAnswerIndex: 0,
         explanation: 'លេខ 4 នៅខ្ទង់ភាគរយ (0.04)។'
       },
       {
@@ -350,8 +350,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'ប្រៀបធៀបចំនួនទសភាគពីរ 36.272 និង 36.254 ៖',
-        options: ['36.272 > 36.254', '36.272 < 36.254', '36.272 = 36.254', 'មិនអាចប្រៀបធៀបបាន'],
-        correctAnswerIndex: 0,
+        options: [ '36.272 < 36.254', '36.272 > 36.254', '36.272 = 36.254', 'មិនអាចប្រៀបធៀបបាន' ],
+        correctAnswerIndex: 1,
         explanation: 'ផ្នែកគត់ 36 ស្មើគ្នា, ភាគដប់ 2 ស្មើគ្នា, ភាគរយ 7 > 5 ដូច្នេះ 36.272 > 36.254។'
       },
       {
@@ -360,12 +360,12 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'រៀបលំដាប់ពីតូចទៅធំ ៖ 72.125 ; 72.654 ; 72.683 ; 73.109',
         options: [
-          '72.125 ; 72.654 ; 72.683 ; 73.109',
-          '73.109 ; 72.683 ; 72.654 ; 72.125',
           '72.654 ; 72.125 ; 72.683 ; 73.109',
+          '73.109 ; 72.683 ; 72.654 ; 72.125',
+          '72.125 ; 72.654 ; 72.683 ; 73.109',
           '72.125 ; 72.683 ; 72.654 ; 73.109'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 2,
         explanation: '72.125 < 72.654 < 72.683 < 73.109។'
       },
       {
@@ -373,8 +373,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'តើសញ្ញាណាត្រូវបំពេញក្នុងចន្លោះ 13.256 ..... 13.248 ?',
-        options: ['>', '<', '=', '≈'],
-        correctAnswerIndex: 0,
+        options: [ '≈', '<', '=', '>' ],
+        correctAnswerIndex: 3,
         explanation: 'ភាគរយ 5 > 4 ដូច្នេះ 13.256 > 13.248។'
       },
       {
@@ -382,8 +382,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'តើសញ្ញាណាត្រូវបំពេញក្នុងចន្លោះ 85.65 ..... 85.650 ?',
-        options: ['>', '<', '=', '≠'],
-        correctAnswerIndex: 2,
+        options: [ '=', '<', '>', '≠' ],
+        correctAnswerIndex: 0,
         explanation: '85.65 = 85.650 (តម្លៃស្មើគ្នា)។'
       },
       {
@@ -391,7 +391,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'សរសេរចំនួនទសភាគ 0.075 ជាប្រភាគទសភាគ៖',
-        options: ['75 / 100', '75 / 1000', '75 / 10', '7.5 / 100'],
+        options: [ '75 / 100', '75 / 1000', '75 / 10', '7.5 / 100' ],
         correctAnswerIndex: 1,
         explanation: '0.075 មាន 3 ខ្ទង់ទសភាគ = 75 / 1000។'
       },
@@ -400,8 +400,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'ចំនួនទសភាគ 40.360 ស្មើនឹងចំនួនទសភាគណា?',
-        options: ['40.36', '40.3', '40.63', '4.036'],
-        correctAnswerIndex: 0,
+        options: [ '40.63', '40.3', '40.36', '4.036' ],
+        correctAnswerIndex: 2,
         explanation: '40.360 = 40.36 (លុបលេខ 0 នៅខាងចុងទសភាគ)។'
       },
       {
@@ -409,8 +409,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'បង្គត់ចំនួន 128.593 ត្រឹមខ្ទង់ភាគរយ (២ ខ្ទង់ទសភាគ)៖',
-        options: ['128.59', '128.60', '128.50', '129.00'],
-        correctAnswerIndex: 0,
+        options: [ '129.00', '128.60', '128.50', '128.59' ],
+        correctAnswerIndex: 3,
         explanation: 'ខ្ទង់ភាគពាន់ជាលេខ 3 (< 5) ដូច្នេះបង្គត់ចុះបាន 128.59។'
       }
     ]
@@ -433,7 +433,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលបូក 15.545 + 14 = ?',
-        options: ['29.545', '15.559', '29.500', '16.945'],
+        options: [ '29.545', '15.559', '29.500', '16.945' ],
         correctAnswerIndex: 0,
         explanation: '15.545 + 14.000 = 29.545m។'
       },
@@ -442,8 +442,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលបូក 163.251 + 32.8 = ?',
-        options: ['196.051', '195.051', '196.151', '166.531'],
-        correctAnswerIndex: 0,
+        options: [ '195.051', '196.051', '196.151', '166.531' ],
+        correctAnswerIndex: 1,
         explanation: '163.251 + 32.800 = 196.051។'
       },
       {
@@ -451,8 +451,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលបូក 52.425 + 19 = ?',
-        options: ['71.425', '52.444', '71.000', '61.425'],
-        correctAnswerIndex: 0,
+        options: [ '71.000', '52.444', '71.425', '61.425' ],
+        correctAnswerIndex: 2,
         explanation: '52.425 + 19.000 = 71.425។'
       },
       {
@@ -460,8 +460,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលបូក 31.255 + 5.815 = ?',
-        options: ['37.070', '37.07', '37.070 ឬ 37.07', '36.070'],
-        correctAnswerIndex: 2,
+        options: [ '37.070', '37.07', '36.070', '37.070 ឬ 37.07' ],
+        correctAnswerIndex: 3,
         explanation: '31.255 + 5.815 = 37.070 (ឬ 37.07)។'
       },
       {
@@ -469,8 +469,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'ប៉ាន់ស្មានផលបូក 5.250kg + 4.35kg + 6.750kg ≈ ?',
-        options: ['15 kg', '16 kg', '17 kg', '18 kg'],
-        correctAnswerIndex: 1,
+        options: [ '16 kg', '15 kg', '17 kg', '18 kg' ],
+        correctAnswerIndex: 0,
         explanation: 'បង្គត់ជាចំនួនគត់៖ 5 + 4 + 7 = 16 kg (ផលបូកពិត = 16.35 kg ≈ 16 kg)។'
       },
       {
@@ -478,8 +478,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលដក 35.765 - 28.565 = ?',
-        options: ['7.2', '7.200', '7.200 ឬ 7.2', '6.800'],
-        correctAnswerIndex: 2,
+        options: [ '7.2', '7.200 ឬ 7.2', '7.200', '6.800' ],
+        correctAnswerIndex: 1,
         explanation: '35.765 - 28.565 = 7.200 = 7.2 km។'
       },
       {
@@ -487,8 +487,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលដក 32.55 - 29.245 = ?',
-        options: ['3.310', '3.305', '3.315', '3.005'],
-        correctAnswerIndex: 1,
+        options: [ '3.310', '3.315', '3.305', '3.005' ],
+        correctAnswerIndex: 2,
         explanation: '32.550 - 29.245 = 3.305 kg។'
       },
       {
@@ -496,8 +496,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលដក 5 - 2.245 = ?',
-        options: ['2.755', '2.855', '3.755', '2.255'],
-        correctAnswerIndex: 0,
+        options: [ '2.255', '2.855', '3.755', '2.755' ],
+        correctAnswerIndex: 3,
         explanation: '5.000 - 2.245 = 2.755 l។'
       },
       {
@@ -505,7 +505,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលដក 15 - 9.362 = ?',
-        options: ['5.638', '6.638', '5.738', '6.362'],
+        options: [ '5.638', '6.638', '5.738', '6.362' ],
         correctAnswerIndex: 0,
         explanation: '15.000 - 9.362 = 5.638។'
       },
@@ -514,7 +514,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'ប៉ាន់ស្មានផលដក 15.145 - 10.725 ≈ ?',
-        options: ['3 kg', '4 kg', '5 kg', '6 kg'],
+        options: [ '3 kg', '4 kg', '5 kg', '6 kg' ],
         correctAnswerIndex: 1,
         explanation: 'បង្គត់ 15.145 ➔ 15, 10.725 ➔ 11 ➔ 15 - 11 = 4 kg (ផលដកពិត = 4.42 kg ≈ 4 kg)។'
       },
@@ -523,8 +523,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'ចតុកោណកែងមួយមានទទឹង 7dm 5cm 8mm និងបណ្តោយ 1.2m (12dm)។ គណនាបរិមាត្រជាម៉ែត្រ (m)៖',
-        options: ['3.916 m', '3.916m ឬ 39.16dm', '3.50 m', '4.20 m'],
-        correctAnswerIndex: 1,
+        options: [ '3.916 m', '3.50 m', '3.916m ឬ 39.16dm', '4.20 m' ],
+        correctAnswerIndex: 2,
         explanation: 'ទទឹង = 0.758m, បណ្តោយ = 1.2m ➔ P = (1.2 + 0.758) × 2 = 1.958 × 2 = 3.916 m។'
       },
       {
@@ -532,8 +532,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'តារាលក់ស្រូវលើកទី១ បាន 1.250 តោន, លើកទី២ បាន 2.550 តោន, លើកទី៣ បាន 3 តោន។ តើលក់ស្រូវបានសរុបប៉ុន្មានតោន?',
-        options: ['6.800 តោន', '6.8 តោន', '6.800 តោន ឬ 6.8 តោន', '5.800 តោន'],
-        correctAnswerIndex: 2,
+        options: [ '6.800 តោន', '6.8 តោន', '5.800 តោន', '6.800 តោន ឬ 6.8 តោន' ],
+        correctAnswerIndex: 3,
         explanation: '1.250 + 2.550 + 3.000 = 6.800 = 6.8 តោន។'
       },
       {
@@ -541,7 +541,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលបូក 26.058 + 12 + 125 + 50.575 = ?',
-        options: ['213.633', '213.63', '203.633', '212.633'],
+        options: [ '213.633', '213.63', '203.633', '212.633' ],
         correctAnswerIndex: 0,
         explanation: '26.058 + 12.000 + 125.000 + 50.575 = 213.633។'
       },
@@ -550,8 +550,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលដក 25.135 - 18.5 = ?',
-        options: ['6.635', '7.635', '6.535', '7.535'],
-        correctAnswerIndex: 0,
+        options: [ '7.635', '6.635', '6.535', '7.535' ],
+        correctAnswerIndex: 1,
         explanation: '25.135 - 18.500 = 6.635។'
       },
       {
@@ -559,7 +559,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលដក 10 - 2.530 - 3 = ?',
-        options: ['4.470', '4.47', '4.470 ឬ 4.47', '5.470'],
+        options: [ '4.470', '4.47', '4.470 ឬ 4.47', '5.470' ],
         correctAnswerIndex: 2,
         explanation: '10.000 - 2.530 = 7.470 ➔ 7.470 - 3.000 = 4.470 (ឬ 4.47)។'
       },
@@ -568,8 +568,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'តារាមានទម្ងន់ 35kg, ធីតាមានទម្ងន់ 29.25kg។ តើតារាធ្ងន់ជាងធីតាប៉ុន្មាន kg?',
-        options: ['5.75 kg', '6.25 kg', '5.25 kg', '6.75 kg'],
-        correctAnswerIndex: 0,
+        options: [ '6.75 kg', '6.25 kg', '5.25 kg', '5.75 kg' ],
+        correctAnswerIndex: 3,
         explanation: '35.00 - 29.25 = 5.75 kg។'
       },
       {
@@ -577,8 +577,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គេមានអង្ករ 50 តោន។ លក់លើកទី១ អស់ 15.500 តោន, លើកទី២ អស់ 12.500 តោន។ តើនៅសល់អង្ករប៉ុន្មានតោន?',
-        options: ['22 តោន', '22.000 តោន', '22.000 តោន ឬ 22 តោន', '23 តោន'],
-        correctAnswerIndex: 2,
+        options: [ '22.000 តោន ឬ 22 តោន', '22.000 តោន', '22 តោន', '23 តោន' ],
+        correctAnswerIndex: 0,
         explanation: 'លក់សរុប = 15.500 + 12.500 = 28.000 តោន ➔ នៅសល់ = 50 - 28 = 22 តោន។'
       },
       {
@@ -586,8 +586,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនា 252.125 - 125.205 = ?',
-        options: ['126.920', '126.92', '126.920 ឬ 126.92', '127.020'],
-        correctAnswerIndex: 2,
+        options: [ '126.920', '126.920 ឬ 126.92', '126.92', '127.020' ],
+        correctAnswerIndex: 1,
         explanation: '252.125 - 125.205 = 126.920 = 126.92។'
       },
       {
@@ -596,12 +596,12 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'តើវិធានសំខាន់បំផុតក្នុងការបូក ឬដកចំនួនទសភាគជាជួរឈរគឺអ្វី?',
         options: [
-          'តម្រៀបសញ្ញាចុចទសភាគ និងខ្ទង់ដូចគ្នាឲ្យត្រង់ជួរគ្នា',
-          'បូកផ្នែកគត់មុនគេជានិច្ច',
           'លុបសញ្ញាចុចទសភាគចោល',
+          'បូកផ្នែកគត់មុនគេជានិច្ច',
+          'តម្រៀបសញ្ញាចុចទសភាគ និងខ្ទង់ដូចគ្នាឲ្យត្រង់ជួរគ្នា',
           'បូកពីឆ្វេងទៅស្តាំ'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 2,
         explanation: 'ត្រូវតម្រៀបសញ្ញាចុចទសភាគ និងខ្ទង់ដូចគ្នាឲ្យត្រង់ជួរគ្នាពីលើចុះក្រោម។'
       },
       {
@@ -609,8 +609,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលដក 64 - 25.435 - 2.812 = ?',
-        options: ['35.753', '35.853', '36.753', '34.753'],
-        correctAnswerIndex: 0,
+        options: [ '34.753', '35.853', '36.753', '35.753' ],
+        correctAnswerIndex: 3,
         explanation: '64.000 - 25.435 = 38.565 ➔ 38.565 - 2.812 = 35.753។'
       }
     ]
@@ -634,12 +634,12 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'តើអ្វីជា «កន្លះបន្ទាត់ពុះមុំ»?',
         options: [
-          'ជាបន្ទាត់ដែលគូសបន្តែងតាមចិត្ត',
           'ជាកន្លះបន្ទាត់ដែលគូសចេញពីកំពូលនៃមុំ ហើយចែកមុំនោះជាពីរស្មើគ្នា',
+          'ជាបន្ទាត់ដែលគូសបន្តែងតាមចិត្ត',
           'ជាបន្ទាត់កែងនឹងបាត',
           'ជាអង្កត់ផ្ចិតនៃរង្វង់'
         ],
-        correctAnswerIndex: 1,
+        correctAnswerIndex: 0,
         explanation: 'កន្លះបន្ទាត់ពុះមុំគឺជាកន្លះបន្ទាត់ដែលចេញពីកំពូលមុំ និងចែកមុំដើមជាពីរមុំតូចៗដែលមានរង្វាស់ស្មើគ្នា។'
       },
       {
@@ -647,7 +647,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'បើកន្លះបន្ទាត់ CD ពុះមុំ ACB ដែលមានរង្វាស់ 80° តើមុំ ACD មានរង្វាស់ប៉ុន្មានដឺក្រេ?',
-        options: ['20°', '40°', '80°', '160°'],
+        options: [ '20°', '40°', '80°', '160°' ],
         correctAnswerIndex: 1,
         explanation: 'មុំ ACD = 80° / 2 = 40°។'
       },
@@ -656,8 +656,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'ឧបករណ៍សំខាន់សម្រាប់សង់សំណង់មុំ 60° និង 90° ប្រកបដោយសុក្រឹតភាពគឺ៖',
-        options: ['បន្ទាត់ និងដែកឈាន (Compasses)', 'កែវពង្រីក', 'ជ័រលុប', 'កន្ត្រៃ'],
-        correctAnswerIndex: 0,
+        options: [ 'ជ័រលុប', 'កែវពង្រីក', 'បន្ទាត់ និងដែកឈាន (Compasses)', 'កន្ត្រៃ' ],
+        correctAnswerIndex: 2,
         explanation: 'សំណង់ធរណីមាត្រប្រកបដោយសុក្រឹតភាព ត្រូវប្រើបន្ទាត់ និងដែកឈាន (Compasses)។'
       },
       {
@@ -665,8 +665,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'ក្នុងការសង់មុំ 60° តាមដំណាក់កាល តើជំហានដំបូងត្រូវគូសអ្វី?',
-        options: ['គូសរង្វង់ពេញមួយ', 'គូសកន្លះបន្ទាត់ OX និងកំណត់ចំណុច O ជាកំពូល', 'គូសបន្ទាត់កែងពីរ', 'វាស់ប្រវែងបាត'],
-        correctAnswerIndex: 1,
+        options: [ 'គូសរង្វង់ពេញមួយ', 'វាស់ប្រវែងបាត', 'គូសបន្ទាត់កែងពីរ', 'គូសកន្លះបន្ទាត់ OX និងកំណត់ចំណុច O ជាកំពូល' ],
+        correctAnswerIndex: 3,
         explanation: 'ជំហានទី១៖ គូសកន្លះបន្ទាត់ OX រួចកំណត់ O ជាកំពូល។'
       },
       {
@@ -674,8 +674,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'មុំរាបមានរង្វាស់ 180°។ បើគេគូសកន្លះបន្ទាត់ពុះមុំរាបនោះ តើគេទទួលបានមុំពីរដែលមានរង្វាស់ប៉ុន្មានដឺក្រេ?',
-        options: ['45° និង 45°', '90° និង 90°', '60° និង 60°', '120° និង 60°'],
-        correctAnswerIndex: 1,
+        options: [ '90° និង 90°', '45° និង 45°', '60° និង 60°', '120° និង 60°' ],
+        correctAnswerIndex: 0,
         explanation: '180° / 2 = 90° (មុំកែងពីរ)។'
       },
       {
@@ -683,8 +683,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'បើគេសង់មុំ 90° ដោយប្រើដែកឈាន និងបន្ទាត់ តើបន្ទាត់ពុះមុំនោះបង្កើតបានមុំកែងស្មើនឹងប៉ុន្មាន?',
-        options: ['30°', '45°', '90°', '180°'],
-        correctAnswerIndex: 2,
+        options: [ '30°', '90°', '45°', '180°' ],
+        correctAnswerIndex: 1,
         explanation: 'មុំកែងបង្កើតបានរង្វាស់ 90°។'
       },
       {
@@ -692,8 +692,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'បើគេពុះមុំកែងរង្វាស់ 90° ជាពីរស្មើគ្នា តើមុំនីមួយៗមានរង្វាស់ប៉ុន្មានដឺក្រេ?',
-        options: ['30°', '45°', '60°', '90°'],
-        correctAnswerIndex: 1,
+        options: [ '30°', '60°', '45°', '90°' ],
+        correctAnswerIndex: 2,
         explanation: '90° / 2 = 45°។'
       },
       {
@@ -701,8 +701,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'គេមានមុំ AOB = 60°។ បើកន្លះបន្ទាត់ OX ជាកន្លះបន្ទាត់ពុះមុំនេះ តើមុំ AOX មានរង្វាស់ប៉ុន្មាន?',
-        options: ['15°', '30°', '60°', '120°'],
-        correctAnswerIndex: 1,
+        options: [ '15°', '120°', '60°', '30°' ],
+        correctAnswerIndex: 3,
         explanation: '60° / 2 = 30°។'
       },
       {
@@ -710,8 +710,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'គេសង់អង្កត់ AB = 5cm បន្ទាប់មកសង់មុំ ABC = 60° និងមុំ BAC = 60°។ តើត្រីកោណ ABC ជាត្រីកោណអ្វី?',
-        options: ['ត្រីកោណកែង', 'ត្រីកោណសម័ង្ស (ជ្រុងទាំងបីស្មើគ្នា)', 'ត្រីកោណសមបាត', 'ត្រីកោណទោល'],
-        correctAnswerIndex: 1,
+        options: [ 'ត្រីកោណសម័ង្ស (ជ្រុងទាំងបីស្មើគ្នា)', 'ត្រីកោណកែង', 'ត្រីកោណសមបាត', 'ត្រីកោណទោល' ],
+        correctAnswerIndex: 0,
         explanation: 'មុំទាំងបីស្មើ 60° ដូច្នេះត្រីកោណ ABC ជាត្រីកោណសម័ង្ស។'
       },
       {
@@ -719,7 +719,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'តាមប្រធានខាងលើ តើជ្រុង BC និង AC មានប្រវែងប៉ុន្មាន cm?',
-        options: ['2.5 cm', '5 cm', '10 cm', 'មិនអាចគណនាបាន'],
+        options: [ '2.5 cm', '5 cm', '10 cm', 'មិនអាចគណនាបាន' ],
         correctAnswerIndex: 1,
         explanation: 'ក្នុងត្រីកោណសម័ង្ស ជ្រុងទាំងបីស្មើគ្នា = 5cm។'
       },
@@ -730,11 +730,11 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         text: 'ក្នុងការសង់មុំ 60° ដោយប្រើដែកឈាន តែកាំនៃដែកឈានត្រូវរក្សាយ៉ាងដូចម្តេច?',
         options: [
           'ត្រូវប្រែប្រួលរហូត',
-          'ត្រូវរក្សាកាំស្មើគ្នានៅពេលគូសធ្នូរង្វង់កាត់កន្លះបន្ទាត់ដើម និងធ្នូរង្វង់ទីពីរ',
           'ត្រូវពង្រីកកាំឲ្យធំជាងមុន ២ដង',
+          'ត្រូវរក្សាកាំស្មើគ្នានៅពេលគូសធ្នូរង្វង់កាត់កន្លះបន្ទាត់ដើម និងធ្នូរង្វង់ទីពីរ',
           'ត្រូវបង្រួមកាំឲ្យតូចជាងមុន'
         ],
-        correctAnswerIndex: 1,
+        correctAnswerIndex: 2,
         explanation: 'ត្រូវរក្សាកាំនៃដែកឈានឲ្យនៅដដែល ដើម្បីទទួលបានមុំ 60° ត្រឹមត្រូវ។'
       },
       {
@@ -742,8 +742,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'គេមានមុំ ABC = 60° រួចគេសង់កន្លះបន្ទាត់ BT ពុះមុំ CBD ដែលមុំ CBD = 120° (មុំបន្ថែម)។ តើមុំ CBT មានរង្វាស់ប៉ុន្មាន?',
-        options: ['30°', '60°', '90°', '120°'],
-        correctAnswerIndex: 1,
+        options: [ '30°', '120°', '90°', '60°' ],
+        correctAnswerIndex: 3,
         explanation: '120° / 2 = 60°។'
       },
       {
@@ -751,8 +751,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'មុំស្រួចជាមុំដែលមានរង្វាស់៖',
-        options: ['ស្មើ 90°', 'តូចជាង 90°', 'ធំជាង 90°', 'ស្មើ 180°'],
-        correctAnswerIndex: 1,
+        options: [ 'តូចជាង 90°', 'ស្មើ 90°', 'ធំជាង 90°', 'ស្មើ 180°' ],
+        correctAnswerIndex: 0,
         explanation: 'មុំស្រួចមានរង្វាស់តូចជាង 90° (0° < α < 90°)។'
       },
       {
@@ -760,8 +760,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'មុំទាលជាមុំដែលមានរង្វាស់៖',
-        options: ['តូចជាង 90°', 'ស្មើ 90°', 'ធំជាង 90° និងតូចជាង 180°', 'ស្មើ 360°'],
-        correctAnswerIndex: 2,
+        options: [ 'តូចជាង 90°', 'ធំជាង 90° និងតូចជាង 180°', 'ស្មើ 90°', 'ស្មើ 360°' ],
+        correctAnswerIndex: 1,
         explanation: 'មុំទាលមានរង្វាស់ចន្លោះ 90° និង 180°។'
       },
       {
@@ -769,8 +769,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'បើមុំ XOY = 110° គូសកន្លះបន្ទាត់ OZ ពុះមុំ XOY នោះមុំ XOZ មានរង្វាស់៖',
-        options: ['50°', '55°', '60°', '65°'],
-        correctAnswerIndex: 1,
+        options: [ '50°', '60°', '55°', '65°' ],
+        correctAnswerIndex: 2,
         explanation: '110° / 2 = 55°។'
       },
       {
@@ -778,8 +778,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'តើផលបូកមុំក្នុងនៃត្រីកោណមួយស្មើនឹងប៉ុន្មានដឺក្រេ?',
-        options: ['90°', '180°', '360°', '270°'],
-        correctAnswerIndex: 1,
+        options: [ '90°', '270°', '360°', '180°' ],
+        correctAnswerIndex: 3,
         explanation: 'ផលបូកមុំក្នុងនៃត្រីកោណជានិច្ចកាលស្មើ 180°។'
       },
       {
@@ -787,8 +787,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'ក្នុងត្រីកោណកែងមួយ មានមុំកែងមួយរង្វាស់ 90° និងមុំស្រួចមួយរង្វាស់ 35°។ តើមុំស្រួចមួយទៀតមានរង្វាស់ប៉ុន្មាន?',
-        options: ['45°', '55°', '65°', '35°'],
-        correctAnswerIndex: 1,
+        options: [ '55°', '45°', '65°', '35°' ],
+        correctAnswerIndex: 0,
         explanation: '90° - 35° = 55°។'
       },
       {
@@ -797,12 +797,12 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'តើការគូសកន្លះបន្ទាត់ពុះមុំដោយប្រើរ៉ូព្យទ័រ (Protractor) ត្រូវធ្វើដូចម្តេច?',
         options: [
-          'វាស់រង្វាស់មុំដើម ចែកជាពីរ រួចចំណុចដៅត្រង់រង្វាស់ពាក់កណ្តាល ហើយគូសភ្ជាប់ពីកំពូល',
           'គូសបន្ទាត់តាមចិត្ត',
+          'វាស់រង្វាស់មុំដើម ចែកជាពីរ រួចចំណុចដៅត្រង់រង្វាស់ពាក់កណ្តាល ហើយគូសភ្ជាប់ពីកំពូល',
           'វាស់ប្រវែងជ្រុង',
           'គូសរង្វង់'
         ],
-        correctAnswerIndex: 0,
+        correctAnswerIndex: 1,
         explanation: 'វាស់មុំដើម ចែក ២ រួចគូសកន្លះបន្ទាត់ចេញពីកំពូលទៅកាន់ចំណុចពាក់កណ្តាល។'
       },
       {
@@ -810,8 +810,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'មុំពីរជាប់គ្នាបន្ថែមគ្នា មានផលបូករង្វាស់ស្មើនឹង៖',
-        options: ['90°', '180°', '360°', '60°'],
-        correctAnswerIndex: 1,
+        options: [ '90°', '360°', '180°', '60°' ],
+        correctAnswerIndex: 2,
         explanation: 'មុំបន្ថែមគ្នាមានផលបូករង្វាស់ស្មើ 180°។'
       },
       {
@@ -819,8 +819,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'មុំពីរជាប់គ្នាបំពេញគ្នា មានផលបូករង្វាស់ស្មើនឹង៖',
-        options: ['90°', '180°', '360°', '120°'],
-        correctAnswerIndex: 0,
+        options: [ '120°', '180°', '360°', '90°' ],
+        correctAnswerIndex: 3,
         explanation: 'មុំបំពេញគ្នាមានផលបូករង្វាស់ស្មើ 90° (បង្កើតបានមុំកែង)។'
       }
     ]
@@ -843,8 +843,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'សរសេរផលបូក a + a + a + a ជាផលគុណកន្សោមពីជគណិត៖',
-        options: ['a⁴', '4 + a', '4a', 'a / 4'],
-        correctAnswerIndex: 2,
+        options: [ '4a', '4 + a', 'a⁴', 'a / 4' ],
+        correctAnswerIndex: 0,
         explanation: 'a + a + a + a = 4 × a = 4a (4 ជាមេគុណ, a ជាអក្សរ/អថេរ)។'
       },
       {
@@ -852,7 +852,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'សម្រួលកន្សោមពីជគណិត 2n + 4n = ?',
-        options: ['6n²', '6n', '8n', '24n'],
+        options: [ '6n²', '6n', '8n', '24n' ],
         correctAnswerIndex: 1,
         explanation: '2n + 4n = (2 + 4)n = 6n។'
       },
@@ -861,8 +861,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'សម្រួលកន្សោមពីជគណិត 5n - 3n = ?',
-        options: ['2', '2n', '15n', '8n'],
-        correctAnswerIndex: 1,
+        options: [ '2', '15n', '2n', '8n' ],
+        correctAnswerIndex: 2,
         explanation: '5n - 3n = (5 - 3)n = 2n។'
       },
       {
@@ -870,8 +870,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'សរសេរផលបូក b + b + b + b + b ជាផលគុណកន្សោមពីជគណិត៖',
-        options: ['5b', 'b⁵', '5 + b', 'b / 5'],
-        correctAnswerIndex: 0,
+        options: [ 'b / 5', 'b⁵', '5 + b', '5b' ],
+        correctAnswerIndex: 3,
         explanation: 'b + b + b + b + b = 5b។'
       },
       {
@@ -879,8 +879,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ចំពោះ n = 5 គណនាតម្លៃនៃកន្សោម 7n ៖',
-        options: ['12', '35', '75', '2'],
-        correctAnswerIndex: 1,
+        options: [ '35', '12', '75', '2' ],
+        correctAnswerIndex: 0,
         explanation: '7n = 7 × 5 = 35។'
       },
       {
@@ -888,7 +888,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ចំពោះ a = 3 គណនាតម្លៃនៃកន្សោម 8a ៖',
-        options: ['11', '24', '83', '5'],
+        options: [ '11', '24', '83', '5' ],
         correctAnswerIndex: 1,
         explanation: '8a = 8 × 3 = 24។'
       },
@@ -897,8 +897,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'សម្រួលកន្សោម 7a + 4a = ?',
-        options: ['11a', '28a', '11a²', '3a'],
-        correctAnswerIndex: 0,
+        options: [ '11a²', '28a', '11a', '3a' ],
+        correctAnswerIndex: 2,
         explanation: '(7 + 4)a = 11a។'
       },
       {
@@ -906,8 +906,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'សម្រួលកន្សោម 11x - 5x = ?',
-        options: ['6', '6x', '16x', '55x'],
-        correctAnswerIndex: 1,
+        options: [ '6', '55x', '16x', '6x' ],
+        correctAnswerIndex: 3,
         explanation: '(11 - 5)x = 6x។'
       },
       {
@@ -915,8 +915,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'រក n ដើមី្បឱ្យសមីការ n - 3 = 5 ពិត ៖',
-        options: ['n = 2', 'n = 8', 'n = 15', 'n = 5/3'],
-        correctAnswerIndex: 1,
+        options: [ 'n = 8', 'n = 2', 'n = 15', 'n = 5/3' ],
+        correctAnswerIndex: 0,
         explanation: 'n = 5 + 3 = 8។'
       },
       {
@@ -924,7 +924,7 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'រក n ដើមី្បឱ្យសមីការ n + 5 = 9 ពិត ៖',
-        options: ['n = 14', 'n = 4', 'n = 45', 'n = 9/5'],
+        options: [ 'n = 14', 'n = 4', 'n = 45', 'n = 9/5' ],
         correctAnswerIndex: 1,
         explanation: 'n = 9 - 5 = 4។'
       },
@@ -933,8 +933,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'រក n ដើមី្បឱ្យសមីការ n / 3 = 12 ពិត ៖',
-        options: ['n = 4', 'n = 36', 'n = 15', 'n = 9'],
-        correctAnswerIndex: 1,
+        options: [ 'n = 4', 'n = 15', 'n = 36', 'n = 9' ],
+        correctAnswerIndex: 2,
         explanation: 'n = 12 × 3 = 36។'
       },
       {
@@ -942,8 +942,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'រក n ដើមី្បឱ្យសមីការ 2n = 10 ពិត ៖',
-        options: ['n = 20', 'n = 5', 'n = 8', 'n = 12'],
-        correctAnswerIndex: 1,
+        options: [ 'n = 20', 'n = 12', 'n = 8', 'n = 5' ],
+        correctAnswerIndex: 3,
         explanation: 'n = 10 / 2 = 5។'
       },
       {
@@ -951,8 +951,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ដោះស្រាយសមីការ 3x + 1 = 13 ៖',
-        options: ['x = 3', 'x = 4', 'x = 5', 'x = 12'],
-        correctAnswerIndex: 1,
+        options: [ 'x = 4', 'x = 3', 'x = 5', 'x = 12' ],
+        correctAnswerIndex: 0,
         explanation: '3x = 13 - 1 = 12 ➔ x = 12 / 3 = 4។'
       },
       {
@@ -960,8 +960,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ដោះស្រាយសមីការ 7 + 2x = 15 ៖',
-        options: ['x = 4', 'x = 8', 'x = 11', 'x = 22'],
-        correctAnswerIndex: 0,
+        options: [ 'x = 8', 'x = 4', 'x = 11', 'x = 22' ],
+        correctAnswerIndex: 1,
         explanation: '2x = 15 - 7 = 8 ➔ x = 8 / 2 = 4។'
       },
       {
@@ -969,8 +969,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ដោះស្រាយសមីការ 2(5 + a) = 15 ៖',
-        options: ['a = 2.5', 'a = 5', 'a = 10', 'a = 7.5'],
-        correctAnswerIndex: 0,
+        options: [ 'a = 10', 'a = 5', 'a = 2.5', 'a = 7.5' ],
+        correctAnswerIndex: 2,
         explanation: '5 + a = 15 / 2 = 7.5 ➔ a = 7.5 - 5 = 2.5។'
       },
       {
@@ -978,8 +978,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ចំណោទ៖ 5 ថែមប៉ុន្មានទើបស្មើនឹង 9? សរសេរជាសមីការ៖',
-        options: ['5 + n = 9', '5n = 9', 'n - 5 = 9', '5 / n = 9'],
-        correctAnswerIndex: 0,
+        options: [ '5 / n = 9', '5n = 9', 'n - 5 = 9', '5 + n = 9' ],
+        correctAnswerIndex: 3,
         explanation: 'តាង n ជាចំនួនត្រូវថែម ➔ សមីការគឺ 5 + n = 9។'
       },
       {
@@ -987,8 +987,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ចំណោទ៖ ផលបូកនៃពីរចំនួនគត់តគ្នាស្នើនឹង 11 (n និង n + 1)។ រកចំនួនទាំងពីរនោះ៖',
-        options: ['4 និង 7', '5 និង 6', '3 និង 8', '2 និង 9'],
-        correctAnswerIndex: 1,
+        options: [ '5 និង 6', '4 និង 7', '3 និង 8', '2 និង 9' ],
+        correctAnswerIndex: 0,
         explanation: 'n + (n + 1) = 11 ➔ 2n + 1 = 11 ➔ 2n = 10 ➔ n = 5 (ចំនួនទាំងពីរគឺ 5 និង 6)។'
       },
       {
@@ -996,8 +996,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'បឹងមួយមានបក្សីចំនួន n ក្បាល។ បន្ថែម 15 ក្បាលទៀត ស្មើនឹង 36 ក្បាល។ រកចំនួនបក្សីដើម n ៖',
-        options: ['n = 21', 'n = 51', 'n = 20', 'n = 25'],
-        correctAnswerIndex: 0,
+        options: [ 'n = 51', 'n = 21', 'n = 20', 'n = 25' ],
+        correctAnswerIndex: 1,
         explanation: 'n + 15 = 36 ➔ n = 36 - 15 = 21 ក្បាល។'
       },
       {
@@ -1005,8 +1005,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ដោះស្រាយសមីការ 3t = t + 8 ៖',
-        options: ['t = 2', 't = 4', 't = 8', 't = 6'],
-        correctAnswerIndex: 1,
+        options: [ 't = 2', 't = 8', 't = 4', 't = 6' ],
+        correctAnswerIndex: 2,
         explanation: '3t - t = 8 ➔ 2t = 8 ➔ t = 4។'
       },
       {
@@ -1014,8 +1014,8 @@ export const LESSONS_1_TO_5_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'វិធានប្តូរអង្គក្នុងសមីការ៖ បើតួបូកផ្លាស់ប្តូរទៅអង្គម្ខាងទៀត តើវាប្រែជាអ្វី?',
-        options: ['តួគុណ', 'តួដក', 'តួចែក', 'នៅដដែល'],
-        correctAnswerIndex: 1,
+        options: [ 'តួគុណ', 'នៅដដែល', 'តួចែក', 'តួដក' ],
+        correctAnswerIndex: 3,
         explanation: 'ពេលប្តូរអង្គ៖ តួបូកទៅជាតួដក, តួដកទៅជាតួបូក, តួគុណទៅជាតួចែក, តួចែកទៅជាតួគុណ។'
       }
     ]

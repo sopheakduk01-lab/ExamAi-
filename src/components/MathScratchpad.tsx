@@ -139,7 +139,7 @@ export const MathScratchpad: React.FC<MathScratchpadProps> = ({ isOpen, onClose 
               className={`p-2 rounded-lg font-bold flex items-center gap-1 transition-all cursor-pointer ${!isEraser ? 'bg-emerald-600 text-white shadow-xs' : 'bg-white text-slate-700 hover:bg-slate-200'}`}
             >
               <Pen className="w-3.5 h-3.5" />
-              <span>ប៊ិច</span>
+              <span>ប៊ិក</span>
             </button>
 
             <button

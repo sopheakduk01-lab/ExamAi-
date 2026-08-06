@@ -489,7 +489,7 @@ export const FreeDrawingModal: React.FC<FreeDrawingModalProps> = ({ isOpen, onCl
                 }`}
               >
                 <Pencil className="w-3.5 h-3.5" />
-                <span>ប៊ិច</span>
+                <span>ប៊ិក</span>
               </button>
 
               <button
@@ -513,7 +513,7 @@ export const FreeDrawingModal: React.FC<FreeDrawingModalProps> = ({ isOpen, onCl
                 }`}
               >
                 <span className="text-sm">🖍️</span>
-                <span>ប៊ិចហាយឡាយ</span>
+                <span>ប៊ិកហាយឡាយ</span>
               </button>
 
               <button
@@ -525,7 +525,7 @@ export const FreeDrawingModal: React.FC<FreeDrawingModalProps> = ({ isOpen, onCl
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-                <span>ប៊ិចឥន្ទធនូ</span>
+                <span>ប៊ិកឥន្ទធនូ</span>
               </button>
 
               <button
@@ -537,7 +537,7 @@ export const FreeDrawingModal: React.FC<FreeDrawingModalProps> = ({ isOpen, onCl
                 }`}
               >
                 <Zap className="w-3.5 h-3.5 text-pink-400" />
-                <span>ប៊ិចភ្លើង Neon</span>
+                <span>ប៊ិកភ្លើង Neon</span>
               </button>
 
               <button
@@ -649,7 +649,7 @@ export const FreeDrawingModal: React.FC<FreeDrawingModalProps> = ({ isOpen, onCl
 
             {/* Stroke Width Slider */}
             <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-xl border border-slate-200 shadow-2xs">
-              <span className="text-[11px] font-bold text-slate-600">ទំហំប៊ិច ({strokeWidth}px)៖</span>
+              <span className="text-[11px] font-bold text-slate-600">ទំហំប៊ិក ({strokeWidth}px)៖</span>
               <input
                 type="range"
                 min="2"

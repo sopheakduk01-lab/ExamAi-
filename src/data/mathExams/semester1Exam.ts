@@ -31,7 +31,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '២. គណនាតម្លៃនៃកន្សោមប្រមាណវិធី៖ ១២០ + ៨០ ÷ ៤ - ៣០',
-      options: ['២០', '១១០', '១៧០', '៤៥'],
+      options: [ '២០', '១១០', '១៧០', '៤៥' ],
       correctAnswerIndex: 1,
       explanation: 'តាមច្បាប់អទិភាពប្រមាណវិធី ត្រូវធ្វើវិធីចែកមុន៖ ៨០ ÷ ៤ = ២០។ បន្ទាប់មកបូកដកតាមលំដាប់ពីឆ្វេងទៅស្តាំ៖ ១២០ + ២០ - ៣០ = ១៤០ - ៣០ = ១១០។'
     },
@@ -40,8 +40,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៣. ប្រៀបធៀបចំនួនទសភាគពីរ៖ ២៤.៥៨ និង ២៤.៨',
-      options: ['២៤.៥៨ > ២៤.៨', '២៤.៥៨ < ២៤.៨', '២៤.៥៨ = ២៤.៨', 'មិនអាចប្រៀបធៀបបាន'],
-      correctAnswerIndex: 1,
+      options: [ '២៤.៥៨ > ២៤.៨', '២៤.៥៨ = ២៤.៨', '២៤.៥៨ < ២៤.៨', 'មិនអាចប្រៀបធៀបបាន' ],
+      correctAnswerIndex: 2,
       explanation: 'ផ្នែកគត់ស្មើគ្នា (២៤ = ២៤)។ ប្រៀបធៀបខ្ទង់ភាគដប់៖ ៥ < ៨ (ឬ ២៤.៥៨ < ២៤.៨០) ដូច្នេះ ២៤.៥៨ < ២៤.៨។'
     },
     {
@@ -49,8 +49,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៤. គណនាផលបូក៖ ៣៥.៤៦ + ១២.៧៥',
-      options: ['៤៧.២១', '៤៨.២១', '៤៨.១១', '៤៧.១១'],
-      correctAnswerIndex: 1,
+      options: [ '៤៧.២១', '៤៧.១១', '៤៨.១១', '៤៨.២១' ],
+      correctAnswerIndex: 3,
       explanation: 'តម្រៀបតាមខ្ទង់ឱ្យត្រង់សញ្ញាក្បៀស៖ ៣៥.៤៦ + ១២.៧៥ = ៤៨.២១។'
     },
     {
@@ -59,12 +59,12 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៥. ដើម្បីចែកចំនួនទសភាគ ៣៤៥.៦ នឹង ១០០ តើគេត្រូវធ្វើដូចម្តេច?',
       options: [
-        'រំកិលសញ្ញាក្បៀសទៅខាងស្តាំ ២ ខ្ទង់ (បាន ៣៤៥៦០)',
         'រំកិលសញ្ញាក្បៀសទៅខាងឆ្វេង ២ ខ្ទង់ (បាន ៣.៤៥៦)',
+        'រំកិលសញ្ញាក្បៀសទៅខាងស្តាំ ២ ខ្ទង់ (បាន ៣៤៥៦០)',
         'ថែមលេខសូន្យ ២ នៅខាងចុង (បាន ៣៤៥.៦០០)',
         'រំកិលសញ្ញាក្បៀសទៅខាងឆ្វេង ១ ខ្ទង់ (បាន ៣៤.៥៦)'
       ],
-      correctAnswerIndex: 1,
+      correctAnswerIndex: 0,
       explanation: 'កាលណាDivideនឹង ១០០ គេត្រូវរំកិលសញ្ញាក្បៀសទៅខាងឆ្វេង ២ ខ្ទង់ ទទួលបាន ៣.៤៥៦។'
     },
     {
@@ -72,8 +72,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៦. តើគេហៅមុំដែលមានរង្វាស់ធំជាង ៩០° និងតូចជាង ១៨០° ថាជាមុំអ្វី?',
-      options: ['មុំស្រួច', 'មុំកែង', 'មុំទាល', 'មុំរាប'],
-      correctAnswerIndex: 2,
+      options: [ 'មុំស្រួច', 'មុំទាល', 'មុំកែង', 'មុំរាប' ],
+      correctAnswerIndex: 1,
       explanation: 'មុំស្រួច (< ៩០°), មុំកែង (= ៩០°), មុំទាល (> ៩០° និង < ១៨០°), មុំរាប (= ១៨០°)។'
     },
     {
@@ -81,8 +81,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៧. សម្រួលប្រភាគ ១៨ / ២៤ ឱ្យទៅជាប្រភាគសម្រួលមិនបាន៖',
-      options: ['៩ / ១២', '៣ / ៤', '៦ / ៨', '២ / ៣'],
-      correctAnswerIndex: 1,
+      options: [ '៩ / ១២', '៦ / ៨', '៣ / ៤', '២ / ៣' ],
+      correctAnswerIndex: 2,
       explanation: 'ចែកភាគយក និងភាគបែងនឹងតួចែករួមធំបំបុត PGCD(១៨, ២៤) = ៦ ➔ (១៨÷៦) / (២៤÷៦) = ៣ / ៤។'
     },
     {
@@ -90,8 +90,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី១៖ សំណួរជ្រើសរើសចម្លើយត្រឹមត្រូវ (QCM)',
       text: '៨. តើពហុគុណរួមតូចបំផុត (PPCM) នៃចំនួន ៦ និង ៨ ស្មើនឹងប៉ុន្មាន?',
-      options: ['២៤', '៤៨', '១២', '១៦'],
-      correctAnswerIndex: 0,
+      options: [ '១៦', '៤៨', '១២', '២៤' ],
+      correctAnswerIndex: 3,
       explanation: 'ពហុគុណនៃ ៦ គឺ ៦, ១២, ១៨, ២៤, ៣០... ពហុគុណនៃ ៨ គឺ ៨, ១៦, ២៤, ៣២... ដូច្នេះ PPCM(៦, ៨) = ២៤។'
     },
 
@@ -103,8 +103,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '១. ផ្គូផ្គង៖ បំប្លែងប្រភាគ ៣/៥ ទៅជាចំនួនទសភាគ',
-      options: ['០.៣', '០.៥', '០.៦', '១.៥'],
-      correctAnswerIndex: 2,
+      options: [ '០.៦', '០.៥', '០.៣', '១.៥' ],
+      correctAnswerIndex: 0,
       explanation: '៣ ÷ ៥ = ០.៦ (ឬ ៣/៥ = ៦/១០ = ០.៦)។'
     },
     {
@@ -112,7 +112,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '២. ផ្គូផ្គង៖ រង្វាស់នៃមុំកែង',
-      options: ['៤៥°', '៩០°', '១៨០°', '៣៦០°'],
+      options: [ '៤៥°', '៩០°', '១៨០°', '៣៦០°' ],
       correctAnswerIndex: 1,
       explanation: 'មុំកែងមានរង្វាស់ស្មើនឹង ៩០ ឌឺក្រេ (៩០°) ជានិច្ច។'
     },
@@ -121,8 +121,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៣. ផ្គូផ្គង៖ ផ្ទៃក្រឡាចតុកោណកែងដែលមានបណ្ដោយ ១២m និងទទឹង ៥m',
-      options: ['៣៤ m²', '៦០ m²', '២៤ m²', '១៧ m²'],
-      correctAnswerIndex: 1,
+      options: [ '៣៤ m²', '២៤ m²', '៦០ m²', '១៧ m²' ],
+      correctAnswerIndex: 2,
       explanation: 'ផ្ទៃក្រឡាចតុកោណកែង = បណ្ដោយ × ទទឹង = ១២m × ៥m = ៦០ m²។'
     },
     {
@@ -130,8 +130,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៤. ផ្គូផ្គង៖ តួចែករួមធំបំបុត (PGCD) នៃចំនួន ១២ និង ១៨',
-      options: ['៣', '៦', '១២', '៣៦'],
-      correctAnswerIndex: 1,
+      options: [ '៣', '៣៦', '១២', '៦' ],
+      correctAnswerIndex: 3,
       explanation: 'តួចែកនៃ ១២ គឺ {១,២,៣,៤,៦,១២}, តួចែកនៃ ១៨ គឺ {១,២,៣,៦,៩,១៨} ➔ PGCD = ៦។'
     },
     {
@@ -139,8 +139,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៥. ផ្គូផ្គង៖ ផលបូកមុំក្នុងទាំងបីនៃត្រីកោណមួយ',
-      options: ['៩០°', '១៨០°', '៣៦០°', '២៧០°'],
-      correctAnswerIndex: 1,
+      options: [ '១៨០°', '៩០°', '៣៦០°', '២៧០°' ],
+      correctAnswerIndex: 0,
       explanation: 'ផលបូករង្វាស់មុំក្នុងទាំងបីនៃត្រីកោណណាក៏ដោយ គឺស្មើនឹង ១៨០°។'
     },
     {
@@ -148,7 +148,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៦. ផ្គូផ្គង៖ បរិមាត្រការេដែលមានប្រវែងជ្រុង ៨cm',
-      options: ['១៦ cm', '៣២ cm', '៦៤ cm', '២៤ cm'],
+      options: [ '១៦ cm', '៣២ cm', '៦៤ cm', '២៤ cm' ],
       correctAnswerIndex: 1,
       explanation: 'បរិមាត្រការេ = ជ្រុង × ៤ = ៨cm × ៤ = ៣២ cm។'
     },
@@ -157,7 +157,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៧. ផ្គូផ្គង៖ ផលបូកប្រភាគ ១/៤ + ១/២',
-      options: ['២/៦', '២/៤', '៣/៤', '១/៨'],
+      options: [ '២/៦', '២/៤', '៣/៤', '១/៨' ],
       correctAnswerIndex: 2,
       explanation: 'តម្រូវភាគបែងរួម (៤)៖ ១/៤ + ២/៤ = ៣/៤។'
     },
@@ -166,8 +166,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៨. ផ្គូផ្គង៖ ផលគុណទសភាគ ២.៥ × ៤',
-      options: ['៨.៥', '១០', '១០០', '៦.៥'],
-      correctAnswerIndex: 1,
+      options: [ '៨.៥', '៦.៥', '១០០', '១០' ],
+      correctAnswerIndex: 3,
       explanation: '២.៥ × ៤ = ១០.០ = ១០។'
     },
 
@@ -179,7 +179,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '១. [ខុស ឬ ត្រូវ] ផលគុណនៃចំនួនពីរដែលមានលេខសូន្យនៅខាងចុង អាចរកបានដោយគុណតួលេខមិនមែនសូន្យ ហើយថែមចំនួនលេខសូន្យសរុបនៅខាងចុង។',
-      options: ['ត្រូវ (True)', 'ខុស (False)'],
+      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
       correctAnswerIndex: 0,
       explanation: 'ត្រូវ៖ ឧទាហរណ៍ ៣០ × ២០០ ➔ ៣ × ២ = ៦ ហើយថែមសូន្យ ៣ ទទួលបាន ៦០០០។'
     },
@@ -188,7 +188,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '២. [ខុស ឬ ត្រូវ] មុំទាល ជាមុំដែលមានរង្វាស់តូចជាង ៩០ ឌឺក្រេ (៩០°)។',
-      options: ['ត្រូវ (True)', 'ខុស (False)'],
+      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
       correctAnswerIndex: 1,
       explanation: 'ខុស៖ មុំដែលតូចជាង ៩០° គឺជា «មុំស្រួច»។ ចំណែក «មុំទាល» គឺធំជាង ៩០° និងតូចជាង ១៨០°។'
     },
@@ -197,7 +197,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '៣. [ខុស ឬ ត្រូវ] ដើម្បីបូក ឬ ដក ប្រភាគដែលមានភាគបែងខុសគ្នា យើងត្រូវតម្រូវភាគបែងរួមជាមុនសិន។',
-      options: ['ត្រូវ (True)', 'ខុស (False)'],
+      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
       correctAnswerIndex: 0,
       explanation: 'ត្រូវ៖ ប្រភាគដែលមានភាគបែងខុសគ្នា មិនអាចបូកដកភាគយកភ្លាមៗបានទេ លុះត្រាតែតម្រូវភាគបែងឱ្យដូចគ្នាសិន។'
     },
@@ -206,7 +206,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '៤. [ខុស ឬ ត្រូវ] បរិមាត្រចតុកោណកែង ស្មើនឹង បណ្ដោយ គុណនឹង ទទឹង។',
-      options: ['ត្រូវ (True)', 'ខុស (False)'],
+      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
       correctAnswerIndex: 1,
       explanation: 'ខុស៖ «បណ្ដោយ × ទទឹង» គឺជា «ផ្ទៃក្រឡា»។ រីឯ «បរិមាត្រ» ចតុកោណកែង = (បណ្ដោយ + ទទឹង) × ២។'
     },
@@ -219,7 +219,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៤៖ បំពេញចន្លោះ',
       text: '១. បំពេញចន្លោះ៖ «កន្លះបន្ទាត់ដែលបែងចែកមុំមួយជាពីរស្មើគ្នា ហៅថា ......»',
-      options: ['កន្លះបន្ទាត់ពុះមុំ', 'បន្ទាត់កែង', 'បន្ទាត់ស្រប', 'អង្កត់ផ្ចិត'],
+      options: [ 'កន្លះបន្ទាត់ពុះមុំ', 'បន្ទាត់កែង', 'បន្ទាត់ស្រប', 'អង្កត់ផ្ចិត' ],
       correctAnswerIndex: 0,
       explanation: 'កន្លះបន្ទាត់ពុះមុំ ចែកមុំមួយជាពីរមុំតូចៗដែលមានរង្វាស់ស្មើគ្នា។'
     },
@@ -228,7 +228,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៤៖ បំពេញចន្លោះ',
       text: '២. បំពេញចន្លោះ៖ «ដើម្បីគុណចំនួនទសភាគនឹង ១០០ យើងត្រូវរំកិលសញ្ញាក្បៀសទៅខាងស្តាំ ...... ខ្ទង់»',
-      options: ['១', '២', '៣', '៤'],
+      options: [ '១', '២', '៣', '៤' ],
       correctAnswerIndex: 1,
       explanation: 'គុណនឹង ១០ (រំកិល ១ ខ្ទង់), គុណនឹង ១០០ (រំកិល ២ ខ្ទង់), គុណនឹង ១០០០ (រំកិល ៣ ខ្ទង់) ទៅខាងស្តាំ។'
     },
@@ -237,8 +237,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៤៖ បំពេញចន្លោះ',
       text: '៣. បំពេញចន្លោះ៖ «ចំនួនគត់ដែលមានតួចែកតែពីរគត់ គឺ ១ និងខ្លួនវា ហៅថា ......»',
-      options: ['ចំនួនបឋម', 'ចំនួនគូ', 'ចំនួនសេស', 'ចំនួនពហុគុណ'],
-      correctAnswerIndex: 0,
+      options: [ 'ចំនួនសេស', 'ចំនួនគូ', 'ចំនួនបឋម', 'ចំនួនពហុគុណ' ],
+      correctAnswerIndex: 2,
       explanation: 'ចំនួនបឋម (Prime number) ជាចំនួនគត់វិជ្ជមាន > 1 ដែលមានតួចែកតែ ២ គត់ គឺ ១ និងខ្លួនវា (ឧ. 2, 3, 5, 7, 11...)។'
     },
     {
@@ -246,8 +246,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៤៖ បំពេញចន្លោះ',
       text: '៤. បំពេញចន្លោះ៖ «ផ្ទៃក្រឡាត្រីកោណ ស្មើនឹង (បាត × កម្ពស់) ÷ ......»',
-      options: ['២', '៣', '៤', '១.៥'],
-      correctAnswerIndex: 0,
+      options: [ '១.៥', '៣', '៤', '២' ],
+      correctAnswerIndex: 3,
       explanation: 'រូបមន្តផ្ទៃក្រឡាត្រីកោណ គឺ S = (b × h) / 2 (បាត គុណ កម្ពស់ ចែកនឹង ២)។'
     },
 
@@ -259,7 +259,7 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៥៖ លំហាត់ដោះស្រាយ',
       text: '១. លំហាត់៖ គណនាកន្សោម A = (១៥.៥ + ៤.៥) × ៣ - ១២.៨ ÷ ២',
-      options: ['៥៣.៦', '៥៣.៤', '៦០', '៤៧.២'],
+      options: [ '៥៣.៦', '៥៣.៤', '៦០', '៤៧.២' ],
       correctAnswerIndex: 0,
       explanation: `ដំណោះស្រាយជំហានៗ៖
 ១. គណនាក្នុងវង់ក្រចក៖ ១៥.៥ + ៤.៥ = ២០.០
@@ -274,8 +274,8 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៥៖ លំហាត់ដោះស្រាយ',
       text: '២. ចំណោទប្រភាគ៖ សិស្សម្នាក់មានប្រាក់ ៤០,០០០ រៀល។ គាត់បានចំណាយ ៣/៥ នៃប្រាក់ទាំងអស់ដើម្បីទិញសៀវភៅសិក្សា។ តើគាត់នៅសល់ប្រាក់ប៉ុន្មានរៀល?',
-      options: ['១៦,០០០ រៀល', '២៤,០០០ រៀល', '២០,០០០ រៀល', '១៨,០០០ រៀល'],
-      correctAnswerIndex: 0,
+      options: [ '២៤,០០០ រៀល', '១៦,០០០ រៀល', '២០,០០០ រៀល', '១៨,០០០ រៀល' ],
+      correctAnswerIndex: 1,
       explanation: `ដំណោះស្រាយជំហានៗ៖
 ១. គណនាប្រាក់ដែលចំណាយទិញសៀវភៅ៖
    ៤០,០០០ × (៣/៥) = (៤០,០០០ ÷ ៥) × ៣ = ៨,០០០ × ៣ = ២៤,០០០ រៀល
@@ -290,12 +290,12 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       category: 'ផ្នែកទី៥៖ លំហាត់ដោះស្រាយ',
       text: '៣. ចំណោទធរណីមាត្រ៖ ដីស្រែមួយកន្លែងមានរាងជាចតុកោណកែង មានបណ្ដោយ ៣៥m និងទទឹង ២០m។ គណនាបរិមាត្រ និងផ្ទៃក្រឡានៃដីស្រែនោះ។',
       options: [
-        'បរិមាត្រ = ១១០m, ផ្ទៃក្រឡា = ៧០០m²',
-        'បរិមាត្រ = ៥៥m, ផ្ទៃក្រឡា = ៣៥០m²',
         'បរិមាត្រ = ៧០០m, ផ្ទៃក្រឡា = ១១០m²',
+        'បរិមាត្រ = ៥៥m, ផ្ទៃក្រឡា = ៣៥០m²',
+        'បរិមាត្រ = ១១០m, ផ្ទៃក្រឡា = ៧០០m²',
         'បរិមាត្រ = ១២០m, ផ្ទៃក្រឡា = ៦០០m²'
       ],
-      correctAnswerIndex: 0,
+      correctAnswerIndex: 2,
       explanation: `ដំណោះស្រាយជំហានៗ៖
 ១. បរិមាត្រចតុកោណកែង = (បណ្ដោយ + ទទឹង) × ២
    = (៣៥m + ២០m) × ២ = ៥៥m × ២ = ១១០m
@@ -309,12 +309,12 @@ export const SEMESTER_1_MATH_EXAM: ExamPaper = {
       category: 'ផ្នែកទី៥៖ លំហាត់ដោះស្រាយ',
       text: '៤. លំហាត់៖ រកតួចែករួមធំបំបុត (PGCD) និងពហុគុណរួមតូចបំផុត (PPCM) នៃចំនួន ២៤ និង ៣៦។',
       options: [
-        'PGCD = ១២, PPCM = ៧២',
+        'PGCD = ៤, PPCM = ១៤៤',
         'PGCD = ៦, PPCM = ៣៦',
         'PGCD = ២៤, PPCM = ៧២',
-        'PGCD = ៤, PPCM = ១៤៤'
+        'PGCD = ១២, PPCM = ៧២'
       ],
-      correctAnswerIndex: 0,
+      correctAnswerIndex: 3,
       explanation: `ដំណោះស្រាយជំហានៗ៖
 ១. បំបែកជាផលគុណកត្តាបឋម៖
    • ២៤ = ២³ × ៣ (៨ × ៣)

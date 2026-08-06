@@ -21,8 +21,8 @@ export const ENGLISH_LESSONS: LessonSummary[] = [
     },
     quickPractice: {
       questionText: 'Choose the correct greeting for 2:30 PM:',
-      options: ['Good morning', 'Good afternoon', 'Good evening', 'Good night'],
-      correctIndex: 1,
+      options: [ 'Good afternoon', 'Good morning', 'Good evening', 'Good night' ],
+      correctIndex: 0,
       explanation: 'At 2:30 PM (afternoon), we use "Good afternoon!".'
     }
   },
@@ -45,7 +45,7 @@ export const ENGLISH_LESSONS: LessonSummary[] = [
     },
     quickPractice: {
       questionText: 'How do you say "6:30" in English time format?',
-      options: ['It is quarter past six', 'It is half past six', 'It is quarter to six', 'It is six o’clock'],
+      options: [ 'It is quarter past six', 'It is half past six', 'It is quarter to six', 'It is six o’clock' ],
       correctIndex: 1,
       explanation: '6:30 is "half past six".'
     }

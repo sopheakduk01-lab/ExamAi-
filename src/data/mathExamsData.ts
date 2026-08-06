@@ -19,8 +19,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ក្នុងចំនួន 870 465 250 តើលេខ 7 ស្ថិតនៅខ្ទង់ណា និងមានតម្លៃស្មើប៉ុន្មាន?',
-        options: ['ខ្ទង់រយពាន់ មានតម្លៃ 700 000', 'ខ្ទង់ដប់លាន មានតម្លៃ 70 000 000', 'ខ្ទង់លាន មានតម្លៃ 7 000 000', 'ខ្ទង់រយលាន មានតម្លៃ 700 000 000'],
-        correctAnswerIndex: 1,
+        options: [ 'ខ្ទង់ដប់លាន មានតម្លៃ 70 000 000', 'ខ្ទង់រយពាន់ មានតម្លៃ 700 000', 'ខ្ទង់លាន មានតម្លៃ 7 000 000', 'ខ្ទង់រយលាន មានតម្លៃ 700 000 000' ],
+        correctAnswerIndex: 0,
         explanation: 'ក្នុងចំនួន 870 465 250 ៖ លេខ 0 (ខ្ទង់លាន), លេខ 7 (ខ្ទង់ដប់លាន ➔ 70 000 000), លេខ 8 (ខ្ទង់រយលាន)។'
       },
       {
@@ -28,7 +28,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'សរសេរចំនួន «បីលាន ម្ភៃបួនពាន់ មួយរយបី» ជាតួរលេខ៖',
-        options: ['3 240 103', '3 024 103', '3 240 003', '30 024 103'],
+        options: [ '3 240 103', '3 024 103', '3 240 003', '30 024 103' ],
         correctAnswerIndex: 1,
         explanation: 'បីលាន = 3 000 000, ម្ភៃបួនពាន់ = 24 000, មួយរយបី = 103 ➔ 3 024 103។'
       },
@@ -37,8 +37,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'សរសេរចំនួន 3 024 103 ជាទម្រង់ពង្រាយ៖',
-        options: ['3 000 000 + 200 000 + 4000 + 100 + 3', '3 000 000 + 20 000 + 4000 + 100 + 3', '300 000 + 20 000 + 4000 + 100 + 3', '3 000 000 + 24 000 + 130'],
-        correctAnswerIndex: 1,
+        options: [ '3 000 000 + 200 000 + 4000 + 100 + 3', '300 000 + 20 000 + 4000 + 100 + 3', '3 000 000 + 20 000 + 4000 + 100 + 3', '3 000 000 + 24 000 + 130' ],
+        correctAnswerIndex: 2,
         explanation: '3 024 103 = 3 000 000 (លាន) + 20 000 (ដប់ពាន់) + 4000 (ពាន់) + 100 (រយ) + 3 (រាយ)។'
       },
       {
@@ -46,8 +46,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'ប្រៀបធៀបចំនួនពីរ 3 256 401 និង 3 257 250៖',
-        options: ['3 256 401 > 3 257 250', '3 256 401 = 3 257 250', '3 256 401 < 3 257 250', '3 256 401 ≈ 3 257 250'],
-        correctAnswerIndex: 2,
+        options: [ '3 256 401 > 3 257 250', '3 256 401 = 3 257 250', '3 256 401 ≈ 3 257 250', '3 256 401 < 3 257 250' ],
+        correctAnswerIndex: 3,
         explanation: 'ខ្ទង់លាន រយពាន់ និងដប់ពាន់ស្មើគ្នា (3, 2, 5)។ នៅខ្ទង់ពាន់ 6 < 7 ដូចនេះ 3 256 401 < 3 257 250។'
       },
       {
@@ -55,8 +55,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'បង្គត់ចំនួន 2 782 150 ត្រឹមខ្ទង់លាន៖',
-        options: ['2 000 000', '2 800 000', '3 000 000', '2 700 000'],
-        correctAnswerIndex: 2,
+        options: [ '3 000 000', '2 800 000', '2 000 000', '2 700 000' ],
+        correctAnswerIndex: 0,
         explanation: 'ខ្ទង់រយពាន់គឺលេខ 7 (≥ 5) ដូចនេះត្រូវបង្គត់ឡើង ទទួលបាន 3 000 000។'
       },
       {
@@ -64,8 +64,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៖ ចំនួន',
         text: 'បង្គត់ចំនួន 5 623 501 ត្រឹមខ្ទង់សែន (រយពាន់)៖',
-        options: ['5 600 000', '5 700 000', '6 000 000', '5 620 000'],
-        correctAnswerIndex: 0,
+        options: [ '5 700 000', '5 600 000', '6 000 000', '5 620 000' ],
+        correctAnswerIndex: 1,
         explanation: 'ខ្ទង់ដប់ពាន់គឺលេខ 2 (< 5) ដូចនេះត្រូវបង្គត់ចុះ ទទួលបាន 5 600 000។'
       },
 
@@ -75,8 +75,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'សរសេរប្រភាគ 1025 / 1000 ជាចំនួនទសភាគ៖',
-        options: ['10.25', '1.025', '0.1025', '102.5'],
-        correctAnswerIndex: 1,
+        options: [ '10.25', '0.1025', '1.025', '102.5' ],
+        correctAnswerIndex: 2,
         explanation: '1025 / 1000 មានភាគបែង 1000 ដូចនេះផ្នែកទសភាគមាន 3 ខ្ទង់ ➔ 1.025។'
       },
       {
@@ -84,8 +84,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'ក្នុងចំនួនទសភាគ 36.458 តើលេខ 5 ស្ថិតនៅខ្ទង់ណា និងមានតម្លៃស្មើប៉ុន្មាន?',
-        options: ['ខ្ទង់ភាគដប់ មានតម្លៃ 0.5', 'ខ្ទង់ភាគរយ មានតម្លៃ 0.05', 'ខ្ទង់ភាគពាន់ មានតម្លៃ 0.005', 'ខ្ទង់រយ មានតម្លៃ 50'],
-        correctAnswerIndex: 1,
+        options: [ 'ខ្ទង់ភាគដប់ មានតម្លៃ 0.5', 'ខ្ទង់រយ មានតម្លៃ 50', 'ខ្ទង់ភាគពាន់ មានតម្លៃ 0.005', 'ខ្ទង់ភាគរយ មានតម្លៃ 0.05' ],
+        correctAnswerIndex: 3,
         explanation: 'បន្ទាប់ពីសញ្ញាចុចទសភាគ៖ 4 (ភាគដប់), 5 (ភាគរយ ➔ 0.05), 8 (ភាគពាន់ ➔ 0.008)។'
       },
       {
@@ -93,7 +93,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'សរសេរចំនួនទសភាគ 36.458 ជាទម្រង់ពង្រាយ៖',
-        options: ['30 + 6 + 0.4 + 0.05 + 0.008', '36 + 4/10 + 5/10 + 8/10', '30 + 6 + 40 + 5 + 8', '3 + 6 + 0.458'],
+        options: [ '30 + 6 + 0.4 + 0.05 + 0.008', '36 + 4/10 + 5/10 + 8/10', '30 + 6 + 40 + 5 + 8', '3 + 6 + 0.458' ],
         correctAnswerIndex: 0,
         explanation: '36.458 = 30 + 6 + 0.4 (4/10) + 0.05 (5/100) + 0.008 (8/1000)។'
       },
@@ -102,7 +102,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'តើចំនួនទសភាគមួយណាដែលស្មើនឹង 0.900 ?',
-        options: ['0.09', '0.9', '9.0', '0.009'],
+        options: [ '0.09', '0.9', '9.0', '0.009' ],
         correctAnswerIndex: 1,
         explanation: 'ការបន្ថែម ឬលុបលេខ 0 នៅចុងផ្នែកទសភាគ មិនធ្វើឲ្យតម្លៃប្រែប្រួលទេ (0.9 = 0.90 = 0.900)។'
       },
@@ -111,8 +111,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'បង្គត់ចំនួនទសភាគ 2.362 ត្រឹមខ្ទង់ភាគរយ (២ ខ្ទង់ទសភាគ)៖',
-        options: ['2.30', '2.36', '2.37', '2.40'],
-        correctAnswerIndex: 1,
+        options: [ '2.30', '2.37', '2.36', '2.40' ],
+        correctAnswerIndex: 2,
         explanation: 'ខ្ទង់ភាគពាន់ជាលេខ 2 (< 5) ដូចនេះបង្គត់ចុះបាន 2.36។'
       },
       {
@@ -120,8 +120,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២៖ ចំនួនទសភាគ',
         text: 'បង្គត់ចំនួនទសភាគ 15.385 ត្រឹមខ្ទង់ភាគដប់ (១ ខ្ទង់ទសភាគ)៖',
-        options: ['15.3', '15.4', '15.38', '15.0'],
-        correctAnswerIndex: 1,
+        options: [ '15.3', '15.0', '15.38', '15.4' ],
+        correctAnswerIndex: 3,
         explanation: 'ខ្ទង់ភាគរយជាលេខ 8 (≥ 5) ដូចនេះបង្គត់ឡើងត្រឹមភាគដប់បាន 15.4 (ឬ 15.400)។'
       },
 
@@ -131,8 +131,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលបូកទសភាគ៖ 15.545 + 14 = ?',
-        options: ['15.559', '29.545', '29.500', '16.945'],
-        correctAnswerIndex: 1,
+        options: [ '29.545', '15.559', '29.500', '16.945' ],
+        correctAnswerIndex: 0,
         explanation: '15.545 + 14.000 = 29.545។'
       },
       {
@@ -140,8 +140,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលបូកទសភាគ៖ 163.251 + 32.8 = ?',
-        options: ['196.051', '195.051', '196.151', '166.531'],
-        correctAnswerIndex: 0,
+        options: [ '195.051', '196.051', '196.151', '166.531' ],
+        correctAnswerIndex: 1,
         explanation: '163.251 + 32.800 = 196.051។'
       },
       {
@@ -149,8 +149,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'ប៉ាន់ស្មានផលបូកទសភាគ៖ 5.250kg + 4.35kg + 6.750kg ≈ ?',
-        options: ['15 kg', '16 kg', '17 kg', '18 kg'],
-        correctAnswerIndex: 1,
+        options: [ '15 kg', '17 kg', '16 kg', '18 kg' ],
+        correctAnswerIndex: 2,
         explanation: 'បង្គត់ជាចំនួនគត់៖ 5 + 4 + 7 = 16 kg (ផលបូកពិត = 16.35 kg ≈ 16 kg)។'
       },
       {
@@ -158,8 +158,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលដកទសភាគ៖ 35.765 - 28.565 = ?',
-        options: ['7.2', '7.200', '7.200 ឬ 7.2', '6.800'],
-        correctAnswerIndex: 2,
+        options: [ '7.2', '7.200', '6.800', '7.200 ឬ 7.2' ],
+        correctAnswerIndex: 3,
         explanation: '35.765 - 28.565 = 7.200 (ឬ 7.2 km)។'
       },
       {
@@ -167,8 +167,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'គណនាផលដកទសភាគដែលមានចំនួនខ្ទង់ទសភាគមិនស្មើគ្នា៖ 32.55 - 29.245 = ?',
-        options: ['3.310', '3.305', '3.315', '3.005'],
-        correctAnswerIndex: 1,
+        options: [ '3.305', '3.310', '3.315', '3.005' ],
+        correctAnswerIndex: 0,
         explanation: 'ថែម 0 ជា 32.550 - 29.245 = 3.305 kg។'
       },
       {
@@ -176,8 +176,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៣៖ វិធីបូកដកទសភាគ',
         text: 'ម្ដាយមានប្រេងឆា 5 លីត្រ គាត់ប្រើអស់ 2.245 លីត្រ។ តើនៅសល់ប្រេងឆាប៉ុន្មានលីត្រ?',
-        options: ['2.755 លីត្រ', '2.855 លីត្រ', '3.755 លីត្រ', '2.255 លីត្រ'],
-        correctAnswerIndex: 0,
+        options: [ '2.855 លីត្រ', '2.755 លីត្រ', '3.755 លីត្រ', '2.255 លីត្រ' ],
+        correctAnswerIndex: 1,
         explanation: '5.000 - 2.245 = 2.755 លីត្រ។'
       },
 
@@ -189,11 +189,11 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         text: 'តើអ្វីជា «កន្លះបន្ទាត់ពុះមុំ»?',
         options: [
           'ជាបន្ទាត់ដែលគូសបន្តែងតាមចិត្ត',
-          'ជាកន្លះបន្ទាត់ដែលគូសចេញពីកំពូលនៃមុំ ហើយចែកមុំនោះជាពីរស្មើគ្នា',
           'ជាបន្ទាត់កែងនឹងបាត',
+          'ជាកន្លះបន្ទាត់ដែលគូសចេញពីកំពូលនៃមុំ ហើយចែកមុំនោះជាពីរស្មើគ្នា',
           'ជាអង្កត់ផ្ចិតនៃរង្វង់'
         ],
-        correctAnswerIndex: 1,
+        correctAnswerIndex: 2,
         explanation: 'កន្លះបន្ទាត់ពុះមុំគឺជាកន្លះបន្ទាត់ដែលចេញពីកំពូលមុំ និងចែកមុំដើមជាពីរមុំតូចៗដែលមានរង្វាស់ស្មើគ្នា។'
       },
       {
@@ -201,8 +201,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'បើកន្លះបន្ទាត់ CD ពុះមុំ ACB ដែលមានរង្វាស់ 80° តើមុំ ACD មានរង្វាស់ប៉ុន្មានដឺក្រេ?',
-        options: ['20°', '40°', '80°', '160°'],
-        correctAnswerIndex: 1,
+        options: [ '20°', '160°', '80°', '40°' ],
+        correctAnswerIndex: 3,
         explanation: 'មុំ ACD = 80° / 2 = 40°។'
       },
       {
@@ -210,7 +210,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'ឧបករណ៍សំខាន់សម្រាប់សង់សំណង់មុំ 60° និង 90° ប្រកបដោយសុក្រឹតភាពគឺ៖',
-        options: ['បន្ទាត់ និងដែកឈាន (Compasses)', 'កែវពង្រីក', 'ជ័រលុប', 'កន្ត្រៃ'],
+        options: [ 'បន្ទាត់ និងដែកឈាន (Compasses)', 'កែវពង្រីក', 'ជ័រលុប', 'កន្ត្រៃ' ],
         correctAnswerIndex: 0,
         explanation: 'ការសង់សំណង់មុំប្រកបដោយប្រមាណវិធីធរណីមាត្រ ត្រូវប្រើបន្ទាត់ និងដែកឈាន (Compasses)។'
       },
@@ -219,7 +219,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'ក្នុងការសង់មុំ 60° តាមដំណាក់កាល តើជំហានដំបូងត្រូវគូសអ្វី?',
-        options: ['គូសរង្វង់ពេញមួយ', 'គូសកន្លះបន្ទាត់ OX និងកំណត់ចំណុច O ជាកំពូល', 'គូសបន្ទាត់កែងពីរ', 'វាស់ប្រវែងបាត'],
+        options: [ 'គូសរង្វង់ពេញមួយ', 'គូសកន្លះបន្ទាត់ OX និងកំណត់ចំណុច O ជាកំពូល', 'គូសបន្ទាត់កែងពីរ', 'វាស់ប្រវែងបាត' ],
         correctAnswerIndex: 1,
         explanation: 'ជំហានទី១៖ គូសកន្លះបន្ទាត់ OX រួចកំណត់ O ជាកំពូល និង A ជាចំណុចលើកន្លះបន្ទាត់។'
       },
@@ -228,8 +228,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'មុំរាបមានរង្វាស់ 180°។ បើគេគូសកន្លះបន្ទាត់ពុះមុំរាបនោះ តើគេទទួលបានមុំពីរដែលមានរង្វាស់ប៉ុន្មានដឺក្រេ?',
-        options: ['45° និង 45°', '90° និង 90°', '60° និង 60°', '120° និង 60°'],
-        correctAnswerIndex: 1,
+        options: [ '45° និង 45°', '60° និង 60°', '90° និង 90°', '120° និង 60°' ],
+        correctAnswerIndex: 2,
         explanation: '180° / 2 = 90° (មុំកែងពីរ)។'
       },
       {
@@ -237,8 +237,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'បើគេសង់មុំ 90° ដោយប្រើដែកឈាន និងបន្ទាត់ តើបន្ទាត់ពុះមុំនោះបង្កើតបានមុំកែងស្មើនឹងប៉ុន្មាន?',
-        options: ['30°', '45°', '90°', '180°'],
-        correctAnswerIndex: 2,
+        options: [ '30°', '45°', '180°', '90°' ],
+        correctAnswerIndex: 3,
         explanation: 'មុំ 90° គឺជាមុំកែង។'
       },
 
@@ -248,8 +248,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'សរសេរផលបូក a + a + a + a ជាផលគុណកន្សោមពីជគណិត៖',
-        options: ['a⁴', '4 + a', '4a', 'a / 4'],
-        correctAnswerIndex: 2,
+        options: [ '4a', '4 + a', 'a⁴', 'a / 4' ],
+        correctAnswerIndex: 0,
         explanation: 'a + a + a + a = 4 × a = 4a (4 ជាមេគុណ, a ជាអថេរ)។'
       },
       {
@@ -257,7 +257,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'សម្រួលកន្សោមពីជគណិត៖ 2n + 4n = ?',
-        options: ['6n²', '6n', '8n', '24n'],
+        options: [ '6n²', '6n', '8n', '24n' ],
         correctAnswerIndex: 1,
         explanation: '2n + 4n = (2 + 4)n = 6n។'
       },
@@ -266,8 +266,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'សម្រួលកន្សោមពីជគណិត៖ 5n - 3n = ?',
-        options: ['2', '2n', '15n', '8n'],
-        correctAnswerIndex: 1,
+        options: [ '2', '15n', '2n', '8n' ],
+        correctAnswerIndex: 2,
         explanation: '5n - 3n = (5 - 3)n = 2n។'
       },
       {
@@ -275,8 +275,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ដោះស្រាយសមីការ៖ n - 3 = 5។ តើតម្លៃ n ស្មើប៉ុន្មាន?',
-        options: ['n = 2', 'n = 8', 'n = 15', 'n = 5/3'],
-        correctAnswerIndex: 1,
+        options: [ 'n = 2', 'n = 5/3', 'n = 15', 'n = 8' ],
+        correctAnswerIndex: 3,
         explanation: 'n - 3 = 5 ➔ n = 5 + 3 = 8។'
       },
       {
@@ -284,8 +284,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ដោះស្រាយសមីការ៖ 3x + 1 = 13។ តើតម្លៃ x ស្មើប៉ុន្មាន?',
-        options: ['x = 3', 'x = 4', 'x = 5', 'x = 12'],
-        correctAnswerIndex: 1,
+        options: [ 'x = 4', 'x = 3', 'x = 5', 'x = 12' ],
+        correctAnswerIndex: 0,
         explanation: '3x + 1 = 13 ➔ 3x = 13 - 1 = 12 ➔ x = 12 / 3 = 4។'
       },
       {
@@ -293,7 +293,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៥៖ ការជំនួសលេខដោយអក្សរ',
         text: 'ចំពោះ n = 5 គណនាតម្លៃនៃកន្សោម 7n ៖',
-        options: ['12', '35', '75', '2'],
+        options: [ '12', '35', '75', '2' ],
         correctAnswerIndex: 1,
         explanation: '7n = 7 × 5 = 35។'
       }
@@ -318,8 +318,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៦៖ បរិមាត្រ',
         text: 'ចតុlettersកែងកែងមួយមានបណ្តោយ 18 dm និងទទឹង 11 dm។ គណនាបរិមាត្ររបស់វា៖',
-        options: ['29 dm', '58 dm', '198 dm', '110 dm'],
-        correctAnswerIndex: 1,
+        options: [ '29 dm', '198 dm', '58 dm', '110 dm' ],
+        correctAnswerIndex: 2,
         explanation: 'បរិមាត្រ P = (បណ្តោយ + ទទឹង) × 2 = (18 + 11) × 2 = 29 × 2 = 58 dm។'
       },
       {
@@ -327,8 +327,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៦៖ បរិមាត្រ',
         text: 'ការេមួយមានជ្រុងប្រវែង 8 cm។ គណនាបរិមាត្រការេនោះ៖',
-        options: ['16 cm', '32 cm', '64 cm', '24 cm'],
-        correctAnswerIndex: 1,
+        options: [ '16 cm', '24 cm', '64 cm', '32 cm' ],
+        correctAnswerIndex: 3,
         explanation: 'បរិមាត្រការេ P = ជ្រុង × 4 = 8 × 4 = 32 cm។'
       },
       {
@@ -336,8 +336,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៦៖ បរិមាត្រ',
         text: 'រង្វង់មួយមានអង្កត់ផ្ចិត D = 10 cm (យក π ≈ 3.14)។ គណនាបរិមាត្រ (ប្រវែងជុំវិញ) រង្វង់៖',
-        options: ['15.7 cm', '31.4 cm', '78.5 cm', '62.8 cm'],
-        correctAnswerIndex: 1,
+        options: [ '31.4 cm', '15.7 cm', '78.5 cm', '62.8 cm' ],
+        correctAnswerIndex: 0,
         explanation: 'បរិមាត្ររង្វង់ P = D × π = 10 × 3.14 = 31.4 cm។'
       },
       {
@@ -345,7 +345,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៦៖ បរិមាត្រ',
         text: 'រង្វង់មួយមានកាំ R = 5 cm (យក π ≈ 3.14)។ គណនាបរិមាត្ររង្វង់៖',
-        options: ['15.7 cm', '31.4 cm', '62.8 cm', '78.5 cm'],
+        options: [ '15.7 cm', '31.4 cm', '62.8 cm', '78.5 cm' ],
         correctAnswerIndex: 1,
         explanation: 'P = 2 × π × R = 2 × 3.14 × 5 = 31.4 cm។'
       },
@@ -354,8 +354,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៦៖ បរិមាត្រ',
         text: 'កង់រទេះមួយមានអង្កត់ផ្ចិត 50 cm។ បើកង់នោះវិលបាន 10 ជុំ តើវាផ្លាស់ទីបានចម្ងាយប៉ុន្មាន cm?',
-        options: ['157 cm', '1570 cm', '3140 cm', '500 cm'],
-        correctAnswerIndex: 1,
+        options: [ '157 cm', '3140 cm', '1570 cm', '500 cm' ],
+        correctAnswerIndex: 2,
         explanation: 'បរិមាត្រ ១ ជុំ = D × π = 50 × 3.14 = 157 cm ➔ 10 ជុំ = 157 × 10 = 1570 cm។'
       },
       {
@@ -363,8 +363,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៦៖ បរិមាត្រ',
         text: 'រង្វង់មួយមានបរិមាត្រ 13.188 m (យក π ≈ 3.14)។ គណនាកាំ R នៃរង្វង់នោះ៖',
-        options: ['2.1 m', '4.2 m', '1.5 m', '3 m'],
-        correctAnswerIndex: 0,
+        options: [ '3 m', '4.2 m', '1.5 m', '2.1 m' ],
+        correctAnswerIndex: 3,
         explanation: 'P = 2 × π × R ➔ R = P / (2 × π) = 13.188 / (2 × 3.14) = 13.188 / 6.28 = 2.1 m។'
       },
 
@@ -374,8 +374,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៧៖ ផ្ទៃក្រឡា',
         text: 'បំប្លែងឯកតារវាស់ដីធ្លី៖ 1 ha (ហិចតា) ស្មើនឹងប៉ុន្មានអា (a) និងប៉ុន្មានម៉ែត្រការ៉េ (m²)?',
-        options: ['10 a = 100 m²', '100 a = 10 000 m²', '1000 a = 100 000 m²', '1 a = 1000 m²'],
-        correctAnswerIndex: 1,
+        options: [ '100 a = 10 000 m²', '10 a = 100 m²', '1000 a = 100 000 m²', '1 a = 1000 m²' ],
+        correctAnswerIndex: 0,
         explanation: '1 ha = 100 a = 10 000 m²។'
       },
       {
@@ -383,7 +383,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៧៖ ផ្ទៃក្រឡា',
         text: 'ចតុlettersកែងកែងមួយមានបណ្តោយ 4 cm និងទទឹង 3 cm។ គណនាផ្ទៃក្រឡារបស់វា៖',
-        options: ['7 cm²', '12 cm²', '14 cm²', '24 cm²'],
+        options: [ '7 cm²', '12 cm²', '14 cm²', '24 cm²' ],
         correctAnswerIndex: 1,
         explanation: 'ផ្ទៃក្រឡា A = បណ្តោយ × ទទឹង = 4 × 3 = 12 cm²។'
       },
@@ -392,8 +392,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៧៖ ផ្ទៃក្រឡា',
         text: 'ត្រីកោណមួយមានបាត 4 cm និងកម្ពស់ 3 cm។ គណនាផ្ទៃក្រឡារបស់វា៖',
-        options: ['12 cm²', '6 cm²', '7 cm²', '24 cm²'],
-        correctAnswerIndex: 1,
+        options: [ '12 cm²', '7 cm²', '6 cm²', '24 cm²' ],
+        correctAnswerIndex: 2,
         explanation: 'ផ្ទៃក្រឡាត្រីកោណ A = (បាត × កម្ពស់) / 2 = (4 × 3) / 2 = 6 cm²។'
       },
       {
@@ -401,8 +401,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៧៖ ផ្ទៃក្រឡា',
         text: 'ប្រឡេឡូក្រាមមួយមានបាត 5 cm និងកម្ពស់ 3 cm។ គណនាផ្ទៃក្រឡារបស់វា៖',
-        options: ['15 cm²', '7.5 cm²', '16 cm²', '30 cm²'],
-        correctAnswerIndex: 0,
+        options: [ '30 cm²', '7.5 cm²', '16 cm²', '15 cm²' ],
+        correctAnswerIndex: 3,
         explanation: 'ផ្ទៃក្រឡាប្រឡេឡូក្រាម A = បាត × កម្ពស់ = 5 × 3 = 15 cm²។'
       },
       {
@@ -410,8 +410,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៧៖ ផ្ទៃក្រឡា',
         text: 'ចតុlettersកែងពាយមួយមានបាតតូច 2m, បាតធំ 5m និងកម្ពស់ 3m។ គណនាផ្ទៃក្រឡារបស់វា៖',
-        options: ['21 m²', '10.5 m²', '15 m²', '7 m²'],
-        correctAnswerIndex: 1,
+        options: [ '10.5 m²', '21 m²', '15 m²', '7 m²' ],
+        correctAnswerIndex: 0,
         explanation: 'A = [(បាតតូច + បាតធំ) × កម្ពស់] / 2 = [(2 + 5) × 3] / 2 = 21 / 2 = 10.5 m²។'
       },
       {
@@ -419,7 +419,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៧៖ ផ្ទៃក្រឡា',
         text: 'រង្វង់មួយមានកាំ R = 3 cm (យក π ≈ 3.14)។ គណនាផ្ទៃក្រឡារបស់វា៖',
-        options: ['18.84 cm²', '28.26 cm²', '56.52 cm²', '9.42 cm²'],
+        options: [ '18.84 cm²', '28.26 cm²', '56.52 cm²', '9.42 cm²' ],
         correctAnswerIndex: 1,
         explanation: 'A = π × R² = 3.14 × (3²) = 3.14 × 9 = 28.26 cm²។'
       },
@@ -430,8 +430,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៨៖ វិធីគុណចែកទសភាគ',
         text: 'គណនាផលគុណទសភាគ៖ 1.255 × 15 = ?',
-        options: ['18.825', '18.255', '18.725', '188.25'],
-        correctAnswerIndex: 0,
+        options: [ '18.725', '18.255', '18.825', '188.25' ],
+        correctAnswerIndex: 2,
         explanation: '1255 × 15 = 18825 ➔ មាន 3 ខ្ទង់ទសភាគ = 18.825 kg។'
       },
       {
@@ -439,8 +439,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៨៖ វិធីគុណចែកទសភាគ',
         text: 'ផ្ទះល្វែងមួយមានបណ្តោយ 8.25m និងទទឹង 3.8m។ គណនាផ្ទៃក្រឡារបស់ផ្ទះនោះ៖',
-        options: ['31.35 m²', '31.350 m²', '31.35 m² ឬ 31.350 m²', '32.15 m²'],
-        correctAnswerIndex: 2,
+        options: [ '31.35 m²', '31.350 m²', '32.15 m²', '31.35 m² ឬ 31.350 m²' ],
+        correctAnswerIndex: 3,
         explanation: '8.25 × 3.8 = 31.350 m² = 31.35 m²។'
       },
       {
@@ -448,8 +448,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៨៖ វិធីគុណចែកទសភាគ',
         text: 'ប៉ាន់ស្មានផលគុណទសភាគ 10.8 × 5.25 ≈ ?',
-        options: ['50 m²', '55 m²', '60 m²', '45 m²'],
-        correctAnswerIndex: 1,
+        options: [ '55 m²', '50 m²', '60 m²', '45 m²' ],
+        correctAnswerIndex: 0,
         explanation: 'បង្គត់ 10.8 ➔ 11 និង 5.25 ➔ 5 ➔ 11 × 5 = 55 m² (ផលគុណពិត = 56.7 m²)។'
       },
       {
@@ -457,8 +457,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៨៖ វិធីគុណចែកទសភាគ',
         text: 'គណនាផលចែកទសភាគនឹងចំនួនគត់៖ 55.75 ÷ 5 = ?',
-        options: ['11.15', '11.25', '1.115', '111.5'],
-        correctAnswerIndex: 0,
+        options: [ '11.25', '11.15', '1.115', '111.5' ],
+        correctAnswerIndex: 1,
         explanation: '55 ÷ 5 = 11, 0.75 ÷ 5 = 0.15 ➔ 11.15។'
       },
       {
@@ -466,8 +466,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៨៖ វិធីគុណចែកទសភាគ',
         text: 'គណនាផលចែកចំនួនគត់នឹងទសភាគ៖ 620 ÷ 15.5 = ?',
-        options: ['4', '40', '400', '0.4'],
-        correctAnswerIndex: 1,
+        options: [ '4', '400', '40', '0.4' ],
+        correctAnswerIndex: 2,
         explanation: 'គុណ 10 លើតាំងចែក និងតួចែកបាន 6200 ÷ 155 = 40 m។'
       },
       {
@@ -475,8 +475,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៨៖ វិធីគុណចែកទសភាគ',
         text: 'គណនាផលចែកទសភាគនឹងទសភាគ៖ 96.6 ÷ 5.25 = ?',
-        options: ['18.4', '18.5', '1.84', '184'],
-        correctAnswerIndex: 0,
+        options: [ '184', '18.5', '1.84', '18.4' ],
+        correctAnswerIndex: 3,
         explanation: 'គុណ 100 បាន 9660 ÷ 525 = 18.4 m (ឬ 18.40m)។'
       },
 
@@ -486,8 +486,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៩៖ ត.ច.រ និង ព.គុ.ត',
         text: 'តើចំនួនណាខាងក្រោមនេះជា «ចំនួនបឋម» ?',
-        options: ['9', '15', '17', '21'],
-        correctAnswerIndex: 2,
+        options: [ '17', '15', '9', '21' ],
+        correctAnswerIndex: 0,
         explanation: '17 ជាចំនួនបឋម ព្រោះវាមានតួចែកតែពីរគត់ គឺ 1 និង 17។'
       },
       {
@@ -495,8 +495,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៩៖ ត.ច.រ និង ព.គុ.ត',
         text: 'បំបែកចំនួន 24 ជាផលគុណកត្តាបឋម៖',
-        options: ['2 × 12', '4 × 6', '2 × 2 × 2 × 3', '3 × 8'],
-        correctAnswerIndex: 2,
+        options: [ '2 × 12', '2 × 2 × 2 × 3', '4 × 6', '3 × 8' ],
+        correctAnswerIndex: 1,
         explanation: '24 = 2³ × 3 = 2 × 2 × 2 × 3 (គ្រប់កត្តាទាំងអស់សុទ្ធតែជាចំនួនបឋម)។'
       },
       {
@@ -504,8 +504,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៩៖ ត.ច.រ និង ព.គុ.ត',
         text: 'តើតួចែករួមធំបំផុត ត.ច.រ(18, 24) ស្មើនឹងប៉ុន្មាន?',
-        options: ['3', '6', '12', '72'],
-        correctAnswerIndex: 1,
+        options: [ '3', '12', '6', '72' ],
+        correctAnswerIndex: 2,
         explanation: '18 = 2 × 3² និង 24 = 2³ × 3 ➔ ត.ច.រ = 2 × 3 = 6។'
       },
       {
@@ -513,8 +513,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៩៖ ត.ច.រ និង ព.គុ.ត',
         text: 'តើពហុគុណរួមតូចបំផុត ព.គុ.ត(4, 6) ស្មើនឹងប៉ុន្មាន?',
-        options: ['2', '12', '24', '48'],
-        correctAnswerIndex: 1,
+        options: [ '2', '48', '24', '12' ],
+        correctAnswerIndex: 3,
         explanation: '4 = 2² និង 6 = 2 × 3 ➔ ព.គុ.ត = 2² × 3 = 12។'
       },
       {
@@ -522,8 +522,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៩៖ ត.ច.រ និង ព.គុ.ត',
         text: 'តើពហុគុណរួមតូចបំផុត ព.គុ.ត(8, 12) ស្មើនឹងប៉ុន្មាន?',
-        options: ['4', '16', '24', '96'],
-        correctAnswerIndex: 2,
+        options: [ '24', '16', '4', '96' ],
+        correctAnswerIndex: 0,
         explanation: '8 = 2³ និង 12 = 2² × 3 ➔ ព.គុ.ត = 2³ × 3 = 24។'
       },
       {
@@ -531,7 +531,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៩៖ ត.ច.រ និង ព.គុ.ត',
         text: 'កម្មករ 48 នាក់ និងនារី 72 នាក់ ត្រូវបែងចែកជាក្រុមស្មើៗគ្នាឲ្យបានច្រើនក្រុមបំផុត។ តើបង្កើតបានប៉ុន្មានក្រុម?',
-        options: ['12 ក្រុម', '24 ក្រុម', '6 ក្រុម', '36 ក្រុម'],
+        options: [ '12 ក្រុម', '24 ក្រុម', '6 ក្រុម', '36 ក្រុម' ],
         correctAnswerIndex: 1,
         explanation: 'ចំនួនក្រុមច្រើនបំផុត = ត.ច.រ(48, 72) = 24 ក្រុម (ប្រុស 2 នាក់, ស្រី 3 នាក់ ក្នុង ១ ក្រុម)។'
       },
@@ -542,8 +542,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ វិធីបូកដកប្រភាគ',
         text: 'តម្រូវភាគបែងរួមនៃប្រភាគ 2/3 និង 1/5 ៖',
-        options: ['ភាគបែងរួមគឺ 8', 'ភាគបែងរួមគឺ 15 (10/15 និង 3/15)', 'ភាគបែងរួមគឺ 10', 'ភាគបែងរួមគឺ 5'],
-        correctAnswerIndex: 1,
+        options: [ 'ភាគបែងរួមគឺ 8', 'ភាគបែងរួមគឺ 10', 'ភាគបែងរួមគឺ 15 (10/15 និង 3/15)', 'ភាគបែងរួមគឺ 5' ],
+        correctAnswerIndex: 2,
         explanation: 'ភាគបែងរួមតូចបំផុត (ព.គុ.ត) នៃ 3 និង 5 គឺ 15 ➔ 2/3 = 10/15 និង 1/5 = 3/15។'
       },
       {
@@ -551,8 +551,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ វិធីបូកដកប្រភាគ',
         text: 'គណនាផលបូកប្រភាគ៖ 2/5 + 3/4 = ?',
-        options: ['5/9', '23/20', '8/20', '1'],
-        correctAnswerIndex: 1,
+        options: [ '5/9', '1', '8/20', '23/20' ],
+        correctAnswerIndex: 3,
         explanation: '2/5 = 8/20 និង 3/4 = 15/20 ➔ 8/20 + 15/20 = 23/20 (ឬ 1 ភាគ 3/20)។'
       },
       {
@@ -560,8 +560,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ វិធីបូកដកប្រភាគ',
         text: 'គណនាផលដកប្រភាគ៖ 5/6 - 1/4 = ?',
-        options: ['4/2', '7/12', '4/12', '1/2'],
-        correctAnswerIndex: 1,
+        options: [ '7/12', '4/2', '4/12', '1/2' ],
+        correctAnswerIndex: 0,
         explanation: 'ភាគបែងរួម 12 ➔ 10/12 - 3/12 = 7/12។'
       },
       {
@@ -569,7 +569,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ វិធីបូកដកប្រភាគ',
         text: 'គណនាផលដកប្រភាគ៖ 1/2 - 1/3 = ?',
-        options: ['0', '1/6', '2/5', '1/5'],
+        options: [ '0', '1/6', '2/5', '1/5' ],
         correctAnswerIndex: 1,
         explanation: '3/6 - 2/6 = 1/6។'
       },
@@ -578,8 +578,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ វិធីបូកដកប្រភាគ',
         text: 'សុខធ្វើដំណើរបាន 1/3 នៃផ្លូវដោយម៉ូតូ រួចបន្តដំណើរ 1/2 នៃផ្លូវដោយរថយន្ត។ តើគាត់ធ្វើដំណើរបានប៉ុន្មាននៃផ្លូវសរុប?',
-        options: ['2/5 នៃផ្លូវ', '5/6 នៃផ្លូវ', '1/6 នៃផ្លូវ', '2/3 នៃផ្លូវ'],
-        correctAnswerIndex: 1,
+        options: [ '2/5 នៃផ្លូវ', '1/6 នៃផ្លូវ', '5/6 នៃផ្លូវ', '2/3 នៃផ្លូវ' ],
+        correctAnswerIndex: 2,
         explanation: '1/3 + 1/2 = 2/6 + 3/6 = 5/6 នៃផ្លូវសរុប។'
       },
       {
@@ -587,8 +587,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ វិធីបូកដកប្រភាគ',
         text: 'តាមប្រធានខាងលើ តើភាគនៃផ្លូវដែលនៅសល់ស្មើនឹងប៉ុន្មាន?',
-        options: ['1/6 នៃផ្លូវ', '5/6 នៃផ្លូវ', '1/3 នៃផ្លូវ', '1/2 នៃផ្លូវ'],
-        correctAnswerIndex: 0,
+        options: [ '1/2 នៃផ្លូវ', '5/6 នៃផ្លូវ', '1/3 នៃផ្លូវ', '1/6 នៃផ្លូវ' ],
+        correctAnswerIndex: 3,
         explanation: '1 - 5/6 = 6/6 - 5/6 = 1/6 នៃផ្លូវ។'
       }
     ]
@@ -612,8 +612,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១១៖ វិធីគុណចែកប្រភាគ',
         text: 'គណនាផលគុណប្រភាគ៖ (1/2) × (1/3) = ?',
-        options: ['2/5', '1/6', '1/5', '2/6'],
-        correctAnswerIndex: 1,
+        options: [ '1/6', '2/5', '1/5', '2/6' ],
+        correctAnswerIndex: 0,
         explanation: '(1 × 1) / (2 × 3) = 1/6។'
       },
       {
@@ -621,8 +621,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១១៖ វិធីគុណចែកប្រភាគ',
         text: 'គណនាផលគុណប្រភាគ៖ (2/3) × (2/5) = ?',
-        options: ['4/15', '4/8', '2/15', '10/6'],
-        correctAnswerIndex: 0,
+        options: [ '4/8', '4/15', '2/15', '10/6' ],
+        correctAnswerIndex: 1,
         explanation: '(2 × 2) / (3 × 5) = 4/15។'
       },
       {
@@ -630,8 +630,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១១៖ វិធីគុណចែកប្រភាគ',
         text: 'គណនាផលចែកប្រភាគ៖ (3/4) ÷ (1/4) = ?',
-        options: ['3/16', '3', '1', '12/4'],
-        correctAnswerIndex: 1,
+        options: [ '3/16', '1', '3', '12/4' ],
+        correctAnswerIndex: 2,
         explanation: '(3/4) × (4/1) = 12/4 = 3។'
       },
       {
@@ -639,8 +639,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១១៖ វិធីគុណចែកប្រភាគ',
         text: 'គណនាផលចែកប្រភាគ៖ (1/2) ÷ (1/8) = ?',
-        options: ['1/16', '4', '8', '2'],
-        correctAnswerIndex: 1,
+        options: [ '1/16', '2', '8', '4' ],
+        correctAnswerIndex: 3,
         explanation: '(1/2) × (8/1) = 8/2 = 4។'
       },
       {
@@ -648,8 +648,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១១៖ វិធីគុណចែកប្រភាគ',
         text: 'តុមួយមានរាងជាចតុlettersកែងកែង មានបណ្តោយ (3/4)m និងទទឹង (2/5)m។ គណនាផ្ទៃក្រឡាតុ៖',
-        options: ['5/9 m²', '3/10 m²', '6/20 m²', '3/10 m² ឬ 6/20 m²'],
-        correctAnswerIndex: 3,
+        options: [ '3/10 m² ឬ 6/20 m²', '3/10 m²', '6/20 m²', '5/9 m²' ],
+        correctAnswerIndex: 0,
         explanation: '(3/4) × (2/5) = 6/20 = 3/10 m²។'
       },
       {
@@ -657,7 +657,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១១៖ វិធីគុណចែកប្រភាគ',
         text: 'ខ្សែមួយប្រវែង (4/5)m ត្រូវកាត់ជាកំណាត់តូចៗប្រវែង (1/10)m ក្នុងមួយកំណាត់។ តើកាត់បានប៉ុន្មានកំណាត់?',
-        options: ['4 កំណាត់', '8 កំណាត់', '5 កំណាត់', '10 កំណាត់'],
+        options: [ '4 កំណាត់', '8 កំណាត់', '5 កំណាត់', '10 កំណាត់' ],
         correctAnswerIndex: 1,
         explanation: '(4/5) ÷ (1/10) = (4/5) × (10/1) = 40/5 = 8 កំណាត់។'
       },
@@ -668,8 +668,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១២៖ ផលធៀប',
         text: 'ក្នុងថ្នាក់មួយមានសិស្សប្រុស 20 នាក់ និងសិស្សស្រី 25 នាក់។ ផលធៀបសិស្សប្រុសធៀបនឹងសិស្សស្រីក្នុងទម្រង់សម្រួលគឺ៖',
-        options: ['20:25', '4:5', '5:4', '20:45'],
-        correctAnswerIndex: 1,
+        options: [ '20:25', '5:4', '4:5', '20:45' ],
+        correctAnswerIndex: 2,
         explanation: '20 / 25 = (20 ÷ 5) / (25 ÷ 5) = 4 / 5 ឬ 4:5។'
       },
       {
@@ -677,7 +677,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១២៖ ផលធៀប',
         text: 'អ្នកជិះកង់ជិះបានចម្ងាយ 30 km ក្នុងរយៈពេល 2h។ ផលធៀបចម្ងាយធៀបនឹងរយៈពេល (ល្បឿន) គឺ៖',
-        options: ['15 km/h', '30:2', '15:1', '15 km/h ឬ 15:1'],
+        options: [ '15 km/h', '30:2', '15:1', '15 km/h ឬ 15:1' ],
         correctAnswerIndex: 3,
         explanation: '30 km / 2 h = 15 km/h (ឬ 15:1)។'
       },
@@ -686,7 +686,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១២៖ ផលធៀប',
         text: 'ឃុំមួយមានផ្ទៃដី 120 km² និងប្រជាជន 6000 នាក់។ គណនាដង់ស៊ីតេប្រជាជន៖',
-        options: ['50 នាក់/km²', '500 នាក់/km²', '20 នាក់/km²', '720 នាក់/km²'],
+        options: [ '50 នាក់/km²', '500 នាក់/km²', '20 នាក់/km²', '720 នាក់/km²' ],
         correctAnswerIndex: 0,
         explanation: 'ដង់ស៊ីតេ = 6000 នាក់ / 120 km² = 50 នាក់/km²។'
       },
@@ -695,8 +695,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១២៖ ផលធៀប',
         text: 'ក្រុមហ៊ុនមួយមានបុគ្គលិកសរុប 56 នាក់។ ផលធៀបបុគ្គលិកប្រុស និងស្រីស្មើ 3:4 (ប្រុស 3 ភាគ, ស្រី 4 ភាគ)។ តើមានបុគ្គលិកប្រុសប៉ុន្មាននាក់?',
-        options: ['24 នាក់', '32 នាក់', '28 នាក់', '21 នាក់'],
-        correctAnswerIndex: 0,
+        options: [ '32 នាក់', '24 នាក់', '28 នាក់', '21 នាក់' ],
+        correctAnswerIndex: 1,
         explanation: 'ភាគសរុប = 3 + 4 = 7 ភាគ ➔ 1 ភាគ = 56 / 7 = 8 នាក់ ➔ ប្រុស = 3 × 8 = 24 នាក់ (ស្រី = 32 នាក់)។'
       },
       {
@@ -704,8 +704,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១២៖ ផលធៀប',
         text: 'តាមប្រធានខាងលើ តើមានបុគ្គលិកស្រីប៉ុន្មាននាក់?',
-        options: ['24 នាក់', '32 នាក់', '36 នាក់', '16 នាក់'],
-        correctAnswerIndex: 1,
+        options: [ '24 នាក់', '36 នាក់', '32 នាក់', '16 នាក់' ],
+        correctAnswerIndex: 2,
         explanation: 'ស្រី = 4 ភាគ × 8 នាក់ = 32 នាក់។'
       },
       {
@@ -713,8 +713,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១២៖ ផលធៀប',
         text: 'ក្រុមបាល់ទាត់ A លេងបាន 16 ប្រកួត និងឈ្នះបាន 10 ប្រកួត។ ផលធៀបការប្រកួតឈ្នះធៀបនឹងប្រកួតសរុបគឺ៖',
-        options: ['10:16', '5:8', '5:3', '8:5'],
-        correctAnswerIndex: 1,
+        options: [ '10:16', '8:5', '5:3', '5:8' ],
+        correctAnswerIndex: 3,
         explanation: '10/16 = 5/8 (ឬ 5:8)។'
       },
 
@@ -724,7 +724,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៣៖ សមាមាត្រ',
         text: 'តើពីរផលធៀបណាដែលបង្កើតបានជា «សមាមាត្រ» ?',
-        options: ['1/35 និង 2/70', '1/35 និង 2/35', '2/5 និង 3/5', '4/7 និង 7/4'],
+        options: [ '1/35 និង 2/70', '1/35 និង 2/35', '2/5 និង 3/5', '4/7 និង 7/4' ],
         correctAnswerIndex: 0,
         explanation: '1/35 = 2/70 (ព្រោះ 1 × 70 = 35 × 2 = 70)។'
       },
@@ -733,7 +733,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៣៖ សមាមាត្រ',
         text: 'រកតម្លៃ n ក្នុងសមាមាត្រ n / 21 = 4 / 7 ៖',
-        options: ['n = 8', 'n = 12', 'n = 16', 'n = 14'],
+        options: [ 'n = 8', 'n = 12', 'n = 16', 'n = 14' ],
         correctAnswerIndex: 1,
         explanation: 'n × 7 = 21 × 4 ➔ 7n = 84 ➔ n = 84 / 7 = 12។'
       },
@@ -742,8 +742,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៣៖ សមាមាត្រ',
         text: 'បោះបាល់ 7 ដង ចូលទី 4 ដង។ បើបោះ 21 ដង តាមផលធៀបដដែល តើចូលទីបានប៉ុន្មានដង?',
-        options: ['8 ដង', '12 ដង', '16 ដង', '10 ដង'],
-        correctAnswerIndex: 1,
+        options: [ '8 ដង', '16 ដង', '12 ដង', '10 ដង' ],
+        correctAnswerIndex: 2,
         explanation: 'n / 21 = 4 / 7 ➔ n = (21 × 4) / 7 = 12 ដង។'
       },
       {
@@ -751,8 +751,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៣៖ សមាមាត្រ',
         text: 'ផែនទីមួយមានមាត្រដ្ឋាន 1 : 600 000។ បើចម្ងាយលើផែនទីរវាងពីរទីក្រុងគឺ 5 cm តើចម្ងាយពិតប្រាកដគឺប៉ុន្មាន km?',
-        options: ['3 km', '30 km', '300 km', '3000 km'],
-        correctAnswerIndex: 1,
+        options: [ '3 km', '3000 km', '300 km', '30 km' ],
+        correctAnswerIndex: 3,
         explanation: 'ចម្ងាយពិត = 5 cm × 600 000 = 3 000 000 cm = 30 000 m = 30 km។'
       },
       {
@@ -760,8 +760,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៣៖ សមាមាត្រ',
         text: 'ចម្ងាយពិតប្រាកដរវាងពីរភូមិគឺ 30 km (3 000 000 cm)។ លើផែនទីមាត្រដ្ឋាន 1 : 600 000 តើប្រវែងលើផែនទីស្មើប៉ុន្មាន cm?',
-        options: ['3 cm', '5 cm', '6 cm', '10 cm'],
-        correctAnswerIndex: 1,
+        options: [ '5 cm', '3 cm', '6 cm', '10 cm' ],
+        correctAnswerIndex: 0,
         explanation: '3 000 000 × (1 / 600 000) = 5 cm។'
       },
       {
@@ -769,8 +769,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៣៖ សមាមាត្រ',
         text: 'កម្មករ 4 នាក់ ធ្វើការបាន 12 ថ្ងៃ។ បើប្រើប្រាស់កម្មករ 6 នាក់ (ល្បឿនដូចគ្នា) តើត្រូវចំណាយពេលប៉ុន្មានថ្ងៃ?',
-        options: ['8 ថ្ងៃ', '9 ថ្ងៃ', '18 ថ្ងៃ', '6 ថ្ងៃ'],
-        correctAnswerIndex: 0,
+        options: [ '9 ថ្ងៃ', '8 ថ្ងៃ', '18 ថ្ងៃ', '6 ថ្ងៃ' ],
+        correctAnswerIndex: 1,
         explanation: 'សមាមាត្រច្រាស៖ 4 × 12 = 6 × t ➔ 48 = 6t ➔ t = 8 ថ្ងៃ។'
       },
 
@@ -780,8 +780,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៤៖ ល្បឿន',
         text: 'កប៉ាល់មួយបើកបរបានចម្ងាយ 120 km ក្នុងរយៈពេល 3h។ គណនាល្បឿនមធ្យម៖',
-        options: ['30 km/h', '40 km/h', '360 km/h', '60 km/h'],
-        correctAnswerIndex: 1,
+        options: [ '30 km/h', '360 km/h', '40 km/h', '60 km/h' ],
+        correctAnswerIndex: 2,
         explanation: 'ល្បឿន V = d / t = 120 / 3 = 40 km/h។'
       },
       {
@@ -789,8 +789,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៤៖ ល្បឿន',
         text: 'ឡានមួយបើកបរដោយល្បឿន 60 km/h ក្នុងរយៈពេល 2.5 ម៉ោង (2h 30mn)។ តើវាផ្លាស់ទីបានចម្ងាយប៉ុន្មាន km?',
-        options: ['120 km', '150 km', '180 km', '140 km'],
-        correctAnswerIndex: 1,
+        options: [ '120 km', '140 km', '180 km', '150 km' ],
+        correctAnswerIndex: 3,
         explanation: 'ចម្ងាយ d = V × t = 60 × 2.5 = 150 km។'
       },
       {
@@ -798,8 +798,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៤៖ ល្បឿន',
         text: 'ម៉ូតូមួយជិះបានចម្ងាយ 90 km ដោយល្បឿន 36 km/h។ តើត្រូវចំណាយពេលប៉ុន្មាន?',
-        options: ['2 ម៉ោង', '2 ម៉ោង 30 នាទី', '3 ម៉ោង', '1 ម៉ោង 45 នាទី'],
-        correctAnswerIndex: 1,
+        options: [ '2 ម៉ោង 30 នាទី', '2 ម៉ោង', '3 ម៉ោង', '1 ម៉ោង 45 នាទី' ],
+        correctAnswerIndex: 0,
         explanation: 't = d / V = 90 / 36 = 2.5 ម៉ោង = 2 ម៉ោង 30 នាទី។'
       },
       {
@@ -807,7 +807,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៤៖ ល្បឿន',
         text: 'អ្នកជិះកង់ A ចេញពីក្រុង A ល្បឿន 12 km/h។ អ្នកជិះម៉ូតូ B ចេញពី B ល្បឿន 30 km/h ច្រាសទិសគ្នា។ ចម្ងាយ AB = 84 km។ តើរយៈពេលប៉ុន្មានម៉ោងទើបអ្នកទាំងពីរជួបគ្នា?',
-        options: ['1.5 ម៉ោង', '2 ម៉ោង', '2.5 ម៉ោង', '3 ម៉ោង'],
+        options: [ '1.5 ម៉ោង', '2 ម៉ោង', '2.5 ម៉ោង', '3 ម៉ោង' ],
         correctAnswerIndex: 1,
         explanation: 'ល្បឿនរួម = 12 + 30 = 42 km/h ➔ រយៈពេលជួបគ្នា t = 84 / 42 = 2 ម៉ោង។'
       },
@@ -816,8 +816,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៤៖ ល្បឿន',
         text: 'តាមប្រធានខាងលើ តើអ្នកជិះកង់ A ធ្វើដំណើរបានចម្ងាយប៉ុន្មាន km នៅពេលជួបគ្នា?',
-        options: ['24 km', '60 km', '42 km', '30 km'],
-        correctAnswerIndex: 0,
+        options: [ '42 km', '60 km', '24 km', '30 km' ],
+        correctAnswerIndex: 2,
         explanation: 'd = V × t = 12 km/h × 2h = 24 km (ម៉ូតូ B បាន 60 km)។'
       },
       {
@@ -825,8 +825,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៤៖ ល្បឿន',
         text: 'ឡានមួយដេញតាមម៉ូតូដែលចេញមុន 3h ដោយល្បឿនម៉ូតូ 30 km/h និងល្បឿនឡាន 66 km/h។ តើឡានត្រូវចំណាយពេលប៉ុន្មានម៉ោងទើបដេញទាន់ម៉ូតូ?',
-        options: ['2 ម៉ោង', '2 ម៉ោង 30 នាទី', '3 ម៉ោង', '1 ម៉ោង 30 នាទី'],
-        correctAnswerIndex: 1,
+        options: [ '2 ម៉ោង', '1 ម៉ោង 30 នាទី', '3 ម៉ោង', '2 ម៉ោង 30 នាទី' ],
+        correctAnswerIndex: 3,
         explanation: 'ចម្ងាយម៉ូតូចេញមុន = 30 × 3 = 90 km; ល្បឿនខុសគ្នា = 66 - 30 = 36 km/h ➔ t = 90 / 36 = 2.5h (2h 30mn)។'
       },
 
@@ -836,8 +836,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ប្រមាណវិធីលើចំនួនចម្រុះ',
         text: 'បំប្លែងចំនួនចម្រុះ 6 3/4 ជាប្រភាគទោល៖',
-        options: ['18/4', '27/4', '24/4', '21/4'],
-        correctAnswerIndex: 1,
+        options: [ '27/4', '18/4', '24/4', '21/4' ],
+        correctAnswerIndex: 0,
         explanation: '(6 × 4 + 3) / 4 = 27/4។'
       },
       {
@@ -845,7 +845,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ប្រមាណវិធីលើចំនួនចម្រុះ',
         text: 'គណនាផលបូកចំនួនចម្រុះ៖ 6 3/4 + 5 2/4 = ?',
-        options: ['11 5/4', '12 1/4', '11 1/4', '12 3/4'],
+        options: [ '11 5/4', '12 1/4', '11 1/4', '12 3/4' ],
         correctAnswerIndex: 1,
         explanation: '6 3/4 + 5 2/4 = (6 + 5) + (3/4 + 2/4) = 11 + 5/4 = 11 + 1 1/4 = 12 1/4 m។'
       },
@@ -854,7 +854,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ប្រមាណវិធីលើចំនួនចម្រុះ',
         text: 'គណនាផលដកចំនួនចម្រុះ៖ 30 3/4 - 24 1/4 = ?',
-        options: ['6 2/4', '6 1/2', '6 2/4 ឬ 6 1/2', '5 1/2'],
+        options: [ '6 2/4', '6 1/2', '6 2/4 ឬ 6 1/2', '5 1/2' ],
         correctAnswerIndex: 2,
         explanation: '(30 - 24) + (3/4 - 1/4) = 6 2/4 = 6 1/2 m។'
       },
@@ -863,8 +863,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ប្រមាណវិធីលើចំនួនចម្រុះ',
         text: 'គណនាផលគុណចំនួនចម្រុះ៖ 4 5/8 × 2 2/3 = ?',
-        options: ['37/3', '12 1/3', '37/3 ឬ 12 1/3', '10 1/2'],
-        correctAnswerIndex: 2,
+        options: [ '37/3', '12 1/3', '10 1/2', '37/3 ឬ 12 1/3' ],
+        correctAnswerIndex: 3,
         explanation: '(37/8) × (8/3) = 37/3 = 12 1/3 km។'
       },
       {
@@ -872,8 +872,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ប្រមាណវិធីលើចំនួនចម្រុះ',
         text: 'គណនាផលចែកចំនួនចម្រុះ៖ 6 1/2 ÷ 1 1/4 = ?',
-        options: ['26/5', '5 1/5', '26/5 ឬ 5 1/5', '4 1/2'],
-        correctAnswerIndex: 2,
+        options: [ '26/5 ឬ 5 1/5', '5 1/5', '26/5', '4 1/2' ],
+        correctAnswerIndex: 0,
         explanation: '(13/2) ÷ (5/4) = (13/2) × (4/5) = 26/5 = 5 1/5 h។'
       },
       {
@@ -881,8 +881,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ប្រមាណវិធីលើចំនួនចម្រុះ',
         text: 'គណនា៖ 3 3/4 ÷ 3 = ?',
-        options: ['1 1/4', '1 3/4', '15/4', '1'],
-        correctAnswerIndex: 0,
+        options: [ '1 3/4', '1 1/4', '15/4', '1' ],
+        correctAnswerIndex: 1,
         explanation: '(15/4) ÷ 3 = (15/4) × (1/3) = 5/4 = 1 1/4។'
       }
     ]
@@ -906,8 +906,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៦៖ ភាគរយ',
         text: 'បំប្លែងប្រភាគ 2/5 ទៅជាភាគរយ (%) ៖',
-        options: ['20%', '40%', '50%', '25%'],
-        correctAnswerIndex: 1,
+        options: [ '20%', '50%', '40%', '25%' ],
+        correctAnswerIndex: 2,
         explanation: '(2 / 5) × 100% = 40%។'
       },
       {
@@ -915,8 +915,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៦៖ ភាគរយ',
         text: 'បំប្លែងភាគរយ 70% ទៅជាប្រភាគសម្រួលសាមញ្ញ៖',
-        options: ['7/10', '70/10', '7/100', '3/4'],
-        correctAnswerIndex: 0,
+        options: [ '3/4', '70/10', '7/100', '7/10' ],
+        correctAnswerIndex: 3,
         explanation: '70/100 = 7/10។'
       },
       {
@@ -924,7 +924,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៦៖ ភាគរយ',
         text: 'គណនា 75% នៃប្រាក់ 9500 រៀល ៖',
-        options: ['7125 រៀល', '7500 រៀល', '6800 រៀល', '8000 រៀល'],
+        options: [ '7125 រៀល', '7500 រៀល', '6800 រៀល', '8000 រៀល' ],
         correctAnswerIndex: 0,
         explanation: '9500 × (75 / 100) = 7125 រៀល។'
       },
@@ -933,7 +933,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៦៖ ភាគរយ',
         text: 'ទូរស័ព្ទមួយដើមដើមឡើយថ្លៃ 25$ លក់បញ្ចុះមកត្រឹម 18$។ តើហាងបានបញ្ចុះតម្លៃប៉ុន្មានភាគរយ?',
-        options: ['20%', '28%', '25%', '30%'],
+        options: [ '20%', '28%', '25%', '30%' ],
         correctAnswerIndex: 1,
         explanation: 'ប្រាក់បញ្ចុះ = 25 - 18 = 7$ ➔ ភាគរយបញ្ចុះ = (7 / 25) × 100% = 28%។'
       },
@@ -942,8 +942,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៦៖ ភាគរយ',
         text: 'សំបុត្រយន្តហោះដើមថ្លៃ 40$ ឡើងថ្លៃដល់ 52$។ តើឡើងថ្លៃប៉ុន្មានភាគរយ?',
-        options: ['20%', '30%', '12%', '25%'],
-        correctAnswerIndex: 1,
+        options: [ '20%', '12%', '30%', '25%' ],
+        correctAnswerIndex: 2,
         explanation: 'ប្រាក់ឡើង = 52 - 40 = 12$ ➔ ភាគរយឡើង = (12 / 40) × 100% = 30%។'
       },
       {
@@ -951,8 +951,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៦៖ ភាគរយ',
         text: 'ស្ករបាត 1kg ដើមថ្លៃ 2000 រៀល ឥឡូវចុះមក 1600 រៀល។ តើចុះថ្លៃប៉ុន្មានភាគរយ?',
-        options: ['15%', '20%', '25%', '10%'],
-        correctAnswerIndex: 1,
+        options: [ '15%', '10%', '25%', '20%' ],
+        correctAnswerIndex: 3,
         explanation: 'ប្រាក់ចុះ = 2000 - 1600 = 400 រៀល ➔ (400 / 2000) × 100% = 20%។'
       },
 
@@ -962,7 +962,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៧៖ ការប្រាក់',
         text: 'ផ្ញើប្រាក់ 100$ នៅធនាគាររយៈពេល 1 ឆ្នាំ ដោយទទួលបានអត្រាការប្រាក់ 6% ក្នុងមួយឆ្នាំ។ តើទទួលបានការប្រាក់ប៉ុន្មាន?',
-        options: ['6$', '106$', '12$', '60$'],
+        options: [ '6$', '106$', '12$', '60$' ],
         correctAnswerIndex: 0,
         explanation: 'I = P × r × t = 100 × 6% × 1 = 6$។'
       },
@@ -971,7 +971,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៧៖ ការប្រាក់',
         text: 'លោកសុខផ្ញើប្រាក់ 800 000 រៀល រយៈពេល 1 ឆ្នាំ អត្រាការប្រាក់ 12%/ឆ្នាំ។ តើគាត់ទទួលបានប្រាក់សរុបទាំងដើមទាំងការប្រាក់ប៉ុន្មានរៀល?',
-        options: ['96 000 រៀល', '896 000 រៀល', '960 000 រៀល', '800 000 រៀល'],
+        options: [ '96 000 រៀល', '896 000 រៀល', '960 000 រៀល', '800 000 រៀល' ],
         correctAnswerIndex: 1,
         explanation: 'ការប្រាក់ I = 800 000 × 12% = 96 000 ➔ ប្រាក់សរុប = 800 000 + 96 000 = 896 000 រៀល។'
       },
@@ -980,8 +980,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៧៖ ការប្រាក់',
         text: 'ទូរទស្សន៍មួយថ្លៃ 500$ សម្រាប់ការបង់ប្រាក់សុទ្ធ។ បើទិញបង់រំលោះ ត្រូវបង់ 50$/ខែ រយៈពេល 12 ខែ។ តើត្រូវបង់ប្រាក់បន្ថែមលើតម្លៃដើមប៉ុន្មាន?',
-        options: ['100$', '600$', '50$', '200$'],
-        correctAnswerIndex: 0,
+        options: [ '50$', '600$', '100$', '200$' ],
+        correctAnswerIndex: 2,
         explanation: 'ប្រាក់បង់សរុប = 50 × 12 = 600$ ➔ ប្រាក់បន្ថែម = 600 - 500 = 100$។'
       },
       {
@@ -989,8 +989,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៧៖ ការប្រាក់',
         text: 'តាមប្រធានខាងលើ តើភាគរយប្រាក់បង់បន្ថែមធៀបនឹងតម្លៃដើមស្មើប៉ុន្មាន?',
-        options: ['10%', '20%', '15%', '25%'],
-        correctAnswerIndex: 1,
+        options: [ '10%', '25%', '15%', '20%' ],
+        correctAnswerIndex: 3,
         explanation: '(100 / 500) × 100% = 20%។'
       },
       {
@@ -998,7 +998,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៧៖ ការប្រាក់',
         text: 'ខ្ចីប្រាក់ 800 000 រៀល អត្រា 12% ក្នុង ១ ឆ្នាំ។ បន្ទាប់ពី ១ ឆ្នាំ ត្រូវសងប្រាក់សរុប 896 000 រៀល។ បើប្រាក់ចំណេញពីអាជីវកម្មបាន 1 000 000 រៀល តើនៅសល់ប្រាក់ចំណេញសុទ្ធប៉ុន្មាន?',
-        options: ['104 000 រៀល', '200 000 រៀល', '96 000 រៀល', '150 000 រៀល'],
+        options: [ '104 000 រៀល', '200 000 រៀល', '96 000 រៀល', '150 000 រៀល' ],
         correctAnswerIndex: 0,
         explanation: 'ប្រាក់ចំណេញសុទ្ធ = 1 000 000 - 896 000 = 104 000 រៀល។'
       },
@@ -1007,7 +1007,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៧៖ ការប្រាក់',
         text: 'តើអត្រាការប្រាក់ (Interest Rate) សំដៅលើអ្វី?',
-        options: ['ចំនួនប្រាក់ដើម', 'ភាគរយប្រាក់បន្ថែមដែលទទួលបាន ឬត្រូវបង់ក្នុងមួយរយៈពេលកំណត់', 'រយៈពេលផ្ញើ', 'ប្រាក់សរុប'],
+        options: [ 'ចំនួនប្រាក់ដើម', 'ភាគរយប្រាក់បន្ថែមដែលទទួលបាន ឬត្រូវបង់ក្នុងមួយរយៈពេលកំណត់', 'រយៈពេលផ្ញើ', 'ប្រាក់សរុប' ],
         correctAnswerIndex: 1,
         explanation: 'អត្រាការប្រាក់ជាភាគរយ (%) គណនាលើប្រាក់ដើមក្នុងមួយខែ ឬមួយឆ្នាំ។'
       },
@@ -1018,8 +1018,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៨៖ ស្ថិតិ',
         text: 'ក្នុងតារាងទិន្នន័យទូរស័ព្ទ៖ A មាន 12 នាក់, B មាន 16 នាក់, C មាន 8 នាក់, D មាន 4 នាក់ (សរុប 40 នាក់)។ តើប្រព័ន្ធណាមានអ្នកប្រើប្រាស់ច្រើនជាងគេ?',
-        options: ['ប្រព័ន្ធ A', 'ប្រព័ន្ធ B', 'ប្រព័ន្ធ C', 'ប្រព័ន្ធ D'],
-        correctAnswerIndex: 1,
+        options: [ 'ប្រព័ន្ធ A', 'ប្រព័ន្ធ C', 'ប្រព័ន្ធ B', 'ប្រព័ន្ធ D' ],
+        correctAnswerIndex: 2,
         explanation: 'ប្រព័ន្ធ B មានអ្នកប្រើប្រាស់ 16 នាក់ ច្រើនជាងគេបង្អស់។'
       },
       {
@@ -1027,8 +1027,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៨៖ ស្ថិតិ',
         text: 'គណនាភាគរយអ្នកប្រើប្រាស់ប្រព័ន្ធ C (8 នាក់ ក្នុងចំណោម 40 នាក់) ៖',
-        options: ['10%', '20%', '35%', '40%'],
-        correctAnswerIndex: 1,
+        options: [ '10%', '40%', '35%', '20%' ],
+        correctAnswerIndex: 3,
         explanation: '(8 / 40) × 100% = 20%។'
       },
       {
@@ -1036,8 +1036,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៨៖ ស្ថិតិ',
         text: 'ក្នុងក្រាហ្វផ្លិត (Pie Chart) គណនាមុំនៃផ្នែកប្រព័ន្ធ C ដែលត្រូវនឹង 20% ៖',
-        options: ['45°', '72°', '90°', '126°'],
-        correctAnswerIndex: 1,
+        options: [ '72°', '45°', '90°', '126°' ],
+        correctAnswerIndex: 0,
         explanation: 'មុំ = 20% × 360° = 0.20 × 360° = 72°។'
       },
       {
@@ -1045,7 +1045,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៨៖ ស្ថិតិ',
         text: 'ក្នុងក្រាហ្វផ្លិត មុំ 90° ត្រូវនឹងភាគរយប៉ុន្មាននៃរង្វង់ទាំងមូល (360°)?',
-        options: ['15%', '25%', '50%', '33.3%'],
+        options: [ '15%', '25%', '50%', '33.3%' ],
         correctAnswerIndex: 1,
         explanation: '(90° / 360°) × 100% = 25%។'
       },
@@ -1054,8 +1054,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៨៖ ស្ថិតិ',
         text: 'បើ 35% នៃរង្វង់ផ្លិតត្រូវនឹងប្រព័ន្ធ B តើមុំនៃផ្នែក B ស្មើនឹងប៉ុន្មានដឺក្រេ?',
-        options: ['126°', '90°', '144°', '100°'],
-        correctAnswerIndex: 0,
+        options: [ '144°', '90°', '126°', '100°' ],
+        correctAnswerIndex: 2,
         explanation: '0.35 × 360° = 126°។'
       },
       {
@@ -1063,8 +1063,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៨៖ ស្ថិតិ',
         text: 'តើសរុបមុំគ្រប់ផ្នែកទាំងអស់ក្នុងក្រាហ្វផ្លិតស្មើនឹងប៉ុន្មានដឺក្រេ?',
-        options: ['180°', '270°', '360°', '100°'],
-        correctAnswerIndex: 2,
+        options: [ '180°', '270°', '100°', '360°' ],
+        correctAnswerIndex: 3,
         explanation: 'រង្វង់ទាំងមូលមានមុំសរុប 360° (ត្រូវនឹង 100%)។'
       },
 
@@ -1074,8 +1074,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៩៖ រង្វាស់ពេល',
         text: 'គណនាផលបូករង្វាស់ពេល៖ 4h 47mn 32s + 3h 50mn 45s = ?',
-        options: ['7h 97mn 77s', '8h 38mn 17s', '8h 37mn 17s', '7h 38mn 17s'],
-        correctAnswerIndex: 1,
+        options: [ '8h 38mn 17s', '7h 97mn 77s', '8h 37mn 17s', '7h 38mn 17s' ],
+        correctAnswerIndex: 0,
         explanation: '32s + 45s = 77s = 1mn 17s; 47mn + 50mn + 1mn = 98mn = 1h 38mn; 4h + 3h + 1h = 8h ➔ 8h 38mn 17s។'
       },
       {
@@ -1083,8 +1083,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៩៖ រង្វាស់ពេល',
         text: 'គណនាផលដករង្វាស់ពេល៖ 12h 10mn 5s - 9h 45mn 30s = ?',
-        options: ['2h 24mn 35s', '2h 25mn 35s', '3h 25mn 35s', '2h 35mn 25s'],
-        correctAnswerIndex: 0,
+        options: [ '2h 25mn 35s', '2h 24mn 35s', '3h 25mn 35s', '2h 35mn 25s' ],
+        correctAnswerIndex: 1,
         explanation: 'ខ្ចី 1h (= 60mn) និង 1mn (= 60s) ➔ (11h 69mn 65s) - (9h 45mn 30s) = 2h 24mn 35s។'
       },
       {
@@ -1092,8 +1092,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៩៖ រង្វាស់ពេល',
         text: 'គណនាផលគុណរង្វាស់ពេល៖ 3h 35mn 7s × 9 = ?',
-        options: ['27h 315mn 63s', '32h 16mn 3s', '31h 16mn 3s', '32h 15mn 3s'],
-        correctAnswerIndex: 1,
+        options: [ '27h 315mn 63s', '31h 16mn 3s', '32h 16mn 3s', '32h 15mn 3s' ],
+        correctAnswerIndex: 2,
         explanation: '7s × 9 = 63s = 1mn 3s; 35mn × 9 + 1mn = 316mn = 5h 16mn; 3h × 9 + 5h = 32h ➔ 32h 16mn 3s។'
       },
       {
@@ -1101,8 +1101,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៩៖ រង្វាស់ពេល',
         text: 'គណនាផលចែករង្វាស់ពេល៖ 15h 45mn 25s ÷ 8 = ?',
-        options: ['1h 58mn 10s', '1h 58mn 10s (សំណល់ 5s)', '1h 50mn 10s', '2h 58mn 10s'],
-        correctAnswerIndex: 1,
+        options: [ '1h 58mn 10s', '2h 58mn 10s', '1h 50mn 10s', '1h 58mn 10s (សំណល់ 5s)' ],
+        correctAnswerIndex: 3,
         explanation: '15h ÷ 8 = 1h (នៅសល់ 7h = 420mn) ➔ (420+45)mn = 465mn ÷ 8 = 58mn (នៅសល់ 1mn = 60s) ➔ (60+25)s = 85s ÷ 8 = 10s (សំណល់ 5s) ➔ 1h 58mn 10s។'
       },
       {
@@ -1110,8 +1110,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៩៖ រង្វាស់ពេល',
         text: 'សុខចេញពីផ្ទះម៉ោង 6:30 មកដល់សាលាម៉ោង 6:50។ តើគាត់ចំណាយពេលធ្វើដំណើរប្រវែងប៉ុន្មាន?',
-        options: ['15 នាទី', '20 នាទី', '25 នាទី', '30 នាទី'],
-        correctAnswerIndex: 1,
+        options: [ '20 នាទី', '15 នាទី', '25 នាទី', '30 នាទី' ],
+        correctAnswerIndex: 0,
         explanation: '6:50 - 6:30 = 20 នាទី (20mn)។'
       },
       {
@@ -1119,7 +1119,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៩៖ រង្វាស់ពេល',
         text: 'ជាងម្នាក់កាត់ខោមួយប្រើពេល 5mn 25s។ បើគាត់កាត់ខោ 12 ដូចគ្នា តើត្រូវប្រើពេលសរុបប៉ុន្មាន?',
-        options: ['60mn 300s', '1h 5mn', '1h 0mn', '1h 10mn'],
+        options: [ '60mn 300s', '1h 5mn', '1h 0mn', '1h 10mn' ],
         correctAnswerIndex: 1,
         explanation: '5mn × 12 = 60mn, 25s × 12 = 300s = 5mn ➔ 60mn + 5mn = 65mn = 1h 5mn (1 ម៉ោង 5 នាទី)។'
       },
@@ -1130,8 +1130,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌសូលីត',
         text: 'ប្រអប់កែងមួយមានបណ្តោយ 4cm, ទទឹង 3cm និងកម្ពស់ 2cm។ គណនាមាឌប្រអប់កែងនោះ៖',
-        options: ['9 cm³', '24 cm³', '12 cm³', '48 cm³'],
-        correctAnswerIndex: 1,
+        options: [ '9 cm³', '12 cm³', '24 cm³', '48 cm³' ],
+        correctAnswerIndex: 2,
         explanation: 'មាឌ V = a × b × c = 4 × 3 × 2 = 24 cm³។'
       },
       {
@@ -1139,8 +1139,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌសូលីត',
         text: 'គូបមួយមានជ្រុងប្រវែង 3cm. គណនាមាឌគូបនោះ៖',
-        options: ['9 cm³', '27 cm³', '18 cm³', '36 cm³'],
-        correctAnswerIndex: 1,
+        options: [ '9 cm³', '36 cm³', '18 cm³', '27 cm³' ],
+        correctAnswerIndex: 3,
         explanation: 'មាឌគូប V = a³ = 3 × 3 × 3 = 27 cm³។'
       },
       {
@@ -1148,8 +1148,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌសូលីត',
         text: 'ស៊ីឡាំងមួយមានកាំ R = 3cm និងកម្ពស់ h = 5cm (យក π ≈ 3.14)។ គណនាមាឌស៊ីឡាំង៖',
-        options: ['47.1 cm³', '141.3 cm³', '94.2 cm³', '282.6 cm³'],
-        correctAnswerIndex: 1,
+        options: [ '141.3 cm³', '47.1 cm³', '94.2 cm³', '282.6 cm³' ],
+        correctAnswerIndex: 0,
         explanation: 'V = π × R² × h = 3.14 × (3²) × 5 = 3.14 × 9 × 5 = 141.3 cm³។'
       },
       {
@@ -1157,8 +1157,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌសូលីត',
         text: 'កោនមួយមានកាំ R = 3cm និងកម្ពស់ h = 6cm (យក π ≈ 3.14)។ គណនាមាឌកោន៖',
-        options: ['56.52 cm³', '169.56 cm³', '28.26 cm³', '113.04 cm³'],
-        correctAnswerIndex: 0,
+        options: [ '169.56 cm³', '56.52 cm³', '28.26 cm³', '113.04 cm³' ],
+        correctAnswerIndex: 1,
         explanation: 'V = (1/3) × π × R² × h = (1/3) × 3.14 × 9 × 6 = 3.14 × 18 = 56.52 cm³។'
       },
       {
@@ -1166,8 +1166,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌសូលីត',
         text: 'ស្វ៊ែរមួយមានកាំ R = 2cm (យក π ≈ 3.14)។ គណនាមាឌស្វ៊ែរ៖',
-        options: ['33.49 cm³', '16.74 cm³', '25.12 cm³', '50.24 cm³'],
-        correctAnswerIndex: 0,
+        options: [ '25.12 cm³', '16.74 cm³', '33.49 cm³', '50.24 cm³' ],
+        correctAnswerIndex: 2,
         explanation: 'V = (4/3) × π × R³ = (4/3) × 3.14 × 8 = 33.49 cm³ (ឬ 33.5 cm³)។'
       },
       {
@@ -1175,8 +1175,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌសូលីត',
         text: 'បំប្លែងឯកតារវាស់មាឌ និងចំណុះ៖ 1 m³ ស្មើនឹងប៉ុន្មាន dm³ និងប៉ុន្មានលីត្រ (l)?',
-        options: ['100 dm³ = 100 l', '1000 dm³ = 1000 l', '10 000 dm³ = 10 000 l', '10 dm³ = 10 l'],
-        correctAnswerIndex: 1,
+        options: [ '100 dm³ = 100 l', '10 dm³ = 10 l', '10 000 dm³ = 10 000 l', '1000 dm³ = 1000 l' ],
+        correctAnswerIndex: 3,
         explanation: '1 m³ = 1000 dm³ = 1000 l (លីត្រ)។'
       }
     ]
@@ -1199,8 +1199,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ចំនួន',
         text: 'សរសេរចំនួន «បីលាន ម្ភៃបួនពាន់ មួយរយបី» ជាតួរលេខ៖',
-        options: ['3 240 103', '3 024 103', '3 240 003', '30 024 103'],
-        correctAnswerIndex: 1,
+        options: [ '3 024 103', '3 240 103', '3 240 003', '30 024 103' ],
+        correctAnswerIndex: 0,
         explanation: '3 024 103 = បីលាន ម្ភៃបួនពាន់ មួយរយបី។'
       },
       {
@@ -1208,7 +1208,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ចំនួនទសភាគ',
         text: 'សរសេរប្រភាគ 1025 / 1000 ជាចំនួនទសភាគ៖',
-        options: ['10.25', '1.025', '0.1025', '102.5'],
+        options: [ '10.25', '1.025', '0.1025', '102.5' ],
         correctAnswerIndex: 1,
         explanation: '1025 / 1000 = 1.025 (បីខ្ទង់ទសភាគ)។'
       },
@@ -1217,8 +1217,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'វិធីបូកដកទសភាគ',
         text: 'គណនា 32.55 - 29.245 = ?',
-        options: ['3.310', '3.305', '3.315', '3.005'],
-        correctAnswerIndex: 1,
+        options: [ '3.310', '3.315', '3.305', '3.005' ],
+        correctAnswerIndex: 2,
         explanation: '32.550 - 29.245 = 3.305។'
       },
       {
@@ -1226,8 +1226,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'កន្លះបន្ទាត់ពុះមុំ',
         text: 'បើកន្លះបន្ទាត់ CD ពុះមុំ ACB ដែលមានរង្វាស់ 80° តើមុំ ACD មានរង្វាស់ប៉ុន្មានដឺក្រេ?',
-        options: ['20°', '40°', '80°', '160°'],
-        correctAnswerIndex: 1,
+        options: [ '20°', '160°', '80°', '40°' ],
+        correctAnswerIndex: 3,
         explanation: '80° / 2 = 40°។'
       },
       {
@@ -1235,8 +1235,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'សមីការ',
         text: 'ដោះស្រាយសមីការ 3x + 1 = 13 ៖',
-        options: ['x = 3', 'x = 4', 'x = 5', 'x = 12'],
-        correctAnswerIndex: 1,
+        options: [ 'x = 4', 'x = 3', 'x = 5', 'x = 12' ],
+        correctAnswerIndex: 0,
         explanation: '3x = 12 ➔ x = 4។'
       },
       {
@@ -1244,7 +1244,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'បរិមាត្រ',
         text: 'រង្វង់មួយមានកាំ R = 5 cm (យក π ≈ 3.14)។ គណនាបរិមាត្ររង្វង់៖',
-        options: ['15.7 cm', '31.4 cm', '62.8 cm', '78.5 cm'],
+        options: [ '15.7 cm', '31.4 cm', '62.8 cm', '78.5 cm' ],
         correctAnswerIndex: 1,
         explanation: 'P = 2 × 3.14 × 5 = 31.4 cm។'
       },
@@ -1253,8 +1253,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ផ្ទៃក្រឡា',
         text: 'ត្រីកោណមួយមានបាត 12 cm និងកម្ពស់ 8 cm។ គណនាផ្ទៃក្រឡាត្រីកោណ៖',
-        options: ['96 cm²', '48 cm²', '20 cm²', '24 cm²'],
-        correctAnswerIndex: 1,
+        options: [ '96 cm²', '20 cm²', '48 cm²', '24 cm²' ],
+        correctAnswerIndex: 2,
         explanation: 'A = (12 × 8) / 2 = 48 cm²។'
       },
       {
@@ -1262,8 +1262,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ផ្ទៃក្រឡា',
         text: 'ចតុlettersកែងពាយមួយមានបាតតូច 2m, បាតធំ 5m និងកម្ពស់ 3m។ គណនាផ្ទៃក្រឡា៖',
-        options: ['21 m²', '10.5 m²', '15 m²', '7 m²'],
-        correctAnswerIndex: 1,
+        options: [ '21 m²', '7 m²', '15 m²', '10.5 m²' ],
+        correctAnswerIndex: 3,
         explanation: '[(2 + 5) × 3] / 2 = 10.5 m²។'
       },
       {
@@ -1271,8 +1271,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'វិធីគុណចែកទសភាគ',
         text: 'គណនា 620 ÷ 15.5 = ?',
-        options: ['4', '40', '400', '0.4'],
-        correctAnswerIndex: 1,
+        options: [ '40', '4', '400', '0.4' ],
+        correctAnswerIndex: 0,
         explanation: '6200 ÷ 155 = 40។'
       },
       {
@@ -1280,7 +1280,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ត.ច.រ និង ព.គុ.ត',
         text: 'រកតួចែករួមធំបំផុត ត.ច.រ(18, 24) ៖',
-        options: ['3', '6', '12', '72'],
+        options: [ '3', '6', '12', '72' ],
         correctAnswerIndex: 1,
         explanation: 'ត.ច.រ(18, 24) = 6។'
       },
@@ -1289,8 +1289,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ត.ច.រ និង ព.គុ.ត',
         text: 'រកពហុគុណរួមតូចបំផុត ព.គុ.ត(4, 6) ៖',
-        options: ['2', '12', '24', '48'],
-        correctAnswerIndex: 1,
+        options: [ '2', '24', '12', '48' ],
+        correctAnswerIndex: 2,
         explanation: 'ព.គុ.ត(4, 6) = 12។'
       },
       {
@@ -1298,8 +1298,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'វិធីបូកដកប្រភាគ',
         text: 'គណនា 2/5 + 3/4 = ?',
-        options: ['5/9', '23/20', '8/20', '1'],
-        correctAnswerIndex: 1,
+        options: [ '5/9', '1', '8/20', '23/20' ],
+        correctAnswerIndex: 3,
         explanation: '8/20 + 15/20 = 23/20 (ឬ 1 ភាគ 3/20)។'
       },
       {
@@ -1307,8 +1307,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'វិធីគុណចែកប្រភាគ',
         text: 'គណនា (3/4) ÷ (1/2) = ?',
-        options: ['3/8', '3/2', '1/4', '2/3'],
-        correctAnswerIndex: 1,
+        options: [ '3/2', '3/8', '1/4', '2/3' ],
+        correctAnswerIndex: 0,
         explanation: '(3/4) × (2/1) = 6/4 = 3/2 (ឬ 1.5)។'
       },
       {
@@ -1316,7 +1316,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ផលធៀប',
         text: 'សិស្សប្រុស 20 នាក់ និងស្រី 25 នាក់។ ផលធៀបប្រុសធៀបនឹងស្រីក្នុងទម្រង់សម្រួលគឺ៖',
-        options: ['20:25', '4:5', '5:4', '20:45'],
+        options: [ '20:25', '4:5', '5:4', '20:45' ],
         correctAnswerIndex: 1,
         explanation: '20/25 = 4/5 (ឬ 4:5)។'
       },
@@ -1325,8 +1325,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'សមាមាត្រ',
         text: 'រក n ក្នុងសមាមាត្រ n / 21 = 4 / 7 ៖',
-        options: ['n = 8', 'n = 12', 'n = 14', 'n = 16'],
-        correctAnswerIndex: 1,
+        options: [ 'n = 8', 'n = 14', 'n = 12', 'n = 16' ],
+        correctAnswerIndex: 2,
         explanation: 'n = (21 × 4) / 7 = 12។'
       },
       {
@@ -1334,8 +1334,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មាត្រដ្ឋាន',
         text: 'មាត្រដ្ឋាន 1 : 600 000 ចម្ងាយលើផែនទី 5 cm. ចម្ងាយពិតគឺ៖',
-        options: ['3 km', '30 km', '300 km', '3000 km'],
-        correctAnswerIndex: 1,
+        options: [ '3 km', '3000 km', '300 km', '30 km' ],
+        correctAnswerIndex: 3,
         explanation: '5 × 600 000 cm = 3 000 000 cm = 30 km។'
       },
       {
@@ -1343,8 +1343,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ល្បឿន',
         text: 'ឡានបើក 180 km ក្នុងពេល 3h. ល្បឿនមធ្យមគឺ៖',
-        options: ['50 km/h', '60 km/h', '70 km/h', '540 km/h'],
-        correctAnswerIndex: 1,
+        options: [ '60 km/h', '50 km/h', '70 km/h', '540 km/h' ],
+        correctAnswerIndex: 0,
         explanation: '180 / 3 = 60 km/h។'
       },
       {
@@ -1352,7 +1352,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ល្បឿនរួម',
         text: 'កង់ A (12 km/h) និងម៉ូតូ B (30 km/h) ច្រាសទិសគ្នា។ ចម្ងាយ 84 km. ពេលជួបគ្នាគឺ៖',
-        options: ['1.5h', '2h', '2.5h', '3h'],
+        options: [ '1.5h', '2h', '2.5h', '3h' ],
         correctAnswerIndex: 1,
         explanation: '84 / (12 + 30) = 84 / 42 = 2h។'
       },
@@ -1361,8 +1361,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ចំនួនចម្រុះ',
         text: 'គណនា 6 3/4 + 5 2/4 = ?',
-        options: ['11 5/4', '12 1/4', '11 1/4', '12 3/4'],
-        correctAnswerIndex: 1,
+        options: [ '11 5/4', '11 1/4', '12 1/4', '12 3/4' ],
+        correctAnswerIndex: 2,
         explanation: '11 + 5/4 = 12 1/4។'
       },
       {
@@ -1370,8 +1370,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ភាគរយ',
         text: 'ទំនិញ 20 000 រៀល បញ្ចុះ 20%។ តើតម្លៃនៅសល់ប៉ុន្មានរៀល?',
-        options: ['4000 រៀល', '16 000 រៀល', '18 000 រៀល', '15 000 រៀល'],
-        correctAnswerIndex: 1,
+        options: [ '4000 រៀល', '15 000 រៀល', '18 000 រៀល', '16 000 រៀល' ],
+        correctAnswerIndex: 3,
         explanation: '20 000 - 4000 = 16 000 រៀល។'
       },
       {
@@ -1379,8 +1379,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ភាគរយ',
         text: 'បំប្លែង 2/5 ទៅជាភាគរយ (%) ៖',
-        options: ['20%', '40%', '50%', '25%'],
-        correctAnswerIndex: 1,
+        options: [ '40%', '20%', '50%', '25%' ],
+        correctAnswerIndex: 0,
         explanation: '(2/5) × 100% = 40%។'
       },
       {
@@ -1388,7 +1388,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ការប្រាក់',
         text: 'ផ្ញើ 800 000 រៀល រយៈពេល 1 ឆ្នាំ អត្រា 12%/ឆ្នាំ។ ការប្រាក់ទទួលបានគឺ៖',
-        options: ['80 000 រៀល', '96 000 រៀល', '120 000 រៀល', '896 000 រៀល'],
+        options: [ '80 000 រៀល', '96 000 រៀល', '120 000 រៀល', '896 000 រៀល' ],
         correctAnswerIndex: 1,
         explanation: '800 000 × 12% = 96 000 រៀល។'
       },
@@ -1397,8 +1397,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ស្ថិតិ',
         text: 'ក្នុងក្រាហ្វផ្លិត 20% ត្រូវនឹងមុំប៉ុន្មានដឺក្រេ?',
-        options: ['45°', '72°', '90°', '126°'],
-        correctAnswerIndex: 1,
+        options: [ '45°', '90°', '72°', '126°' ],
+        correctAnswerIndex: 2,
         explanation: '0.20 × 360° = 72°។'
       },
       {
@@ -1406,8 +1406,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'រង្វាស់ពេល',
         text: 'គណនា 4h 47mn 32s + 3h 50mn 45s = ?',
-        options: ['7h 97mn 77s', '8h 38mn 17s', '8h 37mn 17s', '7h 38mn 17s'],
-        correctAnswerIndex: 1,
+        options: [ '7h 97mn 77s', '7h 38mn 17s', '8h 37mn 17s', '8h 38mn 17s' ],
+        correctAnswerIndex: 3,
         explanation: '8h 38mn 17s។'
       },
       {
@@ -1415,7 +1415,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មាឌសូលីត',
         text: 'ប្រអប់កែង 10cm, 5cm, 4cm. មាឌគឺ៖',
-        options: ['200 cm³', '19 cm³', '100 cm³', '40 cm³'],
+        options: [ '200 cm³', '19 cm³', '100 cm³', '40 cm³' ],
         correctAnswerIndex: 0,
         explanation: '10 × 5 × 4 = 200 cm³។'
       },
@@ -1424,7 +1424,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មាឌសូលីត',
         text: 'ស៊ីឡាំង R = 3cm, h = 5cm. មាឌគឺ (យក π ≈ 3.14) ៖',
-        options: ['47.1 cm³', '141.3 cm³', '94.2 cm³', '282.6 cm³'],
+        options: [ '47.1 cm³', '141.3 cm³', '94.2 cm³', '282.6 cm³' ],
         correctAnswerIndex: 1,
         explanation: '3.14 × 9 × 5 = 141.3 cm³។'
       },
@@ -1433,8 +1433,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ឯកតាផ្ទៃដី',
         text: '2.5 ha (ហិចតា) ស្មើនឹងប៉ុន្មានអា (a)?',
-        options: ['25 a', '250 a', '2500 a', '25000 a'],
-        correctAnswerIndex: 1,
+        options: [ '25 a', '2500 a', '250 a', '25000 a' ],
+        correctAnswerIndex: 2,
         explanation: '2.5 × 100 = 250 a។'
       },
       {
@@ -1442,8 +1442,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ឯកតាមាឌ',
         text: '1 m³ ស្មើនឹងប៉ុន្មានលីត្រ (l)?',
-        options: ['100 l', '1000 l', '10 000 l', '10 l'],
-        correctAnswerIndex: 1,
+        options: [ '100 l', '10 l', '10 000 l', '1000 l' ],
+        correctAnswerIndex: 3,
         explanation: '1 m³ = 1000 dm³ = 1000 l។'
       },
       {
@@ -1451,8 +1451,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ប្រភាគ',
         text: 'ខ្សែ (4/5)m កាត់ជាកំណាត់ៗប្រវែង (1/10)m. បានប៉ុន្មានកំណាត់?',
-        options: ['4 កំណាត់', '8 កំណាត់', '5 កំណាត់', '10 កំណាត់'],
-        correctAnswerIndex: 1,
+        options: [ '8 កំណាត់', '4 កំណាត់', '5 កំណាត់', '10 កំណាត់' ],
+        correctAnswerIndex: 0,
         explanation: '(4/5) ÷ (1/10) = 8 កំណាត់។'
       },
       {
@@ -1460,7 +1460,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ល្បឿន',
         text: 'ម៉ូតូជិះ 90 km ល្បឿន 36 km/h. ចំណាយពេល៖',
-        options: ['2 ម៉ោង', '2 ម៉ោង 30 នាទី', '3 ម៉ោង', '1 ម៉ោង 45 នាទី'],
+        options: [ '2 ម៉ោង', '2 ម៉ោង 30 នាទី', '3 ម៉ោង', '1 ម៉ោង 45 នាទី' ],
         correctAnswerIndex: 1,
         explanation: '90 / 36 = 2.5 ម៉ោង = 2 ម៉ោង 30 នាទី។'
       }
@@ -1484,7 +1484,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ចំនួន',
         text: 'ក្នុងចំនួន 3 024 103 តើលេខ 2 មានតម្លៃតាមខ្ទង់ស្មើប៉ុន្មាន?',
-        options: ['200', '2000', '20 000', '200 000'],
+        options: [ '200', '2000', '20 000', '200 000' ],
         correctAnswerIndex: 2,
         explanation: 'លេខ 2 នៅខ្ទង់ដប់ពាន់ ➔ មានតម្លៃ 20 000។'
       },
@@ -1493,8 +1493,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ចំនួនទសភាគ',
         text: 'បង្គត់ 15.385 ត្រឹមខ្ទង់ភាគដប់ (១ខ្ទង់ទសភាគ) ៖',
-        options: ['15.3', '15.4', '15.38', '15.0'],
-        correctAnswerIndex: 1,
+        options: [ '15.3', '15.0', '15.38', '15.4' ],
+        correctAnswerIndex: 3,
         explanation: '15.4។'
       },
       {
@@ -1502,7 +1502,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'វិធីបូកដកទសភាគ',
         text: 'ម្ដាយមានប្រេងឆា 5 លីត្រ ប្រើអស់ 2.245 លីត្រ។ នៅសល់ប្រេងឆាប៉ុន្មានលីត្រ?',
-        options: ['2.755 លីត្រ', '2.855 លីត្រ', '3.755 លីត្រ', '2.255 លីត្រ'],
+        options: [ '2.755 លីត្រ', '2.855 លីត្រ', '3.755 លីត្រ', '2.255 លីត្រ' ],
         correctAnswerIndex: 0,
         explanation: '5.000 - 2.245 = 2.755 លីត្រ។'
       },
@@ -1511,7 +1511,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'កន្លះបន្ទាត់ពុះមុំ',
         text: 'មុំរាប 180° បើគូសកន្លះបន្ទាត់ពុះមុំរាបនោះ ទទួលបានពីរមុំស្មើនឹង៖',
-        options: ['45°', '90°', '60°', '120°'],
+        options: [ '45°', '90°', '60°', '120°' ],
         correctAnswerIndex: 1,
         explanation: '180° / 2 = 90° (មុំកែង)។'
       },
@@ -1520,8 +1520,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'សមីការ',
         text: 'ដោះស្រាយ n - 3 = 5 ៖',
-        options: ['n = 2', 'n = 8', 'n = 15', 'n = 5/3'],
-        correctAnswerIndex: 1,
+        options: [ 'n = 2', 'n = 15', 'n = 8', 'n = 5/3' ],
+        correctAnswerIndex: 2,
         explanation: 'n = 5 + 3 = 8។'
       },
       {
@@ -1529,8 +1529,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'បរិមាត្រ',
         text: 'កង់រទេះអង្កត់ផ្ចិត 50 cm. បើវិល 10 ជុំ បានចម្ងាយ៖',
-        options: ['157 cm', '1570 cm', '3140 cm', '500 cm'],
-        correctAnswerIndex: 1,
+        options: [ '157 cm', '500 cm', '3140 cm', '1570 cm' ],
+        correctAnswerIndex: 3,
         explanation: '50 × 3.14 × 10 = 1570 cm។'
       },
       {
@@ -1538,8 +1538,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ផ្ទៃក្រឡា',
         text: 'ដីស្រែចតុlettersកែងកែង បណ្តោយ 40m ទទឹង 25m. ផ្ទៃក្រឡាគឺ៖',
-        options: ['130 m²', '1000 m²', '65 m²', '500 m²'],
-        correctAnswerIndex: 1,
+        options: [ '1000 m²', '130 m²', '65 m²', '500 m²' ],
+        correctAnswerIndex: 0,
         explanation: '40 × 25 = 1000 m²។'
       },
       {
@@ -1547,8 +1547,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ផ្ទៃក្រឡា',
         text: 'រង្វង់កាំ R = 10 cm (យក π ≈ 3.14) ផ្ទៃក្រឡាគឺ៖',
-        options: ['31.4 cm²', '62.8 cm²', '314 cm²', '100 cm²'],
-        correctAnswerIndex: 2,
+        options: [ '31.4 cm²', '314 cm²', '62.8 cm²', '100 cm²' ],
+        correctAnswerIndex: 1,
         explanation: '3.14 × 10² = 314 cm²។'
       },
       {
@@ -1556,7 +1556,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'វិធីគុណចែកទសភាគ',
         text: 'ផ្ទះល្វែង 8.25m × 3.8m. ផ្ទៃក្រឡាគឺ៖',
-        options: ['31.35 m²', '31.350 m²', '31.35 m² ឬ 31.350 m²', '32.15 m²'],
+        options: [ '31.35 m²', '31.350 m²', '31.35 m² ឬ 31.350 m²', '32.15 m²' ],
         correctAnswerIndex: 2,
         explanation: '8.25 × 3.8 = 31.35 m²។'
       },
@@ -1565,8 +1565,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ត.ច.រ និង ព.គុ.ត',
         text: 'កម្មករ 48 នាក់ និងនារី 72 នាក់ បែងចែកជាក្រុមស្មើៗគ្នាបានច្រើនបំផុត៖',
-        options: ['12 ក្រុម', '24 ក្រុម', '6 ក្រុម', '36 ក្រុម'],
-        correctAnswerIndex: 1,
+        options: [ '12 ក្រុម', '36 ក្រុម', '6 ក្រុម', '24 ក្រុម' ],
+        correctAnswerIndex: 3,
         explanation: 'ត.ច.រ(48, 72) = 24 ក្រុម។'
       },
       {
@@ -1574,8 +1574,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ត.ច.រ និង ព.គុ.ត',
         text: 'តើចំនួនណាជា «ចំនួនបឋម» ?',
-        options: ['9', '15', '17', '21'],
-        correctAnswerIndex: 2,
+        options: [ '17', '15', '9', '21' ],
+        correctAnswerIndex: 0,
         explanation: '17 ជាចំនួនបឋម។'
       },
       {
@@ -1583,7 +1583,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'វិធីបូកដកប្រភាគ',
         text: 'គណនា 5/6 - 1/4 = ?',
-        options: ['4/2', '7/12', '4/12', '1/2'],
+        options: [ '4/2', '7/12', '4/12', '1/2' ],
         correctAnswerIndex: 1,
         explanation: '10/12 - 3/12 = 7/12។'
       },
@@ -1592,8 +1592,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'វិធីគុណចែកប្រភាគ',
         text: 'គណនា (2/3) × (2/5) = ?',
-        options: ['4/15', '4/8', '2/15', '10/6'],
-        correctAnswerIndex: 0,
+        options: [ '2/15', '4/8', '4/15', '10/6' ],
+        correctAnswerIndex: 2,
         explanation: '4/15។'
       },
       {
@@ -1601,8 +1601,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ផលធៀប',
         text: 'ប្រជាជន 6000 នាក់ រស់លើដី 120 km²។ ដង់ស៊ីតេប្រជាជនគឺ៖',
-        options: ['50 នាក់/km²', '500 នាក់/km²', '20 នាក់/km²', '720 នាក់/km²'],
-        correctAnswerIndex: 0,
+        options: [ '720 នាក់/km²', '500 នាក់/km²', '20 នាក់/km²', '50 នាក់/km²' ],
+        correctAnswerIndex: 3,
         explanation: '6000 / 120 = 50 នាក់/km²។'
       },
       {
@@ -1610,8 +1610,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'សមាមាត្រ',
         text: 'បោះបាល់ 7 ដង ចូល 4 ដង។ បើបោះ 21 ដង ចូលទីបាន៖',
-        options: ['8 ដង', '12 ដង', '16 ដង', '10 ដង'],
-        correctAnswerIndex: 1,
+        options: [ '12 ដង', '8 ដង', '16 ដង', '10 ដង' ],
+        correctAnswerIndex: 0,
         explanation: '(21 × 4) / 7 = 12 ដង។'
       },
       {
@@ -1619,8 +1619,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'សមាមាត្រ',
         text: 'កម្មករ 4 នាក់ ធ្វើការ 12 ថ្ងៃ។ បើប្រើ 6 នាក់ ចំណាយពេល៖',
-        options: ['8 ថ្ងៃ', '9 ថ្ងៃ', '18 ថ្ងៃ', '6 ថ្ងៃ'],
-        correctAnswerIndex: 0,
+        options: [ '9 ថ្ងៃ', '8 ថ្ងៃ', '18 ថ្ងៃ', '6 ថ្ងៃ' ],
+        correctAnswerIndex: 1,
         explanation: '4 × 12 / 6 = 8 ថ្ងៃ។'
       },
       {
@@ -1628,8 +1628,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ល្បឿន',
         text: 'ឡានបើក 60 km/h រយៈពេល 2.5 ម៉ោង។ ចម្ងាយចរគឺ៖',
-        options: ['120 km', '150 km', '180 km', '140 km'],
-        correctAnswerIndex: 1,
+        options: [ '120 km', '180 km', '150 km', '140 km' ],
+        correctAnswerIndex: 2,
         explanation: '60 × 2.5 = 150 km។'
       },
       {
@@ -1637,8 +1637,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ល្បឿនដេញទាន់',
         text: 'ឡានល្បឿន 66 km/h ដេញតាមម៉ូតូ (30 km/h) ដែលចេញមុន 3h. ពេលដេញទាន់គឺ៖',
-        options: ['2 ម៉ោង', '2 ម៉ោង 30 នាទី', '3 ម៉ោង', '1 ម៉ោង 30 នាទី'],
-        correctAnswerIndex: 1,
+        options: [ '2 ម៉ោង', '1 ម៉ោង 30 នាទី', '3 ម៉ោង', '2 ម៉ោង 30 នាទី' ],
+        correctAnswerIndex: 3,
         explanation: '90 / (66 - 30) = 90 / 36 = 2.5h (2h 30mn)។'
       },
       {
@@ -1646,8 +1646,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ចំនួនចម្រុះ',
         text: 'គណនា 30 3/4 - 24 1/4 = ?',
-        options: ['6 2/4', '6 1/2', '6 2/4 ឬ 6 1/2', '5 1/2'],
-        correctAnswerIndex: 2,
+        options: [ '6 2/4 ឬ 6 1/2', '6 1/2', '6 2/4', '5 1/2' ],
+        correctAnswerIndex: 0,
         explanation: '6 2/4 = 6 1/2 m។'
       },
       {
@@ -1655,7 +1655,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ភាគរយ',
         text: 'ទូរស័ព្ទដើម 25$ លក់ 18$. ភាគរយបញ្ចុះគឺ៖',
-        options: ['20%', '28%', '25%', '30%'],
+        options: [ '20%', '28%', '25%', '30%' ],
         correctAnswerIndex: 1,
         explanation: '(7 / 25) × 100% = 28%។'
       },
@@ -1664,8 +1664,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ភាគរយ',
         text: 'គណនា 75% នៃប្រាក់ 9500 រៀល ៖',
-        options: ['7125 រៀល', '7500 រៀល', '6800 រៀល', '8000 រៀល'],
-        correctAnswerIndex: 0,
+        options: [ '6800 រៀល', '7500 រៀល', '7125 រៀល', '8000 រៀល' ],
+        correctAnswerIndex: 2,
         explanation: '9500 × 0.75 = 7125 រៀល។'
       },
       {
@@ -1673,8 +1673,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ការប្រាក់',
         text: 'ទូរទស្សន៍ថ្លៃ 500$ បង់រំលោះ 50$/ខែ រយៈពេល 12 ខែ។ ប្រាក់បង់បន្ថែមគឺ៖',
-        options: ['100$', '600$', '50$', '200$'],
-        correctAnswerIndex: 0,
+        options: [ '200$', '600$', '50$', '100$' ],
+        correctAnswerIndex: 3,
         explanation: '600 - 500 = 100$។'
       },
       {
@@ -1682,8 +1682,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ស្ថិតិ',
         text: 'ក្នុងរង្វង់ផ្លិត 360° មុំ 90° ត្រូវនឹងភាគរយប៉ុន្មាន?',
-        options: ['15%', '25%', '50%', '33.3%'],
-        correctAnswerIndex: 1,
+        options: [ '25%', '15%', '50%', '33.3%' ],
+        correctAnswerIndex: 0,
         explanation: '90/360 = 25%។'
       },
       {
@@ -1691,8 +1691,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'រង្វាស់ពេល',
         text: 'គណនា 12h 10mn 5s - 9h 45mn 30s = ?',
-        options: ['2h 24mn 35s', '2h 25mn 35s', '3h 25mn 35s', '2h 35mn 25s'],
-        correctAnswerIndex: 0,
+        options: [ '2h 25mn 35s', '2h 24mn 35s', '3h 25mn 35s', '2h 35mn 25s' ],
+        correctAnswerIndex: 1,
         explanation: '2h 24mn 35s។'
       },
       {
@@ -1700,8 +1700,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'រង្វាស់ពេល',
         text: 'កាត់ខោ 1 ប្រើពេល 5mn 25s. បើកាត់ 12 ប្រើពេលសរុប៖',
-        options: ['60mn 300s', '1h 5mn', '1h 0mn', '1h 10mn'],
-        correctAnswerIndex: 1,
+        options: [ '60mn 300s', '1h 0mn', '1h 5mn', '1h 10mn' ],
+        correctAnswerIndex: 2,
         explanation: '60mn + 5mn = 65mn = 1h 5mn។'
       },
       {
@@ -1709,8 +1709,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មាឌសូលីត',
         text: 'គូបមួយមានជ្រុង 3cm. មាឌគឺ៖',
-        options: ['9 cm³', '27 cm³', '18 cm³', '36 cm³'],
-        correctAnswerIndex: 1,
+        options: [ '9 cm³', '36 cm³', '18 cm³', '27 cm³' ],
+        correctAnswerIndex: 3,
         explanation: '3 × 3 × 3 = 27 cm³។'
       },
       {
@@ -1718,7 +1718,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មាឌសូលីត',
         text: 'កោន R = 3cm, h = 6cm. មាឌគឺ (យក π ≈ 3.14) ៖',
-        options: ['56.52 cm³', '169.56 cm³', '28.26 cm³', '113.04 cm³'],
+        options: [ '56.52 cm³', '169.56 cm³', '28.26 cm³', '113.04 cm³' ],
         correctAnswerIndex: 0,
         explanation: '(1/3) × 3.14 × 9 × 6 = 56.52 cm³។'
       },
@@ -1727,8 +1727,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មាឌសូលីត',
         text: 'ស្វ៊ែរ R = 2cm (យក π ≈ 3.14) មាឌគឺ៖',
-        options: ['33.49 cm³', '16.74 cm³', '25.12 cm³', '50.24 cm³'],
-        correctAnswerIndex: 0,
+        options: [ '16.74 cm³', '33.49 cm³', '25.12 cm³', '50.24 cm³' ],
+        correctAnswerIndex: 1,
         explanation: '(4/3) × 3.14 × 8 = 33.49 cm³។'
       },
       {
@@ -1736,7 +1736,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'ចំនួនចម្រុះ',
         text: 'គណនា 4 5/8 × 2 2/3 = ?',
-        options: ['37/3', '12 1/3', '37/3 ឬ 12 1/3', '10 1/2'],
+        options: [ '37/3', '12 1/3', '37/3 ឬ 12 1/3', '10 1/2' ],
         correctAnswerIndex: 2,
         explanation: '37/3 = 12 1/3 km។'
       },
@@ -1745,8 +1745,8 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'សមាមាត្រ',
         text: 'មាត្រដ្ឋាន 1 : 600 000. ចម្ងាយពិត 30 km ត្រូវនឹងប្រវែងលើផែនទី៖',
-        options: ['3 cm', '5 cm', '6 cm', '10 cm'],
-        correctAnswerIndex: 1,
+        options: [ '3 cm', '10 cm', '6 cm', '5 cm' ],
+        correctAnswerIndex: 3,
         explanation: '3 000 000 / 600 000 = 5 cm។'
       }
     ]
