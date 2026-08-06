@@ -1,0 +1,10 @@
+[package]
+name = "grade6-exam-prep"
+version = "0.1.0"
+description = "Grade 6 Exam Preparation Web App"
+
+[dependencies]
+"wasmer/static-website" = "^0.3"
+
+[fs]
+public = "dist"
