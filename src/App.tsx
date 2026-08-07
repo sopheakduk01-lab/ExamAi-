@@ -19,6 +19,7 @@ import { GlobalSearchModal } from './components/GlobalSearchModal';
 import { EnglishGameModal } from './components/EnglishGameModal';
 import { AIBattleModal } from './components/AIBattleModal';
 import { FishingGameModal } from './components/FishingGameModal';
+import { AboutModal } from './components/AboutModal';
 import {
   migrateLegacyDataIfNeeded,
   syncStudentState,
@@ -47,6 +48,7 @@ export default function App() {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isEnglishGameOpen, setIsEnglishGameOpen] = useState(false);
   const [isFishingGameOpen, setIsFishingGameOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [fishingInitialSubject, setFishingInitialSubject] = useState<SubjectId>('math');
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(3);
 
@@ -420,6 +422,7 @@ export default function App() {
         onOpenNotifications={() => setIsNotificationsOpen(true)}
         onOpenEnglishGame={() => setIsEnglishGameOpen(true)}
         onOpenFishingGame={() => setIsFishingGameOpen(true)}
+        onOpenAbout={() => setIsAboutOpen(true)}
         unreadNotificationsCount={unreadNotificationsCount}
         onHomeClick={() => {
           setSelectedSubjectId(null);
@@ -523,6 +526,11 @@ export default function App() {
         isOpen={isFishingGameOpen}
         onClose={() => setIsFishingGameOpen(false)}
         initialSubjectId={fishingInitialSubject}
+      />
+
+      <AboutModal
+        isOpen={isAboutOpen}
+        onClose={() => setIsAboutOpen(false)}
       />
     </div>
   );

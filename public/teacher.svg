@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe" />
+      <stop offset="100%" stop-color="#bae6fd" />
+    </linearGradient>
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="tieGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#1e40af" />
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8d7be" />
+      <stop offset="100%" stop-color="#e2b49a" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="url(#bgGrad)" />
+
+  <!-- Body / Suit -->
+  <!-- White shirt collar -->
+  <polygon points="150,330 200,420 250,330 230,290 170,290" fill="#ffffff" />
+  <polygon points="170,290 200,340 150,330" fill="#f1f5f9" />
+  <polygon points="230,290 200,340 250,330" fill="#e2e8f0" />
+
+  <!-- Blue Tie -->
+  <polygon points="193,310 207,310 213,420 200,450 187,420" fill="url(#tieGrad)" />
+  <polygon points="190,300 210,300 206,315 194,315" fill="#1e3a8a" />
+
+  <!-- Black Suit Shoulders & Jacket -->
+  <path d="M 50,500 L 100,380 C 130,340 160,330 170,330 L 190,440 L 200,500 Z" fill="url(#suitGrad)" />
+  <path d="M 350,500 L 300,380 C 270,340 240,330 230,330 L 210,440 L 200,500 Z" fill="url(#suitGrad)" />
+  <!-- Suit Lapels -->
+  <polygon points="110,370 170,330 185,420 140,430" fill="#0f172a" />
+  <polygon points="290,370 230,330 215,420 260,430" fill="#0f172a" />
+
+  <!-- Neck -->
+  <rect x="175" y="250" width="50" height="55" rx="5" fill="url(#skinGrad)" />
+  <!-- Neck shadow under chin -->
+  <path d="M 175,250 C 190,265 210,265 225,250 L 225,270 C 200,285 200,285 175,270 Z" fill="#d49b7e" opacity="0.6" />
+
+  <!-- Head / Face -->
+  <path d="M 130,150 C 130,80 270,80 270,150 C 270,230 245,275 200,275 C 155,275 130,230 130,150 Z" fill="url(#skinGrad)" />
+
+  <!-- Ears -->
+  <ellipse cx="127" cy="175" rx="12" ry="20" fill="url(#skinGrad)" />
+  <ellipse cx="273" cy="175" rx="12" ry="20" fill="url(#skinGrad)" />
+
+  <!-- Eyes -->
+  <ellipse cx="168" cy="165" rx="12" ry="8" fill="#ffffff" />
+  <ellipse cx="232" cy="165" rx="12" ry="8" fill="#ffffff" />
+  <circle cx="168" cy="165" r="5" fill="#292524" />
+  <circle cx="232" cy="165" r="5" fill="#292524" />
+  <circle cx="170" cy="163" r="1.5" fill="#ffffff" />
+  <circle cx="234" cy="163" r="1.5" fill="#ffffff" />
+
+  <!-- Eyebrows -->
+  <path d="M 150,148 Q 168,142 182,148" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" fill="none" />
+  <path d="M 250,148 Q 232,142 218,148" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" fill="none" />
+
+  <!-- Nose -->
+  <path d="M 200,160 L 204,195 L 194,198 C 197,202 203,202 206,198" stroke="#c48b6e" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Mustache -->
+  <path d="M 180,215 Q 200,208 220,215 Q 200,222 180,215 Z" fill="#292524" opacity="0.85" />
+
+  <!-- Mouth / Smile -->
+  <path d="M 178,226 Q 200,240 222,226" stroke="#b91c1c" stroke-width="3.5" fill="none" stroke-linecap="round" />
+
+  <!-- Hair (Black stylish hair cut) -->
+  <path d="M 122,150 C 115,100 150,45 200,45 C 250,45 285,100 278,150 C 270,120 250,70 200,70 C 150,70 130,120 122,150 Z" fill="#1c1917" />
+  <path d="M 125,130 C 140,80 180,60 210,85 C 240,60 270,80 275,120 C 260,85 220,70 200,80 C 180,70 140,85 125,130 Z" fill="#292524" />
+  <!-- Hair Fringe / Bangs -->
+  <path d="M 125,125 Q 160,110 185,135 Q 200,105 235,130 Q 260,110 275,130 Q 250,85 200,85 Q 150,85 125,125 Z" fill="#0c0a09" />
+</svg>
