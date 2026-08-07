@@ -138,8 +138,25 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
     }
   };
 
+  const isNewExamPaper =
+    exam.id === 'new_grade6_full_exam' ||
+    exam.id.startsWith('new_') ||
+    exam.title.includes('វិញ្ញាសាតេស្តថ្មី');
+  const isInstantFeedbackAllowed = !isNewExamPaper;
+
   const handleSelectOption = (optionIndex: number) => {
     if (isCompleted) return;
+
+    if (isInstantFeedbackAllowed) {
+      if (selectedAnswers[currentQuestion.id] !== undefined) return;
+
+      const isCorrect = optionIndex === currentQuestion.correctAnswerIndex;
+      playAnswerFeedback(isCorrect);
+      setShowExplanation((prev) => ({
+        ...prev,
+        [currentQuestion.id]: true
+      }));
+    }
 
     setSelectedAnswers((prev) => ({
       ...prev,
@@ -804,36 +821,47 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
             <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs sm:text-sm text-rose-950 font-semibold flex items-center justify-between flex-wrap gap-2">
               <span className="flex items-center gap-1.5">
                 <Calculator className="w-4 h-4 text-rose-700" />
-                <span>សូមជ្រើសរើសចម្លើយត្រឹមត្រូវចំនួន ៦ ក្នុងចំណោម ១៥ ជម្រើសខាងក្រោម (ចម្លើយនីមួយៗស្មើៗគ្នា)</span>
-              </span>
-              <span className="px-2.5 py-1 rounded-full bg-rose-600 text-white font-mono font-bold text-xs shadow-2xs">
-                បានជ្រើសរើស៖ {(multiSelections[currentQuestion.id] || []).length} / ៦
+                <span>សូមជ្រើសរើសចម្លើយត្រឹមត្រូវទាំងអស់ខាងក្រោម៖</span>
               </span>
             </div>
-
-            <div className="grid grid-cols-1 gap-2.5">
-              {currentQuestion.options.map((optionText, oIdx) => {
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {currentQuestion.options.map((option, idx) => {
                 const selectedList = multiSelections[currentQuestion.id] || [];
-                const isChecked = selectedList.includes(oIdx);
+                const isSelected = selectedList.includes(idx);
+                const isCorrectOption = currentQuestion.correctAnswersIndices?.includes(idx);
+
+                let optionStyle = "border-slate-200 bg-white hover:border-amber-400 hover:bg-amber-50/30 text-slate-800";
+
+                if (isCompleted) {
+                  if (isSelected) {
+                    optionStyle = isCorrectOption
+                      ? "border-emerald-500 bg-emerald-50 text-emerald-950 font-bold ring-2 ring-emerald-500/30"
+                      : "border-rose-500 bg-rose-50 text-rose-950 font-bold ring-2 ring-rose-500/30";
+                  } else if (isCorrectOption) {
+                    optionStyle = "border-emerald-400 bg-emerald-50/70 text-emerald-900 font-bold";
+                  } else {
+                    optionStyle = "border-slate-100 bg-slate-50/50 text-slate-400 opacity-60";
+                  }
+                } else if (isSelected) {
+                  optionStyle = "border-amber-500 bg-amber-50 text-amber-950 font-bold ring-2 ring-amber-500/30";
+                }
 
                 return (
-                  <div
-                    key={oIdx}
-                    onClick={() => handleToggleMultiSelect(currentQuestion.id, oIdx)}
-                    className={`p-3.5 rounded-xl border-2 transition-all cursor-pointer flex items-start gap-3 text-xs sm:text-sm font-medium ${
-                      isChecked
-                        ? 'border-rose-500 bg-rose-50/80 text-rose-950 shadow-2xs font-semibold'
-                        : 'border-slate-200 bg-white hover:border-rose-300 hover:bg-rose-50/30 text-slate-800'
-                    }`}
+                  <button
+                    key={idx}
+                    onClick={() => handleToggleMultiSelect(currentQuestion.id, idx)}
+                    disabled={isCompleted}
+                    className={`p-3.5 rounded-xl border-2 text-left transition-all flex items-center justify-between gap-2 text-xs sm:text-sm cursor-pointer ${optionStyle}`}
                   >
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={() => {}}
-                      className="w-4 h-4 rounded text-rose-600 focus:ring-rose-500 mt-0.5 cursor-pointer accent-rose-600 shrink-0"
-                    />
-                    <span className="leading-relaxed">{optionText}</span>
-                  </div>
+                    <span>
+                      <MathFormattedText text={option} />
+                    </span>
+                    {isSelected && (
+                      <span className="w-4 h-4 rounded bg-amber-600 text-white font-bold text-[10px] flex items-center justify-center shrink-0">
+                        ✓
+                      </span>
+                    )}
+                  </button>
                 );
               })}
             </div>
@@ -853,9 +881,24 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
               }
 
               const isSelected = selectedAnswers[currentQuestion.id] === idx;
+              const isAnswered = selectedAnswers[currentQuestion.id] !== undefined;
+              const isCorrectOption = idx === currentQuestion.correctAnswerIndex;
+
+              const showResults = isInstantFeedbackAllowed ? isAnswered : isCompleted;
 
               let optionStyle = 'border-slate-200 bg-white hover:border-amber-400 hover:bg-amber-50/30 text-slate-800';
-              if (isSelected) {
+
+              if (showResults) {
+                if (isSelected) {
+                  optionStyle = isCorrectOption
+                    ? 'border-emerald-500 bg-emerald-50 text-emerald-950 font-bold ring-2 ring-emerald-500/30'
+                    : 'border-rose-500 bg-rose-50 text-rose-950 font-bold ring-2 ring-rose-500/30';
+                } else if (isCorrectOption) {
+                  optionStyle = 'border-emerald-400 bg-emerald-50/70 text-emerald-900 font-bold';
+                } else {
+                  optionStyle = 'border-slate-100 bg-slate-50/50 text-slate-400 opacity-60';
+                }
+              } else if (isSelected) {
                 optionStyle = 'border-amber-500 bg-amber-50 text-amber-950 font-bold ring-2 ring-amber-500/30';
               }
 
@@ -865,10 +908,27 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
                 <button
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
-                  className={`w-full text-left p-4 rounded-xl border-2 transition-all cursor-pointer flex items-center justify-between gap-3 text-sm sm:text-base font-medium ${optionStyle}`}
+                  disabled={showResults}
+                  className={`w-full text-left p-4 rounded-xl border-2 transition-all flex items-center justify-between gap-3 text-sm sm:text-base font-medium ${
+                    showResults ? 'cursor-default' : 'cursor-pointer'
+                  } ${optionStyle}`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${isSelected ? 'bg-amber-600 text-white' : 'bg-slate-100 text-slate-700'}`}>
+                    <span
+                      className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
+                        showResults
+                          ? isSelected
+                            ? isCorrectOption
+                              ? 'bg-emerald-600 text-white'
+                              : 'bg-rose-600 text-white'
+                            : isCorrectOption
+                            ? 'bg-emerald-500 text-white'
+                            : 'bg-slate-100 text-slate-700'
+                          : isSelected
+                          ? 'bg-amber-600 text-white'
+                          : 'bg-slate-100 text-slate-700'
+                      }`}
+                    >
                       {labels[idx] || idx + 1}
                     </span>
                     <span>
@@ -876,9 +936,19 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
                     </span>
                   </div>
 
-                  {isSelected && (
+                  {showResults ? (
+                    isSelected ? (
+                      isCorrectOption ? (
+                        <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                      ) : (
+                        <XCircle className="w-5 h-5 text-rose-600 shrink-0" />
+                      )
+                    ) : isCorrectOption ? (
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 opacity-80" />
+                    ) : null
+                  ) : isSelected ? (
                     <span className="w-3 h-3 rounded-full bg-amber-600 shrink-0" />
-                  )}
+                  ) : null}
                 </button>
               );
             })}
@@ -886,7 +956,7 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
         )}
 
         {/* Explanation Card with Math Formatting */}
-        {isCompleted && showExplanation[currentQuestion.id] && (
+        {(isCompleted || (isInstantFeedbackAllowed && showExplanation[currentQuestion.id])) && (
           <div className="p-4 rounded-xl bg-amber-50 border border-amber-200/80 text-amber-950 text-xs sm:text-sm leading-relaxed animate-fade-in">
             <div className="flex items-center gap-1.5 font-bold text-amber-900 mb-1">
               <Sparkles className="w-4 h-4 text-amber-600" />
