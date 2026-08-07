@@ -1,0 +1,38 @@
+{
+  "short_name": "ត្រៀមប្រឡងទី៦",
+  "name": "ត្រៀមប្រឡងថ្នាក់ទី៦ - កម្មវិធីសិក្សា និងវិញ្ញាសាប្រឡង",
+  "description": "កម្មវិធីត្រៀមប្រឡងស្វ័យសិក្សា និងប្រឡងសមត្ថភាពសម្រាប់សិស្សថ្នាក់ទី៦",
+  "icons": [
+    {
+      "src": "/app-icon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    },
+    {
+      "src": "/app-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FAF8F5",
+  "theme_color": "#d97706",
+  "display": "standalone",
+  "orientation": "portrait",
+  "categories": ["education", "books", "utilities"],
+  "lang": "km"
+}

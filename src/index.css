@@ -2,20 +2,24 @@
 
 @layer base {
   body {
-    font-family: 'Kantumruuy Pro', system-ui, -apple-system, sans-serif;
+    font-family: 'Siemreap', 'Khmer OS Siemreap', 'Kantumruuy Pro', system-ui, -apple-system, sans-serif;
   }
 }
 
+.font-siemreap {
+  font-family: 'Siemreap', 'Khmer OS Siemreap', 'Kantumruuy Pro', sans-serif;
+}
+
 .font-moul {
-  font-family: 'Moul', 'Kantumruuy Pro', serif;
+  font-family: 'Moul', 'Siemreap', 'Khmer OS Siemreap', serif;
 }
 
 .font-preahvihear {
-  font-family: 'Preahvihear', 'Kantumruuy Pro', sans-serif;
+  font-family: 'Preahvihear', 'Siemreap', 'Khmer OS Siemreap', sans-serif;
 }
 
 .font-kantumruuy {
-  font-family: 'Kantumruuy Pro', sans-serif;
+  font-family: 'Kantumruuy Pro', 'Siemreap', 'Khmer OS Siemreap', sans-serif;
 }
 
 /* Custom scrollbars */

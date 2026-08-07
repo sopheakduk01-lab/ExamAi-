@@ -1,7 +1,7 @@
 import React from 'react';
 import { SubjectId, UserProfile } from '../types';
 import { SUBJECTS } from '../data/grade6Data';
-import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3, Bell } from 'lucide-react';
+import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3, Bell, QrCode, Smartphone } from 'lucide-react';
 
 interface NavigationDrawerProps {
   isOpen: boolean;
@@ -18,6 +18,8 @@ interface NavigationDrawerProps {
   onOpenEnglishGame?: () => void;
   onOpenFishingGame?: () => void;
   onOpenAbout?: () => void;
+  onOpenQRCode?: () => void;
+  onOpenAddToHomeScreen?: () => void;
   unreadNotificationsCount?: number;
   onHomeClick: () => void;
   userProfile?: UserProfile | null;
@@ -39,6 +41,8 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onOpenEnglishGame,
   onOpenFishingGame,
   onOpenAbout,
+  onOpenQRCode,
+  onOpenAddToHomeScreen,
   unreadNotificationsCount = 0,
   onHomeClick,
   userProfile,
@@ -63,13 +67,29 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
             </div>
           </div>
 
-          <button
-            onClick={onClose}
-            className="p-1.5 rounded-lg text-amber-200 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-            id="btn-close-drawer"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-1">
+            {onOpenQRCode && (
+              <button
+                onClick={() => {
+                  onOpenQRCode();
+                  onClose();
+                }}
+                className="p-1.5 rounded-lg text-amber-200 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                title="QR Code ចូលប្រើប្រាស់ App"
+                id="btn-header-qr-drawer"
+              >
+                <QrCode className="w-5 h-5" />
+              </button>
+            )}
+
+            <button
+              onClick={onClose}
+              className="p-1.5 rounded-lg text-amber-200 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              id="btn-close-drawer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Drawer Menu List */}
@@ -310,6 +330,48 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                   <Palette className="w-4 h-4" />
                 </div>
                 <span className="font-semibold">គំនូសសេរី (Art Canvas)</span>
+              </button>
+            )}
+
+            {onOpenAddToHomeScreen && (
+              <button
+                onClick={() => {
+                  onOpenAddToHomeScreen();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg font-medium text-slate-800 hover:bg-amber-100/70 transition-colors flex items-center justify-between text-sm cursor-pointer border border-amber-200/80 bg-amber-50"
+                id="btn-pwa-drawer-item"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-md bg-amber-600 text-white flex items-center justify-center shrink-0 shadow-2xs">
+                    <Smartphone className="w-4 h-4" />
+                  </div>
+                  <span className="font-bold text-amber-950">ដំឡើង App លើទូរស័ព្ទ</span>
+                </div>
+                <span className="text-[10px] bg-amber-600 text-white font-bold px-2 py-0.5 rounded-md shadow-2xs">
+                  + Add Icon
+                </span>
+              </button>
+            )}
+
+            {onOpenQRCode && (
+              <button
+                onClick={() => {
+                  onOpenQRCode();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg font-medium text-slate-800 hover:bg-amber-50 transition-colors flex items-center justify-between text-sm cursor-pointer"
+                id="btn-qr-code-drawer"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+                    <QrCode className="w-4 h-4" />
+                  </div>
+                  <span className="font-semibold">QR Code ចូលប្រើ App</span>
+                </div>
+                <span className="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded-md">
+                  ស្កែនចូល
+                </span>
               </button>
             )}
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, BookOpen, Bookmark, Award, Search, Target, Flame, Sparkles, User, Bell } from 'lucide-react';
+import { Menu, BookOpen, Bookmark, Award, Search, Target, Flame, Sparkles, User, Bell, QrCode, Smartphone } from 'lucide-react';
 import { UserProfile } from '../types';
 
 interface HeaderProps {
@@ -13,6 +13,8 @@ interface HeaderProps {
   onOpenDrawing?: () => void;
   onOpenStudentChat?: () => void;
   onOpenNotifications?: () => void;
+  onOpenQRCode?: () => void;
+  onOpenAddToHomeScreen?: () => void;
   unreadNotificationsCount?: number;
   onHomeClick: () => void;
   userProfile?: UserProfile | null;
@@ -30,6 +32,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenDrawing,
   onOpenStudentChat,
   onOpenNotifications,
+  onOpenQRCode,
+  onOpenAddToHomeScreen,
   unreadNotificationsCount = 0,
   onHomeClick,
   userProfile,
@@ -129,6 +133,31 @@ export const Header: React.FC<HeaderProps> = ({
                   {unreadNotificationsCount}
                 </span>
               )}
+            </button>
+          )}
+
+          {/* Add to Home Screen PWA Button */}
+          {onOpenAddToHomeScreen && (
+            <button
+              onClick={onOpenAddToHomeScreen}
+              className="p-2 rounded-xl bg-amber-800/50 text-amber-200 hover:text-white hover:bg-amber-700/60 transition-colors cursor-pointer active:scale-95 flex items-center gap-1 border border-amber-500/30 shadow-xs"
+              title="បន្ថែម App លើទូរស័ព្ទ (Add to Home Screen)"
+              id="btn-pwa-header"
+            >
+              <Smartphone className="w-4.5 h-4.5 text-amber-300" />
+              <span className="hidden md:inline text-[11px] font-bold">ដំឡើង App</span>
+            </button>
+          )}
+
+          {/* QR Code Button */}
+          {onOpenQRCode && (
+            <button
+              onClick={onOpenQRCode}
+              className="p-2 rounded-xl text-amber-200 hover:text-amber-100 hover:bg-amber-800/40 transition-colors cursor-pointer active:scale-95"
+              title="QR Code ចូល App"
+              id="btn-qr-header"
+            >
+              <QrCode className="w-4.5 h-4.5 text-amber-300" />
             </button>
           )}
 

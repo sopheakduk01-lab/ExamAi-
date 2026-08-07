@@ -144,9 +144,10 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
               <div className="flex items-center gap-3.5">
                 <div className="w-16 h-16 rounded-2xl overflow-hidden border-2 border-sky-300 shadow-md shrink-0 bg-sky-100 relative">
                   <img
-                    src="/teacher.svg"
+                    src="/teacher.png"
                     alt="លោកគ្រូ ឌុក សុភ័ក្រ"
                     className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
                   />
                 </div>
                 <div>

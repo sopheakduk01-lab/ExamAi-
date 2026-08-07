@@ -20,6 +20,8 @@ import { EnglishGameModal } from './components/EnglishGameModal';
 import { AIBattleModal } from './components/AIBattleModal';
 import { FishingGameModal } from './components/FishingGameModal';
 import { AboutModal } from './components/AboutModal';
+import { QRCodeModal } from './components/QRCodeModal';
+import { AddToHomeScreenModal } from './components/AddToHomeScreenModal';
 import {
   migrateLegacyDataIfNeeded,
   syncStudentState,
@@ -49,6 +51,8 @@ export default function App() {
   const [isEnglishGameOpen, setIsEnglishGameOpen] = useState(false);
   const [isFishingGameOpen, setIsFishingGameOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
+  const [isAddToHomeScreenOpen, setIsAddToHomeScreenOpen] = useState(false);
   const [fishingInitialSubject, setFishingInitialSubject] = useState<SubjectId>('math');
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(3);
 
@@ -148,6 +152,8 @@ export default function App() {
         onOpenDrawing={() => setIsDrawingOpen(true)}
         onOpenStudentChat={() => setIsStudentChatOpen(true)}
         onOpenNotifications={() => setIsNotificationsOpen(true)}
+        onOpenQRCode={() => setIsQRCodeOpen(true)}
+        onOpenAddToHomeScreen={() => setIsAddToHomeScreenOpen(true)}
         unreadNotificationsCount={unreadNotificationsCount}
         onHomeClick={() => {
           setSelectedSubjectId(null);
@@ -423,6 +429,8 @@ export default function App() {
         onOpenEnglishGame={() => setIsEnglishGameOpen(true)}
         onOpenFishingGame={() => setIsFishingGameOpen(true)}
         onOpenAbout={() => setIsAboutOpen(true)}
+        onOpenQRCode={() => setIsQRCodeOpen(true)}
+        onOpenAddToHomeScreen={() => setIsAddToHomeScreenOpen(true)}
         unreadNotificationsCount={unreadNotificationsCount}
         onHomeClick={() => {
           setSelectedSubjectId(null);
@@ -531,6 +539,16 @@ export default function App() {
       <AboutModal
         isOpen={isAboutOpen}
         onClose={() => setIsAboutOpen(false)}
+      />
+
+      <QRCodeModal
+        isOpen={isQRCodeOpen}
+        onClose={() => setIsQRCodeOpen(false)}
+      />
+
+      <AddToHomeScreenModal
+        isOpen={isAddToHomeScreenOpen}
+        onClose={() => setIsAddToHomeScreenOpen(false)}
       />
     </div>
   );
