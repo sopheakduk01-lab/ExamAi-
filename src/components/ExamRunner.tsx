@@ -46,6 +46,8 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
+  const [matchingSelections, setMatchingSelections] = useState<Record<string, Record<number, string>>>({});
+  const [multiSelections, setMultiSelections] = useState<Record<string, number[]>>({});
   const [showExplanation, setShowExplanation] = useState<Record<string, boolean>>({});
   const [timeLeftSeconds, setTimeLeftSeconds] = useState(exam.durationMinutes * 60);
   const [isTimerRunning, setIsTimerRunning] = useState(true);
@@ -118,7 +120,6 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
         osc.start(now);
         osc.stop(now + 0.3);
 
-        // Vibrate mobile device when wrong answer
         if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
           try {
             navigator.vibrate([150, 80, 150]);
@@ -133,19 +134,46 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
   };
 
   const handleSelectOption = (optionIndex: number) => {
-    if (isCompleted || selectedAnswers[currentQuestion.id] !== undefined) return;
-
-    const isCorrect = optionIndex === currentQuestion.correctAnswerIndex;
-    playAnswerFeedback(isCorrect);
+    if (isCompleted) return;
 
     setSelectedAnswers((prev) => ({
       ...prev,
       [currentQuestion.id]: optionIndex
     }));
-    setShowExplanation((prev) => ({
-      ...prev,
-      [currentQuestion.id]: true
-    }));
+  };
+
+  // Matching pair handler
+  const handleSelectMatchingPair = (questionId: string, itemId: number, selectedLabel: string) => {
+    if (isCompleted) return;
+    setMatchingSelections((prev) => {
+      const qMatches = prev[questionId] || {};
+      return {
+        ...prev,
+        [questionId]: {
+          ...qMatches,
+          [itemId]: selectedLabel
+        }
+      };
+    });
+  };
+
+  // Multi-select handler
+  const handleToggleMultiSelect = (questionId: string, optionIndex: number) => {
+    if (isCompleted) return;
+    setMultiSelections((prev) => {
+      const currentArr = prev[questionId] || [];
+      if (currentArr.includes(optionIndex)) {
+        return {
+          ...prev,
+          [questionId]: currentArr.filter((i) => i !== optionIndex)
+        };
+      } else {
+        return {
+          ...prev,
+          [questionId]: [...currentArr, optionIndex]
+        };
+      }
+    });
   };
 
   const handleNext = () => {
@@ -162,29 +190,52 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
     }
   };
 
+  // Calculate score with exact weightings
   const calculateScore = () => {
     let score = 0;
     exam.questions.forEach((q) => {
-      if (selectedAnswers[q.id] === q.correctAnswerIndex) {
-        score += 1;
+      if (q.questionType === 'matching_table' && q.matchingData) {
+        const selections = matchingSelections[q.id] || {};
+        let correctPairCount = 0;
+        Object.entries(q.matchingData.correctPairs).forEach(([itemId, correctLabel]) => {
+          if (selections[Number(itemId)] === correctLabel) {
+            correctPairCount += 1;
+          }
+        });
+        // 8 pairs = 1 full score unit
+        score += correctPairCount / 8;
+      } else if (q.questionType === 'multi_select' && q.correctAnswersIndices) {
+        const selections = multiSelections[q.id] || [];
+        let correctCount = 0;
+        selections.forEach((idx) => {
+          if (q.correctAnswersIndices?.includes(idx)) {
+            correctCount += 1;
+          }
+        });
+        // 6 correct choices out of 15, equal weights
+        score += Math.min(1, correctCount / 6);
+      } else {
+        if (selectedAnswers[q.id] === q.correctAnswerIndex) {
+          score += 1;
+        }
       }
     });
-    return score;
+    return Math.min(exam.questions.length, Math.round(score * 100) / 100);
   };
 
   const handleCompleteExam = () => {
     setIsCompleted(true);
     setIsTimerRunning(false);
-    const score = calculateScore();
+    const calculated = calculateScore();
     const total = exam.questions.length;
-    const percentage = Math.round((score / total) * 100);
+    const percentage = Math.min(100, Math.round((calculated / total) * 100));
     const timeSpent = exam.durationMinutes * 60 - timeLeftSeconds;
 
     onFinishExam({
       examId: exam.id,
       examTitle: exam.title,
       subjectId: exam.subjectId,
-      score,
+      score: Math.round(calculated * 10) / 10,
       totalQuestions: total,
       percentage,
       date: new Date().toLocaleDateString('km-KH'),
@@ -218,8 +269,13 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
     }
   };
 
-  const score = calculateScore();
-  const percentage = Math.round((score / exam.questions.length) * 100);
+  const rawScore = calculateScore();
+  const percentage = Math.min(100, Math.round((rawScore / exam.questions.length) * 100));
+
+  // Collect used words in Part 4 fill in the blanks
+  const usedWordsInPart4 = exam.questions
+    .filter((q) => q.questionType === 'fill_blank' && q.id !== currentQuestion.id && selectedAnswers[q.id] !== undefined)
+    .map((q) => q.options[selectedAnswers[q.id]]);
 
   const getCategoryDetails = (category?: string) => {
     if (!category) {
@@ -267,7 +323,7 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
       };
     }
 
-    if (category.includes('ផ្នែកទី៥') || category.includes('លំហាត់')) {
+    if (category.includes('ផ្នែកទី៥') || category.includes('ត្រិះរិះ') || category.includes('លំហាត់')) {
       return {
         title: category,
         badgeBg: 'bg-rose-100 text-rose-900 border-rose-300',
@@ -286,7 +342,7 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
 
   if (isCompleted) {
     return (
-      <div className="max-w-2xl mx-auto py-6 px-4">
+      <div className="max-w-3xl mx-auto py-6 px-4">
         {/* Exam Completion Screen */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-lg text-center">
           <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-inner">
@@ -304,7 +360,7 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
           <div className="grid grid-cols-3 gap-3 p-4 bg-slate-50 rounded-xl mb-6 border border-slate-200/60 text-center">
             <div>
               <p className="text-xs text-slate-500 font-medium">ពិន្ទុសរុប</p>
-              <p className="text-xl font-bold text-emerald-600">{score} / {exam.questions.length}</p>
+              <p className="text-xl font-bold text-emerald-600">{Math.round(rawScore * 10) / 10} / {exam.questions.length}</p>
             </div>
             <div>
               <p className="text-xs text-slate-500 font-medium">ភាគរយ</p>
@@ -325,9 +381,108 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
               ពិនិត្យចម្លើយឡើងវិញ
             </h3>
             {exam.questions.map((q, idx) => {
+              const catDetails = getCategoryDetails(q.category);
+
+              if (q.questionType === 'matching_table' && q.matchingData) {
+                const selections = matchingSelections[q.id] || {};
+                let correctCount = 0;
+                Object.entries(q.matchingData.correctPairs).forEach(([itemId, correctLabel]) => {
+                  if (selections[Number(itemId)] === correctLabel) correctCount += 1;
+                });
+
+                return (
+                  <div key={q.id} className="p-4 rounded-xl border bg-purple-50/40 border-purple-200 space-y-3">
+                    <div className={`text-xs font-bold inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border shadow-2xs ${catDetails.bannerBg}`}>
+                      {catDetails.icon}
+                      <span>{q.category}</span>
+                    </div>
+
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="text-sm font-bold text-slate-800">
+                        {idx + 1}. <MathFormattedText text={q.text} />
+                      </span>
+                      <span className="text-xs font-bold text-purple-800 bg-purple-100 px-2.5 py-0.5 rounded-md shrink-0">
+                        ត្រឹមត្រូវ {correctCount} / ៨ ចំណុច
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                      {q.matchingData.columnA.map((item) => {
+                        const userPick = selections[item.id];
+                        const correctPick = q.matchingData?.correctPairs[item.id];
+                        const isPairCorrect = userPick === correctPick;
+
+                        return (
+                          <div key={item.id} className={`p-2.5 rounded-lg border flex items-center justify-between gap-2 ${isPairCorrect ? 'bg-emerald-50 border-emerald-300 text-emerald-950' : 'bg-rose-50 border-rose-300 text-rose-950'}`}>
+                            <span className="font-semibold">{item.text}</span>
+                            <span className="font-mono font-bold text-xs bg-white px-2 py-0.5 rounded border shadow-2xs shrink-0">
+                              ចម្លើយ៖ {userPick || '—'} {isPairCorrect ? '✅' : `(ត្រូវ៖ ${correctPick})`}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="mt-2 text-xs text-slate-600 bg-white/80 p-2.5 rounded-lg border border-slate-200/60 leading-relaxed whitespace-pre-line">
+                      💡 <span className="font-semibold text-purple-900">ការបកស្រាយផ្គូផ្គង៖</span> {q.explanation}
+                    </div>
+                  </div>
+                );
+              }
+
+              if (q.questionType === 'multi_select' && q.correctAnswersIndices) {
+                const selections = multiSelections[q.id] || [];
+                let correctCount = 0;
+                selections.forEach((sIdx) => {
+                  if (q.correctAnswersIndices?.includes(sIdx)) correctCount += 1;
+                });
+
+                return (
+                  <div key={q.id} className="p-4 rounded-xl border bg-rose-50/40 border-rose-200 space-y-3">
+                    <div className={`text-xs font-bold inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border shadow-2xs ${catDetails.bannerBg}`}>
+                      {catDetails.icon}
+                      <span>{q.category}</span>
+                    </div>
+
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="text-sm font-bold text-slate-800">
+                        {idx + 1}. <MathFormattedText text={q.text} />
+                      </span>
+                      <span className="text-xs font-bold text-rose-800 bg-rose-100 px-2.5 py-0.5 rounded-md shrink-0">
+                        ត្រឹមត្រូវ {correctCount} / ៦ ចម្លើយ
+                      </span>
+                    </div>
+
+                    <div className="space-y-1.5 text-xs">
+                      {q.options.map((opt, oIdx) => {
+                        const isSelected = selections.includes(oIdx);
+                        const isCorrectOpt = q.correctAnswersIndices?.includes(oIdx);
+
+                        let itemStyle = 'bg-white border-slate-200 text-slate-700';
+                        if (isSelected && isCorrectOpt) itemStyle = 'bg-emerald-50 border-emerald-400 text-emerald-950 font-semibold';
+                        else if (isSelected && !isCorrectOpt) itemStyle = 'bg-rose-50 border-rose-400 text-rose-950 font-semibold';
+                        else if (!isSelected && isCorrectOpt) itemStyle = 'bg-amber-50 border-amber-300 text-amber-950 italic';
+
+                        return (
+                          <div key={oIdx} className={`p-2 rounded-lg border flex items-start gap-2 ${itemStyle}`}>
+                            <span className="shrink-0">{isSelected ? (isCorrectOpt ? '✅' : '❌') : (isCorrectOpt ? '⭐ (ចម្លើយត្រូវ)' : '⚪')}</span>
+                            <span>{opt}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="mt-2 text-xs text-slate-600 bg-white/80 p-2.5 rounded-lg border border-slate-200/60 leading-relaxed whitespace-pre-line">
+                      💡 <span className="font-semibold text-rose-900">ការបកស្រាយ៖</span> {q.explanation}
+                    </div>
+                  </div>
+                );
+              }
+
+              // Standard single choice
               const userAns = selectedAnswers[q.id];
               const isCorrect = userAns === q.correctAnswerIndex;
-              const catDetails = getCategoryDetails(q.category);
+
               return (
                 <div key={q.id} className={`p-4 rounded-xl border ${isCorrect ? 'bg-emerald-50/50 border-emerald-200' : 'bg-rose-50/50 border-rose-200'}`}>
                   {q.category && (
@@ -367,6 +522,8 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
               onClick={() => {
                 setIsCompleted(false);
                 setSelectedAnswers({});
+                setMatchingSelections({});
+                setMultiSelections({});
                 setShowExplanation({});
                 setCurrentIndex(0);
                 setTimeLeftSeconds(exam.durationMinutes * 60);
@@ -454,7 +611,7 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
 
           <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
             {exam.questions.map((q, idx) => {
-              const isAns = selectedAnswers[q.id] !== undefined;
+              const isAns = selectedAnswers[q.id] !== undefined || (matchingSelections[q.id] && Object.keys(matchingSelections[q.id]).length > 0) || (multiSelections[q.id] && multiSelections[q.id].length > 0);
               const isBm = bookmarkedQuestionIds.includes(q.id);
               const isCurr = idx === currentIndex;
 
@@ -537,64 +694,166 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
           <MathFormattedText text={currentQuestion.text} />
         </h2>
 
-        {/* Answer Options */}
-        <div className="space-y-3 mb-6">
-          {currentQuestion.options.map((option, idx) => {
-            const isSelected = selectedAnswers[currentQuestion.id] === idx;
-            const isAnswered = selectedAnswers[currentQuestion.id] !== undefined;
-            const isCorrectOption = idx === currentQuestion.correctAnswerIndex;
+        {/* 1. MATCHING TABLE UI (Part 2) */}
+        {currentQuestion.questionType === 'matching_table' && currentQuestion.matchingData ? (
+          <div className="space-y-6 mb-6">
+            <div className="p-4 rounded-2xl bg-purple-50/60 border border-purple-200 space-y-4">
+              <div className="flex items-center justify-between border-b border-purple-200/80 pb-2 flex-wrap gap-2">
+                <span className="font-bold text-xs sm:text-sm text-purple-950 flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-purple-700" />
+                  <span>តារាងផ្គូផ្គងទាំងមូល (សូមជ្រើសរើសចម្លើយ ជួរ ខ សម្រាប់ជួរ ក នីមួយៗ)</span>
+                </span>
+                <span className="text-[11px] font-bold text-purple-800 bg-purple-100 px-2.5 py-0.5 rounded-full border border-purple-300">
+                  សរុប ៨ ចំណុច
+                </span>
+              </div>
 
-            let optionStyle = 'border-slate-200 bg-white hover:border-amber-400 hover:bg-amber-50/30 text-slate-800';
-            if (isAnswered) {
-              if (isSelected) {
-                optionStyle = isCorrectOption
-                  ? 'border-emerald-500 bg-emerald-50 text-emerald-950 ring-2 ring-emerald-500/30'
-                  : 'border-rose-500 bg-rose-50 text-rose-950 ring-2 ring-rose-500/30';
-              } else if (isCorrectOption) {
-                optionStyle = 'border-emerald-400 bg-emerald-50/70 text-emerald-900';
-              } else {
-                optionStyle = 'border-slate-100 bg-slate-50/50 text-slate-400 opacity-60';
-              }
-            }
-
-            const labels = ['ក', 'ខ', 'គ', 'ឃ'];
-
-            return (
-              <button
-                key={idx}
-                onClick={() => handleSelectOption(idx)}
-                disabled={isAnswered}
-                className={`w-full text-left p-4 rounded-xl border-2 transition-all cursor-pointer flex items-center justify-between gap-3 text-sm sm:text-base font-medium ${optionStyle}`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${isSelected ? (isCorrectOption ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white') : 'bg-slate-100 text-slate-700'}`}>
-                    {labels[idx] || idx + 1}
-                  </span>
-                  <span>
-                    <MathFormattedText text={option} />
-                  </span>
+              {/* Column B Descriptions Box for clear reference */}
+              <div className="p-3.5 bg-white rounded-xl border border-purple-200 text-xs space-y-1.5 shadow-2xs">
+                <p className="font-bold text-purple-900 mb-1 border-b pb-1">📋 បញ្ជីការពិពណ៌នា (ជួរ ខ)៖</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-slate-700">
+                  {currentQuestion.matchingData.columnB.map((colB) => (
+                    <div key={colB.label} className="flex items-start gap-1.5 p-1.5 rounded-md bg-purple-50/40 border border-purple-100">
+                      <span className="font-mono font-bold text-purple-800 bg-purple-200/80 px-1.5 py-0.2 rounded shrink-0">
+                        {colB.label}
+                      </span>
+                      <span>{colB.text}</span>
+                    </div>
+                  ))}
                 </div>
+              </div>
 
-                {isAnswered && isSelected && (
-                  isCorrectOption ? (
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                  ) : (
-                    <XCircle className="w-5 h-5 text-rose-600 shrink-0" />
-                  )
-                )}
-              </button>
-            );
-          })}
-        </div>
+              {/* Column A Items & Selectors */}
+              <div className="space-y-2.5">
+                <p className="font-bold text-xs text-slate-800">👇 ជ្រើសរើសចម្លើយ ជួរ ខ ផ្គូផ្គងជាមួយ ជួរ ក៖</p>
+                {currentQuestion.matchingData.columnA.map((colA) => {
+                  const currentPick = matchingSelections[currentQuestion.id]?.[colA.id] || '';
+
+                  return (
+                    <div
+                      key={colA.id}
+                      className="p-3 rounded-xl bg-white border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs hover:border-purple-300 transition-colors"
+                    >
+                      <span className="font-bold text-xs sm:text-sm text-slate-900">
+                        {colA.text}
+                      </span>
+
+                      <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+                        <span className="text-xs text-slate-500 font-semibold">ផ្គូផ្គងនឹង៖</span>
+                        <select
+                          value={currentPick}
+                          onChange={(e) => handleSelectMatchingPair(currentQuestion.id, colA.id, e.target.value)}
+                          className="px-3 py-1.5 rounded-lg border-2 border-purple-300 bg-purple-50 text-purple-950 font-bold text-xs cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all w-full sm:w-auto"
+                        >
+                          <option value="">-- ជ្រើសរើស (ក..ជ) --</option>
+                          {currentQuestion.matchingData?.columnB.map((b) => (
+                            <option key={b.label} value={b.label}>
+                              {b.label}. {b.text.substring(0, 32)}...
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        ) : currentQuestion.questionType === 'multi_select' && currentQuestion.correctAnswersIndices ? (
+          /* 2. MULTI-SELECT UI (Part 5) */
+          <div className="space-y-4 mb-6">
+            <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs sm:text-sm text-rose-950 font-semibold flex items-center justify-between flex-wrap gap-2">
+              <span className="flex items-center gap-1.5">
+                <Calculator className="w-4 h-4 text-rose-700" />
+                <span>សូមជ្រើសរើសចម្លើយត្រឹមត្រូវចំនួន ៦ ក្នុងចំណោម ១៥ ជម្រើសខាងក្រោម (ចម្លើយនីមួយៗស្មើៗគ្នា)</span>
+              </span>
+              <span className="px-2.5 py-1 rounded-full bg-rose-600 text-white font-mono font-bold text-xs shadow-2xs">
+                បានជ្រើសរើស៖ {(multiSelections[currentQuestion.id] || []).length} / ៦
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-2.5">
+              {currentQuestion.options.map((optionText, oIdx) => {
+                const selectedList = multiSelections[currentQuestion.id] || [];
+                const isChecked = selectedList.includes(oIdx);
+
+                return (
+                  <div
+                    key={oIdx}
+                    onClick={() => handleToggleMultiSelect(currentQuestion.id, oIdx)}
+                    className={`p-3.5 rounded-xl border-2 transition-all cursor-pointer flex items-start gap-3 text-xs sm:text-sm font-medium ${
+                      isChecked
+                        ? 'border-rose-500 bg-rose-50/80 text-rose-950 shadow-2xs font-semibold'
+                        : 'border-slate-200 bg-white hover:border-rose-300 hover:bg-rose-50/30 text-slate-800'
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => {}}
+                      className="w-4 h-4 rounded text-rose-600 focus:ring-rose-500 mt-0.5 cursor-pointer accent-rose-600 shrink-0"
+                    />
+                    <span className="leading-relaxed">{optionText}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          /* 3. STANDARD / FILL IN BLANKS OPTIONS UI */
+          <div className="space-y-3 mb-6">
+            {currentQuestion.options.map((option, idx) => {
+              // For Part 4 (fill in blanks): do not show words that were already selected/used in previous Part 4 questions!
+              if (currentQuestion.questionType === 'fill_blank') {
+                const isSelected = selectedAnswers[currentQuestion.id] === idx;
+                const isAlreadyUsedElsewhere = usedWordsInPart4.includes(option) && !isSelected;
+
+                if (isAlreadyUsedElsewhere) {
+                  return null; // Hide already used words!
+                }
+              }
+
+              const isSelected = selectedAnswers[currentQuestion.id] === idx;
+
+              let optionStyle = 'border-slate-200 bg-white hover:border-amber-400 hover:bg-amber-50/30 text-slate-800';
+              if (isSelected) {
+                optionStyle = 'border-amber-500 bg-amber-50 text-amber-950 font-bold ring-2 ring-amber-500/30';
+              }
+
+              const labels = ['ក', 'ខ', 'គ', 'ឃ'];
+
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleSelectOption(idx)}
+                  className={`w-full text-left p-4 rounded-xl border-2 transition-all cursor-pointer flex items-center justify-between gap-3 text-sm sm:text-base font-medium ${optionStyle}`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${isSelected ? 'bg-amber-600 text-white' : 'bg-slate-100 text-slate-700'}`}>
+                      {labels[idx] || idx + 1}
+                    </span>
+                    <span>
+                      <MathFormattedText text={option} />
+                    </span>
+                  </div>
+
+                  {isSelected && (
+                    <span className="w-3 h-3 rounded-full bg-amber-600 shrink-0" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {/* Explanation Card with Math Formatting */}
-        {showExplanation[currentQuestion.id] && (
+        {isCompleted && showExplanation[currentQuestion.id] && (
           <div className="p-4 rounded-xl bg-amber-50 border border-amber-200/80 text-amber-950 text-xs sm:text-sm leading-relaxed animate-fade-in">
             <div className="flex items-center gap-1.5 font-bold text-amber-900 mb-1">
               <Sparkles className="w-4 h-4 text-amber-600" />
               ការបកស្រាយលម្អិត៖
             </div>
-            <p className="text-slate-700">
+            <p className="text-slate-700 whitespace-pre-line">
               <MathFormattedText text={currentQuestion.explanation} />
             </p>
           </div>

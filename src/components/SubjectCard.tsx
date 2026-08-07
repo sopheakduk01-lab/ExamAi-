@@ -5,7 +5,7 @@ import { ChevronRight, BookOpen, Calculator, Atom, Globe, Languages, HelpCircle,
 interface SubjectCardProps {
   subject: Subject;
   onClick: () => void;
-  selectedMode?: 'exam' | 'lesson';
+  selectedMode?: 'exam' | 'lesson' | 'new_exam';
 }
 
 export const SubjectCard: React.FC<SubjectCardProps> = ({ subject, onClick, selectedMode = 'exam' }) => {
@@ -65,7 +65,11 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({ subject, onClick, sele
         <div className="flex flex-col items-end justify-between gap-2 shrink-0 self-stretch">
           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-50 text-sky-700 border border-sky-200/90 shadow-2xs group-hover:scale-105 transition-transform">
             <CheckCircle2 className="w-3 h-3 text-sky-600" />
-            {selectedMode === 'lesson' ? `${subject.lessonCount} មេរៀន` : `${subject.questionCount} សំណួរ`}
+            {selectedMode === 'lesson'
+              ? `${subject.lessonCount} មេរៀន`
+              : selectedMode === 'new_exam'
+              ? `វិញ្ញាសាថ្មី (០)`
+              : `${subject.questionCount} សំណួរ`}
           </span>
 
           <div className="w-7 h-7 rounded-full bg-slate-100 group-hover:bg-amber-100 text-slate-400 group-hover:text-amber-900 flex items-center justify-center transition-all duration-300 mt-auto">

@@ -25,6 +25,14 @@ export interface Question {
   explanation: string;
   category?: string;
   subjectId: SubjectId;
+  questionType?: 'single' | 'matching_table' | 'fill_blank' | 'multi_select';
+  matchingData?: {
+    columnA: { id: number; text: string }[];
+    columnB: { label: string; text: string }[];
+    correctPairs: Record<number, string>;
+  };
+  correctAnswersIndices?: number[];
+  wordBank?: string[];
 }
 
 export interface ExamPaper {

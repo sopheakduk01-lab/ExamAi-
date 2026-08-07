@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SubjectId, ExamPaper, ExamResult, UserProgress, Question, UserProfile, StudentAccount } from './types';
 import { SUBJECTS, EXAM_PAPERS, LESSON_SUMMARIES } from './data/grade6Data';
+import { NEW_EXAM_PAPERS } from './data/newExamsData';
 import { Header } from './components/Header';
 import { HeroBanner } from './components/HeroBanner';
 import { SubjectCard } from './components/SubjectCard';
@@ -32,12 +33,12 @@ import {
   getOrCreateDefaultStudentAccount,
   updateStudentAccount
 } from './utils/studentAccounts';
-import { Search, GraduationCap, BookOpen, Sparkles, Filter, Trophy, ArrowRight, Target, Layers, Palette, Swords, Music } from 'lucide-react';
+import { Search, GraduationCap, BookOpen, Sparkles, Filter, Trophy, ArrowRight, Target, Layers, Palette, Swords, Music, Globe, Clock, CheckCircle2, ChevronRight, Award } from 'lucide-react';
 
 export default function App() {
   const [selectedSubjectId, setSelectedSubjectId] = useState<SubjectId | null>(null);
   const [selectedExam, setSelectedExam] = useState<ExamPaper | null>(null);
-  const [activeMainTab, setActiveMainTab] = useState<'exam' | 'lesson'>('exam');
+  const [activeMainTab, setActiveMainTab] = useState<'exam' | 'lesson' | 'new_exam'>('exam');
   const [searchQuery, setSearchQuery] = useState('');
 
   // Modals
@@ -274,71 +275,39 @@ export default function App() {
               onOpenCharacterModal={() => setIsCharacterModalOpen(true)}
             />
 
-
-            {/* Quick Feature Hub (Organized 4-Grid Shortcuts) */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <button
-                onClick={() => setIsModernLibraryOpen(true)}
-                className="p-3.5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/80 shadow-xs hover:shadow-md hover:border-amber-300 transition-all text-left flex flex-col justify-between group cursor-pointer"
-                id="hub-btn-library"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center text-lg font-bold shadow-2xs group-hover:scale-110 transition-transform">📚</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-200/60 text-amber-900">៣០+ អត្ថបទ</span>
+            {/* Announcement Notification Banner for Students */}
+            <div className="bg-gradient-to-r from-amber-800 via-amber-900 to-amber-950 rounded-2xl p-4 sm:p-5 text-white shadow-md relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3.5 border border-amber-700/50">
+              <div className="flex items-start gap-3.5">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-amber-700/50 backdrop-blur-md flex items-center justify-center shrink-0 text-xl sm:text-2xl shadow-inner border border-amber-500/30">
+                  📢
                 </div>
-                <div>
-                  <h4 className="font-moul text-xs text-amber-950 font-bold group-hover:text-amber-800 transition-colors">បណ្ណាល័យ</h4>
-                  <p className="text-[11px] text-slate-500 mt-0.5">អត្ថបទអានបន្ថែម</p>
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="px-2 py-0.5 rounded-md bg-red-500 text-white text-[10px] font-extrabold uppercase tracking-wide animate-pulse">
+                      ជូនដំណឹងថ្មី
+                    </span>
+                    <h3 className="font-moul text-sm sm:text-base text-amber-100">
+                      តេស្តវិញ្ញាសាថ្មីត្រូវបានដាក់បញ្ចូល!
+                    </h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-amber-200/90 font-medium leading-relaxed">
+                    សូមអញ្ជើញសិស្សានុសិស្សថ្នាក់ទី៦ ចូលរួមធ្វើតេស្ត <span className="text-white font-bold">វិញ្ញាសាត្រៀមប្រឡងឆមាសលើកទី២ មុខវិជ្ជា៖ វិទ្យាសាស្ត្រ (កម្រងអូរឫស្សីកណ្តាល)</span> ដើម្បីវាស់ស្ទង់សមត្ថភាពឥឡូវនេះ!
+                  </p>
                 </div>
-              </button>
-
-              <button
-                onClick={() => setIsMissionsOpen(true)}
-                className="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all text-left flex flex-col justify-between group cursor-pointer"
-                id="hub-btn-missions"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-900 flex items-center justify-center text-lg font-bold shadow-2xs group-hover:scale-110 transition-transform">🎯</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-200/60 text-emerald-900">រង្វាន់ធំ</span>
-                </div>
-                <div>
-                  <h4 className="font-moul text-xs text-emerald-950 font-bold group-hover:text-emerald-800 transition-colors">បេសកកម្ម</h4>
-                  <p className="text-[11px] text-slate-500 mt-0.5">ប្រមូលកាក់ & XP</p>
-                </div>
-              </button>
+              </div>
 
               <button
-                onClick={() => setIsProgressOpen(true)}
-                className="p-3.5 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200/80 shadow-xs hover:shadow-md hover:border-blue-300 transition-all text-left flex flex-col justify-between group cursor-pointer"
-                id="hub-btn-progress"
+                onClick={() => {
+                  setActiveMainTab('new_exam');
+                  if (NEW_EXAM_PAPERS.length > 0) {
+                    setSelectedExam(NEW_EXAM_PAPERS[0]);
+                  }
+                }}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer shrink-0 hover:scale-102 active:scale-98"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="w-9 h-9 rounded-xl bg-blue-100 text-blue-900 flex items-center justify-center text-lg font-bold shadow-2xs group-hover:scale-110 transition-transform">🏆</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-200/60 text-blue-900">
-                    {userProgress.completedExams.length} វិញ្ញាសា
-                  </span>
-                </div>
-                <div>
-                  <h4 className="font-moul text-xs text-blue-950 font-bold group-hover:text-blue-800 transition-colors">វឌ្ឍនភាព</h4>
-                  <p className="text-[11px] text-slate-500 mt-0.5">ប្រវត្តិពិន្ទុ & លទ្ធផល</p>
-                </div>
-              </button>
-
-              <button
-                onClick={() => setIsBookmarksOpen(true)}
-                className="p-3.5 rounded-2xl bg-gradient-to-br from-rose-50 to-pink-50 border border-rose-200/80 shadow-xs hover:shadow-md hover:border-rose-300 transition-all text-left flex flex-col justify-between group cursor-pointer"
-                id="hub-btn-bookmarks"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="w-9 h-9 rounded-xl bg-rose-100 text-rose-900 flex items-center justify-center text-lg font-bold shadow-2xs group-hover:scale-110 transition-transform">🔖</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-200/60 text-rose-900">
-                    {bookmarkedQuestionIds.length} សំណួរ
-                  </span>
-                </div>
-                <div>
-                  <h4 className="font-moul text-xs text-rose-950 font-bold group-hover:text-rose-800 transition-colors">សំណួរចំណាំ</h4>
-                  <p className="text-[11px] text-slate-500 mt-0.5">មើលសំណួររក្សាទុក</p>
-                </div>
+                <Sparkles className="w-4 h-4 text-slate-950" />
+                <span>ចូលធ្វើតេស្តឥឡូវនេះ</span>
+                <ChevronRight className="w-4 h-4 text-slate-950" />
               </button>
             </div>
 
@@ -363,6 +332,18 @@ export default function App() {
                   >
                     <BookOpen className="w-4 h-4 text-amber-700" />
                     <span>មេរៀនសង្ខេប</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveMainTab('new_exam')}
+                    className={`py-2 px-3.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 relative ${activeMainTab === 'new_exam' ? 'bg-white text-amber-950 shadow-xs font-bold' : 'text-amber-900/70 hover:text-amber-950'}`}
+                    id="tab-main-new-exam"
+                  >
+                    <Sparkles className="w-4 h-4 text-amber-700 animate-pulse" />
+                    <span>តេស្តវិញ្ញាសាថ្មី</span>
+                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full animate-bounce shadow-xs">
+                      NEW!
+                    </span>
                   </button>
                 </div>
 
@@ -405,31 +386,7 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Search Bar */}
-              <div className="flex gap-2">
-                <div
-                  onClick={() => setIsGlobalSearchOpen(true)}
-                  className="relative flex-1 cursor-pointer"
-                >
-                  <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-                  <input
-                    id="search-input-main"
-                    type="text"
-                    readOnly
-                    value={searchQuery}
-                    placeholder="ស្វែងរកឯកសារ វិញ្ញាសា មេរៀន ឬអត្ថបទ..."
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200/90 bg-slate-50/70 text-sm focus:bg-white transition-all cursor-pointer font-medium text-slate-700"
-                  />
-                </div>
-                <button
-                  onClick={() => setIsGlobalSearchOpen(true)}
-                  className="px-3.5 py-2.5 rounded-xl bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-xs shrink-0 cursor-pointer"
-                  id="btn-open-global-search"
-                >
-                  <Search className="w-4 h-4" />
-                  <span className="hidden sm:inline">ស្វែងរកចម្រុះ</span>
-                </button>
-              </div>
+
             </div>
 
             {/* Section Title */}
@@ -437,28 +394,93 @@ export default function App() {
               <div>
                 <h2 className="text-lg sm:text-xl font-bold font-moul text-slate-900 tracking-wide flex items-center gap-2">
                   <span className="w-2.5 h-6 bg-amber-600 rounded-full inline-block"></span>
-                  {activeMainTab === 'exam' ? 'មុខវិជ្ជាប្រឡងថ្នាក់ទី៦' : 'មេរៀនសង្ខេបតាមមុខវិជ្ជា'}
+                  {activeMainTab === 'exam'
+                    ? 'មុខវិជ្ជាប្រឡងថ្នាក់ទី៦'
+                    : activeMainTab === 'new_exam'
+                    ? 'តេស្តវិញ្ញាសាថ្មី'
+                    : 'មេរៀនសង្ខេបតាមមុខវិជ្ជា'}
                 </h2>
                 <p className="text-xs text-slate-500 mt-1">
-                  ជ្រើសរើសមុខវិជ្ជាខាងក្រោមដើម្បីចាប់ផ្តើមរៀន និងប្រឡង
+                  {activeMainTab === 'new_exam'
+                    ? 'ជ្រើសរើសវិញ្ញាសាថ្មីៗខាងក្រោមដើម្បីប្រឡងតេស្តសមត្ថភាព'
+                    : 'ជ្រើសរើសមុខវិជ្ជាខាងក្រោមដើម្បីចាប់ផ្តើមរៀន និងប្រឡង'}
                 </p>
               </div>
               <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-200">
-                {filteredSubjects.length} មុខវិជ្ជា
+                {activeMainTab === 'new_exam' ? `${NEW_EXAM_PAPERS.length} វិញ្ញាសា` : `${filteredSubjects.length} មុខវិជ្ជា`}
               </span>
             </div>
 
-            {/* Subject List Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-              {filteredSubjects.map((subject) => (
-                <SubjectCard
-                  key={subject.id}
-                  subject={subject}
-                  selectedMode={activeMainTab}
-                  onClick={() => setSelectedSubjectId(subject.id)}
-                />
-              ))}
-            </div>
+            {/* Render NEW_EXAM_PAPERS list when new_exam tab is selected */}
+            {activeMainTab === 'new_exam' ? (
+              <div className="space-y-4 my-2">
+                {NEW_EXAM_PAPERS.map((paper) => (
+                  <div
+                    key={paper.id}
+                    onClick={() => setSelectedExam(paper)}
+                    className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-white via-amber-50/30 to-sky-50/40 border-2 border-amber-300/80 shadow-md hover:shadow-xl hover:border-amber-500 transition-all cursor-pointer group relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                  >
+                    <div className="space-y-2 max-w-2xl">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="px-3 py-0.5 rounded-full bg-amber-500 text-white font-bold text-[11px] shadow-2xs flex items-center gap-1">
+                          <Sparkles className="w-3 h-3" />
+                          <span>{paper.yearOrType}</span>
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 font-bold text-[11px] border border-sky-200">
+                          🧪 មុខវិជ្ជា៖ វិទ្យាសាស្ត្រ
+                        </span>
+                      </div>
+
+                      <h3 className="font-moul text-base sm:text-lg text-slate-900 group-hover:text-amber-900 transition-colors leading-relaxed">
+                        {paper.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                        {paper.description}
+                      </p>
+
+                      <div className="flex items-center gap-4 text-xs font-bold text-slate-500 pt-1 flex-wrap">
+                        <span className="flex items-center gap-1 text-slate-700">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                          <span>{paper.questions.length} សំណួរ (៥ ផ្នែកស្តង់ដារ)</span>
+                        </span>
+                        <span className="flex items-center gap-1 text-slate-700">
+                          <Clock className="w-4 h-4 text-sky-600" />
+                          <span>{paper.durationMinutes} នាទី</span>
+                        </span>
+                        <span className="flex items-center gap-1 text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-lg border border-amber-200">
+                          <Award className="w-4 h-4 text-amber-700" />
+                          <span>ពិន្ទុសរុប៖ {paper.totalPoints} ពិន្ទុ</span>
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedExam(paper);
+                      }}
+                      className="w-full md:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-800 to-amber-900 hover:from-amber-900 hover:to-amber-950 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0 active:scale-95"
+                    >
+                      <span>ប្រឡងវិញ្ញាសានេះឥឡូវនេះ</span>
+                      <ChevronRight className="w-4 h-4 text-amber-200" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* Subject List Cards Grid */
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                {filteredSubjects.map((subject) => (
+                  <SubjectCard
+                    key={subject.id}
+                    subject={subject}
+                    selectedMode={activeMainTab}
+                    onClick={() => setSelectedSubjectId(subject.id)}
+                  />
+                ))}
+              </div>
+            )}
           </>
         )}
       </main>

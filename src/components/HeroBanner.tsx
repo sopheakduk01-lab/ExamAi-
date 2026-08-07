@@ -81,54 +81,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           ប្រព័ន្ធសាកល្បងសមត្ថភាព មេរៀនសង្ខេប និងវិញ្ញាសាគំរូផ្លូវការ គ្រប់មុខវិជ្ជា៖ <span className="text-yellow-300 font-bold">ភាសាខ្មែរ, គណិតវិទ្យា, វិទ្យាសាស្ត្រ, សិក្សាសង្គម & អង់គ្លេស</span>
         </p>
 
-        {/* Feature Highlights Pills - Spacious & Elegant */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-8 text-xs sm:text-sm font-medium max-w-2xl mx-auto">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-950/70 border border-amber-500/40 text-yellow-200 shadow-sm backdrop-blur-md hover:border-amber-400/60 transition-colors">
-            <Trophy className="w-4 h-4 text-yellow-400 fill-yellow-400 shrink-0" />
-            <span className="font-semibold">🏆 វិញ្ញាសាប្រឡងគំរូ ៥០+</span>
-          </span>
 
-          {onOpenStudentChat && (
-            <button
-              onClick={onOpenStudentChat}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500/90 to-amber-600/90 hover:from-amber-400 hover:to-amber-500 text-amber-950 font-bold transition-all cursor-pointer shadow-md hover:scale-103 active:scale-97 border border-amber-300/40"
-              id="btn-hero-student-chat"
-            >
-              <span>💬 Chat ពិភាក្សាសិស្ស</span>
-            </button>
-          )}
-
-          {onOpenModernLibrary && (
-            <button
-              onClick={onOpenModernLibrary}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400/90 to-yellow-400/90 text-amber-950 hover:from-amber-300 hover:to-yellow-300 font-bold transition-all cursor-pointer shadow-md hover:scale-103 active:scale-97 border border-yellow-200/50"
-              id="btn-hero-modern-library"
-            >
-              <span>📚 បណ្ណាល័យ (៣០+ អត្ថបទ)</span>
-            </button>
-          )}
-
-          {onOpenMissions && (
-            <button
-              onClick={onOpenMissions}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-950/70 hover:bg-amber-900/80 border border-amber-400/50 text-amber-100 font-semibold transition-all cursor-pointer backdrop-blur-md hover:scale-103 active:scale-97 shadow-sm"
-              id="btn-hero-missions"
-            >
-              <Target className="w-4 h-4 text-amber-300 shrink-0" />
-              <span>🎯 បេសកកម្ម & រង្វាន់</span>
-            </button>
-          )}
-
-          {onOpenFishingGame && (
-            <button
-              onClick={onOpenFishingGame}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-600 hover:from-cyan-400 hover:to-sky-500 text-white font-bold transition-all cursor-pointer shadow-md hover:scale-103 active:scale-97 border border-cyan-300/40"
-              id="btn-hero-fishing-pill"
-            >
-              <span>🎣 ហ្គេមស្ទូចត្រី (អ្នក vs AI)</span>
-            </button>
-          )}
-        </div>
 
         {/* Main Action Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
