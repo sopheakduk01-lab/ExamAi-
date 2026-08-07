@@ -16,6 +16,7 @@ interface NavigationDrawerProps {
   onOpenStudentChat?: () => void;
   onOpenNotifications?: () => void;
   onOpenEnglishGame?: () => void;
+  onOpenFishingGame?: () => void;
   unreadNotificationsCount?: number;
   onHomeClick: () => void;
   userProfile?: UserProfile | null;
@@ -35,6 +36,7 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onOpenStudentChat,
   onOpenNotifications,
   onOpenEnglishGame,
+  onOpenFishingGame,
   unreadNotificationsCount = 0,
   onHomeClick,
   userProfile,
@@ -215,6 +217,23 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
               <Bookmark className="w-4 h-4 text-amber-700" />
               សំណួរបានចំណាំ
             </button>
+
+            {onOpenFishingGame && (
+              <button
+                onClick={() => {
+                  onOpenFishingGame();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2.5 rounded-xl font-bold text-sky-950 bg-gradient-to-r from-sky-100 to-cyan-100 border border-sky-300 hover:from-sky-200 hover:to-cyan-200 transition-colors flex items-center gap-3 text-sm cursor-pointer shadow-2xs"
+                id="btn-fishing-game-drawer"
+              >
+                <span className="text-lg">🎣</span>
+                <div>
+                  <span className="font-moul block text-sky-950 text-xs sm:text-sm">ហ្គេមស្ទូចត្រី (អ្នក vs AI)</span>
+                  <span className="text-[10px] text-sky-700 font-sans font-semibold">ស្ទូចត្រី និងឆ្លើយសំណួរតាមមុខវិជ្ជា</span>
+                </div>
+              </button>
+            )}
 
             {onOpenAIBattle && (
               <button

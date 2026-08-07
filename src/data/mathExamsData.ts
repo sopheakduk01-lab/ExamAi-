@@ -210,7 +210,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៤៖ កន្លះបន្ទាត់ពុះមុំ',
         text: 'ឧបករណ៍សំខាន់សម្រាប់សង់សំណង់មុំ 60° និង 90° ប្រកបដោយសុក្រឹតភាពគឺ៖',
-        options: [ 'បន្ទាត់ និងដែកឈាន (Compasses)', 'កែវពង្រីក', 'ជ័រលុប', 'កន្ត្រៃ' ],
+        options: [ 'បន្ទាត់ និងដែកឈាន', 'កែវពង្រីក', 'ជ័រលុប', 'កន្ត្រៃ' ],
         correctAnswerIndex: 0,
         explanation: 'ការសង់សំណង់មុំប្រកបដោយប្រមាណវិធីធរណីមាត្រ ត្រូវប្រើបន្ទាត់ និងដែកឈាន (Compasses)។'
       },
@@ -542,7 +542,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ វិធីបូកដកប្រភាគ',
         text: 'តម្រូវភាគបែងរួមនៃប្រភាគ 2/3 និង 1/5 ៖',
-        options: [ 'ភាគបែងរួមគឺ 8', 'ភាគបែងរួមគឺ 10', 'ភាគបែងរួមគឺ 15 (10/15 និង 3/15)', 'ភាគបែងរួមគឺ 5' ],
+        options: [ 'ភាគបែងរួមគឺ 8', 'ភាគបែងរួមគឺ 10', 'ភាគបែងរួមគឺ 15', 'ភាគបែងរួមគឺ 5' ],
         correctAnswerIndex: 2,
         explanation: 'ភាគបែងរួមតូចបំផុត (ព.គុ.ត) នៃ 3 និង 5 គឺ 15 ➔ 2/3 = 10/15 និង 1/5 = 3/15។'
       },
@@ -1101,7 +1101,7 @@ export const MATH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៩៖ រង្វាស់ពេល',
         text: 'គណនាផលចែករង្វាស់ពេល៖ 15h 45mn 25s ÷ 8 = ?',
-        options: [ '1h 58mn 10s', '2h 58mn 10s', '1h 50mn 10s', '1h 58mn 10s (សំណល់ 5s)' ],
+        options: [ '1h 58mn 10s', '2h 58mn 10s', '1h 50mn 10s', '1h 58mn 10s' ],
         correctAnswerIndex: 3,
         explanation: '15h ÷ 8 = 1h (នៅសល់ 7h = 420mn) ➔ (420+45)mn = 465mn ÷ 8 = 58mn (នៅសល់ 1mn = 60s) ➔ (60+25)s = 85s ÷ 8 = 10s (សំណល់ 5s) ➔ 1h 58mn 10s។'
       },

@@ -1,4 +1,5 @@
 import { Subject, ExamPaper, LessonSummary } from '../types';
+import { sanitizeExamPaper } from '../utils/questionSanitizer';
 import { ALL_MATH_EXAM_PAPERS as MATH_EXAM_PAPERS } from './mathExams/index';
 import { SCIENCE_LESSONS } from './scienceLessonsData';
 import { ALL_SCIENCE_EXAM_PAPERS as SCIENCE_EXAM_PAPERS } from './scienceExams/index';
@@ -491,7 +492,7 @@ export const LESSON_SUMMARIES: LessonSummary[] = [
   ...KHMER_LISTENING_LESSONS
 ];
 
-export const EXAM_PAPERS: ExamPaper[] = [
+const RAW_EXAM_PAPERS: ExamPaper[] = [
   ...ENGLISH_EXAM_PAPERS,
   ...KHMER_LISTENING_EXAM_PAPERS,
   ...KHMER_GRAMMAR_EXAM_PAPERS,
@@ -516,7 +517,7 @@ export const EXAM_PAPERS: ExamPaper[] = [
         id: 'kq1',
         subjectId: 'khmer',
         text: 'តើសញ្ញាវណ្ណយុត្តិណាដែលប្រើប្រាស់សម្រាប់ដាក់នៅចុងបញ្ចប់នៃល្បះស្រែកសួរ ឬឆ្ងល់?',
-        options: [ 'សញ្ញាសួរ (?)', 'សញ្ញាក្បៀស (,)', 'សញ្ញាឧទាន (!)', 'សញ្ញាចុច (.)' ],
+        options: [ 'សញ្ញាសួរ', 'សញ្ញាក្បៀស', 'សញ្ញាឧទាន', 'សញ្ញាចុច' ],
         correctAnswerIndex: 0,
         explanation: 'សញ្ញាសួរ (?) ត្រូវបានប្រើប្រាស់នៅចុងបញ្ចប់នៃល្បះសំណួរ ឬល្បះដែលមានន័យសួរដេញដោល។'
       },
@@ -612,10 +613,12 @@ export const EXAM_PAPERS: ExamPaper[] = [
         id: 'sq3',
         subjectId: 'science',
         text: 'តើដំណើរការនៃការផលិតអាហាររបស់រុក្ខជាតិបៃតងដោយប្រើពន្លឺព្រះអាទិត្យហៅថាអ្វី?',
-        options: [ 'ការដកដង្ហើម', 'រស្មីសំយោគ (Photosynthesis)', 'ការរំលាយអាហារ', 'ការចំហាយទឹក' ],
+        options: [ 'ការដកដង្ហើម', 'រស្មីសំយោគ', 'ការរំលាយអាហារ', 'ការចំហាយទឹក' ],
         correctAnswerIndex: 1,
         explanation: 'រស្មីសំយោគគឺជាដំណើរការដែលរុក្ខជាតិប្រើពន្លឺព្រះអាទិត្យ ទឹក និងកាបូនិច ដើម្បីផលិតគ្លុយកូស និងអុកស៊ីសែន។'
       }
     ]
   }
 ];
+
+export const EXAM_PAPERS: ExamPaper[] = RAW_EXAM_PAPERS.map(sanitizeExamPaper);

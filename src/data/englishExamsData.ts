@@ -104,7 +104,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: Dara is my best friend. He studies in Grade 6 with me. He has a new bicycle. He goes to school with his sister. Every day he goes to school on time. He is a punctual student and helpful friend. He spends his free time on his studies and family. After dinner, he reads books and does homework. He sometimes watches television and does housework. He is a smart student in the class. All classmates love him very much. His parents are really happy with his activities and study record.',
         text: '1. Dara studies in Grade 6.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text says: "He studies in Grade 6 with me."'
       },
@@ -113,7 +113,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. Dara goes to school alone.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 0,
         explanation: 'False! The text states: "He goes to school with his sister."'
       },
@@ -122,7 +122,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. After dinner, he reads books and does homework.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text states: "After dinner, he reads books and does homework."'
       },
@@ -131,7 +131,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. Dara never watches television.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 0,
         explanation: 'False! The text says: "He sometimes watches television and does housework."'
       },
@@ -140,7 +140,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. His parents are really happy.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text states: "His parents are really happy with his activities and study record."'
       },
@@ -294,7 +294,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: Ratha is a class leader and a good student. Everyone at school knows her well because she works hard. She always goes to school early to clean the classroom and water the flowers. She often reads books in the library. From three o\'clock to half past four in the afternoon, she joins the study club. She is the club leader because she is a smart student. She sometimes plays sports with her friends. She has a lot of things to do, but she is happy.',
         text: '1. Ratha is a class leader and a good student.',
-        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
+        options: [ 'True', 'False' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text says: "Ratha is a class leader and a good student."'
       },
@@ -303,7 +303,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. She goes to school late every day.',
-        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
+        options: [ 'True', 'False' ],
         correctAnswerIndex: 1,
         explanation: 'False! The text says: "She always goes to school early..."'
       },
@@ -312,7 +312,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. Ratha often reads books in the library.',
-        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
+        options: [ 'True', 'False' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text states: "She often reads books in the library."'
       },
@@ -321,7 +321,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. She is the leader of the study club.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text says: "She is the club leader because she is a smart student."'
       },
@@ -330,7 +330,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. Ratha is unhappy because she is very busy.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 0,
         explanation: 'False! The text states: "She has a lot of things to do, but she is happy."'
       },
@@ -484,7 +484,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: Vichet is twelve years old. He is tall and thin. He has an oval face and short black hair. Vichet likes playing basketball and running in the morning. Every day, he brushes his teeth three times, washes his face, and takes a bath to keep his body clean. When he rides his bicycle, he always wears a helmet. Vichet’s parents are proud of him because he takes good care of his health.',
         text: '1. Vichet is twelve years old.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text states: "Vichet is twelve years old."'
       },
@@ -493,7 +493,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. Vichet has long curly hair.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 0,
         explanation: 'False! The text says: "He has an oval face and short black hair."'
       },
@@ -502,7 +502,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. He brushes his teeth three times a day.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text states: "he brushes his teeth three times..."'
       },
@@ -511,7 +511,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. Vichet never wears a helmet when riding his bicycle.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 0,
         explanation: 'False! The text states: "When he rides his bicycle, he always wears a helmet."'
       },
@@ -520,7 +520,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. His parents are proud of him for taking care of his health.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text states: "Vichet’s parents are proud of him because he takes good care of his health."'
       },
@@ -674,7 +674,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: On Sunday, Rithy and his friends visit Phnom Tamao Zoo in Takeo province. At the zoo, they see many wild animals such as monkeys, deer, elephants, bears, and tigers. Rithy sees a baby monkey clinging to its mother. He buys bananas for the monkeys. Near the zoo, there is a big farm where farmers are feeding cows and ducks. Rithy loves animals very much and wants to have his own farm in the future.',
         text: '1. Rithy visits Phnom Tamao Zoo on Sunday.',
-        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
+        options: [ 'True', 'False' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text says: "On Sunday, Rithy and his friends visit Phnom Tamao Zoo..."'
       },
@@ -683,7 +683,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. Phnom Tamao Zoo is located in Siem Reap province.',
-        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
+        options: [ 'True', 'False' ],
         correctAnswerIndex: 1,
         explanation: 'False! The text says Phnom Tamao Zoo is in Takeo province.'
       },
@@ -692,7 +692,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. Rithy sees a baby monkey clinging to its mother.',
-        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
+        options: [ 'True', 'False' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text states: "Rithy sees a baby monkey clinging to its mother."'
       },
@@ -701,7 +701,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. He buys meat for the monkeys.',
-        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
+        options: [ 'True', 'False' ],
         correctAnswerIndex: 1,
         explanation: 'False! The text says: "He buys bananas for the monkeys."'
       },
@@ -710,7 +710,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. Rithy wants to have his own farm in the future.',
-        options: [ 'True (ត្រូវ)', 'False (ខុស)' ],
+        options: [ 'True', 'False' ],
         correctAnswerIndex: 0,
         explanation: 'True! The text states: "...and wants to have his own farm in the future."'
       },
@@ -864,7 +864,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ) - Text: Borith lives in a quiet village in Siem Reap province. He was born on March 15th, 2004. In his village, there is a busy market where his mother sells fruits and vegetables. Every year on March 15th, Borith celebrates his birthday with his family and classmates. His parents buy a cake, candles, balloons, and delicious food. All his friends sing the birthday song and give him nice gifts. Borith feels very happy on his special day.',
         text: '1. Borith lives in Siem Reap province.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text says: "Borith lives in a quiet village in Siem Reap province."'
       },
@@ -873,7 +873,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '2. Borith was born on October 15th, 2004.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 0,
         explanation: 'False! The text says: "He was born on March 15th, 2004."'
       },
@@ -882,7 +882,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '3. His mother sells fruits and vegetables at the village market.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text states: "...his mother sells fruits and vegetables."'
       },
@@ -891,7 +891,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '4. Borith’s friends never come to his birthday party.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 0,
         explanation: 'False! The text states that his classmates and friends sing the birthday song and give him gifts.'
       },
@@ -900,7 +900,7 @@ export const ENGLISH_EXAM_PAPERS: ExamPaper[] = [
         subjectId: 'english',
         category: 'Part 3: Reading (២.៥ ពិន្ទុ)',
         text: '5. Borith feels very happy on his birthday.',
-        options: [ 'False (ខុស)', 'True (ត្រូវ)' ],
+        options: [ 'False', 'True' ],
         correctAnswerIndex: 1,
         explanation: 'True! The text ends with: "Borith feels very happy on his special day."'
       },

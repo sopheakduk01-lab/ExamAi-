@@ -102,7 +102,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '២. ផ្គូផ្គង៖ រូបមន្តគណនាមាឌកូប (V) ដែលមានជ្រុង a',
-      options: [ 'V = a × ៤', 'V = a × a × a (a³)', 'V = a × a', 'V = a ÷ ៣' ],
+      options: [ 'V = a × ៤', 'V = a × a × a', 'V = a × a', 'V = a ÷ ៣' ],
       correctAnswerIndex: 1,
       explanation: 'មាឌកូប (V) = ជ្រុង × ជ្រុង × ជ្រុង = a³។'
     },
@@ -147,7 +147,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី២៖ សំណួរផ្គូផ្គង',
       text: '៧. ផ្គូផ្គង៖ រូបមន្តគណនាការប្រាក់សាមញ្ញ (I)',
-      options: [ 'I = P + r + t', 'I = P ÷ (r × t)', 'I = P × r × t', 'I = P × t ÷ r' ],
+      options: [ 'I = P + r + t', 'I = P ÷', 'I = P × r × t', 'I = P × t ÷ r' ],
       correctAnswerIndex: 2,
       explanation: 'ការប្រាក់ (I) = ប្រាក់ដើម (P) × អត្រាការប្រាក់ (r) × រយៈពេល (t)។'
     },
@@ -169,7 +169,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '១. [ខុស ឬ ត្រូវ] ផលបូករង្វាស់មុំក្នុងទាំងបួននៃចតុកោណណាក៏ដោយ គឺស្មើនឹង ៣៦០°។',
-      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
+      options: [ 'ត្រូវ', 'ខុស' ],
       correctAnswerIndex: 0,
       explanation: 'ត្រូវ៖ ចតុកោណគ្រប់ប្រភេទ (ការេ, ចតុកោណកែង, ប្រឡេឡូក្រាម...) មានផលបូកមុំក្នុងស្មើ ៣៦០°។'
     },
@@ -178,7 +178,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '២. [ខុស ឬ ត្រូវ] មាឌប្រអប់កែង ស្មើនឹង បណ្ដោយ បូក ទទឹង បូក កម្ពស់។',
-      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
+      options: [ 'ត្រូវ', 'ខុស' ],
       correctAnswerIndex: 1,
       explanation: 'ខុស៖ មាឌប្រអប់កែង ស្មើនឹង «បណ្ដោយ គុណ ទទឹង គុណ កម្ពស់» (មិនមែនវិធីបូកទេ)។'
     },
@@ -187,7 +187,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '៣. [ខុស ឬ ត្រូវ] កាលណាពីរមាត្រធៀបសមមាត្រផ្ទាល់នឹងគ្នា បើបរិមាណមួយកើនឡើង ២ ដង បរិមាណមួយទៀតក៏កើនឡើង ២ ដងដែរ។',
-      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
+      options: [ 'ត្រូវ', 'ខុស' ],
       correctAnswerIndex: 0,
       explanation: 'ត្រូវ៖ ក្នុងសមមាត្រផ្ទាល់ បរិមាណទាំងពីរប្រែប្រួលក្នុងទិសដៅតែមួយ និងក្នុងផលធៀបដូចគ្នា។'
     },
@@ -196,7 +196,7 @@ export const SEMESTER_2_MATH_EXAM: ExamPaper = {
       subjectId: 'math',
       category: 'ផ្នែកទី៣៖ គូសសញ្ញា ខុស ឬ ត្រូវ',
       text: '៤. [ខុស ឬ ត្រូវ] ល្បឿនមធ្យម អាចរកបានដោយយក រយៈពេល ចែកនឹង ចម្ងាយផ្លូវ។',
-      options: [ 'ត្រូវ (True)', 'ខុស (False)' ],
+      options: [ 'ត្រូវ', 'ខុស' ],
       correctAnswerIndex: 1,
       explanation: 'ខុស៖ ល្បឿនមធ្យម រកបានដោយយក «ចម្ងាយផ្លូវ ចែកនឹង រយៈពេល» (v = d / t)។'
     },

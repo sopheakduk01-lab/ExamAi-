@@ -18,6 +18,7 @@ import { StudentChatModal } from './components/StudentChatModal';
 import { GlobalSearchModal } from './components/GlobalSearchModal';
 import { EnglishGameModal } from './components/EnglishGameModal';
 import { AIBattleModal } from './components/AIBattleModal';
+import { FishingGameModal } from './components/FishingGameModal';
 import {
   migrateLegacyDataIfNeeded,
   syncStudentState,
@@ -45,6 +46,8 @@ export default function App() {
   const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isEnglishGameOpen, setIsEnglishGameOpen] = useState(false);
+  const [isFishingGameOpen, setIsFishingGameOpen] = useState(false);
+  const [fishingInitialSubject, setFishingInitialSubject] = useState<SubjectId>('math');
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(3);
 
   // Active Student Account state
@@ -177,6 +180,10 @@ export default function App() {
             bookmarkedQuestionIds={bookmarkedQuestionIds}
             onToggleBookmark={handleToggleBookmark}
             onOpenEnglishGame={() => setIsEnglishGameOpen(true)}
+            onOpenFishingGame={() => {
+              setFishingInitialSubject(selectedSubject.id);
+              setIsFishingGameOpen(true);
+            }}
           />
         ) : (
           /* Main Homepage View matching reference design */
@@ -194,6 +201,7 @@ export default function App() {
               onOpenMissions={() => setIsMissionsOpen(true)}
               onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
               onOpenStudentChat={() => setIsStudentChatOpen(true)}
+              onOpenFishingGame={() => setIsFishingGameOpen(true)}
               userProfile={userProfile}
               onOpenRegistrationModal={() => {
                 setIsInitialSetup(false);
@@ -312,6 +320,15 @@ export default function App() {
                   </button>
 
                   <button
+                    onClick={() => setIsFishingGameOpen(true)}
+                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-100 to-sky-100 border border-cyan-400 text-cyan-950 text-xs font-bold hover:from-cyan-200 hover:to-sky-200 transition-colors cursor-pointer shadow-2xs"
+                    id="btn-fishing-game-main"
+                  >
+                    <span className="text-sm">🎣</span>
+                    <span>ហ្គេមស្ទូចត្រី (អ្នក vs AI)</span>
+                  </button>
+
+                  <button
                     onClick={() => setIsDrawingOpen(true)}
                     className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-bold hover:bg-amber-200 transition-colors cursor-pointer shadow-2xs"
                     id="btn-drawing-main"
@@ -402,6 +419,7 @@ export default function App() {
         onOpenStudentChat={() => setIsStudentChatOpen(true)}
         onOpenNotifications={() => setIsNotificationsOpen(true)}
         onOpenEnglishGame={() => setIsEnglishGameOpen(true)}
+        onOpenFishingGame={() => setIsFishingGameOpen(true)}
         unreadNotificationsCount={unreadNotificationsCount}
         onHomeClick={() => {
           setSelectedSubjectId(null);
@@ -499,6 +517,12 @@ export default function App() {
       <AIBattleModal
         isOpen={isAIBattleOpen}
         onClose={() => setIsAIBattleOpen(false)}
+      />
+
+      <FishingGameModal
+        isOpen={isFishingGameOpen}
+        onClose={() => setIsFishingGameOpen(false)}
+        initialSubjectId={fishingInitialSubject}
       />
     </div>
   );

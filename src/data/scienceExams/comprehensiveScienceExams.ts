@@ -43,7 +43,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
         options: [
           'អ្នកផលិត',
           'អ្នកប្រើប្រាស់ទី១',
-          'អ្នកប្រើប្រាស់ទី២ (ស៊ីសាច់សត្វល្អិត)',
+          'អ្នកប្រើប្រាស់ទី២',
           'អ្នកបំបែកធាតុ'
         ],
         correctAnswerIndex: 2,
@@ -57,7 +57,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
           'ស្បូន',
           'បំពង់នោម',
           'ទ្វារមាស',
-          'ដៃស្បូន (អូវែ - Ovary)'
+          'ដៃស្បូន'
         ],
         correctAnswerIndex: 3,
         explanation: 'ដៃស្បូន (អូវែ) មាននាទីផលិតអូវុល និងបញ្ចេញអ័រម៉ូនអេស្ត្រូសែន។'
@@ -81,7 +81,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
         text: 'តើបេះដូងមនុស្សមានប៉ុន្មានថត?',
         options: [
           '២ ថត',
-          '៤ ថត (ថតលើ ២ និងថតក្រោម ២)',
+          '៤ ថត',
           '៣ ថត',
           '៥ ថត'
         ],
@@ -109,7 +109,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
           'ប្លង់ទេរ',
           'ឃ្នាស់ប្រភេទទី២',
           'ឃ្នាស់ប្រភេទទី៣',
-          'ឃ្នាស់ប្រភេទទី១ (ចំណុចទប់នៅកណ្តាល)'
+          'ឃ្នាស់ប្រភេទទី១'
         ],
         correctAnswerIndex: 3,
         explanation: 'កន្ត្រៃជាឃ្នាស់ប្រភេទទី១ ព្រោះចំណុចទប់ (អាញ់) ស្ថិតនៅកណ្តាលរវាងកម្លាំង និងបន្ទុក។'
@@ -133,7 +133,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
         text: 'តើផ្កាយណាដែលនៅ «ជិតផែនដីបំផុត» និងផ្តល់ពន្លឺ-កំដៅដល់ភពផែនដី?',
         options: [
           'ផ្កាយប៉ូលជើង',
-          'ព្រះអាទិត្យ (The Sun)',
+          'ព្រះអាទិត្យ',
           'ផ្កាយព្រះសុក្រ',
           'ផ្កាយអង្គារ'
         ],
@@ -172,7 +172,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
           'ថ្នាំគ្រាប់ពន្យារកំណើត',
           'ថ្នាំចាក់',
           'កងដាក់ស្បូន',
-          'ស្រោមអនាម័យ (Condom)'
+          'ស្រោមអនាម័យ'
         ],
         correctAnswerIndex: 3,
         explanation: 'ស្រោមអនាម័យទប់ស្កាត់ការប៉ះពាល់ទឹកកាម និងមេរោគ ដូចនេះការពារបានទាំងជំងឺឆ្លង និងការមានផ្ទៃពោះ។'
@@ -182,7 +182,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
         subjectId: 'science',
         text: 'តើសរសៃឈាមណាដែលដឹកជញ្ជូនឈាមមាន «អុកស៊ីសែនច្រើន» ចេញពីបេះដូងទៅរាងកាយ?',
         options: [
-          'សរសៃអាអែក (Artery)',
+          'សរសៃអាអែក',
           'សរសៃវ៉ែន',
           'សរសៃប្តូរ',
           'សរសៃប្រដាប់'
@@ -196,7 +196,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
         text: 'តើ «រទេះរុញដៃ» ជាឃ្នាស់ប្រភេទណា?',
         options: [
           'ឃ្នាស់ប្រភេទទី១',
-          'ឃ្នាស់ប្រភេទទី២ (បន្ទុកនៅកណ្តាល)',
+          'ឃ្នាស់ប្រភេទទី២',
           'ឃ្នាស់ប្រភេទទី៣',
           'ប្លង់ទេរ'
         ],
@@ -210,7 +210,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
         options: [
           'ពណ៌ក្រហម',
           'ពណ៌លឿង',
-          'ពណ៌ខៀវ (>30,000°C)',
+          'ពណ៌ខៀវ',
           'ពណ៌ក្រូច'
         ],
         correctAnswerIndex: 2,
@@ -263,7 +263,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
         id: 'ec_q5',
         subjectId: 'science',
         text: 'តើខ្នាតរាស់កម្លាំងអគ្គិសនី (Voltage) គិតជាអ្វី?',
-        options: ['អំពែរ (Ampere)', 'វ៉ុល (Volt)', 'អូម (Ohm)', 'វ៉ាត់ (Watt)'],
+        options: ['អំពែរ', 'វ៉ុល', 'អូម', 'វ៉ាត់'],
         correctAnswerIndex: 1,
         explanation: 'តង់ស្យុង ឬកម្លាំងអគ្គិសនីត្រូវបានវាស់វែងជាខ្នាត «វ៉ុល» (Symbol: V)។'
       },
@@ -271,7 +271,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
         id: 'ec_q6',
         subjectId: 'science',
         text: 'តើប្រភពថាមពលអគ្គិសនីដើរដោយពន្លឺព្រះអាទិត្យហៅថាអ្វី?',
-        options: ['ផ្ទាំងសូឡា (Solar Panel)', 'អាគុយស្ងួត', 'រ៉េអូស្តា', 'កុងតាក់'],
+        options: ['ផ្ទាំងសូឡា', 'អាគុយស្ងួត', 'រ៉េអូស្តា', 'កុងតាក់'],
         correctAnswerIndex: 0,
         explanation: 'ផ្ទាំងសូឡាស្រូបយកពន្លឺព្រះអាទិត្យហើយបំប្លែងដោយផ្ទាល់ទៅជាថាមពលអគ្គិសនី។'
       },
@@ -287,7 +287,7 @@ export const COMPREHENSIVE_SCIENCE_EXAMS: ExamPaper[] = [
         id: 'ec_q8',
         subjectId: 'science',
         text: 'តើការតសៀគ្វីអគ្គិសនីតាមរបៀបណាដែលពេលអំពូលមួយខូច អំពូលផ្សេងទៀតនៅភ្លឺដដែល?',
-        options: ['តជាស៊េរី (Series)', 'តជាខ្នែង (Parallel)', 'តជាល្បាយ', 'តបត់បែន'],
+        options: ['តជាស៊េរី', 'តជាខ្នែង', 'តជាល្បាយ', 'តបត់បែន'],
         correctAnswerIndex: 1,
         explanation: 'ការតជាខ្នែង (Parallel) មានផ្លូវចរន្តច្រើន ដូច្នេះបើខ្នែងមួយដាច់ ខ្នែងផ្សេងទៀតនៅមានចរន្តរត់ធម្មតា។'
       },

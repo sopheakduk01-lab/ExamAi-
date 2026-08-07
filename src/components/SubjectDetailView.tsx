@@ -30,6 +30,7 @@ interface SubjectDetailViewProps {
   bookmarkedQuestionIds: string[];
   onToggleBookmark: (qId: string) => void;
   onOpenEnglishGame?: () => void;
+  onOpenFishingGame?: () => void;
 }
 
 export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
@@ -38,7 +39,8 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
   lessons,
   onBack,
   onSelectExam,
-  onOpenEnglishGame
+  onOpenEnglishGame,
+  onOpenFishingGame
 }) => {
   const [activeTab, setActiveTab] = useState<'exams' | 'lessons' | 'ai'>('exams');
   const [filterType, setFilterType] = useState<'all' | 'lesson' | 'comprehensive'>('all');
@@ -144,6 +146,37 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
           </span>
         </div>
       </div>
+
+      {/* Fishing Game Promo Banner */}
+      {onOpenFishingGame && (
+        <div className="mb-6 p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-cyan-600 via-sky-600 to-blue-700 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-cyan-400/40">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-2xl shrink-0 shadow-inner">
+              🎣
+            </div>
+            <div>
+              <span className="bg-cyan-300 text-cyan-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-1 inline-block">
+                ហ្គេមអប់រំប្រកួត (Educational Game)
+              </span>
+              <h3 className="font-black text-base sm:text-lg text-white font-moul leading-tight">
+                ហ្គេមប្រកួតស្ទូចត្រី - អ្នក vs AI ({subject.nameKhmer})
+              </h3>
+              <p className="text-xs text-cyan-100 font-medium mt-0.5">
+                ស្ទូចត្រី ឆ្លើយសំណួរ{subject.nameKhmer} ដណ្តើមយកពិន្ទុ និងប្រអប់កំណប់!
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={onOpenFishingGame}
+            className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-cyan-300 hover:bg-white text-cyan-950 font-black text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 shrink-0"
+            id="btn-launch-fishing-game-subject"
+          >
+            <span>ប្រកួតស្ទូចត្រីឥឡូវនេះ (Play Fishing)</span>
+            <ChevronRight className="w-4 h-4 text-cyan-950" />
+          </button>
+        </div>
+      )}
 
       {/* Special Banner for English Subject interactive Game */}
       {subject.id === 'english' && onOpenEnglishGame && (

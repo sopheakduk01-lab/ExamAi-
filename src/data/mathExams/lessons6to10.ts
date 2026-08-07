@@ -18,7 +18,7 @@ export const LESSONS_6_TO_10_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៦៖ បរិមាត្រ',
         text: 'រូបមន្តបរិមាត្រចតុកោណកែង (P) គឺ៖',
-        options: [ 'P = (a + b) × 2', 'P = a × b', 'P = 4 × a', 'P = a + b + c' ],
+        options: [ 'P = × 2', 'P = a × b', 'P = 4 × a', 'P = a + b + c' ],
         correctAnswerIndex: 0,
         explanation: 'បរិមាត្រចតុកោណកែង P = (បណ្តោយ + ទទឹង) × 2 ឬ P = (a + b) × 2។'
       },
@@ -213,7 +213,7 @@ export const LESSONS_6_TO_10_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៧៖ ផ្ទៃក្រឡា',
         text: 'រូបមន្តផ្ទៃក្រឡាចតុកោណកែង (S) គឺ៖',
-        options: [ 'S = a × b', 'S = (a + b) × 2', 'S = a²', 'S = (a × b) / 2' ],
+        options: [ 'S = a × b', 'S = × 2', 'S = a²', 'S = / 2' ],
         correctAnswerIndex: 0,
         explanation: 'S = បណ្តោយ × ទទឹង (a × b)។'
       },
@@ -231,7 +231,7 @@ export const LESSONS_6_TO_10_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៧៖ ផ្ទៃក្រឡា',
         text: 'រូបមន្តផ្ទៃក្រឡាត្រីកោណ (S) ដែលមានបាត b និងកម្ពស់ h គឺ៖',
-        options: [ 'S = b × h', 'S = (b + h) / 2', 'S = (b × h) / 2', 'S = b² × h' ],
+        options: [ 'S = b × h', 'S = / 2', 'S = / 2', 'S = b² × h' ],
         correctAnswerIndex: 2,
         explanation: 'ផ្ទៃក្រឡាត្រីកោណ S = (បាត × កម្ពស់) / 2។'
       },
@@ -272,7 +272,7 @@ export const LESSONS_6_TO_10_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៧៖ ផ្ទៃក្រឡា',
         text: 'រូបមន្តផ្ទៃក្រឡារង្វង់ (S) ដែលមានកាំ R គឺ៖ (យក π ≈ 3.14)',
-        options: [ 'S = 2 × π × R', 'S = π × D', 'S = π × R²', 'S = (π × R) / 2' ],
+        options: [ 'S = 2 × π × R', 'S = π × D', 'S = π × R²', 'S = / 2' ],
         correctAnswerIndex: 2,
         explanation: 'ផ្ទៃក្រឡារង្វង់ S = π × R² (ឬ 3.14 × R × R)។'
       },
@@ -766,7 +766,7 @@ export const LESSONS_6_TO_10_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី៩៖ ត.ច.រ និង ព.គុ.ត',
         text: 'តើតួចែកទាំងអស់នៃចំនួន 12 មានប៉ុន្មាន?',
-        options: [ '1, 2, 3, 6, 12', '1, 2, 3, 4, 6, 12 (មាន 6 តួ)', '2, 3, 4, 6', '12, 24, 36' ],
+        options: [ '1, 2, 3, 6, 12', '1, 2, 3, 4, 6, 12', '2, 3, 4, 6', '12, 24, 36' ],
         correctAnswerIndex: 1,
         explanation: 'តួចែកនៃ 12 គឺ 1, 2, 3, 4, 6, 12 (មាន 6 តួ)។'
       },
@@ -808,7 +808,7 @@ export const LESSONS_6_TO_10_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ បូកដកប្រភាគ',
         text: 'គណនាផលបូកប្រភាគ៖ 2/5 + 3/4 = ?',
-        options: [ '23/20 ឬ 1 (3/20)', '5/9', '8/20', '15/20' ],
+        options: [ '23/20 ឬ 1', '5/9', '8/20', '15/20' ],
         correctAnswerIndex: 0,
         explanation: 'ភាគបែងរួម = 20 ➔ 8/20 + 15/20 = 23/20 = 1 3/20។'
       },
@@ -853,7 +853,7 @@ export const LESSONS_6_TO_10_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ បូកដកប្រភាគ',
         text: 'គណនាផលបូក 1/2 + 2/3 + 1/4 = ?',
-        options: [ '4/9', '17/12 ឬ 1 (5/12)', '11/12', '15/12' ],
+        options: [ '4/9', '17/12 ឬ 1', '11/12', '15/12' ],
         correctAnswerIndex: 1,
         explanation: 'ភាគបែងរួម 12 ➔ 6/12 + 8/12 + 3/12 = 17/12 = 1 5/12។'
       },
@@ -911,7 +911,7 @@ export const LESSONS_6_TO_10_EXAMS: ExamPaper[] = [
           'បូកភាគយកនិងភាគបែងបញ្ចូលគ្នា',
           'បកប្រែជាចំនួនទសភាគ',
           'គុណភាគយកនឹងភាគយក',
-          'តម្រូវភាគបែងរួម (រក ព.គុ.ត នៃភាគបែង)'
+          'តម្រូវភាគបែងរួម'
         ],
         correctAnswerIndex: 3,
         explanation: 'ត្រូវតម្រូវភាគបែងរួមជាមុនសិន ដោយរក ព.គុ.ត នៃភាគបែង។'
@@ -948,7 +948,7 @@ export const LESSONS_6_TO_10_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១០៖ បូកដកប្រភាគ',
         text: 'គណនា 2 - 3/4 = ?',
-        options: [ '1/4', '3/4', '1/2', '5/4 ឬ 1 (1/4)' ],
+        options: [ '1/4', '3/4', '1/2', '5/4 ឬ 1' ],
         correctAnswerIndex: 3,
         explanation: '8/4 - 3/4 = 5/4 = 1 1/4។'
       },

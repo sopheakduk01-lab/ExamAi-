@@ -54,7 +54,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១១៖ គុណចែកប្រភាគ',
         text: 'គណនាផលចែកប្រភាគ៖ (5/6) ÷ (2/3) = ?',
-        options: [ '5/4 ឬ 1 (1/4)', '10/18', '15/12', '5/4 ឬ 1 (1/4)' ],
+        options: [ '5/4 ឬ 1', '10/18', '15/12', '5/4 ឬ 1' ],
         correctAnswerIndex: 0,
         explanation: '(5/6) × (3/2) = 15/12 = 5/4 = 1 1/4។'
       },
@@ -63,7 +63,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១១៖ គុណចែកប្រភាគ',
         text: 'គណនា 5 × (2/3) = ?',
-        options: [ '7/3', '10/3 ឬ 3 (1/3)', '10/15', '2/15' ],
+        options: [ '7/3', '10/3 ឬ 3', '10/15', '2/15' ],
         correctAnswerIndex: 1,
         explanation: '(5 × 2) / 3 = 10/3 = 3 1/3។'
       },
@@ -291,7 +291,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         category: 'មេរៀនទី១២៖ ផលធៀប',
         text: 'ដង់ស៊ីតេប្រជាជនជាផលធៀបរវាងអ្វី និងអ្វី?',
         options: [
-          'ចំនួនប្រជាជន និងផ្ទៃដី (នាក់/km²)',
+          'ចំនួនប្រជាជន និងផ្ទៃដី',
           'ផ្ទៃដី និងចំនួនប្រជាជន',
           'ចំនួនប្រជាជន និងអាយុ',
           'ចំនួនប្រជាជន និងចំណូល'
@@ -367,7 +367,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១២៖ ផលធៀប',
         text: 'តើផលធៀប 8 : 12 និង 10 : 15 ស្មើគ្នាដែរឬទេ?',
-        options: [ 'ស្មើគ្នា (ព្រោះសម្រួលបាន 2:3 ដូចគ្នា)', 'មិនស្មើគ្នាទេ', 'ស្មើតែពេលបូក', 'មិនអាចប្រៀបធៀបបាន' ],
+        options: [ 'ស្មើគ្នា', 'មិនស្មើគ្នាទេ', 'ស្មើតែពេលបូក', 'មិនអាចប្រៀបធៀបបាន' ],
         correctAnswerIndex: 0,
         explanation: '8/12 = 2/3 និង 10/15 = 2/3 ដូច្នេះវាស្មើគ្នា។'
       },
@@ -419,7 +419,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         category: 'មេរៀនទី១៣៖ សមាមាត្រ',
         text: 'តើអ្វីជា «សមាមាត្រ»?',
         options: [
-          'ជាសមភាពនៃពីរផលធៀប (a / b = c / d)',
+          'ជាសមភាពនៃពីរផលធៀប',
           'ជាផលបូកពីរផលធៀប',
           'ជាផលដកពីរផលធៀប',
           'ជាផលគុណពីរផលធៀប'
@@ -460,7 +460,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         category: 'មេរៀនទី១៣៖ សមាមាត្រ',
         text: 'ផែនទីមួយមានមាត្រដ្ឋាន 1 : 600 000។ តើវាមានន័យថាយ៉ាងដូចម្តេច?',
         options: [
-          '1cm លើផែនទី ស្មើនឹង 600 000cm (6km) លើដីពិត',
+          '1cm លើផែនទី ស្មើនឹង 600 000cm លើដីពិត',
           '1m លើផែនទី ស្មើ 600m លើដីពិត',
           '1km លើផែនទី ស្មើ 600km លើដីពិត',
           '600cm លើផែនទី ស្មើ 1cm លើដីពិត'
@@ -581,7 +581,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៣៖ សមាមាត្រ',
         text: 'ក្នុងសមាមាត្រ a / b = c / d តើតួ a និង d ហៅថាអ្វី?',
-        options: [ 'តួកណ្តាល (Means)', 'តួចុង (Extremes)', 'ភាគបែង', 'ភាគយក' ],
+        options: [ 'តួកណ្តាល', 'តួចុង', 'ភាគបែង', 'ភាគយក' ],
         correctAnswerIndex: 1,
         explanation: 'a និង d ហៅថា «តួចុង» ហើយ b និង c ហៅថា «តួកណ្តាល»។'
       },
@@ -722,7 +722,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៤៖ ល្បឿន',
         text: 'ឡានមួយចេញដំណើរម៉ោង 7:00 ហើយទៅដល់គោលដៅម៉ោង 10:30។ រយៈពេលធ្វើដំណើរ t = ?',
-        options: [ '3 ម៉ោង', '3 ម៉ោង 50 នាទី', '4 ម៉ោង', '3 ម៉ោង 30 នាទី (3.5h)' ],
+        options: [ '3 ម៉ោង', '3 ម៉ោង 50 នាទី', '4 ម៉ោង', '3 ម៉ោង 30 នាទី' ],
         correctAnswerIndex: 3,
         explanation: '10:30 - 7:00 = 3 ម៉ោង 30 នាទី (3.5 ម៉ោង)។'
       },
@@ -827,7 +827,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'បំប្លែងប្រភាគមិនតម្រូវ 11/4 ទៅជាចំនួនចម្រុះ ៖',
-        options: [ '2 (1/4)', '2 (3/4)', '3 (1/4)', '2 (1/2)' ],
+        options: [ '2', '2', '3', '2' ],
         correctAnswerIndex: 1,
         explanation: '11 ÷ 4 = 2 សល់ 3 ➔ 2 3/4។'
       },
@@ -836,7 +836,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'គណនាផលបូកចំនួនចម្រុះ 6 (3/4) + 5 (2/4) = ?',
-        options: [ '11 (5/4)', '11 (1/4)', '12 (1/4)', '12 (3/4)' ],
+        options: [ '11', '11', '12', '12' ],
         correctAnswerIndex: 2,
         explanation: '(6 + 5) + (3/4 + 2/4) = 11 + 5/4 = 11 + 1 1/4 = 12 1/4។'
       },
@@ -845,7 +845,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'គណនាផលបូក 2 (1/3) + 4 (1/2) = ?',
-        options: [ '6 (2/5)', '7 (1/6)', '6 (1/6)', '6 (5/6)' ],
+        options: [ '6', '7', '6', '6' ],
         correctAnswerIndex: 3,
         explanation: '2 + 4 = 6; 1/3 + 1/2 = 2/6 + 3/6 = 5/6 ➔ 6 5/6។'
       },
@@ -854,7 +854,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'គណនាផលដក 5 (3/4) - 2 (1/4) = ?',
-        options: [ '3 (2/4) ឬ 3 (1/2)', '3 (1/4)', '3 (3/4)', '2 (2/4)' ],
+        options: [ '3 ឬ 3', '3', '3', '2' ],
         correctAnswerIndex: 0,
         explanation: '(5 - 2) + (3/4 - 1/4) = 3 + 2/4 = 3 1/2។'
       },
@@ -863,7 +863,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'គណនាផលដក 4 (1/3) - 1 (1/2) = ?',
-        options: [ '3 (1/6)', '2 (5/6)', '2 (1/6)', '3 (5/6)' ],
+        options: [ '3', '2', '2', '3' ],
         correctAnswerIndex: 1,
         explanation: '13/3 - 3/2 = 26/6 - 9/6 = 17/6 = 2 5/6។'
       },
@@ -872,7 +872,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'គណនាផលគុណ 2 (1/2) × 1 (1/3) = ?',
-        options: [ '2 (1/6)', '3 (1/2)', '3 (1/3) ឬ 10/3', '2 (2/3)' ],
+        options: [ '2', '3', '3 ឬ 10/3', '2' ],
         correctAnswerIndex: 2,
         explanation: '(5/2) × (4/3) = 20/6 = 10/3 = 3 1/3។'
       },
@@ -899,7 +899,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'បំប្លែង 17/5 ទៅជាចំនួនចម្រុះ ៖',
-        options: [ '3 (1/5)', '3 (2/5)', '2 (7/5)', '3 (3/5)' ],
+        options: [ '3', '3', '2', '3' ],
         correctAnswerIndex: 1,
         explanation: '17 ÷ 5 = 3 សល់ 2 ➔ 3 2/5។'
       },
@@ -908,7 +908,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'គណនា 1 (1/2) + 2 (1/4) + 3 (1/8) = ?',
-        options: [ '6 (5/8)', '6 (3/8)', '6 (7/8)', '7 (1/8)' ],
+        options: [ '6', '6', '6', '7' ],
         correctAnswerIndex: 2,
         explanation: '(1+2+3) + (4/8 + 2/8 + 1/8) = 6 7/8។'
       },
@@ -917,7 +917,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'គណនា 5 - 2 (1/3) = ?',
-        options: [ '3 (2/3)', '3 (1/3)', '2 (1/3)', '2 (2/3)' ],
+        options: [ '3', '3', '2', '2' ],
         correctAnswerIndex: 3,
         explanation: '4 (3/3) - 2 (1/3) = 2 2/3 (ឬ 15/3 - 7/3 = 8/3 = 2 2/3)។'
       },
@@ -926,7 +926,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'គណនា 4 × 1 (1/2) = ?',
-        options: [ '6', '4 (1/2)', '5', '8' ],
+        options: [ '6', '4', '5', '8' ],
         correctAnswerIndex: 0,
         explanation: '4 × (3/2) = 12/2 = 6។'
       },
@@ -944,7 +944,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'ចតុកោណកែងមួយមានបណ្តោយ 4 (1/2) m និងទទឹង 2 (1/3) m។ គណនាបរិមាត្រ ៖',
-        options: [ '13 (1/3) m', '6 (5/6) m', '13 (2/3) m', '14 m' ],
+        options: [ '13 m', '6 m', '13 m', '14 m' ],
         correctAnswerIndex: 2,
         explanation: 'P = [4 1/2 + 2 1/3] × 2 = [6 + (3/6+2/6)] × 2 = [6 5/6] × 2 = 41/6 × 2 = 82/6 = 13 4/6 = 13 2/3 m។'
       },
@@ -953,7 +953,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'តាមប្រធានខាងលើ គណនាផ្ទៃក្រឡាជា m² ៖',
-        options: [ '9 (1/2) m²', '8 (1/6) m²', '10 (5/6) m²', '10 (1/2) m²' ],
+        options: [ '9 m²', '8 m²', '10 m²', '10 m²' ],
         correctAnswerIndex: 3,
         explanation: 'S = (9/2) × (7/3) = 63/6 = 21/2 = 10 1/2 m²។'
       },
@@ -971,7 +971,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'ចំនួនទសភាគ 3.5 សរសេរជាចំនួនចម្រុះ ៖',
-        options: [ '3 (1/2)', 'ត្រូវទាំង A និង C', '3 (5/10) ឬ 3 (1/2)', '3 (1/5)' ],
+        options: [ '3', 'ត្រូវទាំង A និង C', '3 ឬ 3', '3' ],
         correctAnswerIndex: 1,
         explanation: '3.5 = 3 5/10 = 3 1/2។'
       },
@@ -980,7 +980,7 @@ export const LESSONS_11_TO_15_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៥៖ ចំនួនចម្រុះ',
         text: 'គណនា 2 (3/4) + 1 (1/2) - 1 (1/4) = ?',
-        options: [ '3 (1/4)', '3 (1/2)', '3', '2 (3/4)' ],
+        options: [ '3', '3', '3', '2' ],
         correctAnswerIndex: 2,
         explanation: '11/4 + 6/4 - 5/4 = 12/4 = 3។'
       },

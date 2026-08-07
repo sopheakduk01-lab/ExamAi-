@@ -213,7 +213,7 @@ export const LESSONS_16_TO_20_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៧៖ ការប្រាក់',
         text: 'រូបមន្តគណនាការប្រាក់សាមញ្ញ (I) គឺ ៖ (P: ប្រាក់ដើម, r: អត្រា, t: រយៈពេល)',
-        options: [ 'I = P × r × t', 'I = P + r + t', 'I = P / (r × t)', 'I = (P × r) / t' ],
+        options: [ 'I = P × r × t', 'I = P + r + t', 'I = P /', 'I = / t' ],
         correctAnswerIndex: 0,
         explanation: 'ការប្រាក់ I = P × r × t (ដែល r ជាភាគរយក្នុងមួយឆ្នាំ)។'
       },
@@ -494,7 +494,7 @@ export const LESSONS_16_TO_20_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៨៖ ស្ថិតិ',
         text: 'ឌីយ៉ាក្រាមបង្កោល (Bar Graph) ប្រើប្រាស់អ្វីដើម្បីបង្ហាញបរិមាណទិន្នន័យ?',
-        options: [ 'ខ្សែផ្លោង', 'កម្ពស់ ឬប្រវែងនៃចតុកោណកែង (បង្កោល)', 'ចំណុចតភ្ជាប់', 'មុំរង្វង់' ],
+        options: [ 'ខ្សែផ្លោង', 'កម្ពស់ ឬប្រវែងនៃចតុកោណកែង', 'ចំណុចតភ្ជាប់', 'មុំរង្វង់' ],
         correctAnswerIndex: 1,
         explanation: 'ឌីយ៉ាក្រាមបង្កោលប្រើប្រាស់កម្ពស់/ប្រវែងនៃបង្កោលចតុកោណកែងដើម្បីតំណាងទិន្នន័យ។'
       },
@@ -712,7 +712,7 @@ export const LESSONS_16_TO_20_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី១៩៖ រង្វាស់ពេល',
         text: 'សិស្សម្នាក់រៀនពេលព្រឹក 3h 15mn និងពេលរសៀល 2h 45mn. តើគាត់រៀនសរុបប៉ុន្មានម៉ោង?',
-        options: [ '5h 60mn', '6h 30mn', '5h 30mn', '6h 00mn (6 ម៉ោង)' ],
+        options: [ '5h 60mn', '6h 30mn', '5h 30mn', '6h 00mn' ],
         correctAnswerIndex: 3,
         explanation: '3h + 2h = 5h; 15mn + 45mn = 60mn = 1h ➔ 5h + 1h = 6h 00mn (6 ម៉ោង)។'
       },
@@ -808,7 +808,7 @@ export const LESSONS_16_TO_20_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌនិងផ្ទៃសូលីត',
         text: 'រូបមន្តមាឌប្រអប់កែង (V) ដែលមានបណ្តោយ a, ទទឹង b, កម្ពស់ h គឺ ៖',
-        options: [ 'V = a × b × h', 'V = (a + b) × h', 'V = 2(a + b + h)', 'V = a × b / h' ],
+        options: [ 'V = a × b × h', 'V = × h', 'V = 2', 'V = a × b / h' ],
         correctAnswerIndex: 0,
         explanation: 'មាឌប្រអប់កែង V = បណ្តោយ × ទទឹង × កម្ពស់ (a × b × h)។'
       },
@@ -844,7 +844,7 @@ export const LESSONS_16_TO_20_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌនិងផ្ទៃសូលីត',
         text: 'រូបមន្តមាឌស៊ីឡាំង (V) ដែលមានកាំបាត R និងកម្ពស់ h គឺ ៖ (យក π ≈ 3.14)',
-        options: [ 'V = π × R² × h', 'V = 2 × π × R × h', 'V = (1/3) × π × R² × h', 'V = π × R × h²' ],
+        options: [ 'V = π × R² × h', 'V = 2 × π × R × h', 'V = × π × R² × h', 'V = π × R × h²' ],
         correctAnswerIndex: 0,
         explanation: 'មាឌស៊ីឡាំង V = ផ្ទៃបាត × កម្ពស់ = π × R² × h។'
       },
@@ -907,7 +907,7 @@ export const LESSONS_16_TO_20_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌនិងផ្ទៃសូលីត',
         text: 'រូបមន្តមាឌកោន (V) ដែលមានកាំបាត R និងកម្ពស់ h គឺ ៖',
-        options: [ 'V = π × R² × h', 'V = 3 × π × R² × h', 'V = (1/2) × π × R² × h', 'V = (1/3) × π × R² × h' ],
+        options: [ 'V = π × R² × h', 'V = 3 × π × R² × h', 'V = × π × R² × h', 'V = × π × R² × h' ],
         correctAnswerIndex: 3,
         explanation: 'មាឌកោនស្មើនឹង ១/៣ នៃមាឌស៊ីឡាំងដែលមានកាំបាត និងកម្ពស់ស្មើគ្នា ➔ V = (1/3) × π × R² × h។'
       },
@@ -916,7 +916,7 @@ export const LESSONS_16_TO_20_EXAMS: ExamPaper[] = [
         subjectId: 'math',
         category: 'មេរៀនទី២០៖ មាឌនិងផ្ទៃសូលីត',
         text: 'រូបមន្តមាឌស៊្វែ (Sphere - គ្រាប់ឃ្លី) គឺ ៖',
-        options: [ 'V = (4/3) × π × R³', 'V = 4 × π × R²', 'V = (1/3) × π × R³', 'V = π × R³' ],
+        options: [ 'V = × π × R³', 'V = 4 × π × R²', 'V = × π × R³', 'V = π × R³' ],
         correctAnswerIndex: 0,
         explanation: 'មាឌស៊្វែ V = (4/3) × π × R³។'
       },
@@ -983,7 +983,7 @@ export const LESSONS_16_TO_20_EXAMS: ExamPaper[] = [
           'មិនអាចគណនាបានទេ',
           'មាឌសូលីត = ទម្ងន់ ÷ ២',
           'មាឌសូលីត = បរិមាត្រ × ២',
-          'មាឌសូលីត = មាឌទឹកកើនឡើង (រំកិលចេញ)'
+          'មាឌសូលីត = មាឌទឹកកើនឡើង'
         ],
         correctAnswerIndex: 3,
         explanation: 'តាមគោលការណ៍អាកស៊ីម៉ែត មាឌសូលីតស្ទាក់ស្ទើរស្មើនឹងមាឌទឹកដែលវាជំនួស (កើនឡើង ឬរំកិលចេញ)។'
