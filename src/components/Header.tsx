@@ -23,6 +23,7 @@ interface HeaderProps {
   onOpenRegistrationModal?: () => void;
   onOpenCharacterModal?: () => void;
   onOpenOwnerTracking?: () => void;
+  isVisible?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -45,10 +46,13 @@ export const Header: React.FC<HeaderProps> = ({
   userProfile,
   onOpenRegistrationModal,
   onOpenCharacterModal,
-  onOpenOwnerTracking
+  onOpenOwnerTracking,
+  isVisible = true
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-gradient-to-r from-[#2B170B] via-[#452413] to-[#2B170B] text-amber-50 border-b border-amber-600/30 shadow-lg shadow-amber-950/20 backdrop-blur-xl">
+    <header className={`fixed top-0 inset-x-0 z-40 w-full max-w-full overflow-x-hidden bg-gradient-to-r from-[#2B170B] via-[#452413] to-[#2B170B] text-amber-50 border-b border-amber-600/30 shadow-lg shadow-amber-950/20 backdrop-blur-xl transition-transform duration-300 ease-in-out ${
+      isVisible ? 'translate-y-0' : '-translate-y-full'
+    }`}>
       {/* Top subtle highlight shimmer line */}
       <div className="h-0.5 bg-gradient-to-r from-amber-600/20 via-amber-400 to-amber-600/20 w-full opacity-80" />
 

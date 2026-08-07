@@ -26,6 +26,10 @@ import { AddToHomeScreenModal } from './components/AddToHomeScreenModal';
 import { CharacterSelectionModal } from './components/CharacterSelectionModal';
 import { StudentExamRegistrationModal } from './components/StudentExamRegistrationModal';
 import { OwnerTrackingModal } from './components/OwnerTrackingModal';
+import { MobileLauncherHome } from './components/MobileLauncherHome';
+import { Grade6ExamCarousel } from './components/Grade6ExamCarousel';
+import { EdgeBottomSheetDrawer } from './components/EdgeBottomSheetDrawer';
+import { FacebookBottomNav } from './components/FacebookBottomNav';
 import { CHARACTERS_DATA, FullBodyCharacter as CharacterType } from './data/charactersData';
 import { FullBodyCharacter } from './components/FullBodyCharacter';
 import {
@@ -41,6 +45,7 @@ export default function App() {
   const [selectedSubjectId, setSelectedSubjectId] = useState<SubjectId | null>(null);
   const [selectedExam, setSelectedExam] = useState<ExamPaper | null>(null);
   const [activeMainTab, setActiveMainTab] = useState<'exam' | 'lesson' | 'new_exam'>('exam');
+  const [useMobileLauncher, setUseMobileLauncher] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   // Modals
@@ -87,6 +92,35 @@ export default function App() {
       setSelectedExam(pendingExamToStart);
       setPendingExamToStart(null);
     }
+  };
+
+  // Handler for Home navigation button - resets views to Grade 6 Primary School Completion Exam Prep
+  const handleGoHome = () => {
+    setSelectedSubjectId(null);
+    setSelectedExam(null);
+    setActiveMainTab('exam');
+    setUseMobileLauncher(false);
+    setIsStudentChatOpen(false);
+    setIsMissionsOpen(false);
+    setIsProgressOpen(false);
+    setIsNotificationsOpen(false);
+    setIsModernLibraryOpen(false);
+    setIsDrawingOpen(false);
+    setIsQRCodeOpen(false);
+    setIsMenuOpen(false);
+    setIsBookmarksOpen(false);
+    setIsGlobalSearchOpen(false);
+    setIsAIBattleOpen(false);
+    setIsFishingGameOpen(false);
+    setIsEnglishGameOpen(false);
+    setIsAccountModalOpen(false);
+    setIsCharacterModalOpen(false);
+    setIsAboutOpen(false);
+    setIsAddToHomeScreenOpen(false);
+    setIsOwnerTrackingOpen(false);
+    setIsStudentRegistrationOpen(false);
+    setPendingExamToStart(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Dark Mode state
@@ -210,10 +244,46 @@ export default function App() {
       s.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Directional navigation bar visibility based on user request:
+  // When scrolling down towards bottom: top header disappears, bottom bar shows.
+  // When scrolling up towards top: top header shows, bottom bar disappears.
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [isBottomNavVisible, setIsBottomNavVisible] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 20) {
+        // Near top of page: show both bars
+        setIsHeaderVisible(true);
+        setIsBottomNavVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling DOWN towards bottom: hide top header, show bottom nav
+        setIsHeaderVisible(false);
+        setIsBottomNavVisible(true);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling UP towards top: show top header, hide bottom nav
+        setIsHeaderVisible(true);
+        setIsBottomNavVisible(false);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#FAF8F5] dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col font-['Siemreap','Khmer_OS_Siemreap','Kantumruuy_Pro',sans-serif] transition-colors duration-200">
-      {/* Top Header */}
+    <div className="min-h-screen max-w-full overflow-x-hidden bg-[#FAF8F5] dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col font-['Siemreap','Khmer_OS_Siemreap','Kantumruuy_Pro',sans-serif] transition-colors duration-200">
+      {/* Navigation Header */}
       <Header
+        isVisible={isHeaderVisible}
         onOpenMenu={() => setIsMenuOpen(true)}
         onOpenBookmarks={() => setIsBookmarksOpen(true)}
         bookmarkedCount={bookmarkedQuestionIds.length}
@@ -229,10 +299,7 @@ export default function App() {
         isDarkMode={isDarkMode}
         onToggleDarkMode={() => setIsDarkMode((prev) => !prev)}
         unreadNotificationsCount={unreadNotificationsCount}
-        onHomeClick={() => {
-          setSelectedSubjectId(null);
-          setSelectedExam(null);
-        }}
+        onHomeClick={handleGoHome}
         userProfile={userProfile}
         onOpenRegistrationModal={() => {
           setIsInitialSetup(false);
@@ -243,7 +310,7 @@ export default function App() {
       />
 
       {/* Main Body */}
-      <main className="flex-1 max-w-4xl w-full mx-auto px-4 py-5 space-y-6">
+      <main className="flex-1 max-w-4xl w-full mx-auto px-4 pt-16 sm:pt-20 pb-20 space-y-6">
         {/* If taking an exam */}
         {selectedExam ? (
           <ExamRunner
@@ -269,8 +336,35 @@ export default function App() {
               setIsFishingGameOpen(true);
             }}
           />
+        ) : useMobileLauncher ? (
+          /* Mobile Launcher View matching reference design image (Easy to click) */
+          <MobileLauncherHome
+            userProfile={userProfile}
+            currentAccount={currentAccount}
+            onSelectSubject={(id) => setSelectedSubjectId(id)}
+            onSelectMainTab={(tab) => setActiveMainTab(tab)}
+            onOpenSearch={() => setIsGlobalSearchOpen(true)}
+            onOpenStudentChat={() => setIsStudentChatOpen(true)}
+            onOpenAIBattle={() => setIsAIBattleOpen(true)}
+            onOpenFishingGame={() => setIsFishingGameOpen(true)}
+            onOpenEnglishGame={() => setIsEnglishGameOpen(true)}
+            onOpenDrawing={() => setIsDrawingOpen(true)}
+            onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
+            onOpenMissions={() => setIsMissionsOpen(true)}
+            onOpenBookmarks={() => setIsBookmarksOpen(true)}
+            onOpenProgress={() => setIsProgressOpen(true)}
+            onOpenMenu={() => setIsMenuOpen(true)}
+            onOpenCharacterModal={() => setIsCharacterModalOpen(true)}
+            onOpenAccountModal={() => {
+              setIsInitialSetup(false);
+              setIsAccountModalOpen(true);
+            }}
+            onSelectExamWithRegistration={handleSelectExamWithRegistration}
+            activeMainTab={activeMainTab}
+            bookmarkedCount={bookmarkedQuestionIds.length}
+          />
         ) : (
-          /* Main Homepage View matching reference design */
+          /* Classic Main Homepage View */
           <>
             {/* Hero Banner */}
             <HeroBanner
@@ -408,6 +502,14 @@ export default function App() {
 
             </div>
 
+            {/* Horizontal Swipeable Grade 6 Exam Prep Carousel ( ត្រៀមប្រឡងបញ្ចប់បឋមសិក្សា ថ្នាក់ទី៦ ) */}
+            {activeMainTab === 'exam' && (
+              <Grade6ExamCarousel
+                onSelectExam={(exam) => handleSelectExamWithRegistration(exam)}
+                onSelectSubject={(sId) => setSelectedSubjectId(sId)}
+              />
+            )}
+
             {/* Section Title */}
             <div className="flex items-center justify-between pt-1">
               <div>
@@ -503,14 +605,6 @@ export default function App() {
           </>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="mt-auto border-t border-amber-900/10 bg-[#FAF8F5] py-6 px-4 text-center text-xs text-slate-500">
-        <div className="max-w-4xl mx-auto space-y-2">
-          <p className="font-bold text-amber-950 font-moul">ត្រៀមប្រឡងថ្នាក់ទី៦ - Grade 6 Exam Prep</p>
-          <p>កម្មវិធីសិក្សា និងប្រឡងសាកល្បង សម្រាប់សិស្សបឋមសិក្សាថ្នាក់ទី៦</p>
-        </div>
-      </footer>
 
       {/* Modals & Drawers */}
       <NavigationDrawer
@@ -674,6 +768,21 @@ export default function App() {
       <OwnerTrackingModal
         isOpen={isOwnerTrackingOpen}
         onClose={() => setIsOwnerTrackingOpen(false)}
+      />
+
+      {/* Floating Kahoot-style Bottom Navigation Bar */}
+      <FacebookBottomNav
+        isVisible={isBottomNavVisible}
+        onHomeClick={handleGoHome}
+        onOpenStudentChat={() => setIsStudentChatOpen(true)}
+        onOpenMissions={() => setIsMissionsOpen(true)}
+        onOpenProgress={() => setIsProgressOpen(true)}
+        onOpenNotifications={() => setIsNotificationsOpen(true)}
+        onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
+        onOpenDrawing={() => setIsDrawingOpen(true)}
+        onOpenQRCode={() => setIsQRCodeOpen(true)}
+        onOpenMenu={() => setIsMenuOpen(true)}
+        unreadNotificationsCount={unreadNotificationsCount}
       />
     </div>
   );
