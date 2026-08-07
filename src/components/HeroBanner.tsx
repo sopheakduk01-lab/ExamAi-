@@ -12,6 +12,7 @@ interface HeroBannerProps {
   onOpenFishingGame?: () => void;
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
+  onOpenCharacterModal?: () => void;
 }
 
 export const HeroBanner: React.FC<HeroBannerProps> = ({
@@ -23,7 +24,8 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onOpenStudentChat,
   onOpenFishingGame,
   userProfile,
-  onOpenRegistrationModal
+  onOpenRegistrationModal,
+  onOpenCharacterModal
 }) => {
   return (
     <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3D2012] via-[#59301A] to-[#2B150A] text-amber-50 p-6 sm:p-9 shadow-2xl shadow-amber-950/30 border border-amber-600/40">
@@ -43,13 +45,15 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             <span>កម្មវិធីសិក្សា និងប្រឡងសាកល្បងថ្នាក់ទី៦ - ក្រសួងអប់រំ</span>
           </div>
 
-          {userProfile && (
+          {onOpenCharacterModal && (
             <button
-              onClick={onOpenRegistrationModal}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-yellow-200 text-xs font-bold transition-all cursor-pointer backdrop-blur-md"
+              onClick={onOpenCharacterModal}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/30 to-yellow-500/30 hover:from-amber-500/50 hover:to-yellow-500/50 border border-amber-400/60 text-yellow-200 text-xs font-bold transition-all cursor-pointer backdrop-blur-md active:scale-95 shadow-md"
+              id="btn-hero-character-modal"
             >
-              <span>{userProfile.avatar}</span>
-              <span>សួស្តី, {userProfile.name}! 👋</span>
+              <span>{userProfile?.avatar || '👦'}</span>
+              <span>សួស្តី, {userProfile?.name || 'សុខា'}! 👋</span>
+              <span className="bg-amber-400 text-amber-950 px-1.5 py-0.2 rounded-md text-[10px]">🎭 ៥០ តួអង្គ</span>
             </button>
           )}
         </div>

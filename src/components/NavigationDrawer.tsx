@@ -1,7 +1,7 @@
 import React from 'react';
 import { SubjectId, UserProfile } from '../types';
 import { SUBJECTS } from '../data/grade6Data';
-import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3, Bell, QrCode, Smartphone } from 'lucide-react';
+import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3, Bell, QrCode, Smartphone, Sun, Moon } from 'lucide-react';
 
 interface NavigationDrawerProps {
   isOpen: boolean;
@@ -20,10 +20,13 @@ interface NavigationDrawerProps {
   onOpenAbout?: () => void;
   onOpenQRCode?: () => void;
   onOpenAddToHomeScreen?: () => void;
+  isDarkMode?: boolean;
+  onToggleDarkMode?: () => void;
   unreadNotificationsCount?: number;
   onHomeClick: () => void;
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
+  onOpenCharacterModal?: () => void;
 }
 
 export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
@@ -43,16 +46,19 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onOpenAbout,
   onOpenQRCode,
   onOpenAddToHomeScreen,
+  isDarkMode,
+  onToggleDarkMode,
   unreadNotificationsCount = 0,
   onHomeClick,
   userProfile,
-  onOpenRegistrationModal
+  onOpenRegistrationModal,
+  onOpenCharacterModal
 }) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-start animate-fade-in">
-      <div className="w-80 max-w-[85vw] bg-white h-full shadow-2xl flex flex-col border-r border-slate-200 overflow-hidden">
+      <div className="w-80 max-w-[85vw] bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 h-full shadow-2xl flex flex-col border-r border-slate-200 dark:border-slate-800 overflow-hidden">
         {/* Top Header Drawer */}
         <div className="p-5 bg-gradient-to-r from-[#8C5E3C] to-[#72482A] text-amber-50 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -94,16 +100,16 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
 
         {/* Drawer Menu List */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin">
-          {/* Student Profile Card */}
-          <div className="bg-gradient-to-br from-amber-50/90 to-amber-100/70 rounded-xl p-3.5 border border-amber-200/80 shadow-2xs">
+          {/* Student Profile & Character Card */}
+          <div className="bg-gradient-to-br from-amber-50/90 via-amber-100/70 to-yellow-100/60 rounded-2xl p-3.5 border border-amber-300/80 shadow-xs space-y-2.5">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-10 h-10 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xl shadow-xs shrink-0 border border-amber-300">
+                <div className="w-11 h-11 rounded-xl bg-amber-500 text-white flex items-center justify-center text-2xl shadow-xs shrink-0 border-2 border-amber-300">
                   {userProfile?.avatar || '🎓'}
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-bold text-slate-900 text-sm truncate font-moul text-amber-950">
-                    {userProfile?.name || 'សិស្សមិនទាន់ចុះឈ្មោះ'}
+                    {userProfile?.name || 'សិស្សថ្នាក់ទី៦'}
                   </h3>
                   <p className="text-xs text-amber-800 font-medium truncate mt-0.5">
                     {userProfile?.grade || 'ថ្នាក់ទី៦'} {userProfile?.school ? `• ${userProfile.school}` : ''}
@@ -117,14 +123,28 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                     onOpenRegistrationModal();
                     onClose();
                   }}
-                  className="p-2 rounded-lg bg-amber-200/60 hover:bg-amber-300 text-amber-900 transition-colors cursor-pointer shrink-0"
-                  title="កែប្រែព័ត៌មាន"
+                  className="p-2 rounded-lg bg-amber-200/80 hover:bg-amber-300 text-amber-900 transition-colors cursor-pointer shrink-0"
+                  title="ព័ត៌មានបន្ថែម"
                   id="btn-edit-profile-drawer"
                 >
                   <Edit3 className="w-4 h-4 text-amber-900" />
                 </button>
               )}
             </div>
+
+            {/* Character Selection Trigger Button */}
+            {onOpenCharacterModal && (
+              <button
+                onClick={() => {
+                  onOpenCharacterModal();
+                  onClose();
+                }}
+                className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-bold text-xs shadow-md active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2 border border-amber-200"
+                id="btn-drawer-character-modal"
+              >
+                <span>🎭 ជ្រើសរើសតួអង្គសិក្សា (៥០ តួអង្គ)</span>
+              </button>
+            )}
           </div>
 
           {/* Quick Nav Group 1: ទូទៅ & ការសិក្សា (General & Study) */}
@@ -330,6 +350,27 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                   <Palette className="w-4 h-4" />
                 </div>
                 <span className="font-semibold">គំនូសសេរី (Art Canvas)</span>
+              </button>
+            )}
+
+            {/* Dark Mode Toggle Menu Item */}
+            {onToggleDarkMode && (
+              <button
+                onClick={() => {
+                  onToggleDarkMode();
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg font-medium text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-between text-sm cursor-pointer border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60"
+                id="btn-dark-mode-drawer-item"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-md bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-2xs">
+                    {isDarkMode ? <Sun className="w-4 h-4 text-yellow-300" /> : <Moon className="w-4 h-4" />}
+                  </div>
+                  <span className="font-bold">{isDarkMode ? 'ម៉ូដភ្លឺ (Light Mode)' : 'ម៉ូដងងឹត (Dark Mode)'}</span>
+                </div>
+                <span className="text-[10px] bg-indigo-100 dark:bg-indigo-950 text-indigo-800 dark:text-indigo-200 font-bold px-2 py-0.5 rounded-md">
+                  {isDarkMode ? 'ប្តូរទៅ Light' : 'ប្តូរទៅ Dark'}
+                </span>
               </button>
             )}
 

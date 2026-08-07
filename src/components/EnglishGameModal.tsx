@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { getSafeAudioContext } from '../utils/audioSynthesizer';
 import {
   X,
   BookOpen,
@@ -567,21 +568,24 @@ export const EnglishGameModal: React.FC<EnglishGameModalProps> = ({
 
   // Speech Synth helper
   const speakText = (text: string) => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.85;
-      utterance.lang = 'en-US';
-      window.speechSynthesis.speak(utterance);
+    try {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.85;
+        utterance.lang = 'en-US';
+        window.speechSynthesis.speak(utterance);
+      }
+    } catch (e) {
+      console.warn('Speech synthesis error:', e);
     }
   };
 
   // Sound Effects
   const playSound = (type: 'correct' | 'wrong' | 'victory') => {
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = getSafeAudioContext();
+      if (!ctx) return;
       const now = ctx.currentTime;
 
       if (type === 'correct') {

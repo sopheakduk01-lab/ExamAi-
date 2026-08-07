@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { getSafeAudioContext } from '../utils/audioSynthesizer';
 import {
   X,
   Volume2,
@@ -347,9 +348,8 @@ export const FishingGameModal: React.FC<FishingGameModalProps> = ({
   const playAudio = (type: 'drop' | 'hook' | 'correct' | 'wrong' | 'splash') => {
     if (isMuted) return;
     try {
-      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = getSafeAudioContext();
+      if (!ctx) return;
       const now = ctx.currentTime;
 
       if (type === 'drop') {

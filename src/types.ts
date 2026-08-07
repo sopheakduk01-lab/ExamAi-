@@ -82,6 +82,7 @@ export interface UserProfile {
   grade: string;
   school?: string;
   avatar: string;
+  characterId?: string;
   registeredAt: string;
   pin?: string;
 }
@@ -93,6 +94,7 @@ export interface StudentAccount {
   grade: string;
   school?: string;
   avatar: string;
+  characterId?: string;
   createdAt: string;
   lastLoginAt: string;
   bookmarks: string[];

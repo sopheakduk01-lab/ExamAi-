@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, BookOpen, Bookmark, Award, Search, Target, Flame, Sparkles, User, Bell, QrCode, Smartphone } from 'lucide-react';
+import { Menu, BookOpen, Bookmark, Award, Search, Target, Flame, Sparkles, User, Bell, QrCode, Smartphone, Sun, Moon } from 'lucide-react';
 import { UserProfile } from '../types';
 
 interface HeaderProps {
@@ -15,10 +15,13 @@ interface HeaderProps {
   onOpenNotifications?: () => void;
   onOpenQRCode?: () => void;
   onOpenAddToHomeScreen?: () => void;
+  isDarkMode?: boolean;
+  onToggleDarkMode?: () => void;
   unreadNotificationsCount?: number;
   onHomeClick: () => void;
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
+  onOpenCharacterModal?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -34,10 +37,13 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenNotifications,
   onOpenQRCode,
   onOpenAddToHomeScreen,
+  isDarkMode,
+  onToggleDarkMode,
   unreadNotificationsCount = 0,
   onHomeClick,
   userProfile,
-  onOpenRegistrationModal
+  onOpenRegistrationModal,
+  onOpenCharacterModal
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-gradient-to-r from-[#2B170B] via-[#452413] to-[#2B170B] text-amber-50 border-b border-amber-600/30 shadow-lg shadow-amber-950/20 backdrop-blur-xl">
@@ -86,18 +92,20 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
 
-        {/* Center Extra: Streak / Level Badge for motivation */}
-        <div className="hidden lg:flex items-center gap-2 bg-amber-950/70 border border-amber-600/30 px-3 py-1 rounded-full text-xs font-medium text-amber-200">
-          <span className="flex items-center gap-1 text-orange-400 font-bold">
-            <Flame className="w-4 h-4 fill-orange-500 text-orange-400 animate-bounce" />
-            ៣ ថ្ងៃតជាប់
-          </span>
-          <span className="text-amber-600">|</span>
-          <span className="flex items-center gap-1 text-yellow-300 font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            សិស្សពូកែ ២០២៦
-          </span>
-        </div>
+        {/* Center Extra: Student Character Button */}
+        {onOpenCharacterModal && (
+          <button
+            onClick={onOpenCharacterModal}
+            className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 hover:from-amber-500/30 hover:to-yellow-500/30 border border-amber-400/40 px-3 py-1 rounded-full text-xs font-bold text-yellow-200 transition-all cursor-pointer backdrop-blur-md shadow-xs active:scale-95"
+            id="btn-header-character-select"
+          >
+            <span className="text-base">{userProfile?.avatar || '👦'}</span>
+            <span className="font-moul text-amber-100">{userProfile?.name || 'សុខា'}</span>
+            <span className="bg-amber-500 text-amber-950 text-[10px] px-1.5 py-0.2 rounded-md font-extrabold">
+              🎭 ៥០ តួអង្គ
+            </span>
+          </button>
+        )}
 
         {/* Right: Actions Bar */}
         <div className="flex items-center gap-1.5 sm:gap-2">
@@ -132,6 +140,22 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-4.5 px-1 bg-rose-500 text-white text-[10px] font-extrabold rounded-full flex items-center justify-center border-2 border-[#2B170B] shadow-md animate-pulse">
                   {unreadNotificationsCount}
                 </span>
+              )}
+            </button>
+          )}
+
+          {/* Dark Mode Toggle Button */}
+          {onToggleDarkMode && (
+            <button
+              onClick={onToggleDarkMode}
+              className="p-2 rounded-xl text-amber-200 hover:text-amber-100 hover:bg-amber-800/40 transition-colors cursor-pointer active:scale-95"
+              title={isDarkMode ? 'ប្តូរទៅម៉ូដភ្លឺ (Light Mode)' : 'ប្តូរទៅម៉ូដងងឹត (Dark Mode)'}
+              id="btn-dark-mode-header"
+            >
+              {isDarkMode ? (
+                <Sun className="w-4.5 h-4.5 text-yellow-300 animate-spin-slow" />
+              ) : (
+                <Moon className="w-4.5 h-4.5 text-amber-200" />
               )}
             </button>
           )}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getSafeAudioContext } from '../utils/audioSynthesizer';
 import { ExamPaper, Question, ExamResult } from '../types';
 import {
   ArrowLeft,
@@ -84,9 +85,8 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
 
   const playAnswerFeedback = (isCorrect: boolean) => {
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = getSafeAudioContext();
+      if (!ctx) return;
       const now = ctx.currentTime;
 
       if (isCorrect) {
@@ -194,21 +194,27 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
 
   // Web Speech synthesis for Khmer reading
   const handleReadQuestion = () => {
-    if ('speechSynthesis' in window) {
-      if (isReadingQuestion) {
+    try {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        if (isReadingQuestion) {
+          window.speechSynthesis.cancel();
+          setIsReadingQuestion(false);
+          return;
+        }
         window.speechSynthesis.cancel();
-        setIsReadingQuestion(false);
-        return;
-      }
-      const textToRead = `${currentQuestion.text}. ជម្រើសរួមមាន៖ ${currentQuestion.options.join(', ')}`;
-      const utterance = new SpeechSynthesisUtterance(textToRead);
-      utterance.lang = 'km-KH';
-      utterance.rate = 0.9;
-      utterance.onend = () => setIsReadingQuestion(false);
-      utterance.onerror = () => setIsReadingQuestion(false);
+        const textToRead = `${currentQuestion.text}. ជម្រើសរួមមាន៖ ${currentQuestion.options.join(', ')}`;
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        utterance.lang = 'km-KH';
+        utterance.rate = 0.9;
+        utterance.onend = () => setIsReadingQuestion(false);
+        utterance.onerror = () => setIsReadingQuestion(false);
 
-      setIsReadingQuestion(true);
-      window.speechSynthesis.speak(utterance);
+        setIsReadingQuestion(true);
+        window.speechSynthesis.speak(utterance);
+      }
+    } catch (e) {
+      console.warn('Speech synthesis error:', e);
+      setIsReadingQuestion(false);
     }
   };
 

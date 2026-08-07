@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { getSafeAudioContext } from '../utils/audioSynthesizer';
 import confetti from 'canvas-confetti';
 import { Subject, ExamPaper, Question } from '../types';
 import { SUBJECTS, EXAM_PAPERS } from '../data/grade6Data';
@@ -147,9 +148,8 @@ export const AIBattleView: React.FC<AIBattleViewProps> = ({ subject, examPapers 
   const playSound = (type: 'correct' | 'wrong' | 'win' | 'click') => {
     if (!isSoundOn) return;
     try {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
+      const ctx = getSafeAudioContext();
+      if (!ctx) return;
       const now = ctx.currentTime;
 
       if (type === 'click') {

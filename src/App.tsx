@@ -22,12 +22,17 @@ import { FishingGameModal } from './components/FishingGameModal';
 import { AboutModal } from './components/AboutModal';
 import { QRCodeModal } from './components/QRCodeModal';
 import { AddToHomeScreenModal } from './components/AddToHomeScreenModal';
+import { CharacterSelectionModal } from './components/CharacterSelectionModal';
+import { CHARACTERS_DATA, FullBodyCharacter as CharacterType } from './data/charactersData';
+import { FullBodyCharacter } from './components/FullBodyCharacter';
 import {
   migrateLegacyDataIfNeeded,
   syncStudentState,
-  getCurrentStudentAccount
+  getCurrentStudentAccount,
+  getOrCreateDefaultStudentAccount,
+  updateStudentAccount
 } from './utils/studentAccounts';
-import { Search, GraduationCap, BookOpen, Sparkles, Filter, Trophy, ArrowRight, Target, Layers, Palette, Swords } from 'lucide-react';
+import { Search, GraduationCap, BookOpen, Sparkles, Filter, Trophy, ArrowRight, Target, Layers, Palette, Swords, Music } from 'lucide-react';
 
 export default function App() {
   const [selectedSubjectId, setSelectedSubjectId] = useState<SubjectId | null>(null);
@@ -44,8 +49,17 @@ export default function App() {
   const [isMissionsOpen, setIsMissionsOpen] = useState(false);
   const [isModernLibraryOpen, setIsModernLibraryOpen] = useState(false);
   const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+  const [isCharacterModalOpen, setIsCharacterModalOpen] = useState(false);
   const [isStudentChatOpen, setIsStudentChatOpen] = useState(false);
   const [isInitialSetup, setIsInitialSetup] = useState(false);
+
+  // Automatically trigger character selection modal on initial app entry (onboarding registration)
+  useEffect(() => {
+    const hasCompletedOnboarding = localStorage.getItem('grade6_has_completed_character_onboarding');
+    if (!hasCompletedOnboarding) {
+      setIsCharacterModalOpen(true);
+    }
+  }, []);
   const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isEnglishGameOpen, setIsEnglishGameOpen] = useState(false);
@@ -56,18 +70,57 @@ export default function App() {
   const [fishingInitialSubject, setFishingInitialSubject] = useState<SubjectId>('math');
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(3);
 
-  // Active Student Account state
-  const [currentAccount, setCurrentAccount] = useState<StudentAccount | null>(() => {
-    return migrateLegacyDataIfNeeded();
+  // Dark Mode state
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
-  // Automatically prompt account login/register on first load if no student account
   useEffect(() => {
-    if (!currentAccount) {
-      setIsInitialSetup(true);
-      setIsAccountModalOpen(true);
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
-  }, []);
+  }, [isDarkMode]);
+
+  // Active Student Account state - Default to instant default guest account (NO mandatory signup)
+  const [currentAccount, setCurrentAccount] = useState<StudentAccount>(() => {
+    return migrateLegacyDataIfNeeded() || getOrCreateDefaultStudentAccount();
+  });
+
+  // Current selected full body character
+  const currentCharacter = CHARACTERS_DATA.find(
+    (c) => c.id === (currentAccount?.characterId || 'char_1')
+  ) || CHARACTERS_DATA[0];
+
+  const handleCloseCharacterModal = () => {
+    localStorage.setItem('grade6_has_completed_character_onboarding', 'true');
+    setIsCharacterModalOpen(false);
+  };
+
+  const handleSelectCharacter = (char: CharacterType) => {
+    localStorage.setItem('grade6_has_completed_character_onboarding', 'true');
+    if (currentAccount) {
+      const updated = updateStudentAccount(currentAccount.id, {
+        name: char.name.split(' (')[0],
+        avatar: char.badgeEmoji,
+        characterId: char.id
+      });
+      if (updated) setCurrentAccount(updated);
+    } else {
+      const newAcc = getOrCreateDefaultStudentAccount();
+      const updated = updateStudentAccount(newAcc.id, {
+        name: char.name.split(' (')[0],
+        avatar: char.badgeEmoji,
+        characterId: char.id
+      });
+      if (updated) setCurrentAccount(updated);
+    }
+  };
 
   // Bookmarks state tied to current student
   const [bookmarkedQuestionIds, setBookmarkedQuestionIds] = useState<string[]>(() => {
@@ -139,7 +192,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-slate-800 flex flex-col font-['Kantumruuy_Pro',sans-serif]">
+    <div className="min-h-screen bg-[#FAF8F5] dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col font-['Siemreap','Khmer_OS_Siemreap','Kantumruuy_Pro',sans-serif] transition-colors duration-200">
       {/* Top Header */}
       <Header
         onOpenMenu={() => setIsMenuOpen(true)}
@@ -154,6 +207,8 @@ export default function App() {
         onOpenNotifications={() => setIsNotificationsOpen(true)}
         onOpenQRCode={() => setIsQRCodeOpen(true)}
         onOpenAddToHomeScreen={() => setIsAddToHomeScreenOpen(true)}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={() => setIsDarkMode((prev) => !prev)}
         unreadNotificationsCount={unreadNotificationsCount}
         onHomeClick={() => {
           setSelectedSubjectId(null);
@@ -164,6 +219,7 @@ export default function App() {
           setIsInitialSetup(false);
           setIsAccountModalOpen(true);
         }}
+        onOpenCharacterModal={selectedSubjectId || selectedExam ? undefined : () => setIsCharacterModalOpen(true)}
       />
 
       {/* Main Body */}
@@ -215,7 +271,9 @@ export default function App() {
                 setIsInitialSetup(false);
                 setIsAccountModalOpen(true);
               }}
+              onOpenCharacterModal={() => setIsCharacterModalOpen(true)}
             />
+
 
             {/* Quick Feature Hub (Organized 4-Grid Shortcuts) */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -431,6 +489,8 @@ export default function App() {
         onOpenAbout={() => setIsAboutOpen(true)}
         onOpenQRCode={() => setIsQRCodeOpen(true)}
         onOpenAddToHomeScreen={() => setIsAddToHomeScreenOpen(true)}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={() => setIsDarkMode((prev) => !prev)}
         unreadNotificationsCount={unreadNotificationsCount}
         onHomeClick={() => {
           setSelectedSubjectId(null);
@@ -441,6 +501,14 @@ export default function App() {
           setIsInitialSetup(false);
           setIsAccountModalOpen(true);
         }}
+        onOpenCharacterModal={selectedSubjectId || selectedExam ? undefined : () => setIsCharacterModalOpen(true)}
+      />
+
+      <CharacterSelectionModal
+        isOpen={isCharacterModalOpen}
+        onClose={() => setIsCharacterModalOpen(false)}
+        selectedCharacterId={currentCharacter.id}
+        onSelectCharacter={handleSelectCharacter}
       />
 
       <StudentChatModal

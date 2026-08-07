@@ -224,7 +224,40 @@ export function logoutCurrentStudent(): void {
   setCurrentStudentId(null);
 }
 
-// Migration helper: If user had an unassigned profile/bookmarks/progress, convert to StudentAccount
+// Ensure student gets instant entry with a character without mandatory registration
+export function getOrCreateDefaultStudentAccount(): StudentAccount {
+  const existing = getCurrentStudentAccount();
+  if (existing) return existing;
+
+  const accounts = getAllStudentAccounts();
+  if (accounts.length > 0) {
+    const sorted = [...accounts].sort(
+      (a, b) => new Date(b.lastLoginAt).getTime() - new Date(a.lastLoginAt).getTime()
+    );
+    setCurrentStudentId(sorted[0].id);
+    return sorted[0];
+  }
+
+  // Create default guest account with character char_1 (សុខា)
+  const defaultAccount: StudentAccount = {
+    id: `student_default_${Date.now()}`,
+    name: 'សុខា',
+    pin: '123456',
+    grade: 'ថ្នាក់ទី៦',
+    avatar: '👦',
+    characterId: 'char_1',
+    createdAt: new Date().toISOString(),
+    lastLoginAt: new Date().toISOString(),
+    bookmarks: [],
+    progress: { completedExams: [], bookmarkedQuestionIds: [], notes: {} }
+  };
+
+  accounts.push(defaultAccount);
+  saveAllStudentAccounts(accounts);
+  setCurrentStudentId(defaultAccount.id);
+
+  return defaultAccount;
+}
 export function migrateLegacyDataIfNeeded(): StudentAccount | null {
   try {
     const existingAccounts = getAllStudentAccounts();
