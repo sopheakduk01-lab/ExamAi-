@@ -8,6 +8,7 @@ interface HeroBannerProps {
   onOpenMissions?: () => void;
   onOpenModernLibrary?: () => void;
   onOpenAITutor?: () => void;
+  onOpenStudentChat?: () => void;
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
 }
@@ -18,6 +19,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onOpenMissions,
   onOpenModernLibrary,
   onOpenAITutor,
+  onOpenStudentChat,
   userProfile,
   onOpenRegistrationModal
 }) => {
@@ -83,13 +85,22 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
             <Trophy className="w-4 h-4 text-yellow-300" />
             វិញ្ញាសាប្រឡងគំរូ ៥០+
           </span>
+          {onOpenStudentChat && (
+            <button
+              onClick={onOpenStudentChat}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-amber-950 font-bold transition-all cursor-pointer shadow-md hover:scale-105"
+              id="btn-hero-student-chat"
+            >
+              <span>💬 Chat ពិភាក្សាសិស្ស</span>
+            </button>
+          )}
           {onOpenModernLibrary && (
             <button
               onClick={onOpenModernLibrary}
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 text-amber-950 hover:from-amber-300 hover:to-yellow-300 font-bold transition-all cursor-pointer shadow-md hover:scale-105"
               id="btn-hero-modern-library"
             >
-              <span>📚 ប័ណ្ណាល័យ (៣០+ អត្ថបទ)</span>
+              <span>📚 បណ្ណាល័យ (៣០+ អត្ថបទ)</span>
             </button>
           )}
           {onOpenMissions && (

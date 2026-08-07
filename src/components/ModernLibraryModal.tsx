@@ -155,7 +155,7 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
             </div>
             <div>
               <h2 className="font-bold text-lg sm:text-xl font-moul tracking-wide text-amber-100 flex items-center gap-2">
-                ប័ណ្ណាល័យទំនើប
+                បណ្ណាល័យទំនើប
                 <span className="text-xs font-sans bg-amber-500/30 text-amber-200 px-2.5 py-0.5 rounded-full border border-amber-400/40 font-normal">
                   {LIBRARY_ARTICLES.length}+ អត្ថបទអប់រំ
                 </span>
@@ -193,7 +193,7 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
                 className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" />
-                <span>ត្រឡប់ទៅប័ណ្ណាល័យ</span>
+                <span>ត្រឡប់ទៅបណ្ណាល័យ</span>
               </button>
 
               <div className="flex items-center gap-2">
@@ -518,7 +518,7 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
 
         {/* Modal Bottom Footer */}
         <div className="p-3 bg-slate-50 border-t border-slate-200 text-xs text-slate-500 flex items-center justify-between px-5 shrink-0">
-          <span>ប័ណ្ណាល័យអប់រំ និងវិធីសាស្ត្ររៀនសូត្រថ្នាក់ទី៦ ({LIBRARY_ARTICLES.length} អត្ថបទ)</span>
+          <span>បណ្ណាល័យអប់រំ និងវិធីសាស្ត្ររៀនសូត្រថ្នាក់ទី៦ ({LIBRARY_ARTICLES.length} អត្ថបទ)</span>
           <button
             onClick={onClose}
             className="px-4 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold transition-colors cursor-pointer"

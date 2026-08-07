@@ -83,6 +83,20 @@ export interface UserProfile {
   school?: string;
   avatar: string;
   registeredAt: string;
+  pin?: string;
+}
+
+export interface StudentAccount {
+  id: string;
+  name: string;
+  pin: string; // 6-digit PIN code
+  grade: string;
+  school?: string;
+  avatar: string;
+  createdAt: string;
+  lastLoginAt: string;
+  bookmarks: string[];
+  progress: UserProgress;
 }
 
 export interface UserProgress {

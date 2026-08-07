@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SubjectId, ExamPaper, ExamResult, UserProgress, Question, UserProfile } from './types';
+import { SubjectId, ExamPaper, ExamResult, UserProgress, Question, UserProfile, StudentAccount } from './types';
 import { SUBJECTS, EXAM_PAPERS, LESSON_SUMMARIES } from './data/grade6Data';
 import { Header } from './components/Header';
 import { HeroBanner } from './components/HeroBanner';
@@ -10,10 +10,17 @@ import { BookmarksModal } from './components/BookmarksModal';
 import { NavigationDrawer } from './components/NavigationDrawer';
 import { ProgressModal } from './components/ProgressModal';
 import { FreeDrawingModal } from './components/FreeDrawingModal';
+import { NotificationsModal } from './components/NotificationsModal';
 import { MissionsModal } from './components/MissionsModal';
 import { ModernLibraryModal } from './components/ModernLibraryModal';
-import { UserRegistrationModal } from './components/UserRegistrationModal';
+import { StudentAccountModal } from './components/StudentAccountModal';
+import { StudentChatModal } from './components/StudentChatModal';
 import { GlobalSearchModal } from './components/GlobalSearchModal';
+import {
+  migrateLegacyDataIfNeeded,
+  syncStudentState,
+  getCurrentStudentAccount
+} from './utils/studentAccounts';
 import { Search, GraduationCap, BookOpen, Sparkles, Filter, Trophy, ArrowRight, Target, Layers, Palette } from 'lucide-react';
 
 export default function App() {
@@ -29,74 +36,65 @@ export default function App() {
   const [isDrawingOpen, setIsDrawingOpen] = useState(false);
   const [isMissionsOpen, setIsMissionsOpen] = useState(false);
   const [isModernLibraryOpen, setIsModernLibraryOpen] = useState(false);
-  const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
-  const [isInitialRegistration, setIsInitialRegistration] = useState(false);
+  const [isAccountModalOpen, setIsAccountModalOpen] = useState(false);
+  const [isStudentChatOpen, setIsStudentChatOpen] = useState(false);
+  const [isInitialSetup, setIsInitialSetup] = useState(false);
   const [isGlobalSearchOpen, setIsGlobalSearchOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(3);
 
-  // User Profile state
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(() => {
-    try {
-      const saved = localStorage.getItem('grade6_user_profile');
-      return saved ? JSON.parse(saved) : null;
-    } catch {
-      return null;
-    }
+  // Active Student Account state
+  const [currentAccount, setCurrentAccount] = useState<StudentAccount | null>(() => {
+    return migrateLegacyDataIfNeeded();
   });
 
-  // Automatically show registration on first app load if userProfile is not found
+  // Automatically prompt account login/register on first load if no student account
   useEffect(() => {
-    if (!userProfile) {
-      setIsInitialRegistration(true);
-      setIsRegistrationOpen(true);
+    if (!currentAccount) {
+      setIsInitialSetup(true);
+      setIsAccountModalOpen(true);
     }
   }, []);
 
-  // Save user profile state
-  useEffect(() => {
-    try {
-      if (userProfile) {
-        localStorage.setItem('grade6_user_profile', JSON.stringify(userProfile));
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }, [userProfile]);
-
-  // User persistence state
+  // Bookmarks state tied to current student
   const [bookmarkedQuestionIds, setBookmarkedQuestionIds] = useState<string[]>(() => {
-    try {
-      const saved = localStorage.getItem('grade6_bookmarks');
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
+    return currentAccount?.bookmarks || [];
   });
 
+  // Progress state tied to current student
   const [userProgress, setUserProgress] = useState<UserProgress>(() => {
-    try {
-      const saved = localStorage.getItem('grade6_progress');
-      return saved ? JSON.parse(saved) : { completedExams: [], bookmarkedQuestionIds: [], notes: {} };
-    } catch {
-      return { completedExams: [], bookmarkedQuestionIds: [], notes: {} };
-    }
+    return currentAccount?.progress || { completedExams: [], bookmarkedQuestionIds: [], notes: {} };
   });
 
-  // Save state changes
+  // Sync state whenever current student account or bookmarks/progress update
   useEffect(() => {
-    try {
-      localStorage.setItem('grade6_bookmarks', JSON.stringify(bookmarkedQuestionIds));
-    } catch (e) {
-      console.error(e);
+    if (currentAccount) {
+      syncStudentState(currentAccount.id, bookmarkedQuestionIds, userProgress);
     }
-  }, [bookmarkedQuestionIds]);
+  }, [currentAccount, bookmarkedQuestionIds, userProgress]);
 
-  useEffect(() => {
-    try {
-      localStorage.setItem('grade6_progress', JSON.stringify(userProgress));
-    } catch (e) {
-      console.error(e);
+  const handleAccountChange = (account: StudentAccount | null) => {
+    setCurrentAccount(account);
+    if (account) {
+      setBookmarkedQuestionIds(account.bookmarks || []);
+      setUserProgress(account.progress || { completedExams: [], bookmarkedQuestionIds: [], notes: {} });
+    } else {
+      setBookmarkedQuestionIds([]);
+      setUserProgress({ completedExams: [], bookmarkedQuestionIds: [], notes: {} });
     }
-  }, [userProgress]);
+  };
+
+  // Convert currentAccount to UserProfile for legacy component compatibility
+  const userProfile: UserProfile | null = currentAccount
+    ? {
+        name: currentAccount.name,
+        grade: currentAccount.grade,
+        school: currentAccount.school,
+        avatar: currentAccount.avatar,
+        registeredAt: currentAccount.createdAt,
+        pin: currentAccount.pin
+      }
+    : null;
 
   const handleToggleBookmark = (qId: string) => {
     setBookmarkedQuestionIds((prev) =>
@@ -139,14 +137,17 @@ export default function App() {
         onOpenMissions={() => setIsMissionsOpen(true)}
         onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
         onOpenDrawing={() => setIsDrawingOpen(true)}
+        onOpenStudentChat={() => setIsStudentChatOpen(true)}
+        onOpenNotifications={() => setIsNotificationsOpen(true)}
+        unreadNotificationsCount={unreadNotificationsCount}
         onHomeClick={() => {
           setSelectedSubjectId(null);
           setSelectedExam(null);
         }}
         userProfile={userProfile}
         onOpenRegistrationModal={() => {
-          setIsInitialRegistration(false);
-          setIsRegistrationOpen(true);
+          setIsInitialSetup(false);
+          setIsAccountModalOpen(true);
         }}
       />
 
@@ -187,10 +188,11 @@ export default function App() {
               }}
               onOpenMissions={() => setIsMissionsOpen(true)}
               onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
+              onOpenStudentChat={() => setIsStudentChatOpen(true)}
               userProfile={userProfile}
               onOpenRegistrationModal={() => {
-                setIsInitialRegistration(false);
-                setIsRegistrationOpen(true);
+                setIsInitialSetup(false);
+                setIsAccountModalOpen(true);
               }}
             />
 
@@ -206,7 +208,7 @@ export default function App() {
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-200/60 text-amber-900">៣០+ អត្ថបទ</span>
                 </div>
                 <div>
-                  <h4 className="font-moul text-xs text-amber-950 font-bold group-hover:text-amber-800 transition-colors">ប័ណ្ណាល័យ</h4>
+                  <h4 className="font-moul text-xs text-amber-950 font-bold group-hover:text-amber-800 transition-colors">បណ្ណាល័យ</h4>
                   <p className="text-[11px] text-slate-500 mt-0.5">អត្ថបទអានបន្ថែម</p>
                 </div>
               </button>
@@ -285,14 +287,16 @@ export default function App() {
                   </button>
                 </div>
 
-                <button
-                  onClick={() => setIsDrawingOpen(true)}
-                  className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-bold hover:bg-amber-200 transition-colors cursor-pointer shadow-2xs"
-                  id="btn-drawing-main"
-                >
-                  <Palette className="w-4 h-4 text-amber-800" />
-                  <span>🎨 គំនូសសេរី</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setIsDrawingOpen(true)}
+                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-bold hover:bg-amber-200 transition-colors cursor-pointer shadow-2xs"
+                    id="btn-drawing-main"
+                  >
+                    <Palette className="w-4 h-4 text-amber-800" />
+                    <span>🎨 គំនូសសេរី</span>
+                  </button>
+                </div>
               </div>
 
               {/* Search Bar */}
@@ -371,23 +375,36 @@ export default function App() {
         onOpenMissions={() => setIsMissionsOpen(true)}
         onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
         onOpenDrawing={() => setIsDrawingOpen(true)}
+        onOpenStudentChat={() => setIsStudentChatOpen(true)}
+        onOpenNotifications={() => setIsNotificationsOpen(true)}
+        unreadNotificationsCount={unreadNotificationsCount}
         onHomeClick={() => {
           setSelectedSubjectId(null);
           setSelectedExam(null);
         }}
         userProfile={userProfile}
         onOpenRegistrationModal={() => {
-          setIsInitialRegistration(false);
-          setIsRegistrationOpen(true);
+          setIsInitialSetup(false);
+          setIsAccountModalOpen(true);
         }}
       />
 
-      <UserRegistrationModal
-        isOpen={isRegistrationOpen}
-        onClose={() => setIsRegistrationOpen(false)}
-        userProfile={userProfile}
-        onSaveProfile={(profile) => setUserProfile(profile)}
-        isInitialRegistration={isInitialRegistration}
+      <StudentChatModal
+        isOpen={isStudentChatOpen}
+        onClose={() => setIsStudentChatOpen(false)}
+        currentAccount={currentAccount}
+        onOpenAccountModal={() => {
+          setIsInitialSetup(false);
+          setIsAccountModalOpen(true);
+        }}
+      />
+
+      <StudentAccountModal
+        isOpen={isAccountModalOpen}
+        onClose={() => setIsAccountModalOpen(false)}
+        currentAccount={currentAccount}
+        onAccountChange={handleAccountChange}
+        isInitialSetup={isInitialSetup}
       />
 
       <ModernLibraryModal
@@ -418,6 +435,18 @@ export default function App() {
       <FreeDrawingModal
         isOpen={isDrawingOpen}
         onClose={() => setIsDrawingOpen(false)}
+      />
+
+      <NotificationsModal
+        isOpen={isNotificationsOpen}
+        onClose={() => setIsNotificationsOpen(false)}
+        onOpenProgress={() => setIsProgressOpen(true)}
+        onOpenBookmarks={() => setIsBookmarksOpen(true)}
+        onOpenStudentChat={() => setIsStudentChatOpen(true)}
+        onOpenDrawing={() => setIsDrawingOpen(true)}
+        onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
+        onOpenMissions={() => setIsMissionsOpen(true)}
+        onUnreadCountChange={(count) => setUnreadNotificationsCount(count)}
       />
 
       <GlobalSearchModal

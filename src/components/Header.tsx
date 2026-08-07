@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, BookOpen, Bookmark, Award, Search, Target, Flame, Sparkles, User } from 'lucide-react';
+import { Menu, BookOpen, Bookmark, Award, Search, Target, Flame, Sparkles, User, Bell } from 'lucide-react';
 import { UserProfile } from '../types';
 
 interface HeaderProps {
@@ -11,6 +11,9 @@ interface HeaderProps {
   onOpenMissions?: () => void;
   onOpenModernLibrary?: () => void;
   onOpenDrawing?: () => void;
+  onOpenStudentChat?: () => void;
+  onOpenNotifications?: () => void;
+  unreadNotificationsCount?: number;
   onHomeClick: () => void;
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
@@ -25,6 +28,9 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenMissions,
   onOpenModernLibrary,
   onOpenDrawing,
+  onOpenStudentChat,
+  onOpenNotifications,
+  unreadNotificationsCount = 0,
   onHomeClick,
   userProfile,
   onOpenRegistrationModal
@@ -91,68 +97,6 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right: Actions Bar */}
         <div className="flex items-center gap-1.5 sm:gap-2">
-          {/* User Profile Button */}
-          {onOpenRegistrationModal && (
-            <button
-              onClick={onOpenRegistrationModal}
-              className="px-2 sm:px-2.5 py-1 rounded-xl bg-amber-950/80 hover:bg-amber-900/90 border border-amber-500/40 text-amber-100 transition-all cursor-pointer flex items-center gap-1.5 active:scale-95 shadow-2xs"
-              title={userProfile ? `គណនី៖ ${userProfile.name}` : 'ចុះឈ្មោះប្រើប្រាស់'}
-              id="btn-user-profile-header"
-            >
-              <span className="text-sm">{userProfile?.avatar || '🎓'}</span>
-              <span className="hidden sm:inline font-bold text-xs truncate max-w-[90px] text-yellow-200">
-                {userProfile?.name || 'ចុះឈ្មោះ'}
-              </span>
-            </button>
-          )}
-
-          {onOpenModernLibrary && (
-            <button
-              onClick={onOpenModernLibrary}
-              className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-400/15 hover:bg-amber-400/25 text-amber-200 hover:text-amber-100 border border-amber-400/40 transition-all cursor-pointer flex items-center gap-1.5 font-bold text-xs shadow-2xs active:scale-95"
-              title="ប័ណ្ណាល័យទំនើប"
-              id="btn-modern-library-header"
-            >
-              <span className="text-sm">📚</span>
-              <span className="hidden sm:inline font-moul text-amber-200">ប័ណ្ណាល័យ</span>
-            </button>
-          )}
-
-          {onOpenDrawing && (
-            <button
-              onClick={onOpenDrawing}
-              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl bg-amber-950/40 hover:bg-amber-800/40 text-amber-200 border border-amber-700/30 transition-all cursor-pointer flex items-center gap-1.5 font-bold text-xs active:scale-95"
-              title="គំនូសសេរី (Art Canvas)"
-              id="btn-drawing-header"
-            >
-              <span className="text-sm">🎨</span>
-              <span className="hidden md:inline text-amber-200">គំនូសសេរី</span>
-            </button>
-          )}
-
-          <a
-            href="/project.zip"
-            download="grade6-exam-prep-source.zip"
-            className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl bg-emerald-700/60 hover:bg-emerald-600/80 text-emerald-100 border border-emerald-400/50 transition-all cursor-pointer flex items-center gap-1.5 font-bold text-xs active:scale-95 shadow-xs"
-            title="ទាញយក Code ZIP"
-            id="btn-download-zip-header"
-          >
-            <span className="text-sm">📦</span>
-            <span className="hidden sm:inline font-bold">ទាញយក ZIP</span>
-          </a>
-
-          {onOpenMissions && (
-            <button
-              onClick={onOpenMissions}
-              className="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl bg-amber-950/40 hover:bg-amber-800/40 text-amber-200 border border-amber-700/30 transition-all cursor-pointer flex items-center gap-1.5 font-bold text-xs active:scale-95"
-              title="បេសកកម្ម និងរង្វាន់"
-              id="btn-missions-header"
-            >
-              <Target className="w-4.5 h-4.5 text-amber-400" />
-              <span className="hidden md:inline text-amber-200">បេសកកម្ម</span>
-            </button>
-          )}
-
           <button
             onClick={onOpenSearch}
             className="p-2 rounded-xl text-amber-200 hover:text-amber-100 hover:bg-amber-800/40 transition-colors cursor-pointer active:scale-95"
@@ -170,6 +114,23 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Award className="w-4.5 h-4.5 text-yellow-400" />
           </button>
+
+          {/* Notifications Button */}
+          {onOpenNotifications && (
+            <button
+              onClick={onOpenNotifications}
+              className="relative p-2 rounded-xl text-amber-200 hover:text-amber-100 hover:bg-amber-800/40 transition-colors cursor-pointer active:scale-95 group"
+              title="ការជូនដំណឹង"
+              id="btn-notifications-header"
+            >
+              <Bell className="w-4.5 h-4.5 text-yellow-300 group-hover:rotate-12 transition-transform" />
+              {unreadNotificationsCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-4.5 px-1 bg-rose-500 text-white text-[10px] font-extrabold rounded-full flex items-center justify-center border-2 border-[#2B170B] shadow-md animate-pulse">
+                  {unreadNotificationsCount}
+                </span>
+              )}
+            </button>
+          )}
 
           <button
             onClick={onOpenBookmarks}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SubjectId, UserProfile } from '../types';
 import { SUBJECTS } from '../data/grade6Data';
-import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3 } from 'lucide-react';
+import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3, Bell } from 'lucide-react';
 
 interface NavigationDrawerProps {
   isOpen: boolean;
@@ -12,6 +12,9 @@ interface NavigationDrawerProps {
   onOpenMissions?: () => void;
   onOpenModernLibrary?: () => void;
   onOpenDrawing?: () => void;
+  onOpenStudentChat?: () => void;
+  onOpenNotifications?: () => void;
+  unreadNotificationsCount?: number;
   onHomeClick: () => void;
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
@@ -26,6 +29,9 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onOpenMissions,
   onOpenModernLibrary,
   onOpenDrawing,
+  onOpenStudentChat,
+  onOpenNotifications,
+  unreadNotificationsCount = 0,
   onHomeClick,
   userProfile,
   onOpenRegistrationModal
@@ -106,6 +112,20 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
               ទំព័រដើម
             </button>
 
+            {onOpenStudentChat && (
+              <button
+                onClick={() => {
+                  onOpenStudentChat();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2.5 rounded-xl font-bold text-amber-950 bg-gradient-to-r from-amber-100 to-amber-200/90 border border-amber-300 hover:from-amber-200 hover:to-amber-300 transition-colors flex items-center gap-3 text-sm cursor-pointer shadow-2xs"
+                id="btn-student-chat-drawer"
+              >
+                <span className="text-lg">💬</span>
+                <span className="font-moul text-amber-950">Chat ពិភាក្សារវាងសិស្ស</span>
+              </button>
+            )}
+
             {onOpenModernLibrary && (
               <button
                 onClick={() => {
@@ -115,7 +135,7 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                 className="w-full text-left px-3 py-2.5 rounded-xl font-bold text-amber-950 bg-amber-100/90 border border-amber-300 hover:bg-amber-200 transition-colors flex items-center gap-3 text-sm cursor-pointer shadow-2xs"
               >
                 <span className="text-base">📚</span>
-                <span className="font-moul">ប័ណ្ណាល័យទំនើប</span>
+                <span className="font-moul">បណ្ណាល័យទំនើប</span>
               </button>
             )}
 
@@ -129,6 +149,27 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
               >
                 <Target className="w-4 h-4 text-amber-600" />
                 <span>បេសកកម្ម និងរង្វាន់</span>
+              </button>
+            )}
+
+            {onOpenNotifications && (
+              <button
+                onClick={() => {
+                  onOpenNotifications();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2.5 rounded-xl font-bold text-amber-950 bg-amber-50/90 border border-amber-300 hover:bg-amber-100 transition-colors flex items-center justify-between text-sm cursor-pointer shadow-2xs"
+                id="btn-notifications-drawer"
+              >
+                <div className="flex items-center gap-3">
+                  <Bell className="w-4 h-4 text-amber-700" />
+                  <span>ការជូនដំណឹង (Notifications)</span>
+                </div>
+                {unreadNotificationsCount > 0 && (
+                  <span className="bg-rose-500 text-white font-extrabold text-[10px] px-2 py-0.5 rounded-full animate-pulse">
+                    {unreadNotificationsCount}
+                  </span>
+                )}
               </button>
             )}
 

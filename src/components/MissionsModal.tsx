@@ -184,7 +184,7 @@ const DEFAULT_MISSIONS: Mission[] = [
   {
     id: 'm11_super_studious',
     title: 'សិស្សឧស្សាហ៍ទូទាំងប្រទេស',
-    description: 'អានអត្ថបទប័ណ្ណាល័យ និងធ្វើវិញ្ញាសាច្រើនជាង ១៥ លើក',
+    description: 'អានអត្ថបទបណ្ណាល័យ និងធ្វើវិញ្ញាសាច្រើនជាង ១៥ លើក',
     category: 'special',
     targetCount: 15,
     currentCount: 2,
