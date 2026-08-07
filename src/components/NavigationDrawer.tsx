@@ -12,8 +12,10 @@ interface NavigationDrawerProps {
   onOpenMissions?: () => void;
   onOpenModernLibrary?: () => void;
   onOpenDrawing?: () => void;
+  onOpenAIBattle?: () => void;
   onOpenStudentChat?: () => void;
   onOpenNotifications?: () => void;
+  onOpenEnglishGame?: () => void;
   unreadNotificationsCount?: number;
   onHomeClick: () => void;
   userProfile?: UserProfile | null;
@@ -29,8 +31,10 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onOpenMissions,
   onOpenModernLibrary,
   onOpenDrawing,
+  onOpenAIBattle,
   onOpenStudentChat,
   onOpenNotifications,
+  onOpenEnglishGame,
   unreadNotificationsCount = 0,
   onHomeClick,
   userProfile,
@@ -139,6 +143,23 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
               </button>
             )}
 
+            {onOpenEnglishGame && (
+              <button
+                onClick={() => {
+                  onOpenEnglishGame();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2.5 rounded-xl font-bold text-sky-950 bg-gradient-to-r from-sky-100 to-indigo-100 border border-sky-300 hover:from-sky-200 hover:to-indigo-200 transition-colors flex items-center gap-3 text-sm cursor-pointer shadow-2xs"
+                id="btn-english-game-drawer"
+              >
+                <span className="text-lg">📖</span>
+                <div>
+                  <span className="font-moul block text-sky-950 text-xs sm:text-sm">រៀនភាសាអង់គ្លេស ថ្នាក់ទី៦</span>
+                  <span className="text-[10px] text-sky-700 font-sans font-semibold">១៥ មេរៀន • Flashcards, Builder, Room & Quiz</span>
+                </div>
+              </button>
+            )}
+
             {onOpenMissions && (
               <button
                 onClick={() => {
@@ -194,6 +215,23 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
               <Bookmark className="w-4 h-4 text-amber-700" />
               សំណួរបានចំណាំ
             </button>
+
+            {onOpenAIBattle && (
+              <button
+                onClick={() => {
+                  onOpenAIBattle();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2.5 rounded-xl font-bold text-purple-950 bg-gradient-to-r from-purple-100 to-indigo-100 border border-purple-300 hover:from-purple-200 hover:to-indigo-200 transition-colors flex items-center gap-3 text-sm cursor-pointer shadow-2xs"
+                id="btn-ai-battle-drawer"
+              >
+                <span className="text-lg">⚔️</span>
+                <div>
+                  <span className="font-moul block text-purple-950 text-xs sm:text-sm">ប្រកួតជាមួយគ្រូ AI</span>
+                  <span className="text-[10px] text-purple-700 font-sans font-semibold">ល្បងសមត្ថភាពឆ្លើយសំណួរជាមួយ AI</span>
+                </div>
+              </button>
+            )}
 
             {onOpenDrawing && (
               <button

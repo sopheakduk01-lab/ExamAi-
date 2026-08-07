@@ -29,6 +29,7 @@ interface SubjectDetailViewProps {
   onSelectExam: (exam: ExamPaper) => void;
   bookmarkedQuestionIds: string[];
   onToggleBookmark: (qId: string) => void;
+  onOpenEnglishGame?: () => void;
 }
 
 export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
@@ -37,6 +38,7 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
   lessons,
   onBack,
   onSelectExam,
+  onOpenEnglishGame
 }) => {
   const [activeTab, setActiveTab] = useState<'exams' | 'lessons' | 'ai'>('exams');
   const [filterType, setFilterType] = useState<'all' | 'lesson' | 'comprehensive'>('all');
@@ -142,6 +144,37 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
           </span>
         </div>
       </div>
+
+      {/* Special Banner for English Subject interactive Game */}
+      {subject.id === 'english' && onOpenEnglishGame && (
+        <div className="mb-6 p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-sky-500 via-indigo-600 to-sky-600 text-white shadow-md border-2 border-sky-300 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5 text-center sm:text-left">
+            <div className="w-13 h-13 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-3xl shrink-0 border border-white/30">
+              📖
+            </div>
+            <div>
+              <span className="bg-amber-400 text-amber-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-1 inline-block">
+                Interactive Learning Game
+              </span>
+              <h3 className="font-extrabold text-base sm:text-xl text-white font-moul leading-tight">
+                រៀនភាសាអង់គ្លេស ថ្នាក់ទី៦ (គ្រប់ ១៥ មេរៀន)
+              </h3>
+              <p className="text-xs text-sky-100 font-medium mt-0.5">
+                ប័ណ្ណពាក្យ (Flashcards) • រៀបប្រយោគ (Builder) • ធៀបលំហ (Preposition Cat Room) • តេស្ត (Quiz)
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={onOpenEnglishGame}
+            className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-amber-400 hover:bg-amber-300 text-amber-950 font-black text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 shrink-0"
+            id="btn-launch-english-game-detail"
+          >
+            <span>ចាប់ផ្តើមលេងហ្គេម (Play Game)</span>
+            <ChevronRight className="w-4 h-4 text-amber-950" />
+          </button>
+        </div>
+      )}
 
       {/* Main Tabs */}
       <div className="flex items-center gap-2 p-1.5 bg-slate-200/70 rounded-2xl mb-6 font-semibold text-xs sm:text-sm shadow-inner">
