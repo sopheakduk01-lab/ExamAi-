@@ -28,6 +28,7 @@ import { MathFormattedText } from './MathFormattedText';
 import { MathScratchpad } from './MathScratchpad';
 import { MathFormulaModal } from './MathFormulaModal';
 import { MathAIQuestionTutorModal } from './MathAIQuestionTutorModal';
+import { saveExamAttemptRecord } from '../utils/examTracking';
 
 interface ExamRunnerProps {
   exam: ExamPaper;
@@ -35,6 +36,8 @@ interface ExamRunnerProps {
   onFinishExam: (result: ExamResult) => void;
   bookmarkedQuestionIds: string[];
   onToggleBookmark: (questionId: string) => void;
+  studentName?: string;
+  studentGender?: 'ប្រុស' | 'ស្រី';
 }
 
 export const ExamRunner: React.FC<ExamRunnerProps> = ({
@@ -42,7 +45,9 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
   onBack,
   onFinishExam,
   bookmarkedQuestionIds,
-  onToggleBookmark
+  onToggleBookmark,
+  studentName,
+  studentGender
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
@@ -231,15 +236,49 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
     const percentage = Math.min(100, Math.round((calculated / total) * 100));
     const timeSpent = exam.durationMinutes * 60 - timeLeftSeconds;
 
+    let finalStudentName = studentName || 'សិស្សមិនបានបញ្ជាក់';
+    let finalStudentGender: 'ប្រុស' | 'ស្រី' = studentGender || 'ប្រុស';
+
+    try {
+      const savedInfo = localStorage.getItem('grade6_student_exam_info');
+      if (savedInfo) {
+        const parsed = JSON.parse(savedInfo);
+        if (parsed.name) finalStudentName = parsed.name;
+        if (parsed.gender) finalStudentGender = parsed.gender;
+      }
+    } catch (e) {
+      // ignore
+    }
+
+    const finalScore = Math.round(calculated * 10) / 10;
+    const finalDate = new Date().toLocaleDateString('km-KH');
+    const finalTimeSpent = Math.max(10, timeSpent);
+
+    // Save tracking attempt record for Owner
+    saveExamAttemptRecord({
+      studentName: finalStudentName,
+      studentGender: finalStudentGender,
+      examId: exam.id,
+      examTitle: exam.title,
+      subjectId: exam.subjectId,
+      score: finalScore,
+      totalQuestions: total,
+      percentage,
+      date: finalDate,
+      timeSpentSeconds: finalTimeSpent
+    });
+
     onFinishExam({
       examId: exam.id,
       examTitle: exam.title,
       subjectId: exam.subjectId,
-      score: Math.round(calculated * 10) / 10,
+      score: finalScore,
       totalQuestions: total,
       percentage,
-      date: new Date().toLocaleDateString('km-KH'),
-      timeSpentSeconds: Math.max(10, timeSpent)
+      date: finalDate,
+      timeSpentSeconds: finalTimeSpent,
+      studentName: finalStudentName,
+      studentGender: finalStudentGender
     });
   };
 

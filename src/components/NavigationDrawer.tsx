@@ -1,7 +1,7 @@
 import React from 'react';
 import { SubjectId, UserProfile } from '../types';
 import { SUBJECTS } from '../data/grade6Data';
-import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3, Bell, QrCode, Smartphone, Sun, Moon } from 'lucide-react';
+import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3, Bell, QrCode, Smartphone, Sun, Moon, ShieldCheck } from 'lucide-react';
 
 interface NavigationDrawerProps {
   isOpen: boolean;
@@ -27,6 +27,7 @@ interface NavigationDrawerProps {
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
   onOpenCharacterModal?: () => void;
+  onOpenOwnerTracking?: () => void;
 }
 
 export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
@@ -52,7 +53,8 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onHomeClick,
   userProfile,
   onOpenRegistrationModal,
-  onOpenCharacterModal
+  onOpenCharacterModal,
+  onOpenOwnerTracking
 }) => {
   if (!isOpen) return null;
 
@@ -412,6 +414,27 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                 </div>
                 <span className="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded-md">
                   ស្កែនចូល
+                </span>
+              </button>
+            )}
+
+            {onOpenOwnerTracking && (
+              <button
+                onClick={() => {
+                  onOpenOwnerTracking();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg font-medium text-amber-950 dark:text-amber-100 hover:bg-amber-100/80 dark:hover:bg-amber-950/50 transition-colors flex items-center justify-between text-sm cursor-pointer border border-amber-300 dark:border-amber-800 bg-amber-50/80 dark:bg-slate-800"
+                id="btn-owner-tracking-drawer"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-md bg-amber-600 text-white flex items-center justify-center shrink-0 shadow-2xs">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <span className="font-extrabold">ប្រព័ន្ធតាមដាន (Owner Sheet)</span>
+                </div>
+                <span className="text-[10px] bg-amber-500 text-white font-bold px-2 py-0.5 rounded-md shadow-2xs">
+                  Google Sheet
                 </span>
               </button>
             )}

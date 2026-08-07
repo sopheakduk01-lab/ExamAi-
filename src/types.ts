@@ -83,6 +83,23 @@ export interface ExamResult {
   percentage: number;
   date: string;
   timeSpentSeconds: number;
+  studentName?: string;
+  studentGender?: 'ប្រុស' | 'ស្រី';
+}
+
+export interface StudentExamTrackingRecord {
+  id: string;
+  studentName: string;
+  studentGender: 'ប្រុស' | 'ស្រី';
+  examId: string;
+  examTitle: string;
+  subjectId: SubjectId;
+  score: number;
+  totalQuestions: number;
+  percentage: number;
+  date: string;
+  timestamp: number;
+  timeSpentSeconds: number;
 }
 
 export interface UserProfile {

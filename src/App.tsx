@@ -24,6 +24,8 @@ import { AboutModal } from './components/AboutModal';
 import { QRCodeModal } from './components/QRCodeModal';
 import { AddToHomeScreenModal } from './components/AddToHomeScreenModal';
 import { CharacterSelectionModal } from './components/CharacterSelectionModal';
+import { StudentExamRegistrationModal } from './components/StudentExamRegistrationModal';
+import { OwnerTrackingModal } from './components/OwnerTrackingModal';
 import { CHARACTERS_DATA, FullBodyCharacter as CharacterType } from './data/charactersData';
 import { FullBodyCharacter } from './components/FullBodyCharacter';
 import {
@@ -68,8 +70,24 @@ export default function App() {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
   const [isAddToHomeScreenOpen, setIsAddToHomeScreenOpen] = useState(false);
+  const [isOwnerTrackingOpen, setIsOwnerTrackingOpen] = useState(false);
+  const [isStudentRegistrationOpen, setIsStudentRegistrationOpen] = useState(false);
+  const [pendingExamToStart, setPendingExamToStart] = useState<ExamPaper | null>(null);
   const [fishingInitialSubject, setFishingInitialSubject] = useState<SubjectId>('math');
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(3);
+
+  const handleSelectExamWithRegistration = (exam: ExamPaper) => {
+    setPendingExamToStart(exam);
+    setIsStudentRegistrationOpen(true);
+  };
+
+  const handleConfirmStudentRegistration = (info: { name: string; gender: 'ប្រុស' | 'ស្រី' }) => {
+    setIsStudentRegistrationOpen(false);
+    if (pendingExamToStart) {
+      setSelectedExam(pendingExamToStart);
+      setPendingExamToStart(null);
+    }
+  };
 
   // Dark Mode state
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
@@ -221,6 +239,7 @@ export default function App() {
           setIsAccountModalOpen(true);
         }}
         onOpenCharacterModal={selectedSubjectId || selectedExam ? undefined : () => setIsCharacterModalOpen(true)}
+        onOpenOwnerTracking={() => setIsOwnerTrackingOpen(true)}
       />
 
       {/* Main Body */}
@@ -241,7 +260,7 @@ export default function App() {
             examPapers={subjectExams}
             lessons={subjectLessons}
             onBack={() => setSelectedSubjectId(null)}
-            onSelectExam={(exam) => setSelectedExam(exam)}
+            onSelectExam={(exam) => handleSelectExamWithRegistration(exam)}
             bookmarkedQuestionIds={bookmarkedQuestionIds}
             onToggleBookmark={handleToggleBookmark}
             onOpenEnglishGame={() => setIsEnglishGameOpen(true)}
@@ -300,7 +319,7 @@ export default function App() {
                 onClick={() => {
                   setActiveMainTab('new_exam');
                   if (NEW_EXAM_PAPERS.length > 0) {
-                    setSelectedExam(NEW_EXAM_PAPERS[0]);
+                    handleSelectExamWithRegistration(NEW_EXAM_PAPERS[0]);
                   }
                 }}
                 className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer shrink-0 hover:scale-102 active:scale-98"
@@ -417,7 +436,7 @@ export default function App() {
                 {NEW_EXAM_PAPERS.map((paper) => (
                   <div
                     key={paper.id}
-                    onClick={() => setSelectedExam(paper)}
+                    onClick={() => handleSelectExamWithRegistration(paper)}
                     className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-white via-amber-50/30 to-sky-50/40 border-2 border-amber-300/80 shadow-md hover:shadow-xl hover:border-amber-500 transition-all cursor-pointer group relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
                   >
                     <div className="space-y-2 max-w-2xl">
@@ -524,6 +543,7 @@ export default function App() {
           setIsAccountModalOpen(true);
         }}
         onOpenCharacterModal={selectedSubjectId || selectedExam ? undefined : () => setIsCharacterModalOpen(true)}
+        onOpenOwnerTracking={() => setIsOwnerTrackingOpen(true)}
       />
 
       <CharacterSelectionModal
@@ -599,7 +619,7 @@ export default function App() {
         onSelectSubject={(sId) => setSelectedSubjectId(sId)}
         onSelectExam={(exam) => {
           setSelectedSubjectId(exam.subjectId);
-          setSelectedExam(exam);
+          handleSelectExamWithRegistration(exam);
         }}
         onSelectLesson={(lesson, subjectId) => {
           setSelectedSubjectId(subjectId);
@@ -639,6 +659,21 @@ export default function App() {
       <AddToHomeScreenModal
         isOpen={isAddToHomeScreenOpen}
         onClose={() => setIsAddToHomeScreenOpen(false)}
+      />
+
+      <StudentExamRegistrationModal
+        isOpen={isStudentRegistrationOpen}
+        examTitle={pendingExamToStart?.title || 'វិញ្ញាសាតេស្ត'}
+        onClose={() => {
+          setIsStudentRegistrationOpen(false);
+          setPendingExamToStart(null);
+        }}
+        onConfirm={handleConfirmStudentRegistration}
+      />
+
+      <OwnerTrackingModal
+        isOpen={isOwnerTrackingOpen}
+        onClose={() => setIsOwnerTrackingOpen(false)}
       />
     </div>
   );

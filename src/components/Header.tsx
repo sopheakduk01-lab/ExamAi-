@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, BookOpen, Bookmark, Award, Search, Target, Flame, Sparkles, User, Bell, QrCode, Smartphone, Sun, Moon } from 'lucide-react';
+import { Menu, BookOpen, Bookmark, Award, Search, Target, Flame, Sparkles, User, Bell, QrCode, Smartphone, Sun, Moon, ShieldCheck } from 'lucide-react';
 import { UserProfile } from '../types';
 
 interface HeaderProps {
@@ -22,6 +22,7 @@ interface HeaderProps {
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
   onOpenCharacterModal?: () => void;
+  onOpenOwnerTracking?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -43,7 +44,8 @@ export const Header: React.FC<HeaderProps> = ({
   onHomeClick,
   userProfile,
   onOpenRegistrationModal,
-  onOpenCharacterModal
+  onOpenCharacterModal,
+  onOpenOwnerTracking
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-gradient-to-r from-[#2B170B] via-[#452413] to-[#2B170B] text-amber-50 border-b border-amber-600/30 shadow-lg shadow-amber-950/20 backdrop-blur-xl">
@@ -170,6 +172,19 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Smartphone className="w-4.5 h-4.5 text-amber-300" />
               <span className="hidden md:inline text-[11px] font-bold">ដំឡើង App</span>
+            </button>
+          )}
+
+          {/* Owner Tracking Portal Button */}
+          {onOpenOwnerTracking && (
+            <button
+              onClick={onOpenOwnerTracking}
+              className="p-2 rounded-xl bg-amber-500/20 text-amber-300 hover:text-white hover:bg-amber-500/40 border border-amber-400/30 transition-colors cursor-pointer active:scale-95 flex items-center gap-1"
+              title="ប្រព័ន្ធតាមដានការចូលប្រឡង (Owner Tracking)"
+              id="btn-owner-tracking-header"
+            >
+              <ShieldCheck className="w-4.5 h-4.5 text-amber-300" />
+              <span className="hidden lg:inline text-[11px] font-bold">Owner Sheet</span>
             </button>
           )}
 
