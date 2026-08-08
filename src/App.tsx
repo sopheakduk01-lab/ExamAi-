@@ -890,6 +890,13 @@ export default function App() {
         onOpenQRCode={() => setIsQRCodeOpen(true)}
         onOpenMenu={() => setIsMenuOpen(true)}
         onOpenAICreator={() => setIsAICreatorOpen(true)}
+        onJoinClick={() => {
+          const scienceExam = NEW_EXAM_PAPERS.find(p => p.id === 'new_science_exam_2026_orussi') || NEW_EXAM_PAPERS[0];
+          if (scienceExam) {
+            setSelectedSubjectId(scienceExam.subjectId);
+            handleSelectExamWithRegistration(scienceExam);
+          }
+        }}
         unreadNotificationsCount={unreadNotificationsCount}
       />
     </div>

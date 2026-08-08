@@ -22,17 +22,17 @@ export const WalkingCharacterHeader: React.FC<WalkingCharacterHeaderProps> = ({ 
             setMessage('ដើរត្រឡប់វិញ 🚶‍♂️');
             return 72;
           }
-          return prev + 1.5;
+          return prev + 0.5;
         } else {
           if (prev <= 10) {
             setDirection('right');
             setMessage('អានសៀវភៅ 📚');
             return 10;
           }
-          return prev - 1.5;
+          return prev - 0.5;
         }
       });
-    }, 90);
+    }, 120);
 
     return () => clearInterval(interval);
   }, [direction, isEnteringHouse]);
@@ -84,11 +84,6 @@ export const WalkingCharacterHeader: React.FC<WalkingCharacterHeaderProps> = ({ 
         }`}
         title="ប៉ះដើម្បីឱ្យតួអង្គរត់ចូលផ្ទះ!"
       >
-        {/* Speech Bubble */}
-        <div className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-lg bg-indigo-600 text-white text-[9px] font-bold shadow-lg border border-white/30 animate-pulse">
-          {message}
-        </div>
-
         {/* Character Avatar */}
         <div className={`w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 via-teal-600 to-indigo-600 text-white flex items-center justify-center shadow-lg border-2 border-white dark:border-slate-900 ${
           direction === 'left' ? 'scale-x-[-1]' : ''

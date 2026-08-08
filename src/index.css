@@ -242,3 +242,32 @@ html.dark .text-slate-600 {
 html.dark .text-slate-500 {
   color: #9ca3af;
 }
+
+/* Beautiful Glowing & Rainbow Gradient animations for Join Exam Button */
+@keyframes joinGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.8), 0 0 30px rgba(99, 102, 241, 0.6);
+  }
+  33% {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(16, 185, 129, 0.6);
+  }
+  66% {
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.8), 0 0 30px rgba(239, 68, 68, 0.6);
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-join-glow {
+  animation: joinGlow 3s infinite ease-in-out;
+}
+
+.animate-gradient-shift {
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
+}
+
