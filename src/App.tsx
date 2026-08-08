@@ -48,6 +48,7 @@ export default function App() {
   const [activeMainTab, setActiveMainTab] = useState<'exam' | 'lesson' | 'new_exam'>('exam');
   const [useMobileLauncher, setUseMobileLauncher] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const newExamsScrollRef = useRef<HTMLDivElement>(null);
 
   // Modals
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -454,41 +455,7 @@ export default function App() {
               }}
             />
 
-            {/* Announcement Notification Banner for Students */}
-            <div className="bg-gradient-to-r from-amber-800 via-amber-900 to-amber-950 rounded-2xl p-4 sm:p-5 text-white shadow-md relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3.5 border border-amber-700/50">
-              <div className="flex items-start gap-3.5">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-amber-700/50 backdrop-blur-md flex items-center justify-center shrink-0 text-xl sm:text-2xl shadow-inner border border-amber-500/30">
-                  📢
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="px-2 py-0.5 rounded-md bg-red-500 text-white text-[10px] font-extrabold uppercase tracking-wide animate-pulse">
-                      ជូនដំណឹងថ្មី
-                    </span>
-                    <h3 className="font-moul text-sm sm:text-base text-amber-100">
-                      តេស្តវិញ្ញាសាថ្មីត្រូវបានដាក់បញ្ចូល!
-                    </h3>
-                  </div>
-                  <p className="text-xs sm:text-sm text-amber-200/90 font-medium leading-relaxed">
-                    សូមអញ្ជើញសិស្សានុសិស្សថ្នាក់ទី៦ ចូលរួមធ្វើតេស្ត <span className="text-white font-bold">វិញ្ញាសាត្រៀមប្រឡងឆមាសលើកទី២ មុខវិជ្ជា៖ វិទ្យាសាស្ត្រ (កម្រងអូរឫស្សីកណ្តាល)</span> ដើម្បីវាស់ស្ទង់សមត្ថភាពឥឡូវនេះ!
-                  </p>
-                </div>
-              </div>
 
-              <button
-                onClick={() => {
-                  setActiveMainTab('new_exam');
-                  if (NEW_EXAM_PAPERS.length > 0) {
-                    handleSelectExamWithRegistration(NEW_EXAM_PAPERS[0]);
-                  }
-                }}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer shrink-0 hover:scale-102 active:scale-98"
-              >
-                <Sparkles className="w-4 h-4 text-slate-950" />
-                <span>ចូលធ្វើតេស្តឥឡូវនេះ</span>
-                <ChevronRight className="w-4 h-4 text-slate-950" />
-              </button>
-            </div>
 
 
 
@@ -612,7 +579,7 @@ export default function App() {
             )}
 
             {/* Section Title */}
-            <div className="flex items-center justify-between pt-1">
+            <div id="main-exams-section" className="flex items-center justify-between pt-1 scroll-mt-20">
               <div>
                 <h2 className="text-lg sm:text-xl font-bold font-moul text-slate-900 tracking-wide flex items-center gap-2">
                   <span className="w-2.5 h-6 bg-amber-600 rounded-full inline-block"></span>
@@ -633,62 +600,110 @@ export default function App() {
               </span>
             </div>
 
-            {/* Render NEW_EXAM_PAPERS list when new_exam tab is selected */}
+            {/* Render NEW_EXAM_PAPERS list in a horizontal scrollable row when new_exam tab is selected */}
             {activeMainTab === 'new_exam' ? (
-              <div className="space-y-4 my-2">
-                {NEW_EXAM_PAPERS.map((paper) => (
-                  <div
-                    key={paper.id}
-                    onClick={() => handleSelectExamWithRegistration(paper)}
-                    className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-white via-amber-50/30 to-sky-50/40 border-2 border-amber-300/80 shadow-md hover:shadow-xl hover:border-amber-500 transition-all cursor-pointer group relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
-                  >
-                    <div className="space-y-2 max-w-2xl">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="px-3 py-0.5 rounded-full bg-amber-500 text-white font-bold text-[11px] shadow-2xs flex items-center gap-1">
-                          <Sparkles className="w-3 h-3" />
-                          <span>{paper.yearOrType}</span>
-                        </span>
-                        <span className="px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 font-bold text-[11px] border border-sky-200">
-                          🧪 មុខវិជ្ជា៖ វិទ្យាសាស្ត្រ
-                        </span>
-                      </div>
-
-                      <h3 className="font-moul text-base sm:text-lg text-slate-900 group-hover:text-amber-900 transition-colors leading-relaxed">
-                        {paper.title}
-                      </h3>
-
-                      <p className="text-xs sm:text-sm text-slate-600 font-medium">
-                        {paper.description}
-                      </p>
-
-                      <div className="flex items-center gap-4 text-xs font-bold text-slate-500 pt-1 flex-wrap">
-                        <span className="flex items-center gap-1 text-slate-700">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                          <span>{paper.questions.length} សំណួរ (៥ ផ្នែកស្តង់ដារ)</span>
-                        </span>
-                        <span className="flex items-center gap-1 text-slate-700">
-                          <Clock className="w-4 h-4 text-sky-600" />
-                          <span>{paper.durationMinutes} នាទី</span>
-                        </span>
-                        <span className="flex items-center gap-1 text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-lg border border-amber-200">
-                          <Award className="w-4 h-4 text-amber-700" />
-                          <span>ពិន្ទុសរុប៖ {paper.totalPoints} ពិន្ទុ</span>
-                        </span>
-                      </div>
-                    </div>
-
+              <div className="space-y-3 my-2">
+                {/* Horizontal scroll guidance & navigation controls */}
+                <div className="flex items-center justify-between px-1">
+                  <span className="text-xs font-semibold text-amber-900/90 flex items-center gap-1.5 bg-amber-100/70 px-3 py-1 rounded-full border border-amber-200">
+                    <span>👈👉 អូសទៅឆ្វេង ឬស្តាំ ដើម្បីជ្រើសរើសវិញ្ញាសា</span>
+                  </span>
+                  <div className="flex items-center gap-1.5">
                     <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedExam(paper);
+                      onClick={() => {
+                        if (newExamsScrollRef.current) {
+                          newExamsScrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+                        }
                       }}
-                      className="w-full md:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-800 to-amber-900 hover:from-amber-900 hover:to-amber-950 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer shrink-0 active:scale-95"
+                      className="p-1.5 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-900 transition-colors shadow-2xs border border-amber-300 cursor-pointer active:scale-95"
+                      title="ទៅឆ្វេង"
                     >
-                      <span>ប្រឡងវិញ្ញាសានេះឥឡូវនេះ</span>
-                      <ChevronRight className="w-4 h-4 text-amber-200" />
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (newExamsScrollRef.current) {
+                          newExamsScrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+                        }
+                      }}
+                      className="p-1.5 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-900 transition-colors shadow-2xs border border-amber-300 cursor-pointer active:scale-95"
+                      title="ទៅស្តាំ"
+                    >
+                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
-                ))}
+                </div>
+
+                {/* Horizontal Scrollable Row Container */}
+                <div
+                  ref={newExamsScrollRef}
+                  className="flex items-stretch gap-4 overflow-x-auto snap-x snap-mandatory pb-4 pt-1 px-1 no-scrollbar sm:scroll-smooth"
+                >
+                  {NEW_EXAM_PAPERS.map((paper) => {
+                    const subjectBadge = 
+                      paper.subjectId === 'science' ? '🧪 វិទ្យាសាស្ត្រ' :
+                      paper.subjectId === 'health' ? '🍎 អប់រំសុខភាព' :
+                      paper.subjectId === 'khmer' ? '📚 ភាសាខ្មែរ' :
+                      paper.subjectId === 'math' ? '📐 គណិតវិទ្យា' :
+                      paper.subjectId === 'social' ? '🌏 សិក្សាសង្គម' : '📝 វិញ្ញាសា';
+
+                    return (
+                      <div
+                        key={paper.id}
+                        onClick={() => handleSelectExamWithRegistration(paper)}
+                        className="w-[290px] sm:w-[350px] shrink-0 snap-start p-5 rounded-3xl bg-gradient-to-br from-white via-amber-50/40 to-sky-50/40 border-2 border-amber-300/80 shadow-md hover:shadow-xl hover:border-amber-500 transition-all cursor-pointer group relative flex flex-col justify-between"
+                      >
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="px-3 py-0.5 rounded-full bg-amber-500 text-white font-bold text-[11px] shadow-2xs flex items-center gap-1">
+                              <Sparkles className="w-3 h-3" />
+                              <span>{paper.yearOrType}</span>
+                            </span>
+                            <span className="px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 font-bold text-[11px] border border-sky-200">
+                              {subjectBadge}
+                            </span>
+                          </div>
+
+                          <h3 className="font-moul text-sm sm:text-base text-slate-900 group-hover:text-amber-900 transition-colors leading-relaxed line-clamp-2">
+                            {paper.title}
+                          </h3>
+
+                          <p className="text-xs text-slate-600 font-medium line-clamp-3 leading-relaxed">
+                            {paper.description}
+                          </p>
+                        </div>
+
+                        <div className="pt-4 mt-3 border-t border-amber-200/60 space-y-3">
+                          <div className="flex items-center justify-between text-xs font-bold text-slate-600 flex-wrap gap-2">
+                            <span className="flex items-center gap-1 text-slate-700">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                              <span>{paper.questions.length} សំណួរ</span>
+                            </span>
+                            <span className="flex items-center gap-1 text-slate-700">
+                              <Clock className="w-3.5 h-3.5 text-sky-600" />
+                              <span>{paper.durationMinutes} នាទី</span>
+                            </span>
+                            <span className="flex items-center gap-1 text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded-md border border-amber-200">
+                              <Award className="w-3.5 h-3.5 text-amber-700" />
+                              <span>{paper.totalPoints} ពិន្ទុ</span>
+                            </span>
+                          </div>
+
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleSelectExamWithRegistration(paper);
+                            }}
+                            className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-800 to-amber-900 hover:from-amber-900 hover:to-amber-950 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer group-hover:scale-[1.02] active:scale-95"
+                          >
+                            <span>ប្រឡងវិញ្ញាសានេះឥឡូវនេះ</span>
+                            <ChevronRight className="w-4 h-4 text-amber-200" />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             ) : (
               /* Subject List Cards Grid */
@@ -891,11 +906,17 @@ export default function App() {
         onOpenMenu={() => setIsMenuOpen(true)}
         onOpenAICreator={() => setIsAICreatorOpen(true)}
         onJoinClick={() => {
-          const scienceExam = NEW_EXAM_PAPERS.find(p => p.id === 'new_science_exam_2026_orussi') || NEW_EXAM_PAPERS[0];
-          if (scienceExam) {
-            setSelectedSubjectId(scienceExam.subjectId);
-            handleSelectExamWithRegistration(scienceExam);
-          }
+          setActiveMainTab('new_exam');
+          setSelectedSubjectId(null);
+          setSelectedExam(null);
+          setTimeout(() => {
+            const el = document.getElementById('main-exams-section');
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+              window.scrollTo({ top: 350, behavior: 'smooth' });
+            }
+          }, 100);
         }}
         unreadNotificationsCount={unreadNotificationsCount}
       />

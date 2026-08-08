@@ -271,3 +271,20 @@ html.dark .text-slate-500 {
   animation: gradientShift 4s ease infinite;
 }
 
+/* Seamless Continuous Marquee Ticker for Student Announcements */
+@keyframes marqueeContinuous {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-continuous {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: marqueeContinuous 22s linear infinite;
+}
+
+.animate-marquee-continuous:hover {
+  animation-play-state: paused;
+}
+

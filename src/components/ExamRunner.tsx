@@ -234,8 +234,8 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
             correctCount += 1;
           }
         });
-        // 6 correct choices out of 15, equal weights
-        score += Math.min(1, correctCount / 6);
+        const targetCount = q.correctAnswersIndices.length || 6;
+        score += Math.min(1, correctCount / targetCount);
       } else {
         if (selectedAnswers[q.id] === q.correctAnswerIndex) {
           score += 1;

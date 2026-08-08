@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Lightbulb, GraduationCap, CheckCircle2, Sparkles, Trophy, Target, Bot, ArrowRight, Compass } from 'lucide-react';
+import { BookOpen, Lightbulb, GraduationCap, CheckCircle2, Sparkles, Trophy, Target, Bot, ArrowRight, Compass, Megaphone } from 'lucide-react';
 import { UserProfile } from '../types';
 
 interface HeroBannerProps {
@@ -71,9 +71,33 @@ export const HeroBanner: React.FC<HeroBannerProps & {
       <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
         {/* Top Official Badge & Greeting */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-950/80 border border-amber-500/40 text-amber-200 text-xs font-semibold shadow-inner backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400 animate-pulse" />
-            <span>កម្មវិធីសិក្សា និងប្រឡងសាកល្បងថ្នាក់ទី៦ - ក្រសួងអប់រំ</span>
+          <div 
+            onClick={() => {
+              if (onSelectMainTab) {
+                onSelectMainTab('new_exam');
+                setTimeout(() => {
+                  const el = document.getElementById('main-exams-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+              }
+            }}
+            className="w-full sm:w-auto max-w-sm sm:max-w-md inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-950/80 border border-amber-500/40 text-amber-200 text-xs font-semibold shadow-inner backdrop-blur-md overflow-hidden relative cursor-pointer hover:border-amber-400 transition-colors group"
+            title="ចុចទីនេះដើម្បីមើលវិញ្ញាសាថ្មីៗ"
+          >
+            <div className="flex items-center gap-1 shrink-0 bg-amber-500/20 px-2 py-0.5 rounded-full text-yellow-300 font-bold text-[11px] border border-amber-400/30">
+              <Megaphone className="w-3.5 h-3.5 text-yellow-400 animate-pulse" />
+              <span className="whitespace-nowrap">ជូនដំណឹងសិស្ស</span>
+            </div>
+            <div className="overflow-hidden relative flex-1 h-5 flex items-center">
+              <div className="animate-marquee-continuous flex items-center gap-8">
+                <span className="whitespace-nowrap text-amber-200/90 font-medium text-xs">
+                  📢 ជូនដំណឹងដល់សិស្សថ្នាក់ទី៦៖ វិញ្ញាសាត្រៀមប្រឡងឆមាសទី២ (អប់រំសុខភាព វិទ្យាសាស្ត្រ ភាសាខ្មែរ គណិតវិទ្យា) ត្រូវបានដាក់បញ្ចូលក្នុងប្រព័ន្ធ! សូមអញ្ជើញធ្វើតេស្តវាស់ស្ទង់សមត្ថភាព!
+                </span>
+                <span className="whitespace-nowrap text-amber-200/90 font-medium text-xs">
+                  📢 ជូនដំណឹងដល់សិស្សថ្នាក់ទី៦៖ វិញ្ញាសាត្រៀមប្រឡងឆមាសទី២ (អប់រំសុខភាព វិទ្យាសាស្ត្រ ភាសាខ្មែរ គណិតវិទ្យា) ត្រូវបានដាក់បញ្ចូលក្នុងប្រព័ន្ធ! សូមអញ្ជើញធ្វើតេស្តវាស់ស្ទង់សមត្ថភាព!
+                </span>
+              </div>
+            </div>
           </div>
 
           {onOpenCharacterModal && (
