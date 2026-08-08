@@ -10,14 +10,15 @@ import {
   ChevronRight,
   Volume2,
   VolumeX,
-  Type,
-  Share2,
   CheckCircle2,
-  ThumbsUp,
-  Lightbulb,
+  BookMarked,
+  Flame,
+  Star,
+  Share2,
+  BookOpenCheck,
   GraduationCap,
-  Award,
-  BookMarked
+  TrendingUp,
+  Lightbulb
 } from 'lucide-react';
 import { LIBRARY_ARTICLES, LibraryArticle } from '../data/libraryData';
 
@@ -35,7 +36,7 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
   const [selectedArticle, setSelectedArticle] = useState<LibraryArticle | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const ITEMS_PER_PAGE = 20;
+  const ITEMS_PER_PAGE = 12;
 
   // Saved/bookmarked articles in localStorage
   const [bookmarkedArticleIds, setBookmarkedArticleIds] = useState<string[]>(() => {
@@ -47,14 +48,10 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
     }
   });
 
-  // Filter saved tab
   const [showOnlyBookmarks, setShowOnlyBookmarks] = useState(false);
-
-  // Article Reader font size state
   const [readerFontSize, setReaderFontSize] = useState<'sm' | 'md' | 'lg'>('md');
-
-  // Text-to-speech state
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [copiedNotification, setCopiedNotification] = useState(false);
 
   useEffect(() => {
     try {
@@ -64,7 +61,6 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
     }
   }, [bookmarkedArticleIds]);
 
-  // Clean up speech synthesis when component unmounts or article closes
   useEffect(() => {
     return () => {
       if ('speechSynthesis' in window) {
@@ -96,20 +92,33 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
 
     window.speechSynthesis.cancel();
 
-    // Prepare speech text (strip markdown symbols like **, #)
     const cleanText = text
       .replace(/[*#_~`]/g, '')
       .replace(/\n+/g, ' ');
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = 'km-KH'; // Khmer voice if available, falls back to default
-    utterance.rate = 0.9; // Slightly slower for better clarity
+    utterance.lang = 'km-KH';
+    utterance.rate = 0.9;
 
     utterance.onend = () => setIsPlayingAudio(false);
     utterance.onerror = () => setIsPlayingAudio(false);
 
     window.speechSynthesis.speak(utterance);
     setIsPlayingAudio(true);
+  };
+
+  const handleShare = (article: LibraryArticle) => {
+    if (navigator.share) {
+      navigator.share({
+        title: article.title,
+        text: article.summary,
+        url: window.location.href,
+      }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(`${article.title}\n\n${article.summary}\n\n(ពីបណ្ណាល័យទំនើប ត្រៀមប្រឡងថ្នាក់ទី៦)`);
+      setCopiedNotification(true);
+      setTimeout(() => setCopiedNotification(false), 2000);
+    }
   };
 
   // Filtered articles logic
@@ -133,35 +142,43 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
     currentPage * ITEMS_PER_PAGE
   );
 
+  const featuredArticle = LIBRARY_ARTICLES[0];
+
   const getFontSizeClass = () => {
     switch (readerFontSize) {
       case 'sm':
         return 'text-sm leading-relaxed';
       case 'lg':
-        return 'text-lg leading-loose';
+        return 'text-xl leading-loose';
       default:
         return 'text-base leading-relaxed';
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 animate-fade-in">
-      <div className="bg-white rounded-3xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
-        {/* Modal Top Header */}
-        <div className="p-4 sm:p-5 bg-gradient-to-r from-amber-700 via-amber-800 to-amber-950 text-white flex items-center justify-between shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-amber-400 text-amber-950 flex items-center justify-center font-bold shadow-md shrink-0 text-2xl">
-              📚
+    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 animate-fade-in">
+      <div className="bg-gradient-to-br from-slate-50 via-white to-amber-50/40 rounded-3xl w-full max-w-6xl max-h-[94vh] flex flex-col shadow-2xl border border-amber-500/30 overflow-hidden relative">
+        {/* Ambient glowing background decorations */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Modal Top Header with Rich Gradient */}
+        <div className="relative p-5 sm:p-6 bg-gradient-to-r from-[#2B170B] via-[#452413] to-[#2B170B] text-white flex items-center justify-between shrink-0 border-b border-amber-600/30 shadow-lg">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 via-yellow-400 to-amber-600 text-amber-950 flex items-center justify-center font-bold shadow-lg shadow-amber-950/50 text-2xl border border-yellow-200/50 shrink-0 transform hover:scale-105 transition-transform">
+              🏛️
             </div>
             <div>
-              <h2 className="font-bold text-lg sm:text-xl font-moul tracking-wide text-amber-100 flex items-center gap-2">
-                បណ្ណាល័យទំនើប
-                <span className="text-xs font-sans bg-amber-500/30 text-amber-200 px-2.5 py-0.5 rounded-full border border-amber-400/40 font-normal">
-                  {LIBRARY_ARTICLES.length}+ អត្ថបទអប់រំ
+              <div className="flex items-center gap-2">
+                <h2 className="font-bold text-lg sm:text-2xl font-moul tracking-wide text-amber-100">
+                  បណ្ណាល័យទំនើបឌីជីថល
+                </h2>
+                <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-sans font-extrabold px-2.5 py-0.5 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 text-amber-950 shadow-xs">
+                  <Sparkles className="w-3 h-3 animate-spin" /> VIP 2026
                 </span>
-              </h2>
-              <p className="text-xs text-amber-200/90 mt-0.5 hidden sm:block">
-                បណ្តុំវិធីសាស្ត្រដោះស្រាយចំណោទ គន្លឹះរៀនពូកែ បច្ចេកវិទ្យា និងអត្ថបទអប់រំសីលធម៌សម្រាប់សិស្សថ្នាក់ទី៦
+              </div>
+              <p className="text-xs sm:text-sm text-amber-200/90 mt-1 font-sans">
+                បណ្តុំអត្ថបទអប់រំ គន្លឹះដោះស្រាយចំណោទ ស្វ័យសិក្សា និងត្រៀមប្រឡងសញ្ញាបត្របឋមភូមិថ្នាក់ទី៦
               </p>
             </div>
           </div>
@@ -171,97 +188,114 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
               if (isPlayingAudio) window.speechSynthesis?.cancel();
               onClose();
             }}
-            className="p-2 rounded-xl text-amber-200 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="p-2.5 rounded-2xl bg-amber-950/60 hover:bg-amber-900/80 text-amber-200 hover:text-white transition-all cursor-pointer border border-amber-500/30 shadow-md hover:scale-105 active:scale-95"
             id="btn-close-modern-library"
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
+        {/* Notification Toast for Share */}
+        {copiedNotification && (
+          <div className="absolute top-20 right-6 z-50 bg-emerald-600 text-white px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2 text-xs font-bold animate-bounce">
+            <CheckCircle2 className="w-4 h-4" />
+            <span>បានចម្លងតំណភ្ជាប់អត្ថបទរួចរាល់!</span>
+          </div>
+        )}
+
         {/* Article Reader View OR Article List View */}
         {selectedArticle ? (
           /* READ ARTICLE VIEW */
-          <div className="flex-1 overflow-y-auto flex flex-col bg-slate-50">
+          <div className="flex-1 overflow-y-auto flex flex-col bg-gradient-to-b from-white to-amber-50/30 relative z-10">
             {/* Reader Action Bar */}
-            <div className="p-3 sm:p-4 bg-white border-b border-slate-200 flex flex-wrap items-center justify-between gap-2 sticky top-0 z-10 shadow-2xs">
+            <div className="p-3.5 sm:p-4 bg-white/95 backdrop-blur-md border-b border-slate-200 flex flex-wrap items-center justify-between gap-3 sticky top-0 z-20 shadow-xs">
               <button
                 onClick={() => {
                   if (isPlayingAudio) window.speechSynthesis?.cancel();
                   setIsPlayingAudio(false);
                   setSelectedArticle(null);
                 }}
-                className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="px-4 py-2 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-950 font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer border border-amber-200 shadow-2xs hover:scale-102"
               >
-                <ChevronLeft className="w-4 h-4" />
-                <span>ត្រឡប់ទៅបណ្ណាល័យ</span>
+                <ChevronLeft className="w-4 h-4 text-amber-700" />
+                <span>ត្រឡប់ទៅបញ្ជីអត្ថបទ</span>
               </button>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 {/* Text-to-speech button */}
                 <button
                   onClick={() =>
                     handleToggleSpeech(`${selectedArticle.title}. ${selectedArticle.content}`)
                   }
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                  className={`px-3.5 py-2 rounded-2xl text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-sm ${
                     isPlayingAudio
-                      ? 'bg-rose-600 text-white animate-pulse'
-                      : 'bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300'
+                      ? 'bg-rose-600 text-white animate-pulse shadow-rose-600/30'
+                      : 'bg-amber-500 hover:bg-amber-400 text-amber-950 border border-amber-300'
                   }`}
                   title="អានជាសំឡេង"
                 >
                   {isPlayingAudio ? (
                     <>
                       <VolumeX className="w-4 h-4" />
-                      <span>ផ្អាកអាន</span>
+                      <span>ផ្អាកអានសំឡេង</span>
                     </>
                   ) : (
                     <>
-                      <Volume2 className="w-4 h-4 text-amber-700" />
-                      <span>ស្ដាប់សំឡេងអាន</span>
+                      <Volume2 className="w-4 h-4" />
+                      <span>ស្តាប់សំឡេងអាន</span>
                     </>
                   )}
                 </button>
 
                 {/* Font Size Adjuster */}
-                <div className="flex items-center bg-slate-100 rounded-xl p-0.5 border border-slate-200">
+                <div className="flex items-center bg-slate-100 rounded-2xl p-1 border border-slate-200 shadow-inner">
                   <button
                     onClick={() => setReaderFontSize('sm')}
-                    className={`px-2 py-1 rounded-lg text-xs font-bold cursor-pointer ${
-                      readerFontSize === 'sm' ? 'bg-white shadow-2xs text-amber-800' : 'text-slate-600'
+                    className={`px-2.5 py-1 rounded-xl text-xs font-bold cursor-pointer transition-all ${
+                      readerFontSize === 'sm' ? 'bg-white shadow-xs text-amber-950 font-extrabold' : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
                     A-
                   </button>
                   <button
                     onClick={() => setReaderFontSize('md')}
-                    className={`px-2 py-1 rounded-lg text-xs font-bold cursor-pointer ${
-                      readerFontSize === 'md' ? 'bg-white shadow-2xs text-amber-800' : 'text-slate-600'
+                    className={`px-2.5 py-1 rounded-xl text-xs font-bold cursor-pointer transition-all ${
+                      readerFontSize === 'md' ? 'bg-white shadow-xs text-amber-950 font-extrabold' : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
                     A
                   </button>
                   <button
                     onClick={() => setReaderFontSize('lg')}
-                    className={`px-2 py-1 rounded-lg text-xs font-bold cursor-pointer ${
-                      readerFontSize === 'lg' ? 'bg-white shadow-2xs text-amber-800' : 'text-slate-600'
+                    className={`px-2.5 py-1 rounded-xl text-xs font-bold cursor-pointer transition-all ${
+                      readerFontSize === 'lg' ? 'bg-white shadow-xs text-amber-950 font-extrabold' : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
                     A+
                   </button>
                 </div>
 
+                {/* Share Button */}
+                <button
+                  onClick={() => handleShare(selectedArticle)}
+                  className="p-2.5 rounded-2xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer border border-slate-200 shadow-2xs"
+                  title="ចែករំលែកអត្ថបទ"
+                >
+                  <Share2 className="w-4 h-4" />
+                </button>
+
                 {/* Bookmark Toggle */}
                 <button
                   onClick={() => toggleBookmark(selectedArticle.id)}
-                  className={`p-2 rounded-xl transition-colors cursor-pointer ${
+                  className={`p-2.5 rounded-2xl transition-all cursor-pointer shadow-2xs ${
                     bookmarkedArticleIds.includes(selectedArticle.id)
-                      ? 'bg-rose-100 text-rose-600 border border-rose-300'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      ? 'bg-rose-500 text-white border border-rose-600 shadow-rose-500/30'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200'
                   }`}
                 >
                   <Bookmark
                     className={`w-4 h-4 ${
-                      bookmarkedArticleIds.includes(selectedArticle.id) ? 'fill-rose-600' : ''
+                      bookmarkedArticleIds.includes(selectedArticle.id) ? 'fill-white' : ''
                     }`}
                   />
                 </button>
@@ -269,46 +303,71 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
             </div>
 
             {/* Article Content Area */}
-            <div className="p-4 sm:p-8 max-w-3xl mx-auto w-full space-y-6">
-              {/* Category Badge & Meta */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-3xl">{selectedArticle.icon}</span>
-                  <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-200">
-                    {selectedArticle.categoryLabel}
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-slate-400" />
-                    រយៈពេលអាន {selectedArticle.readingTimeMinutes} នាទី
-                  </span>
+            <div className="p-5 sm:p-10 max-w-4xl mx-auto w-full space-y-8">
+              {/* Category Badge & Meta Header */}
+              <div className="space-y-4 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-xl shadow-slate-200/50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-4xl p-3 rounded-2xl bg-amber-100/80 border border-amber-200 shadow-xs">
+                      {selectedArticle.icon}
+                    </span>
+                    <div>
+                      <span className="px-3.5 py-1 rounded-full bg-amber-500 text-amber-950 text-xs font-bold font-moul shadow-2xs">
+                        {selectedArticle.categoryLabel}
+                      </span>
+                      <div className="flex items-center gap-2 text-xs text-slate-500 font-medium mt-1">
+                        <Clock className="w-3.5 h-3.5 text-amber-700" />
+                        <span>រយៈពេលអានប្រហែល {selectedArticle.readingTimeMinutes} នាទី</span>
+                        <span>•</span>
+                        <span className="text-emerald-700 font-bold flex items-center gap-1">
+                          <CheckCircle2 className="w-3.5 h-3.5" /> ផ្ទៀងផ្ទាត់ដោយក្រសួង
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <h1 className="text-xl sm:text-2xl font-bold font-moul text-slate-900 leading-snug">
+                <h1 className="text-2xl sm:text-3xl font-bold font-moul text-slate-900 leading-snug">
                   {selectedArticle.title}
                 </h1>
 
-                <p className="text-sm font-semibold text-amber-900 bg-amber-50 p-3 rounded-2xl border border-amber-200/80">
-                  💡 {selectedArticle.summary}
-                </p>
+                <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-50 via-yellow-50 to-amber-100/60 border border-amber-200/80 text-amber-950 font-medium text-sm sm:text-base shadow-2xs leading-relaxed flex items-start gap-3">
+                  <Lightbulb className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="font-moul block text-xs text-amber-800 mb-1">សេចក្តីសង្ខេបខ្លឹមសារ៖</strong>
+                    {selectedArticle.summary}
+                  </div>
+                </div>
               </div>
 
               {/* Main Article Body */}
-              <div className={`text-slate-800 space-y-4 whitespace-pre-line ${getFontSizeClass()}`}>
-                {selectedArticle.content}
+              <div className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200/90 shadow-xl shadow-slate-200/50 space-y-6">
+                <div className={`text-slate-800 space-y-5 whitespace-pre-line font-sans ${getFontSizeClass()}`}>
+                  {selectedArticle.content}
+                </div>
               </div>
 
               {/* Key Takeaways Card */}
               {selectedArticle.keyTakeaways.length > 0 && (
-                <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-3 shadow-2xs">
-                  <h3 className="font-bold text-emerald-950 text-sm sm:text-base flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 text-white space-y-4 shadow-xl border border-emerald-500/30 relative overflow-hidden">
+                  <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none" />
+
+                  <h3 className="font-bold text-base sm:text-lg font-moul text-emerald-200 flex items-center gap-2.5">
+                    <div className="p-2 rounded-xl bg-emerald-500/20 border border-emerald-400/40">
+                      <BookOpenCheck className="w-5 h-5 text-emerald-300" />
+                    </div>
                     <span>ចំណុចសំខាន់ៗត្រូវចងចាំ (Key Takeaways)</span>
                   </h3>
-                  <ul className="space-y-2 text-xs sm:text-sm text-emerald-900">
+
+                  <ul className="space-y-3 text-sm sm:text-base text-emerald-100 font-sans">
                     {selectedArticle.keyTakeaways.map((point, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-emerald-600 font-bold">•</span>
-                        <span>{point}</span>
+                      <li key={idx} className="flex items-start gap-3 bg-emerald-950/40 p-3.5 rounded-2xl border border-emerald-500/20 shadow-2xs">
+                        <span className="w-6 h-6 rounded-full bg-emerald-500 text-emerald-950 font-bold flex items-center justify-center shrink-0 text-xs shadow-xs">
+                          {idx + 1}
+                        </span>
+                        <span className="leading-relaxed">{point}</span>
                       </li>
                     ))}
                   </ul>
@@ -318,13 +377,46 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
           </div>
         ) : (
           /* ARTICLE LIST VIEW */
-          <div className="flex-1 overflow-y-auto flex flex-col">
-            {/* Search and Filters Bar */}
-            <div className="p-4 bg-slate-50 border-b border-slate-200 space-y-3">
+          <div className="flex-1 overflow-y-auto flex flex-col relative z-10">
+            {/* Search, Filters & Hero Featured Carousel */}
+            <div className="p-4 sm:p-6 bg-white/80 backdrop-blur-md border-b border-slate-200/80 space-y-5 shadow-sm">
+              {/* Featured Banner at top */}
+              {featuredArticle && !searchQuery && selectedCategory === 'all' && !showOnlyBookmarks && (
+                <div
+                  onClick={() => setSelectedArticle(featuredArticle)}
+                  className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#3D2012] via-[#59301A] to-[#2B150A] text-amber-50 p-5 sm:p-7 shadow-xl border border-amber-600/40 cursor-pointer group hover:scale-[1.01] transition-transform"
+                >
+                  <div className="absolute right-0 top-0 w-64 h-64 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
+                  <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative z-10">
+                    <div className="space-y-2 max-w-2xl">
+                      <div className="flex items-center gap-2">
+                        <span className="px-3 py-0.5 rounded-full bg-amber-400 text-amber-950 text-[11px] font-bold font-moul">
+                          ⭐ អត្ថបទពិសេសប្រចាំថ្ងៃ
+                        </span>
+                        <span className="text-xs text-amber-200/90 flex items-center gap-1 font-medium">
+                          <Clock className="w-3.5 h-3.5" /> អាន {featuredArticle.readingTimeMinutes} នាទី
+                        </span>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-bold font-moul text-amber-100 group-hover:text-yellow-300 transition-colors">
+                        {featuredArticle.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-amber-200/90 line-clamp-2 leading-relaxed font-sans">
+                        {featuredArticle.summary}
+                      </p>
+                    </div>
+
+                    <button className="px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-amber-950 font-bold text-xs sm:text-sm shadow-lg group-hover:scale-105 transition-all shrink-0 flex items-center gap-2 border border-yellow-200/50">
+                      <span>អានឥឡូវនេះ</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Search Bar & Bookmarks Toggle */}
               <div className="flex flex-col sm:flex-row items-center gap-3">
-                {/* Search Bar */}
                 <div className="relative flex-1 w-full">
-                  <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <Search className="w-5 h-5 text-amber-700 absolute left-4 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     value={searchQuery}
@@ -332,8 +424,8 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
                       setSearchQuery(e.target.value);
                       setCurrentPage(1);
                     }}
-                    placeholder="ស្វែងរកអត្ថបទអប់រំ វិធីសាស្ត្ររៀន វិទ្យាសាស្ត្រ រូបមន្តចំណោទ..."
-                    className="w-full pl-10 pr-4 py-2.5 rounded-2xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-hidden focus:border-amber-600 focus:ring-2 focus:ring-amber-500/20"
+                    placeholder="ស្វែងរកអត្ថបទអប់រំ គន្លឹះដោះស្រាយចំណោទ វិទ្យាសាស្ត្រ រូបមន្ត..."
+                    className="w-full pl-11 pr-4 py-3 rounded-2xl border-2 border-amber-600/30 bg-amber-50/40 text-xs sm:text-sm text-slate-900 placeholder:text-slate-500 focus:outline-hidden focus:border-amber-600 focus:bg-white focus:ring-4 focus:ring-amber-500/20 transition-all font-sans shadow-inner"
                   />
                   {searchQuery && (
                     <button
@@ -341,46 +433,45 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
                         setSearchQuery('');
                         setCurrentPage(1);
                       }}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-500 hover:text-slate-800 bg-slate-200/60 px-2.5 py-1 rounded-xl"
                     >
                       លុប
                     </button>
                   )}
                 </div>
 
-                {/* Saved filter toggle */}
                 <button
                   onClick={() => {
                     setShowOnlyBookmarks(!showOnlyBookmarks);
                     setCurrentPage(1);
                   }}
-                  className={`px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shrink-0 border ${
+                  className={`px-4 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer shrink-0 border ${
                     showOnlyBookmarks
-                      ? 'bg-rose-600 text-white border-rose-600'
-                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                      ? 'bg-rose-600 text-white border-rose-600 shadow-md shadow-rose-600/30 scale-102'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 shadow-2xs'
                   }`}
                 >
                   <Bookmark
-                    className={`w-4 h-4 ${showOnlyBookmarks ? 'fill-white' : 'text-slate-500'}`}
+                    className={`w-4 h-4 ${showOnlyBookmarks ? 'fill-white' : 'text-rose-600'}`}
                   />
-                  <span>ចំណាំ ({bookmarkedArticleIds.length})</span>
+                  <span>អត្ថបទបានចំណាំ ({bookmarkedArticleIds.length})</span>
                 </button>
               </div>
 
-              {/* Category Pills */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+              {/* Category Filter Pills */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs">
                 {[
-                  { id: 'all', label: 'ទាំងអស់' },
-                  { id: 'math', label: 'គណិតវិទ្យា 📐' },
-                  { id: 'science', label: 'វិទ្យាសាស្ត្រ 🔬' },
-                  { id: 'study_method', label: 'វិធីសាស្ត្ររៀន ⏱️' },
-                  { id: 'morals', label: 'សីលធម៌-អប់រំ 🌸' },
-                  { id: 'exam_tips', label: 'បច្ចេកទេសប្រឡង ⏳' },
-                  { id: 'khmer', label: 'ភាសាខ្មែរ ✍️' },
-                  { id: 'social', label: 'សិក្សាសង្គម-ប្រវត្តិវិទ្យា 🏛️' },
-                  { id: 'life_skills', label: 'បំណិនជីវិត 🌿' },
-                  { id: 'tech', label: 'បច្ចេកវិទ្យា 💻' },
-                  { id: 'environment', label: 'បរិស្ថាន 🌍' }
+                  { id: 'all', label: '🌟 ទាំងអស់' },
+                  { id: 'math', label: '📐 គណិតវិទ្យា' },
+                  { id: 'science', label: '🔬 វិទ្យាសាស្ត្រ' },
+                  { id: 'study_method', label: '⏱️ វិធីសាស្ត្ររៀន' },
+                  { id: 'morals', label: '🌸 សីលធម៌-អប់រំ' },
+                  { id: 'exam_tips', label: '⏳ បច្ចេកទេសប្រឡង' },
+                  { id: 'khmer', label: '✍️ ភាសាខ្មែរ' },
+                  { id: 'social', label: '🏛️ សិក្សាសង្គម' },
+                  { id: 'life_skills', label: '🌿 បំណិនជីវិត' },
+                  { id: 'tech', label: '💻 បច្ចេកវិទ្យា' },
+                  { id: 'environment', label: '🌍 បរិស្ថាន' }
                 ].map((cat) => (
                   <button
                     key={cat.id}
@@ -388,10 +479,10 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
                       setSelectedCategory(cat.id);
                       setCurrentPage(1);
                     }}
-                    className={`px-3 py-1.5 rounded-xl font-bold cursor-pointer transition-colors shrink-0 ${
+                    className={`px-4 py-2 rounded-2xl font-bold cursor-pointer transition-all shrink-0 font-moul ${
                       selectedCategory === cat.id
-                        ? 'bg-amber-700 text-white shadow-2xs'
-                        : 'bg-white text-slate-600 hover:bg-slate-200/80 border border-slate-200'
+                        ? 'bg-gradient-to-r from-amber-600 to-amber-700 text-white shadow-md shadow-amber-900/30 scale-105 border border-amber-500'
+                        : 'bg-white text-slate-700 hover:bg-amber-50 border border-slate-200/90 shadow-2xs'
                     }`}
                   >
                     {cat.label}
@@ -399,24 +490,31 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
                 ))}
               </div>
 
-              {/* Results summary bar */}
-              <div className="flex items-center justify-between text-xs text-slate-500 pt-1 border-t border-slate-200/60">
+              {/* Results count & status bar */}
+              <div className="flex items-center justify-between text-xs text-slate-600 pt-2 border-t border-slate-200/80 font-medium">
                 <span>
-                  បង្ហាញ {filteredArticles.length > 0 ? (currentPage - 1) * ITEMS_PER_PAGE + 1 : 0} -{' '}
-                  {Math.min(currentPage * ITEMS_PER_PAGE, filteredArticles.length)} នៃ{' '}
-                  <strong>{filteredArticles.length}</strong> អត្ថបទ
+                  បង្ហាញពី {filteredArticles.length > 0 ? (currentPage - 1) * ITEMS_PER_PAGE + 1 : 0} ដល់{' '}
+                  {Math.min(currentPage * ITEMS_PER_PAGE, filteredArticles.length)} នៃសរុប{' '}
+                  <strong className="text-amber-900">{filteredArticles.length}</strong> អត្ថបទ
                 </span>
-                <span>ទំព័រទី {currentPage} / {totalPages}</span>
+                <span className="font-bold text-amber-800 bg-amber-100/70 px-3 py-1 rounded-xl border border-amber-200">
+                  ទំព័រទី {currentPage} / {totalPages}
+                </span>
               </div>
             </div>
 
             {/* Articles Grid */}
-            <div className="p-4 sm:p-6 flex-1 bg-slate-100/60 flex flex-col justify-between space-y-6">
+            <div className="p-4 sm:p-8 flex-1 bg-gradient-to-b from-slate-100/70 to-amber-50/20 flex flex-col justify-between space-y-6">
               {filteredArticles.length === 0 ? (
-                <div className="text-center py-12 space-y-3">
-                  <BookMarked className="w-12 h-12 text-slate-300 mx-auto" />
-                  <p className="text-sm font-bold text-slate-600">
-                    មិនរកឃើញអត្ថបទអប់រំដែលប្អូនស្វែងរកឡើយ
+                <div className="text-center py-16 space-y-4 bg-white rounded-3xl border border-slate-200 shadow-sm max-w-md mx-auto w-full p-8">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center mx-auto text-3xl shadow-inner">
+                    📭
+                  </div>
+                  <h3 className="font-bold text-base text-slate-900 font-moul">
+                    មិនមានអត្ថបទដែលត្រូវនឹងការស្វែងរករបស់អ្នកឡើយ
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed font-sans">
+                    សូមព្យាយាមស្វែងរកពាក្យគន្លឹះផ្សេង ឬចុចមើលប្រភេទអត្ថបទផ្សេងទៀត។
                   </p>
                   <button
                     onClick={() => {
@@ -425,13 +523,13 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
                       setShowOnlyBookmarks(false);
                       setCurrentPage(1);
                     }}
-                    className="text-xs font-bold text-amber-700 underline cursor-pointer"
+                    className="px-5 py-2.5 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-colors cursor-pointer shadow-md inline-block"
                   >
-                    បង្ហាញអត្ថបទទាំងអស់ឡើងវិញ
+                    បង្ហាញអត្ថបទទាំងអស់
                   </button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {paginatedArticles.map((art) => {
                     const isBookmarked = bookmarkedArticleIds.includes(art.id);
 
@@ -439,45 +537,53 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
                       <div
                         key={art.id}
                         onClick={() => setSelectedArticle(art)}
-                        className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 hover:border-amber-400/80 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between space-y-3 group"
+                        className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-200/90 hover:border-amber-400 hover:shadow-xl hover:shadow-amber-950/10 transition-all duration-300 cursor-pointer flex flex-col justify-between space-y-4 group transform hover:-translate-y-1 relative overflow-hidden"
                       >
-                        <div className="space-y-2">
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/5 rounded-full blur-xl pointer-events-none group-hover:bg-amber-500/10 transition-colors" />
+
+                        <div className="space-y-3 relative z-10">
                           <div className="flex items-center justify-between gap-2">
-                            <div className="flex items-center gap-2">
-                              <span className="text-2xl">{art.icon}</span>
-                              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-200">
+                            <div className="flex items-center gap-2.5">
+                              <span className="text-3xl p-2 rounded-2xl bg-amber-50 border border-amber-200/80 shadow-2xs group-hover:scale-110 transition-transform">
+                                {art.icon}
+                              </span>
+                              <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-amber-100/80 text-amber-900 border border-amber-200">
                                 {art.categoryLabel}
                               </span>
                             </div>
 
                             <button
                               onClick={(e) => toggleBookmark(art.id, e)}
-                              className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                              className={`p-2 rounded-xl transition-all cursor-pointer ${
+                                isBookmarked
+                                  ? 'bg-rose-500 text-white shadow-sm shadow-rose-500/30'
+                                  : 'bg-slate-100 text-slate-400 hover:text-rose-600 hover:bg-rose-50'
+                              }`}
                               title="រក្សាទុកចំណាំ"
                             >
                               <Bookmark
-                                className={`w-4 h-4 ${isBookmarked ? 'fill-rose-600 text-rose-600' : ''}`}
+                                className={`w-4 h-4 ${isBookmarked ? 'fill-white' : ''}`}
                               />
                             </button>
                           </div>
 
-                          <h3 className="font-bold text-sm sm:text-base text-slate-900 group-hover:text-amber-800 transition-colors line-clamp-2">
+                          <h3 className="font-bold text-sm sm:text-base text-slate-900 group-hover:text-amber-800 transition-colors line-clamp-2 font-moul leading-snug">
                             {art.title}
                           </h3>
 
-                          <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                          <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed font-sans">
                             {art.summary}
                           </p>
                         </div>
 
-                        <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-                          <span className="flex items-center gap-1 text-[11px]">
-                            <Clock className="w-3.5 h-3.5 text-slate-400" />
-                            {art.readingTimeMinutes} នាទី
+                        <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium relative z-10">
+                          <span className="flex items-center gap-1 text-[11px] text-amber-900 bg-amber-50 px-2.5 py-1 rounded-xl border border-amber-200/60 font-sans">
+                            <Clock className="w-3.5 h-3.5 text-amber-700" />
+                            អាន {art.readingTimeMinutes} នាទី
                           </span>
 
-                          <span className="font-bold text-amber-700 group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                            អានអត្ថបទ →
+                          <span className="font-bold text-amber-700 group-hover:translate-x-1.5 transition-transform flex items-center gap-1 font-moul text-xs">
+                            អានបន្ត →
                           </span>
                         </div>
                       </div>
@@ -488,26 +594,26 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
 
               {/* Pagination Bar */}
               {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2 pt-4 border-t border-slate-200/80">
+                <div className="flex items-center justify-center gap-3 pt-6 border-t border-slate-200">
                   <button
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                    className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed text-xs font-bold flex items-center gap-1 cursor-pointer"
+                    className="px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-2xs transition-all"
                   >
                     <ChevronLeft className="w-4 h-4" />
-                    <span>ថយក្រោយ</span>
+                    <span>ទំព័រមុន</span>
                   </button>
 
-                  <span className="text-xs font-bold text-slate-700 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200">
-                    {currentPage} / {totalPages}
-                  </span>
+                  <div className="px-4 py-2 rounded-2xl bg-amber-100 text-amber-950 text-xs font-bold border border-amber-300 shadow-inner">
+                    ទំព័រទី {currentPage} នៃ {totalPages}
+                  </div>
 
                   <button
                     disabled={currentPage === totalPages}
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                    className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed text-xs font-bold flex items-center gap-1 cursor-pointer"
+                    className="px-4 py-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-2xs transition-all"
                   >
-                    <span>បន្ទាប់</span>
+                    <span>ទំព័របន្ទាប់</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -517,13 +623,19 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
         )}
 
         {/* Modal Bottom Footer */}
-        <div className="p-3 bg-slate-50 border-t border-slate-200 text-xs text-slate-500 flex items-center justify-between px-5 shrink-0">
-          <span>បណ្ណាល័យអប់រំ និងវិធីសាស្ត្ររៀនសូត្រថ្នាក់ទី៦ ({LIBRARY_ARTICLES.length} អត្ថបទ)</span>
+        <div className="p-3.5 bg-[#2B170B] text-amber-200 border-t border-amber-600/30 text-xs flex items-center justify-between px-6 shrink-0 shadow-lg">
+          <div className="flex items-center gap-2">
+            <GraduationCap className="w-4 h-4 text-amber-400" />
+            <span className="font-moul">បណ្ណាល័យឌីជីថលក្រសួងអប់រំ - ថ្នាក់ទី៦ ({LIBRARY_ARTICLES.length} អត្ថបទសរុប)</span>
+          </div>
           <button
-            onClick={onClose}
-            className="px-4 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold transition-colors cursor-pointer"
+            onClick={() => {
+              if (isPlayingAudio) window.speechSynthesis?.cancel();
+              onClose();
+            }}
+            className="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-amber-950 font-bold transition-all cursor-pointer shadow-md hover:scale-105 active:scale-95"
           >
-            បិទ
+            បិទបណ្ណាល័យ
           </button>
         </div>
       </div>

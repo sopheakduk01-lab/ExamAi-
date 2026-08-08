@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SubjectId, ExamPaper, ExamResult, UserProgress, Question, UserProfile, StudentAccount } from './types';
 import { SUBJECTS, EXAM_PAPERS, LESSON_SUMMARIES } from './data/grade6Data';
 import { NEW_EXAM_PAPERS } from './data/newExamsData';
@@ -30,6 +30,7 @@ import { MobileLauncherHome } from './components/MobileLauncherHome';
 import { Grade6ExamCarousel } from './components/Grade6ExamCarousel';
 import { EdgeBottomSheetDrawer } from './components/EdgeBottomSheetDrawer';
 import { FacebookBottomNav } from './components/FacebookBottomNav';
+import { AICreatorStudioModal } from './components/AICreatorStudioModal';
 import { CHARACTERS_DATA, FullBodyCharacter as CharacterType } from './data/charactersData';
 import { FullBodyCharacter } from './components/FullBodyCharacter';
 import {
@@ -39,7 +40,7 @@ import {
   getOrCreateDefaultStudentAccount,
   updateStudentAccount
 } from './utils/studentAccounts';
-import { Search, GraduationCap, BookOpen, Sparkles, Filter, Trophy, ArrowRight, Target, Layers, Palette, Swords, Music, Globe, Clock, CheckCircle2, ChevronRight, Award } from 'lucide-react';
+import { Search, GraduationCap, BookOpen, Sparkles, Filter, Trophy, ArrowRight, Target, Layers, Palette, Swords, Music, Globe, Clock, CheckCircle2, ChevronRight, Award, ChevronLeft, Bot } from 'lucide-react';
 
 export default function App() {
   const [selectedSubjectId, setSelectedSubjectId] = useState<SubjectId | null>(null);
@@ -77,9 +78,31 @@ export default function App() {
   const [isAddToHomeScreenOpen, setIsAddToHomeScreenOpen] = useState(false);
   const [isOwnerTrackingOpen, setIsOwnerTrackingOpen] = useState(false);
   const [isStudentRegistrationOpen, setIsStudentRegistrationOpen] = useState(false);
+  const [isAICreatorOpen, setIsAICreatorOpen] = useState(false);
   const [pendingExamToStart, setPendingExamToStart] = useState<ExamPaper | null>(null);
   const [fishingInitialSubject, setFishingInitialSubject] = useState<SubjectId>('math');
   const [unreadNotificationsCount, setUnreadNotificationsCount] = useState(3);
+
+  const handleStartCustomQuiz = (quizTitle: string, questions: any[]) => {
+    const customExam: ExamPaper = {
+      id: 'custom-' + Date.now(),
+      title: quizTitle,
+      subjectId: 'math',
+      description: 'វិញ្ញាសាបង្កើតដោយ AI និងផ្ទាល់ខ្លួនសម្រាប់ត្រៀមប្រឡង',
+      durationMinutes: 30,
+      totalPoints: questions.length * 10,
+      yearOrType: '2026',
+      questions: questions.map((q, idx) => ({
+        id: q.id || 'q-' + idx,
+        text: q.question,
+        options: q.options,
+        correctAnswerIndex: q.correctAnswer,
+        subjectId: 'math' as SubjectId,
+        explanation: q.explanation
+      }))
+    };
+    setSelectedExam(customExam);
+  };
 
   const handleSelectExamWithRegistration = (exam: ExamPaper) => {
     setPendingExamToStart(exam);
@@ -95,6 +118,60 @@ export default function App() {
   };
 
   // Handler for Home navigation button - resets views to Grade 6 Primary School Completion Exam Prep
+
+
+
+
+  // Games carousel horizontal scroll & drag handlers
+  const gamesScrollRef = useRef<HTMLDivElement>(null);
+  const [isGamesMouseDown, setIsGamesMouseDown] = useState(false);
+  const [gamesStartX, setGamesStartX] = useState(0);
+  const [gamesScrollLeft, setGamesScrollLeft] = useState(0);
+
+  const handleGamesMouseDown = (e: React.MouseEvent) => {
+    if (!gamesScrollRef.current) return;
+    setIsGamesMouseDown(true);
+    setGamesStartX(e.pageX - gamesScrollRef.current.offsetLeft);
+    setGamesScrollLeft(gamesScrollRef.current.scrollLeft);
+  };
+
+  const handleGamesMouseLeave = () => {
+    setIsGamesMouseDown(false);
+  };
+
+  const handleGamesMouseUp = () => {
+    setIsGamesMouseDown(false);
+  };
+
+  const handleGamesMouseMove = (e: React.MouseEvent) => {
+    if (!isGamesMouseDown || !gamesScrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - gamesScrollRef.current.offsetLeft;
+    const walk = (x - gamesStartX) * 1.5;
+    gamesScrollRef.current.scrollLeft = gamesScrollLeft - walk;
+  };
+
+  const scrollGames = (direction: 'left' | 'right') => {
+    if (gamesScrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = gamesScrollRef.current;
+      const maxScrollLeft = scrollWidth - clientWidth;
+      
+      if (direction === 'right') {
+        if (scrollLeft >= maxScrollLeft - 30) {
+          gamesScrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          gamesScrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+      } else {
+        if (scrollLeft <= 30) {
+          gamesScrollRef.current.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+        } else {
+          gamesScrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
   const handleGoHome = () => {
     setSelectedSubjectId(null);
     setSelectedExam(null);
@@ -119,6 +196,7 @@ export default function App() {
     setIsAddToHomeScreenOpen(false);
     setIsOwnerTrackingOpen(false);
     setIsStudentRegistrationOpen(false);
+    setIsAICreatorOpen(false);
     setPendingExamToStart(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -285,32 +363,13 @@ export default function App() {
       <Header
         isVisible={isHeaderVisible}
         onOpenMenu={() => setIsMenuOpen(true)}
-        onOpenBookmarks={() => setIsBookmarksOpen(true)}
-        bookmarkedCount={bookmarkedQuestionIds.length}
         onOpenSearch={() => setIsGlobalSearchOpen(true)}
-        onOpenProgress={() => setIsProgressOpen(true)}
-        onOpenMissions={() => setIsMissionsOpen(true)}
-        onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
-        onOpenDrawing={() => setIsDrawingOpen(true)}
-        onOpenStudentChat={() => setIsStudentChatOpen(true)}
-        onOpenNotifications={() => setIsNotificationsOpen(true)}
-        onOpenQRCode={() => setIsQRCodeOpen(true)}
-        onOpenAddToHomeScreen={() => setIsAddToHomeScreenOpen(true)}
         isDarkMode={isDarkMode}
         onToggleDarkMode={() => setIsDarkMode((prev) => !prev)}
-        unreadNotificationsCount={unreadNotificationsCount}
-        onHomeClick={handleGoHome}
-        userProfile={userProfile}
-        onOpenRegistrationModal={() => {
-          setIsInitialSetup(false);
-          setIsAccountModalOpen(true);
-        }}
-        onOpenCharacterModal={selectedSubjectId || selectedExam ? undefined : () => setIsCharacterModalOpen(true)}
-        onOpenOwnerTracking={() => setIsOwnerTrackingOpen(true)}
       />
 
       {/* Main Body */}
-      <main className="flex-1 max-w-4xl w-full mx-auto px-4 pt-16 sm:pt-20 pb-20 space-y-6">
+      <main className="flex-1 max-w-4xl w-full mx-auto px-4 pt-24 sm:pt-28 pb-20 space-y-6">
         {/* If taking an exam */}
         {selectedExam ? (
           <ExamRunner
@@ -386,6 +445,13 @@ export default function App() {
                 setIsAccountModalOpen(true);
               }}
               onOpenCharacterModal={() => setIsCharacterModalOpen(true)}
+              activeMainTab={activeMainTab}
+              onSelectMainTab={(tab) => {
+                setActiveMainTab(tab);
+                setSelectedSubjectId(null);
+                setSelectedExam(null);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
 
             {/* Announcement Notification Banner for Students */}
@@ -424,83 +490,118 @@ export default function App() {
               </button>
             </div>
 
-            {/* Filter & Search Section */}
+
+
+            {/* Horizontal Swipeable Square Game Cards Section ( ផ្ទាំងការេ នៃ game នីមួយៗអាចអូសទៅឆ្វេងស្តាំបាន ) */}
             <div className="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-sm space-y-3">
-              {/* Tabs & Tips Button */}
-              <div className="flex items-center justify-between gap-3 flex-wrap">
-                <div className="flex items-center gap-1.5 p-1 bg-amber-100/60 rounded-xl font-semibold text-xs sm:text-sm">
-                  <button
-                    onClick={() => setActiveMainTab('exam')}
-                    className={`py-2 px-3.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${activeMainTab === 'exam' ? 'bg-white text-amber-950 shadow-xs font-bold' : 'text-amber-900/70 hover:text-amber-950'}`}
-                    id="tab-main-exam"
-                  >
-                    <GraduationCap className="w-4 h-4 text-amber-700" />
-                    <span>វិញ្ញាសាប្រឡង</span>
-                  </button>
-
-                  <button
-                    onClick={() => setActiveMainTab('lesson')}
-                    className={`py-2 px-3.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${activeMainTab === 'lesson' ? 'bg-white text-amber-950 shadow-xs font-bold' : 'text-amber-900/70 hover:text-amber-950'}`}
-                    id="tab-main-lesson"
-                  >
-                    <BookOpen className="w-4 h-4 text-amber-700" />
-                    <span>មេរៀនសង្ខេប</span>
-                  </button>
-
-                  <button
-                    onClick={() => setActiveMainTab('new_exam')}
-                    className={`py-2 px-3.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 relative ${activeMainTab === 'new_exam' ? 'bg-white text-amber-950 shadow-xs font-bold' : 'text-amber-900/70 hover:text-amber-950'}`}
-                    id="tab-main-new-exam"
-                  >
-                    <Sparkles className="w-4 h-4 text-amber-700 animate-pulse" />
-                    <span>តេស្តវិញ្ញាសាថ្មី</span>
-                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full animate-bounce shadow-xs">
-                      NEW!
-                    </span>
-                  </button>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-moul text-sm sm:text-base text-slate-900 flex items-center gap-2">
+                    <span className="w-2.5 h-5 bg-purple-600 rounded-full"></span>
+                    ហ្គេមអប់រំ និងកម្សាន្ត (អូសស្តាំ-ឆ្វេង)
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">ជ្រើសរើសហ្គេមដើម្បីលេង និងសាកល្បងសមត្ថភាព</p>
                 </div>
-
-                <div className="flex items-center gap-2 flex-wrap">
+                <div className="flex items-center gap-1.5">
                   <button
-                    onClick={() => setIsEnglishGameOpen(true)}
-                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-sky-100/90 border border-sky-300 text-sky-950 text-xs font-bold hover:bg-sky-200 transition-colors cursor-pointer shadow-2xs"
-                    id="btn-english-game-main"
+                    onClick={() => scrollGames('left')}
+                    className="p-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer border border-slate-200 shadow-2xs"
+                    title="រំកិលទៅឆ្វេង"
+                    id="btn-scroll-games-left"
                   >
-                    <BookOpen className="w-4 h-4 text-sky-700" />
-                    <span>📖 ហ្គេមអង់គ្លេស</span>
+                    <ChevronLeft className="w-4 h-4" />
                   </button>
-
                   <button
-                    onClick={() => setIsAIBattleOpen(true)}
-                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-purple-100/90 border border-purple-300 text-purple-950 text-xs font-bold hover:bg-purple-200 transition-colors cursor-pointer shadow-2xs"
-                    id="btn-ai-battle-main"
+                    onClick={() => scrollGames('right')}
+                    className="p-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer border border-slate-200 shadow-2xs"
+                    title="រំកិលទៅស្តាំ"
+                    id="btn-scroll-games-right"
                   >
-                    <Swords className="w-4 h-4 text-purple-800" />
-                    <span>⚔️ ប្រកួតជាមួយគ្រូ AI</span>
-                  </button>
-
-                  <button
-                    onClick={() => setIsFishingGameOpen(true)}
-                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-100 to-sky-100 border border-cyan-400 text-cyan-950 text-xs font-bold hover:from-cyan-200 hover:to-sky-200 transition-colors cursor-pointer shadow-2xs"
-                    id="btn-fishing-game-main"
-                  >
-                    <span className="text-sm">🎣</span>
-                    <span>ហ្គេមស្ទូចត្រី (អ្នក vs AI)</span>
-                  </button>
-
-                  <button
-                    onClick={() => setIsDrawingOpen(true)}
-                    className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-100/90 border border-amber-300 text-amber-950 text-xs font-bold hover:bg-amber-200 transition-colors cursor-pointer shadow-2xs"
-                    id="btn-drawing-main"
-                  >
-                    <Palette className="w-4 h-4 text-amber-800" />
-                    <span>🎨 គំនូសសេរី</span>
+                    <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
-
+              <div
+                ref={gamesScrollRef}
+                onMouseDown={handleGamesMouseDown}
+                onMouseLeave={handleGamesMouseLeave}
+                onMouseUp={handleGamesMouseUp}
+                onMouseMove={handleGamesMouseMove}
+                className="flex gap-4 overflow-x-auto pb-2 pt-1 scrollbar-none cursor-grab active:cursor-grabbing select-none"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {[
+                  {
+                    id: 'english',
+                    title: 'ហ្គេមអង់គ្លេស',
+                    subtitle: 'រៀនពាក្យ & វេយ្យាករណ៍',
+                    icon: <BookOpen className="w-9 h-9 text-sky-700" />,
+                    bg: 'bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 border-sky-300 hover:border-sky-500 text-sky-950',
+                    onClick: () => setIsEnglishGameOpen(true)
+                  },
+                  {
+                    id: 'ai_battle',
+                    title: 'ប្រកួតជាមួយគ្រូ AI',
+                    subtitle: 'ប្រកួតល្បឿនឆ្លើយសំណួរ',
+                    icon: <Swords className="w-9 h-9 text-purple-700" />,
+                    bg: 'bg-gradient-to-br from-purple-50 via-indigo-50 to-purple-100 border-purple-300 hover:border-purple-500 text-purple-950',
+                    onClick: () => setIsAIBattleOpen(true)
+                  },
+                  {
+                    id: 'fishing',
+                    title: 'ហ្គេមស្ទូចត្រី',
+                    subtitle: 'អ្នក vs AI សួរឆ្លើយ',
+                    icon: <span className="text-4xl">🎣</span>,
+                    bg: 'bg-gradient-to-br from-cyan-50 via-teal-50 to-cyan-100 border-cyan-300 hover:border-cyan-500 text-cyan-950',
+                    onClick: () => setIsFishingGameOpen(true)
+                  },
+                  {
+                    id: 'drawing',
+                    title: 'គំនូសសេរី',
+                    subtitle: 'ក្ដារខៀនសិល្បៈឌីជីថល',
+                    icon: <Palette className="w-9 h-9 text-amber-700" />,
+                    bg: 'bg-gradient-to-br from-amber-50 via-yellow-50 to-amber-100 border-amber-300 hover:border-amber-500 text-amber-950',
+                    onClick: () => setIsDrawingOpen(true)
+                  },
+                  {
+                    id: 'ai_tutor',
+                    title: 'គ្រូ AI ឆ្លើយសំណួរ',
+                    subtitle: 'ជំនួយការសិក្សាផ្ទាល់ខ្លួន',
+                    icon: <Bot className="w-9 h-9 text-blue-700" />,
+                    bg: 'bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 border-blue-300 hover:border-blue-500 text-blue-950',
+                    onClick: () => setIsStudentChatOpen(true)
+                  },
+                  {
+                    id: 'missions',
+                    title: 'បេសកកម្មប្រចាំថ្ងៃ',
+                    subtitle: 'ប្រមូលពិន្ទុ និងរង្វាន់',
+                    icon: <Trophy className="w-9 h-9 text-orange-700" />,
+                    bg: 'bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 border-orange-300 hover:border-orange-500 text-orange-950',
+                    onClick: () => setIsMissionsOpen(true)
+                  }
+                ].map((game) => (
+                  <div
+                    key={game.id}
+                    onClick={game.onClick}
+                    className={`w-36 h-36 sm:w-40 sm:h-40 flex-shrink-0 rounded-3xl ${game.bg} border-2 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col items-center justify-between p-4 text-center group transform hover:-translate-y-1`}
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-white/80 backdrop-blur-sm shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                      {game.icon}
+                    </div>
+                    <div className="space-y-0.5 w-full">
+                      <h3 className="font-bold font-moul text-xs sm:text-sm truncate w-full">
+                        {game.title}
+                      </h3>
+                      <p className="text-[10px] text-slate-600 truncate w-full">
+                        {game.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
+
 
             {/* Horizontal Swipeable Grade 6 Exam Prep Carousel ( ត្រៀមប្រឡងបញ្ចប់បឋមសិក្សា ថ្នាក់ទី៦ ) */}
             {activeMainTab === 'exam' && (
@@ -770,6 +871,12 @@ export default function App() {
         onClose={() => setIsOwnerTrackingOpen(false)}
       />
 
+      <AICreatorStudioModal
+        isOpen={isAICreatorOpen}
+        onClose={() => setIsAICreatorOpen(false)}
+        onStartCustomQuiz={handleStartCustomQuiz}
+      />
+
       {/* Floating Kahoot-style Bottom Navigation Bar */}
       <FacebookBottomNav
         isVisible={isBottomNavVisible}
@@ -782,6 +889,7 @@ export default function App() {
         onOpenDrawing={() => setIsDrawingOpen(true)}
         onOpenQRCode={() => setIsQRCodeOpen(true)}
         onOpenMenu={() => setIsMenuOpen(true)}
+        onOpenAICreator={() => setIsAICreatorOpen(true)}
         unreadNotificationsCount={unreadNotificationsCount}
       />
     </div>

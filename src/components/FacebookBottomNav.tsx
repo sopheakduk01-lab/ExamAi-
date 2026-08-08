@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Home, Compass, Plus, LayoutGrid, Award, Bell, Palette, Menu } from 'lucide-react';
+import { Home, Plus, LayoutGrid, Award, Bell, Palette, Menu } from 'lucide-react';
 
 interface FacebookBottomNavProps {
   isVisible: boolean;
@@ -12,6 +12,7 @@ interface FacebookBottomNavProps {
   onOpenModernLibrary?: () => void;
   onOpenDrawing?: () => void;
   onOpenQRCode?: () => void;
+  onOpenAICreator?: () => void;
   unreadNotificationsCount?: number;
 }
 
@@ -26,13 +27,14 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
   onOpenModernLibrary,
   onOpenDrawing,
   onOpenQRCode,
+  onOpenAICreator,
   unreadNotificationsCount = 0,
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [activeTab, setActiveTab] = useState<'home' | 'discover' | 'create' | 'library' | 'results' | 'notifications' | 'drawing' | 'menu'>('discover');
+  const [activeTab, setActiveTab] = useState<'home' | 'create' | 'library' | 'results' | 'notifications' | 'drawing' | 'menu'>('home');
 
   // Smooth drag to scroll handler for desktop mouse drag
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -101,35 +103,19 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
             </span>
           </button>
 
-          {/* Tab 2: Discover (Active state highlight with soft circular/oval background) */}
-          <button
-            onClick={() => {
-              setActiveTab('discover');
-              if (onOpenModernLibrary) onOpenModernLibrary();
-              else if (onOpenProgress) onOpenProgress();
-            }}
-            className={`flex flex-col items-center justify-center min-w-[68px] px-3 py-1 rounded-[24px] shrink-0 transition-all cursor-pointer active:scale-95 ${
-              activeTab === 'discover'
-                ? 'bg-purple-100/90 dark:bg-purple-900/40 text-purple-700 dark:text-purple-200 font-bold shadow-xs'
-                : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
-            }`}
-            id="nav-tab-discover"
-          >
-            {/* Blue Compass Icon */}
-            <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-white shadow-xs">
-              <Compass className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight text-indigo-700 dark:text-indigo-300 whitespace-nowrap">
-              Discover
-            </span>
-          </button>
+
 
           {/* Tab 3: Create (Plus icon inside solid black rounded square) */}
           <button
             onClick={() => {
               setActiveTab('create');
-              if (onOpenStudentChat) onOpenStudentChat();
-              else if (onOpenDrawing) onOpenDrawing();
+              if (onOpenAICreator) {
+                onOpenAICreator();
+              } else if (onOpenStudentChat) {
+                onOpenStudentChat();
+              } else if (onOpenDrawing) {
+                onOpenDrawing();
+              }
             }}
             className={`flex flex-col items-center justify-center min-w-[58px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'create'
@@ -150,8 +136,13 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
           <button
             onClick={() => {
               setActiveTab('library');
-              if (onOpenMissions) onOpenMissions();
-              else onOpenMenu();
+              if (onOpenModernLibrary) {
+                onOpenModernLibrary();
+              } else if (onOpenMissions) {
+                onOpenMissions();
+              } else {
+                onOpenMenu();
+              }
             }}
             className={`flex flex-col items-center justify-center min-w-[58px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'library'

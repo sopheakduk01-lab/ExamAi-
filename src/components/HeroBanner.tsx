@@ -15,7 +15,10 @@ interface HeroBannerProps {
   onOpenCharacterModal?: () => void;
 }
 
-export const HeroBanner: React.FC<HeroBannerProps> = ({
+export const HeroBanner: React.FC<HeroBannerProps & {
+  activeMainTab?: 'exam' | 'lesson' | 'new_exam';
+  onSelectMainTab?: (tab: 'exam' | 'lesson' | 'new_exam') => void;
+}> = ({
   onStartExamClick,
   onStartLessonClick,
   onOpenMissions,
@@ -25,10 +28,38 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onOpenFishingGame,
   userProfile,
   onOpenRegistrationModal,
-  onOpenCharacterModal
+  onOpenCharacterModal,
+  activeMainTab = 'exam',
+  onSelectMainTab
 }) => {
+  const [touchStartX, setTouchStartX] = React.useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchEndX - touchStartX;
+    
+    // Swipe Right -> Switch to Lesson tab
+    if (diff > 50 && onSelectMainTab) {
+      onSelectMainTab('lesson');
+    }
+    // Swipe Left -> Open Modern Library
+    else if (diff < -50 && onOpenModernLibrary) {
+      onOpenModernLibrary();
+    }
+    setTouchStartX(null);
+  };
+
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3D2012] via-[#59301A] to-[#2B150A] text-amber-50 p-6 sm:p-9 shadow-2xl shadow-amber-950/30 border border-amber-600/40">
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3D2012] via-[#59301A] to-[#2B150A] text-amber-50 p-6 sm:p-9 shadow-2xl shadow-amber-950/30 border border-amber-600/40 space-y-6 select-none"
+    >
       {/* Decorative ambient glowing orbs & radial background elements */}
       <div className="absolute -right-16 -top-16 w-72 h-72 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-yellow-400/10 rounded-full blur-2xl pointer-events-none" />
@@ -82,40 +113,68 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
         </p>
 
 
+      </div>
 
-        {/* Main Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+      {/* Bottom Main Tabs Inside Card */}
+      {onSelectMainTab && (
+        <div className="relative z-10 pt-4 border-t border-amber-600/30 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
           <button
-            onClick={onStartExamClick}
-            className="flex-1 sm:flex-initial px-7 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-300 text-amber-950 font-bold shadow-xl shadow-amber-950/40 active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2.5 text-sm sm:text-base border border-yellow-200/50"
-            id="btn-hero-start-exam"
+            onClick={() => onSelectMainTab('exam')}
+            className={`py-2 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 font-moul ${
+              activeMainTab === 'exam'
+                ? 'bg-amber-400 text-amber-950 shadow-lg scale-105 font-bold'
+                : 'bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30'
+            }`}
+            id="hero-tab-exam"
           >
-            <GraduationCap className="w-5 h-5 text-amber-950" />
-            <span>ធ្វើវិញ្ញាសាប្រឡង</span>
-            <ArrowRight className="w-4 h-4 text-amber-900" />
+            <GraduationCap className="w-4 h-4" />
+            <span>វិញ្ញាសាប្រឡង</span>
           </button>
 
           <button
-            onClick={onStartLessonClick}
-            className="flex-1 sm:flex-initial px-6 py-3.5 rounded-2xl bg-amber-950/70 hover:bg-amber-950/90 border border-amber-400/40 text-amber-100 font-semibold active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2 text-sm sm:text-base backdrop-blur-md shadow-md"
-            id="btn-hero-start-lesson"
+            onClick={() => onSelectMainTab('lesson')}
+            className={`py-2 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 font-moul ${
+              activeMainTab === 'lesson'
+                ? 'bg-amber-400 text-amber-950 shadow-lg scale-105 font-bold'
+                : 'bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30'
+            }`}
+            id="hero-tab-lesson"
           >
-            <BookOpen className="w-5 h-5 text-yellow-400" />
-            <span>មើលមេរៀនសង្ខេប</span>
+            <BookOpen className="w-4 h-4" />
+            <span>មេរៀនសង្ខេប</span>
           </button>
 
-          {onOpenAITutor && (
+          <button
+            onClick={() => onSelectMainTab('new_exam')}
+            className={`py-2 px-5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 relative font-moul ${
+              activeMainTab === 'new_exam'
+                ? 'bg-amber-400 text-amber-950 shadow-lg scale-105 font-bold'
+                : 'bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30'
+            }`}
+            id="hero-tab-new-exam"
+          >
+            <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
+            <span>តេស្តវិញ្ញាសាថ្មី</span>
+            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full animate-bounce shadow-xs">
+              NEW!
+            </span>
+          </button>
+
+          {onOpenModernLibrary && (
             <button
-              onClick={onOpenAITutor}
-              className="px-5 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-bold active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2 text-sm sm:text-base shadow-md border border-emerald-400/30"
-              id="btn-hero-ai-tutor"
+              onClick={onOpenModernLibrary}
+              className="py-2 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 font-moul bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30"
+              id="hero-tab-modern-library"
+              title="អូសស្តាំលើផ្ទាំងនេះ ឬចុចទីនេះដើម្បីបើកបណ្ណាល័យទំនើប"
             >
-              <Bot className="w-5 h-5 text-emerald-200" />
-              <span>ប្រកួតជាមួយគ្រូ AI</span>
+              <Compass className="w-4 h-4 text-amber-300" />
+              <span>បណ្ណាល័យទំនើប</span>
             </button>
           )}
         </div>
-      </div>
+      )}
+
+
     </div>
   );
 };
