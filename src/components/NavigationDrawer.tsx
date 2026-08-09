@@ -17,6 +17,7 @@ interface NavigationDrawerProps {
   onOpenNotifications?: () => void;
   onOpenEnglishGame?: () => void;
   onOpenFishingGame?: () => void;
+  onOpenHomework?: () => void;
   onOpenAbout?: () => void;
   onOpenQRCode?: () => void;
   onOpenAddToHomeScreen?: () => void;
@@ -44,6 +45,7 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onOpenNotifications,
   onOpenEnglishGame,
   onOpenFishingGame,
+  onOpenHomework,
   onOpenAbout,
   onOpenQRCode,
   onOpenAddToHomeScreen,
@@ -201,6 +203,26 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                   📚
                 </div>
                 <span className="font-semibold">បណ្ណាល័យទំនើប</span>
+              </button>
+            )}
+
+            {onOpenHomework && (
+              <button
+                onClick={() => {
+                  onOpenHomework();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg font-medium text-slate-800 hover:bg-amber-100/70 transition-colors flex items-center justify-between text-sm cursor-pointer animate-pulse-subtle"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center text-sm shrink-0">
+                    ✍️
+                  </div>
+                  <span className="font-bold text-amber-950">ផ្ទាំងកិច្ចការផ្ទះ MoEYS</span>
+                </div>
+                <span className="text-[10px] bg-red-500 text-white font-bold px-2 py-0.5 rounded-full">
+                  ថ្មី
+                </span>
               </button>
             )}
 

@@ -16,8 +16,8 @@ interface HeroBannerProps {
 }
 
 export const HeroBanner: React.FC<HeroBannerProps & {
-  activeMainTab?: 'exam' | 'lesson' | 'new_exam';
-  onSelectMainTab?: (tab: 'exam' | 'lesson' | 'new_exam') => void;
+  activeMainTab?: 'exam' | 'lesson' | 'new_exam' | 'homework';
+  onSelectMainTab?: (tab: 'exam' | 'lesson' | 'new_exam' | 'homework') => void;
 }> = ({
   onStartExamClick,
   onStartLessonClick,
@@ -181,6 +181,22 @@ export const HeroBanner: React.FC<HeroBannerProps & {
             <span>តេស្តវិញ្ញាសាថ្មី</span>
             <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full animate-bounce shadow-xs">
               NEW!
+            </span>
+          </button>
+
+          <button
+            onClick={() => onSelectMainTab('homework')}
+            className={`py-2 px-5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 relative font-moul ${
+              activeMainTab === 'homework'
+                ? 'bg-amber-400 text-amber-950 shadow-lg scale-105 font-bold'
+                : 'bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30'
+            }`}
+            id="hero-tab-homework"
+          >
+            <GraduationCap className="w-4 h-4 text-amber-300" />
+            <span>កិច្ចការផ្ទះ</span>
+            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full animate-bounce shadow-xs">
+              ថ្មី
             </span>
           </button>
 

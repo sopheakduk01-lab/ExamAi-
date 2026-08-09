@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { Home, MessageSquare, LayoutGrid, Award, Bell, Palette, Menu } from 'lucide-react';
+import { Home, GraduationCap, LayoutGrid, Award, Bell, Palette, Menu, MessageSquare } from 'lucide-react';
 
 interface FacebookBottomNavProps {
   isVisible: boolean;
   onHomeClick: () => void;
+  onOpenHomework?: () => void;
   onOpenStudentChat?: () => void;
   onOpenMissions?: () => void;
   onOpenNotifications?: () => void;
@@ -20,6 +21,7 @@ interface FacebookBottomNavProps {
 export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
   isVisible,
   onHomeClick,
+  onOpenHomework,
   onOpenStudentChat,
   onOpenMissions,
   onOpenNotifications,
@@ -36,7 +38,7 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [activeTab, setActiveTab] = useState<'home' | 'chat' | 'library' | 'results' | 'notifications' | 'drawing' | 'menu'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'homework' | 'library' | 'results' | 'notifications' | 'drawing' | 'menu'>('home');
 
   // Smooth drag to scroll handler for desktop mouse drag
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -107,30 +109,29 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
 
 
 
-          {/* Tab 3: Chat */}
+          {/* Tab 2: Homework (កិច្ចការផ្ទះ) */}
           <button
             onClick={() => {
-              setActiveTab('chat');
-              if (onOpenStudentChat) {
+              setActiveTab('homework');
+              if (onOpenHomework) {
+                onOpenHomework();
+              } else if (onOpenStudentChat) {
                 onOpenStudentChat();
-              } else if (onOpenAICreator) {
-                onOpenAICreator();
-              } else if (onOpenDrawing) {
-                onOpenDrawing();
               }
             }}
-            className={`flex flex-col items-center justify-center min-w-[58px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
-              activeTab === 'chat'
-                ? 'bg-purple-100/90 dark:bg-purple-950/60 text-purple-900 dark:text-purple-100 font-bold'
+            className={`flex flex-col items-center justify-center min-w-[62px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
+              activeTab === 'homework'
+                ? 'bg-amber-100/90 dark:bg-amber-950/60 text-amber-900 dark:text-amber-100 font-bold'
                 : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
             }`}
-            id="nav-tab-chat"
+            id="nav-tab-homework"
+            title="កិច្ចការផ្ទះ"
           >
-            <div className="w-5.5 h-5.5 rounded-lg bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shadow-xs">
-              <MessageSquare className="w-4 h-4 stroke-[2]" />
+            <div className="w-5.5 h-5.5 rounded-lg bg-gradient-to-tr from-amber-600 to-orange-500 text-white flex items-center justify-center shadow-xs">
+              <GraduationCap className="w-4 h-4 stroke-[2.2]" />
             </div>
-            <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap">
-              Chat
+            <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul text-amber-800 dark:text-amber-300">
+              កិច្ចការផ្ទះ
             </span>
           </button>
 

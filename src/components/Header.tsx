@@ -25,8 +25,8 @@ interface HeaderProps {
   onOpenCharacterModal?: () => void;
   onOpenOwnerTracking?: () => void;
   isVisible?: boolean;
-  activeMainTab?: 'exam' | 'lesson' | 'new_exam';
-  onSelectMainTab?: (tab: 'exam' | 'lesson' | 'new_exam') => void;
+  activeMainTab?: 'exam' | 'lesson' | 'new_exam' | 'homework';
+  onSelectMainTab?: (tab: 'exam' | 'lesson' | 'new_exam' | 'homework') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({

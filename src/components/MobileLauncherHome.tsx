@@ -34,7 +34,7 @@ interface MobileLauncherHomeProps {
   userProfile?: UserProfile | null;
   currentAccount?: StudentAccount | null;
   onSelectSubject: (subjectId: SubjectId) => void;
-  onSelectMainTab: (tab: 'exam' | 'lesson' | 'new_exam') => void;
+  onSelectMainTab: (tab: 'exam' | 'lesson' | 'new_exam' | 'homework') => void;
   onOpenSearch: () => void;
   onOpenStudentChat: () => void;
   onOpenAIBattle: () => void;
@@ -42,6 +42,7 @@ interface MobileLauncherHomeProps {
   onOpenEnglishGame: () => void;
   onOpenDrawing: () => void;
   onOpenModernLibrary: () => void;
+  onOpenHomework?: () => void;
   onOpenMissions: () => void;
   onOpenBookmarks: () => void;
   onOpenProgress: () => void;
@@ -49,7 +50,7 @@ interface MobileLauncherHomeProps {
   onOpenCharacterModal: () => void;
   onOpenAccountModal: () => void;
   onSelectExamWithRegistration: (paper: ExamPaper) => void;
-  activeMainTab: 'exam' | 'lesson' | 'new_exam';
+  activeMainTab: 'exam' | 'lesson' | 'new_exam' | 'homework';
   bookmarkedCount: number;
 }
 
@@ -89,6 +90,7 @@ export const MobileLauncherHome: React.FC<MobileLauncherHomeProps> = ({
   onOpenEnglishGame,
   onOpenDrawing,
   onOpenModernLibrary,
+  onOpenHomework,
   onOpenMissions,
   onOpenBookmarks,
   onOpenProgress,
@@ -201,6 +203,16 @@ export const MobileLauncherHome: React.FC<MobileLauncherHomeProps> = ({
       bgColor: 'bg-gradient-to-br from-teal-500 to-emerald-700',
       icon: '📖',
       action: onOpenModernLibrary
+    },
+    {
+      id: 'homework',
+      category: 'exam',
+      title: 'កិច្ចការផ្ទះ',
+      subtitle: 'លំហាត់គំរូ MoEYS',
+      bgColor: 'bg-gradient-to-br from-amber-600 to-yellow-700',
+      icon: '✍️',
+      badge: 'ថ្មី',
+      action: onOpenHomework || (() => {})
     },
     {
       id: 'drawing',
