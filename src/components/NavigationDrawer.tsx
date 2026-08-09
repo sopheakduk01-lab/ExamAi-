@@ -17,6 +17,7 @@ interface NavigationDrawerProps {
   onOpenNotifications?: () => void;
   onOpenEnglishGame?: () => void;
   onOpenFishingGame?: () => void;
+  onOpenVijjaNavaGame?: () => void;
   onOpenHomework?: () => void;
   onOpenAbout?: () => void;
   onOpenQRCode?: () => void;
@@ -45,6 +46,7 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onOpenNotifications,
   onOpenEnglishGame,
   onOpenFishingGame,
+  onOpenVijjaNavaGame,
   onOpenHomework,
   onOpenAbout,
   onOpenQRCode,
@@ -248,6 +250,27 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
             <div className="px-2 text-xs font-extrabold uppercase tracking-wider text-amber-900/70 font-sans mb-1">
               ល្បងសមត្ថភាព & ហ្គេម
             </div>
+
+            {onOpenVijjaNavaGame && (
+              <button
+                onClick={() => {
+                  onOpenVijjaNavaGame();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg font-medium text-slate-800 hover:bg-amber-50 transition-colors flex items-center justify-between text-sm cursor-pointer"
+                id="btn-vijja-nava-game-drawer"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-md bg-amber-100 text-amber-800 flex items-center justify-center text-sm shrink-0">
+                    👑
+                  </div>
+                  <span className="font-semibold">វិជ្ជានាវា៖ ល្បងប្រាជ្ញាចិន្តា</span>
+                </div>
+                <span className="text-[10px] bg-amber-500 text-white font-bold px-2 py-0.5 rounded-md shadow-2xs">
+                  HOT
+                </span>
+              </button>
+            )}
 
             {onOpenFishingGame && (
               <button

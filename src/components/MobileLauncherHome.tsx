@@ -40,6 +40,7 @@ interface MobileLauncherHomeProps {
   onOpenAIBattle: () => void;
   onOpenFishingGame: () => void;
   onOpenEnglishGame: () => void;
+  onOpenVijjaNavaGame?: () => void;
   onOpenDrawing: () => void;
   onOpenModernLibrary: () => void;
   onOpenHomework?: () => void;
@@ -88,6 +89,7 @@ export const MobileLauncherHome: React.FC<MobileLauncherHomeProps> = ({
   onOpenAIBattle,
   onOpenFishingGame,
   onOpenEnglishGame,
+  onOpenVijjaNavaGame,
   onOpenDrawing,
   onOpenModernLibrary,
   onOpenHomework,
@@ -167,6 +169,16 @@ export const MobileLauncherHome: React.FC<MobileLauncherHomeProps> = ({
           onSelectExamWithRegistration(NEW_EXAM_PAPERS[0]);
         }
       }
+    },
+    {
+      id: 'vijja_nava',
+      category: 'game',
+      title: 'វិជ្ជានាវា',
+      subtitle: 'ល្បងប្រាជ្ញាចិន្តា',
+      bgColor: 'bg-gradient-to-br from-amber-400 via-yellow-500 to-amber-600',
+      icon: '👑',
+      badge: 'HOT',
+      action: onOpenVijjaNavaGame || onOpenFishingGame
     },
     {
       id: 'fishing',

@@ -20,6 +20,7 @@ import { GlobalSearchModal } from './components/GlobalSearchModal';
 import { EnglishGameModal } from './components/EnglishGameModal';
 import { AIBattleModal } from './components/AIBattleModal';
 import { FishingGameModal } from './components/FishingGameModal';
+import { VijjaNavaGameModal } from './components/VijjaNavaGameModal';
 import { AboutModal } from './components/AboutModal';
 import { QRCodeModal } from './components/QRCodeModal';
 import { AddToHomeScreenModal } from './components/AddToHomeScreenModal';
@@ -77,6 +78,7 @@ export default function App() {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isEnglishGameOpen, setIsEnglishGameOpen] = useState(false);
   const [isFishingGameOpen, setIsFishingGameOpen] = useState(false);
+  const [isVijjaNavaGameOpen, setIsVijjaNavaGameOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
   const [isAddToHomeScreenOpen, setIsAddToHomeScreenOpen] = useState(false);
@@ -444,6 +446,7 @@ export default function App() {
             onOpenAIBattle={() => setIsAIBattleOpen(true)}
             onOpenFishingGame={() => setIsFishingGameOpen(true)}
             onOpenEnglishGame={() => setIsEnglishGameOpen(true)}
+            onOpenVijjaNavaGame={() => setIsVijjaNavaGameOpen(true)}
             onOpenDrawing={() => setIsDrawingOpen(true)}
             onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
             onOpenHomework={() => {
@@ -542,6 +545,14 @@ export default function App() {
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {[
+                  {
+                    id: 'vijja_nava',
+                    title: 'វិជ្ជានាវា៖ ល្បងប្រាជ្ញា',
+                    subtitle: 'ហ្គេមអប់រំថ្នាក់ទី៦',
+                    icon: <span className="text-4xl">👑</span>,
+                    bg: 'bg-gradient-to-br from-amber-100 via-yellow-50 to-amber-200 border-amber-400 hover:border-amber-600 text-amber-950 shadow-amber-200/50',
+                    onClick: () => setIsVijjaNavaGameOpen(true)
+                  },
                   {
                     id: 'english',
                     title: 'ហ្គេមអង់គ្លេស',
@@ -795,6 +806,7 @@ export default function App() {
         onOpenNotifications={() => setIsNotificationsOpen(true)}
         onOpenEnglishGame={() => setIsEnglishGameOpen(true)}
         onOpenFishingGame={() => setIsFishingGameOpen(true)}
+        onOpenVijjaNavaGame={() => setIsVijjaNavaGameOpen(true)}
         onOpenHomework={() => {
           setActiveMainTab('homework');
           setTimeout(() => {
@@ -927,6 +939,11 @@ export default function App() {
         isOpen={isFishingGameOpen}
         onClose={() => setIsFishingGameOpen(false)}
         initialSubjectId={fishingInitialSubject}
+      />
+
+      <VijjaNavaGameModal
+        isOpen={isVijjaNavaGameOpen}
+        onClose={() => setIsVijjaNavaGameOpen(false)}
       />
 
       <AboutModal
