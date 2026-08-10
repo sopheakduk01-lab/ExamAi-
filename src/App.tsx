@@ -424,6 +424,7 @@ export default function App() {
             subject={selectedSubject}
             examPapers={subjectExams}
             lessons={subjectLessons}
+            initialTab={activeMainTab === 'lesson' ? 'lessons' : 'exams'}
             onBack={() => setSelectedSubjectId(null)}
             onSelectExam={(exam) => handleSelectExamWithRegistration(exam)}
             bookmarkedQuestionIds={bookmarkedQuestionIds}
@@ -644,27 +645,51 @@ export default function App() {
                 </div>
               ) : (
                 <>
-                  {/* Section Title */}
-                  <div className="flex items-center justify-between pt-1">
-                  <div>
-                    <h2 className="text-lg sm:text-xl font-bold font-moul text-slate-900 tracking-wide flex items-center gap-2">
-                      <span className="w-2.5 h-6 bg-amber-600 rounded-full inline-block"></span>
-                      {activeMainTab === 'exam'
-                        ? 'មុខវិជ្ជាប្រឡងថ្នាក់ទី៦'
+                  {/* Distinct Section Banner */}
+                  <div className={`p-4 rounded-2xl border-2 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 my-2 shadow-xs ${
+                    activeMainTab === 'lesson'
+                      ? 'bg-gradient-to-r from-emerald-500/10 via-teal-100/50 to-emerald-500/10 border-emerald-300'
+                      : activeMainTab === 'new_exam'
+                      ? 'bg-gradient-to-r from-purple-500/10 via-indigo-100/50 to-purple-500/10 border-purple-300'
+                      : 'bg-gradient-to-r from-amber-500/10 via-yellow-100/50 to-orange-500/10 border-amber-300'
+                  }`}>
+                    <div className="flex items-center gap-3">
+                      <div className={`w-11 h-11 rounded-2xl flex items-center justify-center font-bold text-xl shadow-xs shrink-0 text-white ${
+                        activeMainTab === 'lesson'
+                          ? 'bg-gradient-to-br from-emerald-600 to-teal-700'
+                          : activeMainTab === 'new_exam'
+                          ? 'bg-gradient-to-br from-purple-600 to-indigo-700'
+                          : 'bg-gradient-to-br from-amber-600 to-orange-700'
+                      }`}>
+                        {activeMainTab === 'lesson' ? '📚' : activeMainTab === 'new_exam' ? '✨' : '🎯'}
+                      </div>
+                      <div>
+                        <h2 className="text-base sm:text-lg font-bold font-moul text-slate-900 tracking-wide flex items-center gap-2">
+                          {activeMainTab === 'exam'
+                            ? 'កន្លែងវិញ្ញាសាប្រឡង ថ្នាក់ទី៦'
+                            : activeMainTab === 'new_exam'
+                            ? 'កន្លែងតេស្តវិញ្ញាសាថ្មីៗ'
+                            : 'កន្លែងមេរៀនសង្ខេប តាមមុខវិជ្ជា'}
+                        </h2>
+                        <p className="text-xs text-slate-600 font-medium mt-0.5">
+                          {activeMainTab === 'lesson'
+                            ? 'ជ្រើសរើសមុខវិជ្ជាខាងក្រោមដើម្បីចូលមើលមេរៀនសង្ខេប រូបមន្ត និងចំណុចសំខាន់ៗ'
+                            : activeMainTab === 'new_exam'
+                            ? 'ជ្រើសរើសវិញ្ញាសាថ្មីៗខាងក្រោមដើម្បីប្រឡងតេស្តសមត្ថភាព និងប្រមូលពិន្ទុ'
+                            : 'ជ្រើសរើសមុខវិជ្ជាខាងក្រោមដើម្បីចូលធ្វើវិញ្ញាសាប្រឡង និងតេស្តសមត្ថភាព'}
+                        </p>
+                      </div>
+                    </div>
+                    <span className={`self-end sm:self-center px-3.5 py-1 rounded-full text-xs font-bold border shrink-0 ${
+                      activeMainTab === 'lesson'
+                        ? 'bg-emerald-100 text-emerald-900 border-emerald-300'
                         : activeMainTab === 'new_exam'
-                        ? 'តេស្តវិញ្ញាសាថ្មី'
-                        : 'មេរៀនសង្ខេបតាមមុខវិជ្ជា'}
-                    </h2>
-                    <p className="text-xs text-slate-500 mt-1">
-                      {activeMainTab === 'new_exam'
-                        ? 'ជ្រើសរើសវិញ្ញាសាថ្មីៗខាងក្រោមដើម្បីប្រឡងតេស្តសមត្ថភាព'
-                        : 'ជ្រើសរើសមុខវិជ្ជាខាងក្រោមដើម្បីចាប់ផ្តើមរៀន និងប្រឡង'}
-                    </p>
+                        ? 'bg-purple-100 text-purple-900 border-purple-300'
+                        : 'bg-amber-100 text-amber-900 border-amber-300'
+                    }`}>
+                      {activeMainTab === 'new_exam' ? `${NEW_EXAM_PAPERS.length} វិញ្ញាសា` : `${filteredSubjects.length} មុខវិជ្ជា`}
+                    </span>
                   </div>
-                  <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold border border-amber-200">
-                    {activeMainTab === 'new_exam' ? `${NEW_EXAM_PAPERS.length} វិញ្ញាសា` : `${filteredSubjects.length} មុខវិជ្ជា`}
-                  </span>
-                </div>
 
                 {/* Render NEW_EXAM_PAPERS list in a horizontal scrollable row when new_exam tab is selected */}
                 {activeMainTab === 'new_exam' ? (
@@ -796,6 +821,7 @@ export default function App() {
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
         onSelectSubject={(sId) => setSelectedSubjectId(sId)}
+        onSelectMainTab={(tab) => setActiveMainTab(tab)}
         onOpenBookmarks={() => setIsBookmarksOpen(true)}
         onOpenProgress={() => setIsProgressOpen(true)}
         onOpenMissions={() => setIsMissionsOpen(true)}

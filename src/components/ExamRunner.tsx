@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getSafeAudioContext } from '../utils/audioSynthesizer';
+import { getSafeAudioContext, configureKhmerFemaleVoice } from '../utils/audioSynthesizer';
 import { ExamPaper, Question, ExamResult } from '../types';
 import {
   ArrowLeft,
@@ -311,8 +311,7 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
         window.speechSynthesis.cancel();
         const textToRead = `${currentQuestion.text}. ជម្រើសរួមមាន៖ ${currentQuestion.options.join(', ')}`;
         const utterance = new SpeechSynthesisUtterance(textToRead);
-        utterance.lang = 'km-KH';
-        utterance.rate = 0.9;
+        configureKhmerFemaleVoice(utterance);
         utterance.onend = () => setIsReadingQuestion(false);
         utterance.onerror = () => setIsReadingQuestion(false);
 

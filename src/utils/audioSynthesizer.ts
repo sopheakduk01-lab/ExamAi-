@@ -110,3 +110,47 @@ export function playDanceBeat(beatType: string) {
     console.log('Audio playback prevented or not supported', e);
   }
 }
+
+/**
+ * Configures an utterance for a sweet Khmer female voice.
+ * Adjusts pitch, rate, and selects the best female Khmer voice if available.
+ */
+export function configureKhmerFemaleVoice(utterance: SpeechSynthesisUtterance) {
+  utterance.lang = 'km-KH';
+  utterance.rate = 0.88;  // Elegant, clear reading rate
+  utterance.pitch = 1.15; // Slightly higher pitch for a sweet, polite female-like tone
+  
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    const voices = window.speechSynthesis.getVoices();
+    
+    // Find Khmer voices
+    const khmerVoices = voices.filter(v => {
+      const l = v.lang.toLowerCase();
+      const n = v.name.toLowerCase();
+      return l.includes('km') || l.includes('khmer') || n.includes('khmer') || n.includes('cambodia');
+    });
+
+    if (khmerVoices.length > 0) {
+      // Find female-sounding names
+      const femaleKeywords = ['female', 'srey', 'nary', 'sreypich', 'sophea', 'liana', 'siri', 'soft', 'sweet', 'ស្រី', 'នារី'];
+      const femaleVoice = khmerVoices.find(v => 
+        femaleKeywords.some(kw => v.name.toLowerCase().includes(kw))
+      );
+
+      if (femaleVoice) {
+        utterance.voice = femaleVoice;
+      } else {
+        // Fallback: Google or online voices which are typically high quality female voices
+        const onlineOrGoogleVoice = khmerVoices.find(v => 
+          v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('microsoft') || v.localService === false
+        );
+        if (onlineOrGoogleVoice) {
+          utterance.voice = onlineOrGoogleVoice;
+        } else {
+          utterance.voice = khmerVoices[0];
+        }
+      }
+    }
+  }
+}
+

@@ -7,6 +7,7 @@ interface NavigationDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectSubject: (sId: SubjectId) => void;
+  onSelectMainTab?: (tab: 'exam' | 'lesson' | 'new_exam' | 'homework') => void;
   onOpenBookmarks: () => void;
   onOpenProgress: () => void;
   onOpenMissions?: () => void;
@@ -36,6 +37,7 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   isOpen,
   onClose,
   onSelectSubject,
+  onSelectMainTab,
   onOpenBookmarks,
   onOpenProgress,
   onOpenMissions,
@@ -171,6 +173,58 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
               </div>
               <span className="font-semibold">ទំព័រដើម</span>
             </button>
+
+            {onSelectMainTab && (
+              <>
+                <button
+                  onClick={() => {
+                    onHomeClick();
+                    onSelectMainTab('exam');
+                    onClose();
+                    setTimeout(() => {
+                      const el = document.getElementById('main-exams-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="w-full text-left px-3 py-2 rounded-lg font-medium text-slate-800 hover:bg-amber-100/70 transition-colors flex items-center justify-between text-sm cursor-pointer border border-amber-200/80 bg-amber-50/50"
+                  id="btn-drawer-exams-section"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-7 h-7 rounded-md bg-amber-500 text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-xs">
+                      🎯
+                    </div>
+                    <span className="font-bold text-amber-950">កន្លែងវិញ្ញាសាប្រឡង</span>
+                  </div>
+                  <span className="text-[10px] bg-amber-200 text-amber-900 font-bold px-2 py-0.5 rounded-full">
+                    ប្រឡង
+                  </span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    onHomeClick();
+                    onSelectMainTab('lesson');
+                    onClose();
+                    setTimeout(() => {
+                      const el = document.getElementById('main-exams-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="w-full text-left px-3 py-2 rounded-lg font-medium text-slate-800 hover:bg-emerald-100/70 transition-colors flex items-center justify-between text-sm cursor-pointer border border-emerald-200/80 bg-emerald-50/50"
+                  id="btn-drawer-lessons-section"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-7 h-7 rounded-md bg-emerald-600 text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-xs">
+                      📚
+                    </div>
+                    <span className="font-bold text-emerald-950">កន្លែងមេរៀនសង្ខេប</span>
+                  </div>
+                  <span className="text-[10px] bg-emerald-200 text-emerald-900 font-bold px-2 py-0.5 rounded-full">
+                    មេរៀន
+                  </span>
+                </button>
+              </>
+            )}
 
             {onOpenStudentChat && (
               <button

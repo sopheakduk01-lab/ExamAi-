@@ -21,6 +21,7 @@ import {
   Lightbulb
 } from 'lucide-react';
 import { LIBRARY_ARTICLES, LibraryArticle } from '../data/libraryData';
+import { configureKhmerFemaleVoice } from '../utils/audioSynthesizer';
 
 interface ModernLibraryModalProps {
   isOpen: boolean;
@@ -97,8 +98,7 @@ export const ModernLibraryModal: React.FC<ModernLibraryModalProps> = ({
       .replace(/\n+/g, ' ');
 
     const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.lang = 'km-KH';
-    utterance.rate = 0.9;
+    configureKhmerFemaleVoice(utterance);
 
     utterance.onend = () => setIsPlayingAudio(false);
     utterance.onerror = () => setIsPlayingAudio(false);

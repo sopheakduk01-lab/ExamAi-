@@ -25,6 +25,7 @@ interface SubjectDetailViewProps {
   subject: Subject;
   examPapers: ExamPaper[];
   lessons: LessonSummary[];
+  initialTab?: 'exams' | 'lessons' | 'ai';
   onBack: () => void;
   onSelectExam: (exam: ExamPaper) => void;
   bookmarkedQuestionIds: string[];
@@ -37,16 +38,56 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
   subject,
   examPapers,
   lessons,
+  initialTab = 'exams',
   onBack,
   onSelectExam,
   onOpenEnglishGame,
   onOpenFishingGame
 }) => {
-  const [activeTab, setActiveTab] = useState<'exams' | 'lessons' | 'ai'>('exams');
+  const [activeTab, setActiveTab] = useState<'exams' | 'lessons' | 'ai'>(initialTab);
   const [filterType, setFilterType] = useState<'all' | 'lesson' | 'comprehensive'>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [examScores, setExamScores] = useState<Record<string, { score: number; total: number; percentage: number }>>({});
+
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setTouchStartY(e.targetTouches[0].clientY);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null || touchStartY === null) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+
+    const diffX = touchStartX - touchEndX;
+    const diffY = touchStartY - touchEndY;
+
+    // Ensure it's a horizontal swipe rather than a vertical scroll
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 45) {
+      if (diffX > 0) {
+        // Swiped Left -> Move forward (exams -> lessons -> ai)
+        if (activeTab === 'exams') setActiveTab('lessons');
+        else if (activeTab === 'lessons') setActiveTab('ai');
+      } else {
+        // Swiped Right -> Move backward (ai -> lessons -> exams)
+        if (activeTab === 'ai') setActiveTab('lessons');
+        else if (activeTab === 'lessons') setActiveTab('exams');
+      }
+    }
+
+    setTouchStartX(null);
+    setTouchStartY(null);
+  };
+  useEffect(() => {
+    if (initialTab) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab]);
 
   useEffect(() => {
     // Load exam scores from localStorage
@@ -94,59 +135,109 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
   const comprehensiveExamsCount = examPapers.length - lessonExamsCount;
 
   return (
-    <div className="max-w-5xl mx-auto py-3 px-4">
-      {/* Main Tabs + Compact Back button */}
-      <div className="flex items-center gap-2 mb-5">
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      className="max-w-5xl mx-auto py-3 px-4 space-y-4 touch-pan-y"
+    >
+      {/* Swipe Left/Right Quick Tip Badge */}
+      <div className="flex items-center justify-between text-[11px] font-bold text-slate-600 bg-slate-100/90 px-3.5 py-1.5 rounded-full border border-slate-200/80 shadow-2xs">
+        <span className="flex items-center gap-1.5 text-emerald-800">
+          <span>👈👉 អូសទៅឆ្វេង ឬស្តាំ ដើម្បីផ្លាស់ប្តូរផ្នែក (វិញ្ញាសា / មេរៀន / AI)</span>
+        </span>
+        <span className="text-slate-400 font-mono hidden sm:inline">Touch Swipe Enabled</span>
+      </div>
+      {/* Subject Title & Section Status Header Banner */}
+      <div className={`p-4 rounded-3xl border-2 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs ${
+        activeTab === 'lessons'
+          ? 'bg-gradient-to-r from-emerald-500/10 via-teal-100/50 to-emerald-500/10 border-emerald-300'
+          : activeTab === 'exams'
+          ? 'bg-gradient-to-r from-amber-500/10 via-yellow-100/50 to-orange-500/10 border-amber-300'
+          : 'bg-gradient-to-r from-purple-500/10 via-indigo-100/50 to-purple-500/10 border-purple-300'
+      }`}>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onBack}
+            className="p-2.5 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 font-bold border border-slate-200/90 shadow-2xs flex items-center justify-center cursor-pointer active:scale-95 shrink-0"
+            title="ត្រឡប់ទៅទំព័រដើម"
+            id="btn-back-subject"
+          >
+            <ArrowLeft className="w-5 h-5 text-slate-700" />
+          </button>
+
+          <div>
+            <div className="flex items-center gap-2">
+              <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
+                activeTab === 'lessons'
+                  ? 'bg-emerald-600 text-white'
+                  : activeTab === 'exams'
+                  ? 'bg-amber-600 text-white'
+                  : 'bg-purple-600 text-white'
+              }`}>
+                {activeTab === 'lessons' ? '📚 ផ្នែកមេរៀនសង្ខេប' : activeTab === 'exams' ? '🎯 ផ្នែកវិញ្ញាសាប្រឡង' : '⚔️ ផ្នែកប្រកួត AI'}
+              </span>
+              <span className="text-xs font-semibold text-slate-500">
+                {subject.nameKhmer}
+              </span>
+            </div>
+            <h1 className="text-lg sm:text-xl font-bold font-moul text-slate-900 mt-1">
+              {activeTab === 'lessons'
+                ? `កន្លែងមេរៀនសង្ខេប៖ ${subject.nameKhmer}`
+                : activeTab === 'exams'
+                ? `កន្លែងវិញ្ញាសាប្រឡង៖ ${subject.nameKhmer}`
+                : `ប្រកួតឆ្លើយសំណួរ AI៖ ${subject.nameKhmer}`}
+            </h1>
+          </div>
+        </div>
+
+        {/* Quick Tab Indicator Badge */}
+        <div className="flex items-center gap-2 self-end sm:self-center">
+          <span className="text-xs font-bold text-slate-600 bg-white/80 backdrop-blur-xs px-3 py-1 rounded-full border border-slate-200">
+            {activeTab === 'lessons' ? `${lessons.length} មេរៀន` : activeTab === 'exams' ? `${examPapers.length} វិញ្ញាសា` : 'ឆ្លើយសំណួរផ្ទាល់'}
+          </span>
+        </div>
+      </div>
+
+      {/* Main Tabs Segmented Navigation */}
+      <div className="flex items-center gap-2 bg-slate-200/80 p-1.5 rounded-2xl font-bold text-xs sm:text-sm shadow-inner">
         <button
-          onClick={onBack}
-          className="py-2.5 px-3.5 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs sm:text-sm border border-slate-200/90 shadow-2xs flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 shrink-0"
-          title="ត្រឡប់ទៅទំព័រដើម"
-          id="btn-back-subject"
+          onClick={() => setActiveTab('exams')}
+          className={`flex-1 py-3 px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 font-moul ${
+            activeTab === 'exams'
+              ? 'bg-amber-600 text-white shadow-md scale-[1.01]'
+              : 'text-slate-700 hover:bg-slate-300/60'
+          }`}
+          id="tab-subject-exams"
         >
-          <ArrowLeft className="w-4 h-4 text-slate-600" />
-          <span className="hidden sm:inline">ត្រឡប់ក្រោយ</span>
+          <GraduationCap className="w-4 h-4" />
+          <span>កន្លែងវិញ្ញាសាប្រឡង ({examPapers.length})</span>
         </button>
 
-        <div className="flex-1 flex items-center gap-1.5 sm:gap-2 p-1.5 bg-slate-200/70 rounded-2xl font-semibold text-xs sm:text-sm shadow-inner">
-          <button
-            onClick={() => setActiveTab('exams')}
-            className={`flex-1 py-2.5 px-2 sm:px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-              activeTab === 'exams'
-                ? 'bg-white text-emerald-950 shadow-sm font-bold border border-slate-200/80'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-            id="tab-subject-exams"
-          >
-            <GraduationCap className="w-4 h-4 text-emerald-700" />
-            <span>វិញ្ញាសា ({examPapers.length})</span>
-          </button>
+        <button
+          onClick={() => setActiveTab('lessons')}
+          className={`flex-1 py-3 px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 font-moul ${
+            activeTab === 'lessons'
+              ? 'bg-emerald-600 text-white shadow-md scale-[1.01]'
+              : 'text-slate-700 hover:bg-slate-300/60'
+          }`}
+          id="tab-subject-lessons"
+        >
+          <BookOpen className="w-4 h-4" />
+          <span>កន្លែងមេរៀនសង្ខេប ({lessons.length})</span>
+        </button>
 
-          <button
-            onClick={() => setActiveTab('lessons')}
-            className={`flex-1 py-2.5 px-2 sm:px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-              activeTab === 'lessons'
-                ? 'bg-white text-emerald-950 shadow-sm font-bold border border-slate-200/80'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-            id="tab-subject-lessons"
-          >
-            <BookOpen className="w-4 h-4 text-emerald-700" />
-            <span>មេរៀន ({lessons.length})</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('ai')}
-            className={`flex-1 py-2.5 px-2 sm:px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-              activeTab === 'ai'
-                ? 'bg-white text-amber-950 shadow-sm font-bold border border-slate-200/80'
-                : 'text-slate-600 hover:text-slate-900'
-            }`}
-            id="tab-subject-ai"
-          >
-            <Sparkles className="w-4 h-4 text-amber-600 animate-pulse" />
-            <span className="truncate">ប្រកួត AI</span>
-          </button>
-        </div>
+        <button
+          onClick={() => setActiveTab('ai')}
+          className={`py-3 px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 font-moul ${
+            activeTab === 'ai'
+              ? 'bg-purple-600 text-white shadow-md scale-[1.01]'
+              : 'text-slate-700 hover:bg-slate-300/60'
+          }`}
+          id="tab-subject-ai"
+        >
+          <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
+          <span className="hidden sm:inline">ប្រកួត AI</span>
+        </button>
       </div>
 
       {/* Tab Contents */}
