@@ -252,7 +252,7 @@ export const MobileLauncherHome: React.FC<MobileLauncherHomeProps> = ({
   });
 
   return (
-    <div className="relative min-h-[85vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between font-['Siemreap','Khmer_OS_Siemreap',sans-serif] border border-slate-700/40">
+    <div className="relative min-h-[85vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col justify-between font-siemreap border border-slate-700/40">
       {/* Background Wallpaper image */}
       <div
         className="absolute inset-0 bg-cover bg-center transition-all duration-700 scale-105"

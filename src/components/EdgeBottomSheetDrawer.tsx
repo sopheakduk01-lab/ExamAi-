@@ -75,7 +75,7 @@ export const EdgeBottomSheetDrawer: React.FC<EdgeBottomSheetDrawerProps> = ({
   const displayName = userProfile?.name || currentAccount?.name || 'Personal Account';
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/60 backdrop-blur-xs animate-fade-in font-['Siemreap','Khmer_OS_Siemreap',sans-serif]">
+    <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/60 backdrop-blur-xs animate-fade-in font-siemreap">
       {/* Backdrop tap to close */}
       <div className="flex-1" onClick={onClose} />
 

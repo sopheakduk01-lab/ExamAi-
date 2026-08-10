@@ -25,7 +25,7 @@ interface SubjectDetailViewProps {
   subject: Subject;
   examPapers: ExamPaper[];
   lessons: LessonSummary[];
-  initialTab?: 'exams' | 'lessons' | 'ai';
+  initialTab?: 'exams' | 'lessons';
   onBack: () => void;
   onSelectExam: (exam: ExamPaper) => void;
   bookmarkedQuestionIds: string[];
@@ -44,7 +44,7 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
   onOpenEnglishGame,
   onOpenFishingGame
 }) => {
-  const [activeTab, setActiveTab] = useState<'exams' | 'lessons' | 'ai'>(initialTab);
+  const [activeTab, setActiveTab] = useState<'exams' | 'lessons'>(initialTab);
   const [filterType, setFilterType] = useState<'all' | 'lesson' | 'comprehensive'>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -70,13 +70,11 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
     // Ensure it's a horizontal swipe rather than a vertical scroll
     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 45) {
       if (diffX > 0) {
-        // Swiped Left -> Move forward (exams -> lessons -> ai)
+        // Swiped Left -> Move forward (exams -> lessons)
         if (activeTab === 'exams') setActiveTab('lessons');
-        else if (activeTab === 'lessons') setActiveTab('ai');
       } else {
-        // Swiped Right -> Move backward (ai -> lessons -> exams)
-        if (activeTab === 'ai') setActiveTab('lessons');
-        else if (activeTab === 'lessons') setActiveTab('exams');
+        // Swiped Right -> Move backward (lessons -> exams)
+        if (activeTab === 'lessons') setActiveTab('exams');
       }
     }
 
@@ -224,19 +222,6 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
         >
           <BookOpen className="w-4 h-4" />
           <span>កន្លែងមេរៀនសង្ខេប ({lessons.length})</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('ai')}
-          className={`py-3 px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 font-moul ${
-            activeTab === 'ai'
-              ? 'bg-purple-600 text-white shadow-md scale-[1.01]'
-              : 'text-slate-700 hover:bg-slate-300/60'
-          }`}
-          id="tab-subject-ai"
-        >
-          <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
-          <span className="hidden sm:inline">ប្រកួត AI</span>
         </button>
       </div>
 
@@ -484,10 +469,6 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
           lessons={lessons}
           onBack={() => setActiveTab('exams')}
         />
-      )}
-
-      {activeTab === 'ai' && (
-        <AIBattleView subject={subject} examPapers={examPapers} />
       )}
     </div>
   );

@@ -1,23 +1,17 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { LessonSummary, Subject, Question } from '../types';
 import {
   BookOpen,
   Sparkles,
   Volume2,
   CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
   Search,
   Type,
   Lightbulb,
   AlertTriangle,
   Zap,
-  SlidersHorizontal,
-  LayoutGrid,
-  List,
   ArrowLeft,
   ArrowRight,
-  Layers,
   GraduationCap
 } from 'lucide-react';
 import { MathFormattedText } from './MathFormattedText';
@@ -42,6 +36,207 @@ export interface SubModuleCategory {
   filterFn: (lesson: LessonSummary) => boolean;
 }
 
+const SummaryTab: React.FC<{
+  currentLesson: LessonSummary;
+  fontSize: 'normal' | 'large';
+  getRealWorldApp: (lesson: LessonSummary) => string;
+}> = ({ currentLesson, fontSize, getRealWorldApp }) => (
+  <div className="space-y-4 animate-fade-in" id="summary-tab-content">
+    <div className="space-y-2">
+      <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider flex items-center gap-1">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+        ខ្លឹមសារមេរៀនសង្ខេប
+      </span>
+      <div className={`p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200/60 text-slate-800 leading-relaxed font-sans ${
+        fontSize === 'large' ? 'text-base sm:text-lg' : 'text-xs sm:text-sm'
+      }`}>
+        <MathFormattedText text={currentLesson.content} />
+      </div>
+    </div>
+
+    {currentLesson.formulaCard && (
+      <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-slate-100 space-y-3 shadow-3xs border border-slate-800">
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            {currentLesson.formulaCard.title}
+          </span>
+          <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-amber-300 font-mono border border-slate-700">
+            រូបមន្តគ្រឹះ
+          </span>
+        </div>
+        <div className="p-3 rounded-lg bg-black/40 border border-slate-800 text-emerald-300 font-mono text-xs sm:text-sm">
+          <MathFormattedText text={currentLesson.formulaCard.content} />
+        </div>
+        {currentLesson.formulaCard.example && (
+          <div className="text-[11px] sm:text-xs text-slate-300 pl-1 border-l-2 border-amber-500/50">
+            💡 <span className="font-bold text-amber-300">ឧទាហរណ៍៖</span>{' '}
+            <MathFormattedText text={currentLesson.formulaCard.example} />
+          </div>
+        )}
+      </div>
+    )}
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+      <div className="p-4 rounded-2xl bg-emerald-50/40 border border-emerald-100 space-y-2.5">
+        <span className="text-xs font-bold text-emerald-900 flex items-center gap-1.5">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+          ចំណុចគន្លឹះត្រូវចងចាំ
+        </span>
+        <ul className="space-y-1.5 pl-0.5">
+          {currentLesson.keyPoints.map((point, idx) => (
+            <li key={idx} className="flex items-start gap-1.5 text-xs text-slate-700 leading-relaxed">
+              <span className="text-emerald-600 font-bold">•</span>
+              <div className="flex-1">
+                <MathFormattedText text={point} />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="p-4 rounded-2xl bg-amber-50/30 border border-amber-100 space-y-2">
+        <span className="text-xs font-bold text-amber-950 flex items-center gap-1.5">
+          <Lightbulb className="w-4 h-4 text-amber-600 shrink-0" />
+          ការអនុវត្តក្នុងជីវិតពិត
+        </span>
+        <p className="text-xs text-slate-600 leading-relaxed">
+          <MathFormattedText text={getRealWorldApp(currentLesson)} />
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+const ExampleTab: React.FC<{
+  currentLesson: LessonSummary;
+  getStepByStepExample: (lesson: LessonSummary) => any;
+}> = ({ currentLesson, getStepByStepExample }) => {
+  const stepEx = getStepByStepExample(currentLesson);
+  return (
+    <div className="space-y-4 animate-fade-in" id="example-tab-content">
+      <div className="p-3.5 bg-slate-50 border border-slate-200/60 rounded-xl">
+        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide block mb-1">
+          វិភាគប្រធានលំហាត់គំរូ
+        </span>
+        <div className="font-bold text-xs sm:text-sm text-slate-800 leading-relaxed">
+          <MathFormattedText text={stepEx.problemText} />
+        </div>
+      </div>
+
+      <div className="space-y-2.5">
+        {stepEx.steps.map((st: any) => (
+          <div key={st.stepNumber} className="p-3.5 rounded-xl border border-slate-100 bg-white shadow-3xs flex gap-3">
+            <span className="w-5.5 h-5.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold flex items-center justify-center shrink-0">
+              {st.stepNumber}
+            </span>
+            <div className="space-y-0.5 flex-1 min-w-0">
+              <h4 className="font-bold text-xs text-slate-800">{st.title}</h4>
+              <div className="text-xs text-slate-600 leading-relaxed pt-0.5">
+                <MathFormattedText text={st.detail} />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="p-3 rounded-xl bg-emerald-600 text-white font-bold text-xs flex items-center justify-between gap-3 shadow-3xs">
+        <span className="flex items-center gap-1">
+          <CheckCircle2 className="w-4 h-4 text-emerald-200" />
+          ចម្លើយចុងក្រោយ៖
+        </span>
+        <span className="bg-emerald-950/40 px-2.5 py-1 rounded text-amber-200 font-mono">
+          <MathFormattedText text={stepEx.finalAnswer} />
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const QuizTab: React.FC<{
+  currentLesson: LessonSummary;
+  getCommonPitfalls: (lesson: LessonSummary) => string[];
+  getQuickPractice: (lesson: LessonSummary) => any;
+  practiceAnswers: Record<string, number>;
+  setPracticeAnswers: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+}> = ({ currentLesson, getCommonPitfalls, getQuickPractice, practiceAnswers, setPracticeAnswers }) => {
+  const pitfalls = getCommonPitfalls(currentLesson);
+  const quiz = getQuickPractice(currentLesson);
+  return (
+    <div className="space-y-5 animate-fade-in" id="quiz-tab-content">
+      <div className="p-3.5 rounded-xl bg-rose-50/50 border border-rose-200/80 space-y-2">
+        <span className="text-xs font-bold text-rose-900 flex items-center gap-1.5">
+          <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
+          ចំណុចប្រុងប្រយ័ត្នក្នុងការប្រឡង (Exam Traps)
+        </span>
+        <ul className="space-y-1 pl-0.5">
+          {pitfalls.map((pit, pidx) => (
+            <li key={pidx} className="flex items-start gap-1.5 text-xs text-rose-950 leading-relaxed">
+              <span className="text-rose-500 font-bold">•</span>
+              <div className="flex-1">
+                <MathFormattedText text={pit} />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="bg-amber-50/30 border border-amber-200 p-4 rounded-xl space-y-3 shadow-3xs">
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-xs font-bold text-amber-900 flex items-center gap-1.5">
+            <Zap className="w-4 h-4 text-amber-600" />
+            សំណួរគន្លឹះអនុវត្តភ្លាមៗ
+          </span>
+          <span className="text-[9px] bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-bold">
+            QUIZ
+          </span>
+        </div>
+
+        <div className="p-3 bg-white rounded-lg border border-amber-200 text-xs font-bold text-slate-800 leading-relaxed">
+          <MathFormattedText text={quiz.questionText} />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {quiz.options.map((opt: string, oidx: number) => {
+            const selected = practiceAnswers[currentLesson.id] === oidx;
+            const isCorrect = oidx === quiz.correctIndex;
+            const answered = practiceAnswers[currentLesson.id] !== undefined;
+
+            let btnStyle = "bg-white hover:bg-slate-50 border-slate-200 text-slate-800";
+            if (answered) {
+              if (isCorrect) {
+                btnStyle = "bg-emerald-600 text-white border-emerald-600 font-bold";
+              } else if (selected) {
+                btnStyle = "bg-rose-600 text-white border-rose-600 font-bold";
+              } else {
+                btnStyle = "bg-slate-50 text-slate-400 border-slate-100";
+              }
+            }
+
+            return (
+              <button
+                key={oidx}
+                onClick={() => setPracticeAnswers((prev) => ({ ...prev, [currentLesson.id]: oidx }))}
+                className={`p-2.5 rounded-lg border text-left transition-all cursor-pointer text-xs flex items-center justify-between gap-2 ${btnStyle}`}
+              >
+                <span><MathFormattedText text={opt} /></span>
+                {answered && isCorrect && <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />}
+              </button>
+            );
+          })}
+        </div>
+
+        {practiceAnswers[currentLesson.id] !== undefined && (
+          <div className="p-3 bg-white rounded-lg border border-amber-200 text-xs text-slate-700 leading-relaxed animate-fade-in shadow-3xs">
+            <span className="font-bold text-amber-900">💡 ពន្យល់៖ </span>
+            <MathFormattedText text={quiz.explanation} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
   subject,
   lessons,
@@ -49,7 +244,6 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
 }) => {
   const [selectedSubModuleId, setSelectedSubModuleId] = useState<string>('all');
   const [selectedLessonId, setSelectedLessonId] = useState<string>(lessons[0]?.id || '');
-  const [layoutMode, setLayoutMode] = useState<'horizontal' | 'grid' | 'list'>('horizontal');
   const [searchQuery, setSearchQuery] = useState('');
   const [fontSize, setFontSize] = useState<'normal' | 'large'>('normal');
   const [readingId, setReadingId] = useState<string | null>(null);
@@ -57,11 +251,32 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
   const [isTtsTroubleOpen, setIsTtsTroubleOpen] = useState(false);
   const [aiTutorLesson, setAiTutorLesson] = useState<LessonSummary | null>(null);
   const [practiceAnswers, setPracticeAnswers] = useState<Record<string, number>>({});
+  const [mobileViewState, setMobileViewState] = useState<'list' | 'reader'>('list');
+  const [readerTab, setReaderTab] = useState<'summary' | 'example' | 'quiz'>('summary');
 
-  const [lessonTouchStartX, setLessonTouchStartX] = useState<number | null>(null);
-  const [lessonTouchStartY, setLessonTouchStartY] = useState<number | null>(null);
+  // Reset active tab to summary when selected lesson changes
+  useEffect(() => {
+    setReaderTab('summary');
+  }, [selectedLessonId]);
 
-  const carouselRef = useRef<HTMLDivElement>(null);
+  // Gemini TTS states & references
+  const [useGeminiTts] = useState<boolean>(true);
+  const [selectedGeminiVoice, setSelectedGeminiVoice] = useState<'Kore' | 'Puck' | 'Charon' | 'Fenrir' | 'Zephyr'>('Kore');
+  const [isTtsLoading, setIsTtsLoading] = useState<boolean>(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Audio cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   // Define sub-modules based on subject ID
   const subModules = useMemo<SubModuleCategory[]>(() => {
@@ -147,7 +362,7 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
       ];
     }
 
-    if (sId === 'math') {
+    if (subject.id === 'math') {
       return [
         {
           id: 'all',
@@ -224,300 +439,97 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
       ];
     }
 
-    if (sId === 'science') {
-      return [
-        {
-          id: 'all',
-          title: 'ទាំងអស់',
-          titleKhmer: 'កម្រងមេរៀនវិទ្យាសាស្ត្រទាំងអស់',
-          subtitle: `មេរៀនសង្ខេបវិទ្យាសាស្ត្រទាំង ${lessons.length} មេរៀន`,
-          icon: '🔬',
-          badgeBg: 'bg-slate-100 text-slate-800 border-slate-200',
-          activeBorder: 'border-sky-600 ring-2 ring-sky-500/30',
-          cardGradient: 'from-sky-900 via-slate-900 to-teal-950',
-          filterFn: () => true
-        },
-        {
-          id: 'science-bio',
-          title: '១. រុក្ខជាតិ & សត្វ',
-          titleKhmer: 'ជីវវិទ្យារុក្ខជាតិ និងសត្វ',
-          subtitle: 'ការលូតលាស់ រស្មីសំយោគ និងការបន្តពូជ',
-          icon: '🌿',
-          badgeBg: 'bg-emerald-100 text-emerald-900 border-emerald-200',
-          activeBorder: 'border-emerald-500 ring-2 ring-emerald-500/30',
-          cardGradient: 'from-emerald-600 via-teal-700 to-slate-900',
-          filterFn: (l) =>
-            l.title.includes('រុក្ខជាតិ') ||
-            l.title.includes('សត្វ') ||
-            l.content.includes('រុក្ខជាតិ')
-        },
-        {
-          id: 'science-env',
-          title: '២. បរិស្ថាន & ធនធាន',
-          titleKhmer: 'បរិស្ថាន និងធនធានធម្មជាតិ',
-          subtitle: 'ប្រព័ន្ធអេកូឡូស៊ី រ៉ែ ទឹក និងខ្យល់',
-          icon: '🌍',
-          badgeBg: 'bg-sky-100 text-sky-900 border-sky-200',
-          activeBorder: 'border-sky-500 ring-2 ring-sky-500/30',
-          cardGradient: 'from-sky-600 via-blue-700 to-indigo-800',
-          filterFn: (l) =>
-            l.title.includes('បរិស្ថាន') ||
-            l.title.includes('រ៉ែ') ||
-            l.title.includes('ជលផល') ||
-            l.title.includes('ធម្មជាតិ')
-        },
-        {
-          id: 'science-human',
-          title: '៣. មនុស្ស & សុខភាព',
-          titleKhmer: 'សរីរាង្គមនុស្ស និងសុខភាព',
-          subtitle: 'ប្រព័ន្ធរំលាយអាហារ ចរន្តឈាម និងជំងឺ',
-          icon: '🧬',
-          badgeBg: 'bg-rose-100 text-rose-900 border-rose-200',
-          activeBorder: 'border-rose-500 ring-2 ring-rose-500/30',
-          cardGradient: 'from-rose-600 via-pink-700 to-purple-900',
-          filterFn: (l) =>
-            l.title.includes('មនុស្ស') ||
-            l.title.includes('ជំងឺ') ||
-            l.title.includes('សរីរាង្គ')
-        },
-        {
-          id: 'science-physics',
-          title: '៤. រូបធាតុ & ម៉ាស៊ីន',
-          titleKhmer: 'រូបធាតុ, ថាមពល & ម៉ាស៊ីន',
-          subtitle: 'ម៉ាស៊ីនងាយ អគ្គិសនី និងពន្លឺ',
-          icon: '⚡',
-          badgeBg: 'bg-amber-100 text-amber-900 border-amber-200',
-          activeBorder: 'border-amber-500 ring-2 ring-amber-500/30',
-          cardGradient: 'from-amber-600 via-orange-600 to-slate-900',
-          filterFn: (l) =>
-            l.title.includes('ម៉ាស៊ីន') ||
-            l.title.includes('អគ្គិសនី') ||
-            l.title.includes('ថាមពល') ||
-            l.title.includes('រូបធាតុ')
-        }
-      ];
-    }
-
-    if (sId === 'social') {
-      return [
-        {
-          id: 'all',
-          title: 'ទាំងអស់',
-          titleKhmer: 'កម្រងមេរៀនសិក្សាសង្គមទាំងអស់',
-          subtitle: `មេរៀនសង្ខេបសិក្សាសង្គមទាំង ${lessons.length} មេរៀន`,
-          icon: '🏛️',
-          badgeBg: 'bg-slate-100 text-slate-800 border-slate-200',
-          activeBorder: 'border-amber-600 ring-2 ring-amber-500/30',
-          cardGradient: 'from-amber-900 via-slate-900 to-orange-950',
-          filterFn: () => true
-        },
-        {
-          id: 'social-history',
-          title: '១. ប្រវត្តិវិទ្យាខ្មែរ',
-          titleKhmer: 'ប្រវត្តិសាស្ត្រខ្មែរ',
-          subtitle: 'សម័យចតុមុខ លង្វែក និងឧដុង្គ',
-          icon: '📜',
-          badgeBg: 'bg-amber-100 text-amber-900 border-amber-200',
-          activeBorder: 'border-amber-500 ring-2 ring-amber-500/30',
-          cardGradient: 'from-amber-600 via-orange-700 to-amber-900',
-          filterFn: (l) =>
-            l.title.includes('ប្រវត្តិ') ||
-            l.title.includes('ឧដុង្គ') ||
-            l.title.includes('លង្វែក') ||
-            l.title.includes('ចតុមុខ')
-        },
-        {
-          id: 'social-geo',
-          title: '២. ភូមិវិទ្យា & អាស៊ាន',
-          titleKhmer: 'ភូមិវិទ្យា និងអាស៊ាន',
-          subtitle: 'ភូមិសាស្ត្រកម្ពុជា និងបណ្តាប្រទេសអាស៊ាន',
-          icon: '🗺️',
-          badgeBg: 'bg-emerald-100 text-emerald-900 border-emerald-200',
-          activeBorder: 'border-emerald-500 ring-2 ring-emerald-500/30',
-          cardGradient: 'from-emerald-600 via-teal-700 to-slate-900',
-          filterFn: (l) =>
-            l.title.includes('ភូមិ') ||
-            l.title.includes('អាស៊ាន') ||
-            l.title.includes('ទេសចរណ៍')
-        },
-        {
-          id: 'social-ethics',
-          title: '៣. សីលធម៌ & ពលរដ្ឋ',
-          titleKhmer: 'សីលធម៌ និងពលរដ្ឋវិជ្ជា',
-          subtitle: 'ឥរិយាបថល្អ សុវត្ថិភាពចរាចរណ៍ និងសង្គម',
-          icon: '🤝',
-          badgeBg: 'bg-blue-100 text-blue-900 border-blue-200',
-          activeBorder: 'border-blue-500 ring-2 ring-blue-500/30',
-          cardGradient: 'from-blue-600 via-indigo-700 to-slate-900',
-          filterFn: (l) =>
-            l.title.includes('សីលធម៌') ||
-            l.title.includes('ឥរិយាបថ') ||
-            l.title.includes('ចរាចរណ៍') ||
-            l.title.includes('តុលាការ')
-        }
-      ];
-    }
-
-    if (sId === 'health') {
-      return [
-        {
-          id: 'all',
-          title: 'ទាំងអស់',
-          titleKhmer: 'កម្រងមេរៀនសុខភាពទាំងអស់',
-          subtitle: `មេរៀនសង្ខេបសុខភាពទាំង ${lessons.length} មេរៀន`,
-          icon: '🏥',
-          badgeBg: 'bg-slate-100 text-slate-800 border-slate-200',
-          activeBorder: 'border-teal-600 ring-2 ring-teal-500/30',
-          cardGradient: 'from-teal-900 via-slate-900 to-emerald-950',
-          filterFn: () => true
-        },
-        {
-          id: 'health-primary',
-          title: '១. សុខភាពបឋម',
-          titleKhmer: 'សុខភាពបឋម & អាហាររូបត្ថម្ភ',
-          subtitle: 'អនាម័យខ្លួនប្រាណ និងអាហារមានប្រយោជន៍',
-          icon: '🍎',
-          badgeBg: 'bg-teal-100 text-teal-900 border-teal-200',
-          activeBorder: 'border-teal-500 ring-2 ring-teal-500/30',
-          cardGradient: 'from-teal-600 via-emerald-700 to-slate-900',
-          filterFn: (l) =>
-            l.title.includes('បឋម') ||
-            l.title.includes('អាហារ') ||
-            l.title.includes('ចំណី')
-        },
-        {
-          id: 'health-mental',
-          title: '២. សុខភាពផ្លូវចិត្ត',
-          titleKhmer: 'សុខភាពផ្លូវចិត្ត',
-          subtitle: 'ការគ្រប់គ្រងអារម្មណ៍ និងការគិតវិជ្ជមាន',
-          icon: '🧠',
-          badgeBg: 'bg-purple-100 text-purple-900 border-purple-200',
-          activeBorder: 'border-purple-500 ring-2 ring-purple-500/30',
-          cardGradient: 'from-purple-600 via-indigo-700 to-slate-900',
-          filterFn: (l) =>
-            l.title.includes('ចិត្ត') ||
-            l.title.includes('អារម្មណ៍')
-        },
-        {
-          id: 'health-repro',
-          title: '៣. សុខភាពបន្តពូជ',
-          titleKhmer: 'សុខភាពបន្តពូជ & ផ្លូវភេទ',
-          subtitle: 'ការផ្លាស់ប្តូររាងកាយ និងអនាម័យបន្តពូជ',
-          icon: '🌺',
-          badgeBg: 'bg-rose-100 text-rose-900 border-rose-200',
-          activeBorder: 'border-rose-500 ring-2 ring-rose-500/30',
-          cardGradient: 'from-rose-600 via-pink-700 to-purple-900',
-          filterFn: (l) =>
-            l.title.includes('បន្តពូជ') ||
-            l.title.includes('ភេទ')
-        },
-        {
-          id: 'health-env',
-          title: '៤. សង្គ្រោះបឋម',
-          titleKhmer: 'សុខភាពបរិស្ថាន & សង្គ្រោះបឋម',
-          subtitle: 'ការសង្គ្រោះបឋមពេលមានគ្រោះថ្នាក់',
-          icon: '🚑',
-          badgeBg: 'bg-amber-100 text-amber-900 border-amber-200',
-          activeBorder: 'border-amber-500 ring-2 ring-amber-500/30',
-          cardGradient: 'from-amber-600 via-orange-600 to-rose-700',
-          filterFn: (l) =>
-            l.title.includes('បរិស្ថាន') ||
-            l.title.includes('សង្គ្រោះ')
-        }
-      ];
-    }
-
-    if (sId === 'english') {
-      return [
-        {
-          id: 'all',
-          title: 'All Lessons',
-          titleKhmer: 'មេរៀនអង់គ្លេសទាំងអស់',
-          subtitle: `English Lessons Total: ${lessons.length}`,
-          icon: '🔤',
-          badgeBg: 'bg-slate-100 text-slate-800 border-slate-200',
-          activeBorder: 'border-rose-600 ring-2 ring-rose-500/30',
-          cardGradient: 'from-rose-900 via-slate-900 to-pink-950',
-          filterFn: () => true
-        },
-        {
-          id: 'eng-vocab',
-          title: '1. Vocabulary',
-          titleKhmer: 'ពាក្យ និងការបញ្ចេញសំឡេង',
-          subtitle: 'Wordlists, Phonics & Pronunciation',
-          icon: '🔤',
-          badgeBg: 'bg-rose-100 text-rose-900 border-rose-200',
-          activeBorder: 'border-rose-500 ring-2 ring-rose-500/30',
-          cardGradient: 'from-rose-600 via-pink-600 to-red-700',
-          filterFn: (l) =>
-            l.title.toLowerCase().includes('vocab') ||
-            l.title.toLowerCase().includes('word') ||
-            l.title.toLowerCase().includes('phonics')
-        },
-        {
-          id: 'eng-gram',
-          title: '2. Grammar',
-          titleKhmer: 'វេយ្យាករណ៍ & ល្បះ',
-          subtitle: 'Tenses, Verbs & Sentence Structures',
-          icon: '📝',
-          badgeBg: 'bg-blue-100 text-blue-900 border-blue-200',
-          activeBorder: 'border-blue-500 ring-2 ring-blue-500/30',
-          cardGradient: 'from-blue-600 via-indigo-700 to-slate-900',
-          filterFn: (l) =>
-            l.title.toLowerCase().includes('gram') ||
-            l.title.toLowerCase().includes('tense') ||
-            l.title.toLowerCase().includes('verb')
-        },
-        {
-          id: 'eng-read',
-          title: '3. Reading & Dialogue',
-          titleKhmer: 'ការអាន & សន្ទនា',
-          subtitle: 'Short Stories, Reading & Conversation',
-          icon: '📖',
-          badgeBg: 'bg-emerald-100 text-emerald-900 border-emerald-200',
-          activeBorder: 'border-emerald-500 ring-2 ring-emerald-500/30',
-          cardGradient: 'from-emerald-600 via-teal-700 to-slate-900',
-          filterFn: (l) =>
-            l.title.toLowerCase().includes('read') ||
-            l.title.toLowerCase().includes('dialogue') ||
-            l.title.toLowerCase().includes('story')
-        }
-      ];
-    }
-
-    // Default fallback
+    // Default science categories
     return [
       {
         id: 'all',
         title: 'ទាំងអស់',
-        titleKhmer: 'មេរៀនទាំងអស់',
-        subtitle: `ចំនួន ${lessons.length} មេរៀន`,
-        icon: '📚',
+        titleKhmer: 'កម្រងមេរៀនវិទ្យាសាស្ត្រទាំងអស់',
+        subtitle: `មេរៀនសង្ខេបវិទ្យាសាស្ត្រទាំង ${lessons.length} មេរៀន`,
+        icon: '🔬',
         badgeBg: 'bg-slate-100 text-slate-800 border-slate-200',
-        activeBorder: 'border-emerald-600 ring-2 ring-emerald-500/30',
-        cardGradient: 'from-slate-800 to-teal-900',
+        activeBorder: 'border-sky-600 ring-2 ring-sky-500/30',
+        cardGradient: 'from-sky-900 via-slate-900 to-teal-950',
         filterFn: () => true
+      },
+      {
+        id: 'science-bio',
+        title: '១. រុក្ខជាតិ & សត្វ',
+        titleKhmer: 'ជីវវិទ្យារុក្ខជាតិ និងសត្វ',
+        subtitle: 'ការលូតលាស់ រស្មីសំយោគ និងការបន្តពូជ',
+        icon: '🌿',
+        badgeBg: 'bg-emerald-100 text-emerald-900 border-emerald-200',
+        activeBorder: 'border-emerald-500 ring-2 ring-emerald-500/30',
+        cardGradient: 'from-emerald-600 via-teal-700 to-slate-900',
+        filterFn: (l) =>
+          l.title.includes('រុក្ខជាតិ') ||
+          l.title.includes('សត្វ') ||
+          l.content.includes('រុក្ខជាតិ')
+      },
+      {
+        id: 'science-env',
+        title: '២. បរិស្ថាន & ធនធាន',
+        titleKhmer: 'បរិស្ថាន និងធនធានធម្មជាតិ',
+        subtitle: 'ប្រព័ន្ធអេកូឡូស៊ី រ៉ែ ទឹក និងខ្យល់',
+        icon: '🌍',
+        badgeBg: 'bg-sky-100 text-sky-900 border-sky-200',
+        activeBorder: 'border-sky-500 ring-2 ring-sky-500/30',
+        cardGradient: 'from-sky-600 via-blue-700 to-indigo-800',
+        filterFn: (l) =>
+          l.title.includes('បរិស្ថាន') ||
+          l.title.includes('រ៉ែ') ||
+          l.title.includes('ជលផល') ||
+          l.title.includes('ធម្មជាតិ')
+      },
+      {
+        id: 'science-human',
+        title: '៣. មនុស្ស & សុខភាព',
+        titleKhmer: 'សរីរាង្គមនុស្ស និងសុខភាព',
+        subtitle: 'ប្រព័ន្ធរំលាយអាហារ ចរន្តឈាម និងជំងឺ',
+        icon: '🧬',
+        badgeBg: 'bg-rose-100 text-rose-900 border-rose-200',
+        activeBorder: 'border-rose-500 ring-2 ring-rose-500/30',
+        cardGradient: 'from-rose-600 via-pink-700 to-purple-900',
+        filterFn: (l) =>
+          l.title.includes('មនុស្ស') ||
+          l.title.includes('ជំងឺ') ||
+          l.title.includes('សរីរាង្គ')
+      },
+      {
+        id: 'science-physics',
+        title: '៤. រូបធាតុ & ម៉ាស៊ីន',
+        titleKhmer: 'រូបធាតុ, ថាមពល & ម៉ាស៊ីន',
+        subtitle: 'ម៉ាស៊ីនងាយ អគ្គិសនី និងពន្លឺ',
+        icon: '⚡',
+        badgeBg: 'bg-amber-100 text-amber-900 border-amber-200',
+        activeBorder: 'border-amber-500 ring-2 ring-amber-500/30',
+        cardGradient: 'from-amber-600 via-orange-600 to-slate-900',
+        filterFn: (l) =>
+          l.title.includes('ម៉ាស៊ីន') ||
+          l.title.includes('អគ្គិសនី') ||
+          l.title.includes('ថាមពល') ||
+          l.title.includes('រូបធាតុ')
       }
     ];
   }, [subject.id, lessons.length]);
 
-  // Find active sub-module
-  const activeSubModule = subModules.find((sm) => sm.id === selectedSubModuleId) || subModules[0];
+  const activeSubModule = useMemo(() => {
+    return subModules.find((sub) => sub.id === selectedSubModuleId) || subModules[0];
+  }, [subModules, selectedSubModuleId]);
 
-  // Filter lessons based on sub-module AND search query
+  // Combined Filtering: Submodule category + Search query
   const filteredLessons = useMemo(() => {
-    return lessons.filter((l) => {
-      const matchesSubModule = activeSubModule.filterFn(l);
-      if (!matchesSubModule) return false;
+    return lessons.filter((lesson) => {
+      const matchesCategory = activeSubModule.filterFn(lesson);
+      const query = searchQuery.trim().toLowerCase();
+      if (!query) return matchesCategory;
 
-      if (!searchQuery.trim()) return true;
+      const matchesSearch =
+        lesson.title.toLowerCase().includes(query) ||
+        lesson.content.toLowerCase().includes(query) ||
+        lesson.chapter.toLowerCase().includes(query);
 
-      const q = searchQuery.toLowerCase();
-      return (
-        l.title.toLowerCase().includes(q) ||
-        l.chapter.toLowerCase().includes(q) ||
-        l.content.toLowerCase().includes(q)
-      );
+      return matchesCategory && matchesSearch;
     });
   }, [lessons, activeSubModule, searchQuery]);
 
@@ -525,95 +537,166 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
   const currentLessonIndex = filteredLessons.findIndex((l) => l.id === selectedLessonId);
   const currentLesson = filteredLessons[currentLessonIndex] || filteredLessons[0] || lessons[0];
 
-  const scrollCarousel = (direction: 'left' | 'right') => {
-    if (carouselRef.current) {
-      const scrollAmount = direction === 'left' ? -300 : 300;
-      carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
-  const handleReadLesson = (lesson: LessonSummary, e?: React.MouseEvent) => {
+  const handleReadLesson = async (lesson: LessonSummary, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (!('speechSynthesis' in window)) {
-      alert('សូមអភ័យទោស! កម្មវិធីរុករក (Browser) របស់អ្នកមិនគាំទ្រការអានសំឡេងឡើយ។');
-      return;
-    }
 
-    if (readingId === lesson.id) {
-      if (ttsState === 'playing') {
-        window.speechSynthesis.pause();
-        setTtsState('paused');
-      } else if (ttsState === 'paused') {
-        window.speechSynthesis.resume();
+    if (!useGeminiTts) {
+      // Browser SpeechSynthesis Mode (Native fallback)
+      if (!('speechSynthesis' in window)) {
+        alert('សូមអភ័យទោស! កម្មវិធីរុករក (Browser) របស់អ្នកមិនគាំទ្រការអានសំឡេងឡើយ។');
+        return;
+      }
+
+      if (readingId === lesson.id) {
+        if (ttsState === 'playing') {
+          window.speechSynthesis.pause();
+          setTtsState('paused');
+        } else if (ttsState === 'paused') {
+          window.speechSynthesis.resume();
+          setTtsState('playing');
+        } else {
+          window.speechSynthesis.cancel();
+          setReadingId(null);
+          setTtsState('stopped');
+        }
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.resume();
+
+      const readText = `${lesson.title}។ ${lesson.content}។ ចំណុចសំខាន់ៗ៖ ${lesson.keyPoints.join(', ')}។`;
+      const utterance = new SpeechSynthesisUtterance(readText);
+      
+      configureKhmerFemaleVoice(utterance);
+
+      utterance.onstart = () => {
+        setReadingId(lesson.id);
         setTtsState('playing');
-      } else {
-        window.speechSynthesis.cancel();
+      };
+      utterance.onpause = () => {
+        setTtsState('paused');
+      };
+      utterance.onresume = () => {
+        setTtsState('playing');
+      };
+      utterance.onend = () => {
         setReadingId(null);
         setTtsState('stopped');
+      };
+      utterance.onerror = (evt) => {
+        console.warn('Speech synthesis error:', evt);
+        setReadingId(null);
+        setTtsState('stopped');
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } else {
+      // Gemini AI TTS Mode (Full-stack Server proxy)
+      if (readingId === lesson.id) {
+        if (audioRef.current) {
+          if (ttsState === 'playing') {
+            audioRef.current.pause();
+            setTtsState('paused');
+          } else if (ttsState === 'paused') {
+            audioRef.current.play().catch(err => console.error("Playback failed", err));
+            setTtsState('playing');
+          } else {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+            setReadingId(null);
+            setTtsState('stopped');
+          }
+        }
+        return;
       }
-      return;
-    }
 
-    window.speechSynthesis.cancel();
-    // Quick work-around to unlock TTS on iOS and Chrome
-    window.speechSynthesis.resume();
+      // Stop any existing playback
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
 
-    const readText = `${lesson.title}។ ${lesson.content}។ ចំណុចសំខាន់ៗ៖ ${lesson.keyPoints.join(', ')}។`;
-    const utterance = new SpeechSynthesisUtterance(readText);
-    
-    configureKhmerFemaleVoice(utterance);
-
-    utterance.onstart = () => {
+      setIsTtsLoading(true);
       setReadingId(lesson.id);
-      setTtsState('playing');
-    };
-    utterance.onpause = () => {
-      setTtsState('paused');
-    };
-    utterance.onresume = () => {
-      setTtsState('playing');
-    };
-    utterance.onend = () => {
-      setReadingId(null);
       setTtsState('stopped');
-    };
-    utterance.onerror = (evt) => {
-      console.warn('Speech synthesis error:', evt);
-      setReadingId(null);
-      setTtsState('stopped');
-    };
 
-    window.speechSynthesis.speak(utterance);
+      try {
+        const readText = `${lesson.title}។ ${lesson.content}។ ចំណុចសំខាន់ៗ៖ ${lesson.keyPoints.join(', ')}។`;
+        const res = await fetch("/api/tts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: readText,
+            voice: selectedGeminiVoice,
+          }),
+        });
+
+        if (!res.ok) {
+          const errData = await res.json();
+          throw new Error(errData.error || "Failed to generate audio from Gemini");
+        }
+
+        const data = await res.json();
+        if (!data.audio) {
+          throw new Error("No audio data returned from Gemini");
+        }
+
+        const mimeType = data.mimeType || "audio/mp3";
+        const audioUrl = `data:${mimeType};base64,${data.audio}`;
+        const audio = new Audio(audioUrl);
+        audioRef.current = audio;
+
+        audio.addEventListener("canplaythrough", () => {
+          setIsTtsLoading(false);
+          setTtsState('playing');
+          audio.play().catch(err => {
+            console.error("Autoplay failed:", err);
+            setTtsState('paused');
+          });
+        });
+
+        audio.addEventListener("ended", () => {
+          setReadingId(null);
+          setTtsState('stopped');
+        });
+
+        audio.addEventListener("pause", () => {
+          if (audio.currentTime !== audio.duration) {
+            setTtsState('paused');
+          }
+        });
+
+        audio.addEventListener("play", () => {
+          setTtsState('playing');
+        });
+
+        audio.addEventListener("error", (e) => {
+          const mediaError = audio.error;
+          console.error("Audio playback error:", mediaError ? { code: mediaError.code, message: mediaError.message } : e);
+          setIsTtsLoading(false);
+          setReadingId(null);
+          setTtsState('stopped');
+          alert(`សូមអភ័យទោស! មានកំហុសក្នុងការលេងសំឡេង៖ ${mediaError ? mediaError.message : 'មិនស្គាល់'}`);
+        });
+
+      } catch (err: any) {
+        console.error("Gemini TTS Error:", err);
+        setIsTtsLoading(false);
+        setReadingId(null);
+        setTtsState('stopped');
+        alert(`សូមអភ័យទោស! មិនអាចទាញយកសំឡេងអានបានទេ៖ ${err.message || err}`);
+      }
+    }
   };
 
-  // Helper fallbacks for rich explanations
   const getStepByStepExample = (lesson: LessonSummary) => {
     if (lesson.stepByStepExample) return lesson.stepByStepExample;
-
-    if (lesson.formulaCard) {
-      return {
-        problemText: `គំរូលំហាត់អនុវត្ត៖ គណនាតាមរូបមន្តនៃ ${lesson.title}`,
-        steps: [
-          {
-            stepNumber: 1,
-            title: 'កត់ត្រាប្រធាន និងទិន្នន័យដែលស្គាល់',
-            detail: `ផ្អែកតាមរូបមន្ត៖ ${lesson.formulaCard.content}`
-          },
-          {
-            stepNumber: 2,
-            title: 'ជំនួសតម្លៃលេខចូលក្នុងរូបមន្ត',
-            detail: lesson.formulaCard.example || 'អនុវត្តគណនាតាមលំដាប់លំដោយនៃប្រមាណវិធី'
-          },
-          {
-            stepNumber: 3,
-            title: 'ផ្ទៀងផ្ទាត់ និងសរសេរចម្លើយជាមួយនឹងឯកតា',
-            detail: 'ពិនិត្យមើលសញ្ញា និងឯកតារវាស់ (ដូចជា cm, m², ha, នាក់) ឲ្យបានត្រឹមត្រូវ'
-          }
-        ],
-        finalAnswer: lesson.formulaCard.example || 'ចម្លើយត្រូវបានផ្ទៀងផ្ទាត់ត្រឹមត្រូវ ១០០%'
-      };
-    }
-
     return {
       problemText: `លំហាត់គំរូ និងវិធីវិភាគប្រធាន៖ ${lesson.title}`,
       steps: [
@@ -650,7 +733,7 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
     if (lesson.commonPitfalls && lesson.commonPitfalls.length > 0) return lesson.commonPitfalls;
     return [
       'ការច្រឡំសញ្ញា និងការភ្លេចប្តូរឯកតា ឬការសរសេរខុសអក្ខរាវិរុទ្ធ',
-      'ការមិនបានតម្រៀបខ្ទង់ ឬសញ្ញាចុចទសភាគឲ្យត្រង់ជួរគ្នាមុនធ្វើប្រមាណវិធី',
+      'ការមិនបានតម្រៀបខ្ទង់ ឬសញ្ញចុចទសភាគឲ្យត្រង់ជួរគ្នាមុនធ្វើប្រមាណវិធី',
       'ការច្រឡំបទបញ្ជា និងរូបមន្ត ឬរចនាសម្ព័ន្ធសំណេរ'
     ];
   };
@@ -682,13 +765,19 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
   } : null;
 
   return (
-    <div className="max-w-5xl mx-auto py-3 px-3 sm:px-4 space-y-6">
-      {/* Top Header Controls Bar */}
-      <div className="bg-white p-4 rounded-3xl border border-slate-200/90 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-        <div className="flex items-center gap-2.5">
+    <div className="max-w-7xl mx-auto py-4 px-3 sm:px-6 space-y-5">
+      {/* 1. Header controls (Always visible) */}
+      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
           <button
-            onClick={onBack}
-            className="py-2 px-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-colors cursor-pointer"
+            onClick={() => {
+              if (mobileViewState === 'reader') {
+                setMobileViewState('list');
+              } else {
+                onBack();
+              }
+            }}
+            className="py-2 px-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-colors cursor-pointer"
             id="btn-back-from-lessons"
           >
             ← ត្រឡប់
@@ -699,746 +788,362 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
               <span>កម្រងមេរៀនសង្ខេប {subject.nameKhmer || subject.name}</span>
             </h2>
             <p className="text-xs text-slate-500 font-medium">
-              មាន {subModules.length - 1} ផ្នែកមេរៀនរង • សរុប {lessons.length} មេរៀន
+              សរុប {lessons.length} មេរៀន • ជ្រើសរើសដើម្បីសិក្សា
             </p>
           </div>
         </div>
 
-        {/* View Layout Switcher & Text Size Button */}
-        <div className="flex items-center gap-2">
-          {/* Layout Mode Selector */}
-          <div className="flex items-center p-1 bg-slate-100 rounded-2xl border border-slate-200/80">
-            <button
-              onClick={() => setLayoutMode('horizontal')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                layoutMode === 'horizontal'
-                  ? 'bg-emerald-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-              title="បង្ហាញជាជួរដេក (Horizontal Carousel)"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
-              <span>ជួរដេក</span>
-            </button>
-
-            <button
-              onClick={() => setLayoutMode('grid')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                layoutMode === 'grid'
-                  ? 'bg-emerald-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-              title="បង្ហាញជាក្រឡា (Grid)"
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">ក្រឡា</span>
-            </button>
-
-            <button
-              onClick={() => setLayoutMode('list')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                layoutMode === 'list'
-                  ? 'bg-emerald-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-              title="បង្ហាញជាបញ្ជី (List)"
-            >
-              <List className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">បញ្ជី</span>
-            </button>
-          </div>
-
-          {/* Font Size Selector */}
-          <button
-            onClick={() => setFontSize(fontSize === 'normal' ? 'large' : 'normal')}
-            className="p-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1 cursor-pointer transition-colors"
-            title="ផ្លាស់ប្តូរទំហំអក្សរ"
-          >
-            <Type className="w-4 h-4" />
-            <span className="hidden sm:inline">{fontSize === 'normal' ? 'អក្សរធំ' : 'ធម្មតា'}</span>
-          </button>
-        </div>
+        {/* Font Size Toggle */}
+        <button
+          onClick={() => setFontSize(fontSize === 'normal' ? 'large' : 'normal')}
+          className="p-2 sm:px-3 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors"
+          title="ផ្លាស់ប្តូរទំហំអក្សរ"
+        >
+          <Type className="w-4 h-4 text-slate-500" />
+          <span className="hidden sm:inline">{fontSize === 'normal' ? 'អក្សរធំ' : 'អក្សរធម្មតា'}</span>
+        </button>
       </div>
 
-      {/* ========================================================================= */}
-      {/* 🌟 FEATURED SUB-MODULES GRID (ជ្រើសរើសផ្នែកមេរៀនរង តាមមុខវិជ្ជា) */}
-      {/* ========================================================================= */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between px-1">
-          <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-            <Layers className="w-4 h-4 text-emerald-600" />
-            <span>ជ្រើសរើសផ្នែកមេរៀនរង (Sub-Modules Categories) ៖</span>
-          </span>
-          {selectedSubModuleId !== 'all' && (
-            <button
-              onClick={() => setSelectedSubModuleId('all')}
-              className="text-xs font-bold text-emerald-700 hover:underline flex items-center gap-1 cursor-pointer"
-            >
-              <span>បង្ហាញទាំងអស់ ({lessons.length})</span>
-            </button>
-          )}
-        </div>
-
-        {/* Grid of Sub-Module Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {subModules.filter((sm) => sm.id !== 'all').map((sub) => {
-            const count = lessons.filter(sub.filterFn).length;
-            const isSelected = selectedSubModuleId === sub.id;
-
-            return (
-              <div
-                key={sub.id}
-                onClick={() => {
-                  setSelectedSubModuleId(sub.id);
-                  // Auto pick first lesson in sub-module
-                  const matching = lessons.filter(sub.filterFn);
-                  if (matching[0]) {
-                    setSelectedLessonId(matching[0].id);
-                  }
-                }}
-                className={`p-3.5 rounded-2xl border-2 transition-all duration-200 cursor-pointer flex flex-col justify-between relative overflow-hidden select-none active:scale-[0.98] ${
-                  isSelected
-                    ? `bg-gradient-to-br ${sub.cardGradient} text-white ${sub.activeBorder} shadow-md scale-[1.02]`
-                    : 'bg-white hover:bg-slate-50 text-slate-800 border-slate-200/90 shadow-2xs hover:border-emerald-300'
-                }`}
-              >
-                {/* Glow accent */}
-                {isSelected && (
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none" />
-                )}
-
-                <div>
-                  <div className="flex items-center justify-between gap-1 mb-2">
-                    <span className="text-2xl">{sub.icon}</span>
-                    <span
-                      className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${
-                        isSelected
-                          ? 'bg-white/20 text-white border-white/30'
-                          : sub.badgeBg
-                      }`}
-                    >
-                      {count} មេរៀន
-                    </span>
-                  </div>
-
-                  <h3 className={`text-xs sm:text-sm font-bold leading-tight ${isSelected ? 'text-white' : 'text-slate-900'}`}>
-                    {sub.title}
-                  </h3>
-                  <p className={`text-[11px] mt-1 line-clamp-2 leading-snug ${isSelected ? 'text-white/80' : 'text-slate-500'}`}>
-                    {sub.subtitle}
-                  </p>
-                </div>
-
-                <div className={`mt-3 pt-2 border-t text-[10px] font-bold flex items-center justify-between ${isSelected ? 'border-white/20 text-amber-300' : 'border-slate-100 text-emerald-700'}`}>
-                  <span>{isSelected ? 'កំពុងមើល ✓' : 'ចុចចូលមើល'}</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Sub-Module Quick Filter Tabs Bar */}
-      <div className="flex items-center gap-1.5 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200/80 overflow-x-auto scrollbar-none">
-        {subModules.map((sub) => {
-          const isSelected = selectedSubModuleId === sub.id;
-          const count = lessons.filter(sub.filterFn).length;
-
-          return (
-            <button
-              key={sub.id}
-              onClick={() => {
-                setSelectedSubModuleId(sub.id);
-                const matching = lessons.filter(sub.filterFn);
-                if (matching[0]) {
-                  setSelectedLessonId(matching[0].id);
-                }
-              }}
-              className={`px-3 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0 ${
-                isSelected
-                  ? 'bg-emerald-600 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-200/80 hover:text-slate-900'
-              }`}
-            >
-              <span>{sub.icon}</span>
-              <span>{sub.title}</span>
-              <span
-                className={`px-1.5 py-0.2 rounded-md text-[10px] ${
-                  isSelected ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-700'
-                }`}
-              >
-                {count}
-              </span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Search Input Bar */}
-      <div className="relative">
-        <Search className="w-4.5 h-4.5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder={`ស្វែងរកមេរៀនក្នុងផ្នែក «${activeSubModule.title}» ...`}
-          className="w-full pl-11 pr-4 py-3 rounded-2xl border border-slate-200 bg-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40 shadow-2xs"
-        />
-        {searchQuery && (
-          <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-slate-400 font-medium">
-            រកឃើញ {filteredLessons.length} មេរៀន
-          </span>
-        )}
-      </div>
-
-      {/* ========================================================================= */}
-      {/* 1. HORIZONTAL CAROUSEL LAYOUT (ជួរដេក - PRIMARY DEFAULT) */}
-      {/* ========================================================================= */}
-      {layoutMode === 'horizontal' && (
-        <div className="space-y-5">
-          {/* Carousel Title Bar */}
-          <div className="flex items-center justify-between px-1">
-            <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>កម្រងមេរៀន (ជួរដេក) - {activeSubModule.titleKhmer || activeSubModule.title} ({filteredLessons.length}) ៖</span>
+      {/* 2. Main Workspace (Split Pane) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch min-h-[600px]">
+        
+        {/* LEFT PANEL: LESSON BROWSER */}
+        <div className={`lg:col-span-4 flex flex-col gap-4 ${mobileViewState === 'reader' ? 'hidden lg:flex' : 'flex'}`}>
+          {/* Sub-module filters */}
+          <div className="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-xs space-y-2.5">
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wide block">
+              ផ្នែកមេរៀន (Categories)
             </span>
+            <div className="flex lg:flex-wrap gap-1.5 overflow-x-auto pb-1.5 lg:pb-0 scrollbar-none">
+              {subModules.map((sub) => {
+                const isSelected = selectedSubModuleId === sub.id;
+                const count = lessons.filter(sub.filterFn).length;
 
-            {/* Carousel Arrow Controls */}
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => scrollCarousel('left')}
-                className="p-1.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 shadow-2xs transition-colors cursor-pointer"
-                title="រំកិលទៅឆ្វេង"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => scrollCarousel('right')}
-                className="p-1.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 shadow-2xs transition-colors cursor-pointer"
-                title="រំកិលទៅស្តាំ"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
+                return (
+                  <button
+                    key={sub.id}
+                    onClick={() => {
+                      setSelectedSubModuleId(sub.id);
+                      const matching = lessons.filter(sub.filterFn);
+                      if (matching[0]) {
+                        setSelectedLessonId(matching[0].id);
+                      }
+                      setMobileViewState('list');
+                    }}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0 ${
+                      isSelected
+                        ? 'bg-emerald-600 text-white shadow-xs'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200/80 hover:text-slate-900'
+                    }`}
+                  >
+                    <span>{sub.icon}</span>
+                    <span>{sub.title}</span>
+                    <span className={`px-1.5 py-0.2 rounded text-[10px] ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}`}>
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Horizontal Card Row Carousel Container */}
-          <div
-            ref={carouselRef}
-            className="flex items-stretch gap-3.5 overflow-x-auto pb-3 pt-1 px-1 scroll-smooth snap-x snap-mandatory scrollbar-thin"
-          >
-            {filteredLessons.map((lesson) => {
-              const isSelected = lesson.id === (currentLesson?.id || selectedLessonId);
-              const hasFormula = Boolean(lesson.formulaCard);
+          {/* Search & List */}
+          <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-3 flex-1 flex flex-col min-h-[400px]">
+            <div className="relative mb-3">
+              <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="ស្វែងរកមេរៀន..."
+                className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-200 bg-slate-50/50 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:bg-white"
+              />
+            </div>
 
-              return (
-                <div
-                  key={lesson.id}
-                  onClick={() => setSelectedLessonId(lesson.id)}
-                  className={`snap-start shrink-0 w-[260px] sm:w-[290px] p-4 rounded-3xl border-2 transition-all duration-300 cursor-pointer flex flex-col justify-between select-none ${
-                    isSelected
-                      ? 'bg-gradient-to-br from-emerald-600 via-emerald-700 to-teal-800 text-white border-emerald-400 shadow-lg ring-2 ring-emerald-500/30 scale-[1.02]'
-                      : 'bg-white hover:bg-emerald-50/40 text-slate-800 border-slate-200/90 shadow-2xs hover:border-emerald-300'
-                  }`}
-                >
-                  <div>
-                    {/* Chapter Pill */}
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span
-                        className={`px-2.5 py-0.5 rounded-lg text-[11px] font-bold border ${
-                          isSelected
-                            ? 'bg-white/20 text-emerald-100 border-white/30'
-                            : 'bg-emerald-100 text-emerald-900 border-emerald-200'
-                        }`}
-                      >
-                        {lesson.chapter}
-                      </span>
+            <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 mb-2 px-1">
+              <span>បញ្ជីមេរៀន ({filteredLessons.length})</span>
+            </div>
 
-                      {hasFormula && (
-                        <span
-                          className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                            isSelected
-                              ? 'bg-amber-400 text-amber-950'
-                              : 'bg-amber-100 text-amber-900 border border-amber-200'
-                          }`}
-                        >
-                          ⚡ មានរូបមន្ត
+            <div className="space-y-1.5 overflow-y-auto max-h-[500px] lg:max-h-[600px] pr-1 scrollbar-thin">
+              {filteredLessons.length === 0 ? (
+                <div className="text-center py-10 text-slate-400 text-xs">
+                  រកមិនឃើញមេរៀនដែលត្រូវនឹងការស្វែងរកទេ
+                </div>
+              ) : (
+                filteredLessons.map((lesson, idx) => {
+                  const isSelected = lesson.id === (currentLesson?.id || selectedLessonId);
+                  const hasFormula = Boolean(lesson.formulaCard);
+                  
+                  return (
+                    <div
+                      key={lesson.id}
+                      onClick={() => {
+                        setSelectedLessonId(lesson.id);
+                        setMobileViewState('reader');
+                      }}
+                      className={`p-3 rounded-xl border transition-all cursor-pointer flex flex-col justify-between gap-1 select-none text-left ${
+                        isSelected
+                          ? 'bg-emerald-50/90 border-emerald-500 ring-1 ring-emerald-500 text-emerald-950 font-medium'
+                          : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-800'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${isSelected ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600'}`}>
+                          មេរៀនទី {idx + 1}
                         </span>
-                      )}
+                        {hasFormula && (
+                          <span className="text-[10px] font-bold text-amber-600 flex items-center gap-0.5">
+                            ⚡ រូបមន្ត
+                          </span>
+                        )}
+                      </div>
+                      <h3 className={`text-xs font-bold leading-snug line-clamp-1 mt-1 ${isSelected ? 'text-emerald-900' : 'text-slate-800'}`}>
+                        {lesson.title}
+                      </h3>
+                      <p className="text-[11px] text-slate-500 line-clamp-1 leading-normal">
+                        {lesson.chapter}
+                      </p>
                     </div>
-
-                    {/* Lesson Title */}
-                    <h3 className={`text-sm font-bold leading-snug line-clamp-2 ${isSelected ? 'text-white' : 'text-slate-900'}`}>
-                      <MathFormattedText text={lesson.title} />
-                    </h3>
-                  </div>
-
-                  {/* Footer Stats & Selection Indicator */}
-                  <div className={`mt-4 pt-2.5 border-t flex items-center justify-between text-xs ${isSelected ? 'border-white/20 text-emerald-100' : 'border-slate-100 text-slate-500'}`}>
-                    <span className="text-[11px] font-medium">
-                      {lesson.keyPoints.length} ចំណុចសំខាន់
-                    </span>
-
-                    <span
-                      className={`text-[11px] font-bold flex items-center gap-1 ${
-                        isSelected ? 'text-amber-300' : 'text-emerald-700'
-                      }`}
-                    >
-                      {isSelected ? 'កំពុងមើល ✓' : 'ចុចមើល'}
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })
+              )}
+            </div>
           </div>
+        </div>
 
-          {/* ACTIVE LESSON DETAILED VIEW (CARD DISPLAY) */}
-          {currentLesson && (() => {
-            const stepEx = getStepByStepExample(currentLesson);
-            const realApp = getRealWorldApp(currentLesson);
-            const pitfalls = getCommonPitfalls(currentLesson);
-            const quiz = getQuickPractice(currentLesson);
+        {/* RIGHT PANEL: ACTIVE LESSON DETAIL READER */}
+        <div className={`lg:col-span-8 flex flex-col gap-4 ${mobileViewState === 'list' ? 'hidden lg:flex' : 'flex'}`}>
+          {currentLesson ? (
+            <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-6 flex flex-col gap-5 min-h-[550px]">
+              
+              {/* Mobile Back Button */}
+              <div className="lg:hidden flex items-center">
+                <button
+                  onClick={() => setMobileViewState('list')}
+                  className="py-1.5 px-3 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center gap-1 transition-colors cursor-pointer"
+                >
+                  ← ត្រឡប់ទៅបញ្ជីមេរៀន
+                </button>
+              </div>
 
-            const handleLessonTouchStart = (e: React.TouchEvent) => {
-              setLessonTouchStartX(e.targetTouches[0].clientX);
-              setLessonTouchStartY(e.targetTouches[0].clientY);
-            };
-
-            const handleLessonTouchEnd = (e: React.TouchEvent) => {
-              if (lessonTouchStartX === null || lessonTouchStartY === null) return;
-              const touchEndX = e.changedTouches[0].clientX;
-              const touchEndY = e.changedTouches[0].clientY;
-
-              const diffX = lessonTouchStartX - touchEndX;
-              const diffY = lessonTouchStartY - touchEndY;
-
-              if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
-                if (diffX > 0 && currentLessonIndex < filteredLessons.length - 1) {
-                  // Swiped left -> next lesson
-                  setSelectedLessonId(filteredLessons[currentLessonIndex + 1].id);
-                } else if (diffX < 0 && currentLessonIndex > 0) {
-                  // Swiped right -> previous lesson
-                  setSelectedLessonId(filteredLessons[currentLessonIndex - 1].id);
-                }
-              }
-
-              setLessonTouchStartX(null);
-              setLessonTouchStartY(null);
-            };
-
-            return (
-              <div
-                onTouchStart={handleLessonTouchStart}
-                onTouchEnd={handleLessonTouchEnd}
-                className="bg-white rounded-3xl border-2 border-emerald-500/80 shadow-md p-5 sm:p-7 space-y-6 animate-fade-in relative overflow-hidden touch-pan-y"
-              >
-                {/* Background Accent Glow */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-
-                {/* Swipe Left/Right Gesture Badge */}
-                <div className="flex items-center justify-between p-2 px-3 rounded-2xl bg-emerald-50/80 border border-emerald-200 text-xs font-bold text-emerald-950">
-                  <span className="flex items-center gap-1.5">
-                    <span>👈👉 អូសទៅឆ្វេង ឬស្តាំ ដើម្បីប្តូរទៅមេរៀនបន្ទាប់ ឬមេរៀនមុន</span>
-                  </span>
-                  <span className="text-[11px] bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded-full font-mono shrink-0">
-                    {currentLessonIndex + 1} / {filteredLessons.length}
-                  </span>
-                </div>
-
-                {/* Lesson Banner & Header Controls */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+              {/* Reader Header */}
+              <div className="pb-4 border-b border-slate-100 space-y-3.5">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                   <div>
-                    <span className="inline-block px-3 py-1 rounded-xl bg-emerald-100 text-emerald-900 text-xs font-bold mb-2 border border-emerald-200">
-                      {currentLesson.chapter} • {activeSubModule.title}
+                    <span className="inline-block px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-900 text-[10px] sm:text-xs font-bold mb-1.5 border border-emerald-200">
+                      {currentLesson.chapter}
                     </span>
-                    <h3 className="text-lg sm:text-2xl font-bold text-slate-900 leading-snug">
+                    <h1 className="text-base sm:text-xl font-bold text-slate-900 leading-snug">
                       <MathFormattedText text={currentLesson.title} />
-                    </h3>
+                    </h1>
                   </div>
 
-                  {/* Audio & AI Action Buttons */}
-                  <div className="flex items-center gap-2 shrink-0">
-                    <button
-                      onClick={() => handleReadLesson(currentLesson)}
-                      className={`px-3.5 py-2 rounded-2xl font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs ${
-                        readingId === currentLesson.id
-                          ? 'bg-amber-400 text-amber-950 animate-pulse'
-                          : 'bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100'
-                      }`}
-                      title="ស្តាប់ការអានមេរៀន"
-                    >
-                      <Volume2 className="w-4 h-4" />
-                      <span>{readingId === currentLesson.id ? 'កំពុងអាន...' : 'ស្តាប់ការអាន'}</span>
-                    </button>
-
-                    <button
-                      onClick={() => setAiTutorLesson(currentLesson)}
-                      className="px-3.5 py-2 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-xs active:scale-95"
-                      title="សួរគ្រូ AI អំពីមេរៀននេះ"
-                    >
-                      <Sparkles className="w-4 h-4" />
-                      <span>សួរ AI</span>
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => setAiTutorLesson(currentLesson)}
+                    className="self-start sm:self-auto px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-xs active:scale-95"
+                  >
+                    <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
+                    <span>សួរគ្រូ AI</span>
+                  </button>
                 </div>
 
-                {/* Active Audio Reader Controller Widget */}
-                {readingId === currentLesson.id && (
-                  <div className="bg-gradient-to-r from-amber-500/15 via-yellow-500/5 to-amber-500/15 border-2 border-amber-400 p-4 rounded-2xl space-y-3 shadow-xs animate-fade-in">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        {/* Interactive pulsing speaker icon */}
-                        <div className="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-lg shadow-xs shrink-0 animate-pulse">
-                          🎙️
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-bold text-slate-800 font-moul">កំពុងអានមេរៀនដោយ៖ សំឡេងស្រីខ្មែរពីរោះស្រទន់</h4>
-                          <p className="text-[10px] text-slate-600 font-medium">Pitch ខ្ពស់ល្មម ស័ក្តិសមសម្រាប់សិស្សានុសិស្សស្តាប់សិក្សា</p>
-                        </div>
-                      </div>
-                      
-                      {/* Control Controls */}
-                      <div className="flex items-center gap-1.5 self-end sm:self-auto">
-                        <button
-                          onClick={() => {
-                            if (ttsState === 'playing') {
-                              window.speechSynthesis.pause();
-                              setTtsState('paused');
-                            } else {
-                              window.speechSynthesis.resume();
-                              setTtsState('playing');
-                            }
-                          }}
-                          className="px-3 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200/90 shadow-2xs cursor-pointer flex items-center gap-1"
-                        >
-                          {ttsState === 'playing' ? '⏸️ ផ្អាក' : '▶️ បន្តអាន'}
-                        </button>
-                        <button
-                          onClick={() => {
-                            window.speechSynthesis.cancel();
-                            setReadingId(null);
-                            setTtsState('stopped');
-                          }}
-                          className="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-200 shadow-2xs cursor-pointer flex items-center gap-1"
-                        >
-                          ⏹️ បញ្ឈប់
-                        </button>
-                        <button
-                          onClick={() => setIsTtsTroubleOpen(true)}
-                          className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs shadow-2xs cursor-pointer flex items-center gap-1"
-                        >
-                          📢 គ្មានសំឡេង?
-                        </button>
-                      </div>
+                {/* Integrated Media Player Audio Reader Widget */}
+                <div className="bg-slate-50 border border-slate-200/60 p-3 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-3xs">
+                  <div className="flex items-center gap-2.5">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm shadow-3xs shrink-0 ${readingId === currentLesson.id && ttsState === 'playing' ? 'bg-amber-500 text-white animate-pulse' : 'bg-slate-200 text-slate-500'}`}>
+                      {readingId === currentLesson.id && ttsState === 'playing' ? '🎙️' : '🔊'}
                     </div>
-
-                    {/* Subtitle Card Fallback */}
-                    <div className="p-3 bg-white/95 rounded-xl border border-slate-200/80 text-xs sm:text-sm text-slate-800 leading-relaxed shadow-3xs">
-                      <div className="text-[11px] font-bold text-amber-800 mb-1 flex items-center gap-1">
-                        <span>📖 អត្ថបទដែលកំពុងអានឮ៖</span>
-                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span>
-                      </div>
-                      <p className="text-slate-700 font-medium font-sans">
-                        {currentLesson.content}
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-800">ស្ដាប់សំឡេងអានមេរៀន</h4>
+                      <p className="text-[10px] text-slate-500">
+                        {isTtsLoading ? 'កំពុងទាញយកសំឡេងពី AI...' : readingId === currentLesson.id ? 'កំពុងចាក់សំឡេងស្រីខ្មែរពីរោះស្រទន់' : 'អានដោយសំឡេងបញ្ញាសិប្បនិម្មិត Gemini AI'}
                       </p>
                     </div>
                   </div>
-                )}
 
-                {/* 1. Main Overview Explanation */}
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-800 uppercase tracking-wide">
-                    <BookOpen className="w-4 h-4 text-emerald-600" />
-                    <span>ខ្លឹមសារសង្ខេបមេរៀន (Lesson Summary)</span>
-                  </div>
-                  <div
-                    className={`text-slate-800 leading-relaxed bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs ${
-                      fontSize === 'large' ? 'text-base sm:text-lg' : 'text-sm sm:text-base'
-                    }`}
-                  >
-                    <MathFormattedText text={currentLesson.content} />
-                  </div>
-                </div>
-
-                {/* 2. Formula Card (If present) */}
-                {currentLesson.formulaCard && (
-                  <div className="p-5 rounded-3xl bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-emerald-50 space-y-3 shadow-md border border-emerald-800/60">
-                    <div className="flex items-center justify-between gap-2 font-bold text-emerald-300 text-xs sm:text-sm">
-                      <span className="flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-emerald-400" />
-                        {currentLesson.formulaCard.title}
-                      </span>
-                      <span className="text-[10px] bg-emerald-800 px-2.5 py-0.5 rounded-full text-emerald-200 uppercase font-mono">
-                        រូបមន្តគន្លឹះ
-                      </span>
-                    </div>
-
-                    <div className="p-3.5 rounded-xl bg-black/50 border border-emerald-500/30 text-emerald-100 font-mono text-xs sm:text-sm leading-relaxed">
-                      <MathFormattedText text={currentLesson.formulaCard.content} />
-                    </div>
-
-                    {currentLesson.formulaCard.example && (
-                      <div className="p-3 rounded-xl bg-emerald-900/60 text-xs text-emerald-200 border border-emerald-700/50">
-                        💡 <span className="font-bold text-amber-300">ឧទាហរណ៍អនុវត្ត៖</span>{' '}
-                        <MathFormattedText text={currentLesson.formulaCard.example} />
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* 3. Step-by-Step Solved Problem Example */}
-                <div className="p-5 rounded-3xl bg-gradient-to-br from-slate-50 via-emerald-50/40 to-amber-50/30 border border-emerald-200 space-y-3.5 shadow-2xs">
-                  <div className="flex items-center gap-2 font-bold text-slate-900 text-xs sm:text-sm">
-                    <span className="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-2xs">
-                      📝
-                    </span>
-                    <span>លំហាត់គំរូ និងដំណោះស្រាយជំហានៗ (Step-by-Step Solution)</span>
-                  </div>
-
-                  <div className="p-3.5 bg-white rounded-xl border border-slate-200 font-bold text-xs sm:text-sm text-slate-800 shadow-2xs">
-                    <MathFormattedText text={stepEx.problemText} />
-                  </div>
-
-                  <div className="space-y-2">
-                    {stepEx.steps.map((st) => (
-                      <div
-                        key={st.stepNumber}
-                        className="p-3.5 rounded-2xl bg-white/90 border border-slate-200/90 text-xs sm:text-sm space-y-1 shadow-2xs"
+                  <div className="flex items-center gap-1.5 self-end sm:self-auto">
+                    {/* Voice selector */}
+                    <div className="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-200/80 mr-1.5">
+                      <select
+                        value={selectedGeminiVoice}
+                        onChange={(e) => setSelectedGeminiVoice(e.target.value as any)}
+                        className="text-[11px] font-bold text-emerald-800 bg-transparent focus:outline-none cursor-pointer border-none py-0.5 px-1 pr-4"
+                        title="ជ្រើសរើសសំឡេង AI"
                       >
-                        <div className="font-bold text-emerald-800 flex items-center gap-2">
-                          <span className="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 text-[11px] font-bold border border-emerald-200">
-                            ជំហានទី {st.stepNumber}
-                          </span>
-                          <span>{st.title}</span>
-                        </div>
-                        <div className="text-slate-700 leading-relaxed pl-1 pt-0.5">
-                          <MathFormattedText text={st.detail} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="p-3.5 rounded-2xl bg-emerald-800 text-white font-bold text-xs sm:text-sm flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-xs">
-                    <span className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-300" />
-                      ចម្លើយចុងក្រោយ៖
-                    </span>
-                    <span className="text-amber-200 font-mono text-xs sm:text-sm bg-emerald-950/70 px-3 py-1 rounded-xl border border-emerald-600/50">
-                      <MathFormattedText text={stepEx.finalAnswer} />
-                    </span>
-                  </div>
-                </div>
-
-                {/* 4. Grid for Key Takeaways & Real-World Apps */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Key Takeaways */}
-                  <div className="p-4.5 rounded-3xl bg-emerald-50/80 border border-emerald-200 space-y-3">
-                    <div className="flex items-center gap-2 font-bold text-emerald-900 text-xs sm:text-sm">
-                      <CheckCircle2 className="w-4.5 h-4.5 text-emerald-600 shrink-0" />
-                      <span>ចំណុចសំខាន់ៗត្រូវចងចាំ៖</span>
+                        <option value="Kore">ស្រី (Kore)</option>
+                        <option value="Puck">ប្រុស (Puck)</option>
+                        <option value="Charon">ប្រុស (Charon)</option>
+                        <option value="Fenrir">ប្រុស (Fenrir)</option>
+                        <option value="Zephyr">ប្រុស (Zephyr)</option>
+                      </select>
                     </div>
-                    <ul className="space-y-2 pl-1">
-                      {currentLesson.keyPoints.map((point, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-800">
-                          <span className="text-emerald-600 font-bold mt-0.5">•</span>
-                          <div className="flex-1 leading-relaxed">
-                            <MathFormattedText text={point} />
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
+
+                    <button
+                      onClick={() => handleReadLesson(currentLesson)}
+                      disabled={isTtsLoading}
+                      className={`px-3 py-1.5 rounded-lg font-bold text-xs flex items-center gap-1 transition-all cursor-pointer shadow-3xs ${
+                        readingId === currentLesson.id
+                          ? 'bg-amber-400 text-amber-950 hover:bg-amber-500'
+                          : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                      }`}
+                    >
+                      {isTtsLoading ? (
+                        <>
+                          <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                          <span>ទាញយក...</span>
+                        </>
+                      ) : readingId === currentLesson.id ? (
+                        <>
+                          <span>{ttsState === 'playing' ? '⏸️ ផ្អាក' : '▶️ បន្ត'}</span>
+                        </>
+                      ) : (
+                        <>
+                          <Volume2 className="w-3.5 h-3.5" />
+                          <span>ស្ដាប់សំឡេង</span>
+                        </>
+                      )}
+                    </button>
+
+                    {readingId === currentLesson.id && (
+                      <button
+                        onClick={() => {
+                          if (audioRef.current) {
+                            audioRef.current.pause();
+                            audioRef.current.currentTime = 0;
+                          }
+                          if ('speechSynthesis' in window) {
+                            window.speechSynthesis.cancel();
+                          }
+                          setReadingId(null);
+                          setTtsState('stopped');
+                        }}
+                        className="px-2.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-200 cursor-pointer flex items-center gap-0.5"
+                      >
+                        ⏹️ បញ្ឈប់
+                      </button>
+                    )}
+
+                    <button
+                      onClick={() => setIsTtsTroubleOpen(true)}
+                      className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-500 text-xs cursor-pointer"
+                      title="គ្មានសំឡេង?"
+                    >
+                      ❓
+                    </button>
                   </div>
-
-                  {/* Real World Applications */}
-                  <div className="p-4.5 rounded-3xl bg-amber-50/80 border border-amber-200 space-y-2.5">
-                    <div className="flex items-center gap-2 font-bold text-amber-900 text-xs sm:text-sm">
-                      <Lightbulb className="w-4.5 h-4.5 text-amber-600 shrink-0" />
-                      <span>ការអនុវត្តក្នុងជីវិតជាក់ស្ដែង៖</span>
-                    </div>
-                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                      <MathFormattedText text={realApp} />
-                    </p>
-                  </div>
-                </div>
-
-                {/* 5. Exam Traps & Pitfalls */}
-                <div className="p-4.5 rounded-3xl bg-rose-50/80 border border-rose-200 space-y-2.5">
-                  <div className="flex items-center gap-2 font-bold text-rose-900 text-xs sm:text-sm">
-                    <AlertTriangle className="w-4.5 h-4.5 text-rose-600 shrink-0" />
-                    <span>កំហុសឆ្គងដែលសិស្សជួបប្រទះញឹកញាប់ក្នុងប្រឡង (Exam Traps)៖</span>
-                  </div>
-                  <ul className="space-y-1.5 pl-1">
-                    {pitfalls.map((pit, pidx) => (
-                      <li key={pidx} className="flex items-start gap-2 text-xs sm:text-sm text-rose-950">
-                        <span className="text-rose-600 font-bold mt-0.5">•</span>
-                        <div className="flex-1">
-                          <MathFormattedText text={pit} />
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* 6. Interactive Quick Quiz */}
-                <div className="p-5 rounded-3xl bg-gradient-to-br from-amber-50/90 via-orange-50/40 to-white border border-amber-200 space-y-3.5">
-                  <div className="flex items-center justify-between gap-2 font-bold text-amber-950">
-                    <span className="flex items-center gap-2">
-                      <Zap className="w-4.5 h-4.5 text-amber-600" />
-                      <span>អនុវត្តលំហាត់សាកល្បងសមត្ថភាព (Quick Practice)</span>
-                    </span>
-                    <span className="text-[10px] bg-amber-200 text-amber-900 px-2.5 py-0.5 rounded-full font-bold">
-                      តេស្តភ្លាមៗ
-                    </span>
-                  </div>
-
-                  <div className="p-3.5 bg-white rounded-xl border border-amber-200 font-bold text-xs sm:text-sm text-slate-900 shadow-2xs">
-                    <MathFormattedText text={quiz.questionText} />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {quiz.options.map((opt, oidx) => {
-                      const selected = practiceAnswers[currentLesson.id] === oidx;
-                      const isCorrect = oidx === quiz.correctIndex;
-                      const answered = practiceAnswers[currentLesson.id] !== undefined;
-
-                      let btnStyle = "bg-white hover:bg-amber-100/80 border-slate-200 text-slate-800";
-                      if (answered) {
-                        if (isCorrect) {
-                          btnStyle = "bg-emerald-600 text-white border-emerald-600 font-bold shadow-xs";
-                        } else if (selected) {
-                          btnStyle = "bg-rose-600 text-white border-rose-600 font-bold shadow-xs";
-                        } else {
-                          btnStyle = "bg-slate-100 text-slate-400 border-slate-200";
-                        }
-                      }
-
-                      return (
-                        <button
-                          key={oidx}
-                          onClick={() => setPracticeAnswers((prev) => ({ ...prev, [currentLesson.id]: oidx }))}
-                          className={`p-3 rounded-xl border text-left transition-all cursor-pointer text-xs font-semibold flex items-center justify-between gap-2 ${btnStyle}`}
-                        >
-                          <span><MathFormattedText text={opt} /></span>
-                          {answered && isCorrect && <CheckCircle2 className="w-4 h-4 text-white shrink-0" />}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {practiceAnswers[currentLesson.id] !== undefined && (
-                    <div className="p-3.5 rounded-xl bg-white border border-amber-300 text-xs text-slate-800 leading-relaxed animate-fade-in shadow-2xs">
-                      <span className="font-bold text-amber-900">💡 ការបកស្រាយ៖ </span>
-                      <MathFormattedText text={quiz.explanation} />
-                    </div>
-                  )}
-                </div>
-
-                {/* Bottom Lesson Navigation Bar */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
-                  <button
-                    onClick={() => {
-                      if (currentLessonIndex > 0) {
-                        setSelectedLessonId(filteredLessons[currentLessonIndex - 1].id);
-                      }
-                    }}
-                    disabled={currentLessonIndex <= 0}
-                    className="px-4 py-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-colors cursor-pointer"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    <span>មេរៀនមុន</span>
-                  </button>
-
-                  <span className="text-xs font-bold text-slate-500">
-                    មេរៀន {currentLessonIndex + 1} / {filteredLessons.length}
-                  </span>
-
-                  <button
-                    onClick={() => {
-                      if (currentLessonIndex < filteredLessons.length - 1) {
-                        setSelectedLessonId(filteredLessons[currentLessonIndex + 1].id);
-                      }
-                    }}
-                    disabled={currentLessonIndex >= filteredLessons.length - 1}
-                    className="px-4 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
-                  >
-                    <span>មេរៀនបន្ទាប់</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
                 </div>
               </div>
-            );
-          })()}
-        </div>
-      )}
 
-      {/* ========================================================================= */}
-      {/* 2. GRID LAYOUT MODE */}
-      {/* ========================================================================= */}
-      {layoutMode === 'grid' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredLessons.map((lesson) => {
-            const isSelected = selectedLessonId === lesson.id;
-            return (
-              <div
-                key={lesson.id}
-                onClick={() => {
-                  setSelectedLessonId(lesson.id);
-                  setLayoutMode('horizontal');
-                }}
-                className={`p-5 rounded-3xl border-2 transition-all cursor-pointer bg-white hover:border-emerald-400 shadow-2xs hover:shadow-md ${
-                  isSelected ? 'border-emerald-500 ring-2 ring-emerald-500/20' : 'border-slate-200'
-                }`}
-              >
-                <span className="px-2.5 py-0.5 rounded-lg bg-emerald-100 text-emerald-900 text-xs font-bold">
-                  {lesson.chapter}
+              {/* Reader Tab Navigation */}
+              <div className="flex border-b border-slate-100 p-0.5 bg-slate-50 rounded-xl">
+                <button
+                  onClick={() => setReaderTab('summary')}
+                  className={`flex-1 py-2 px-1 text-center rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                    readerTab === 'summary'
+                      ? 'bg-white text-emerald-800 shadow-3xs border border-slate-200/60'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>ខ្លឹមសារមេរៀន</span>
+                </button>
+
+                <button
+                  onClick={() => setReaderTab('example')}
+                  className={`flex-1 py-2 px-1 text-center rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                    readerTab === 'example'
+                      ? 'bg-white text-emerald-800 shadow-3xs border border-slate-200/60'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <GraduationCap className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>លំហាត់គំរូ</span>
+                </button>
+
+                <button
+                  onClick={() => setReaderTab('quiz')}
+                  className={`flex-1 py-2 px-1 text-center rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                    readerTab === 'quiz'
+                      ? 'bg-white text-emerald-800 shadow-3xs border border-slate-200/60'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <Zap className="w-3.5 h-3.5 text-amber-600" />
+                  <span>លំហាត់អនុវត្ត</span>
+                </button>
+              </div>
+
+              {/* Reader Body Content */}
+              <div className="flex-1">
+                {readerTab === 'summary' && (
+                  <SummaryTab
+                    currentLesson={currentLesson}
+                    fontSize={fontSize}
+                    getRealWorldApp={getRealWorldApp}
+                  />
+                )}
+
+                {readerTab === 'example' && (
+                  <ExampleTab
+                    currentLesson={currentLesson}
+                    getStepByStepExample={getStepByStepExample}
+                  />
+                )}
+
+                {readerTab === 'quiz' && (
+                  <QuizTab
+                    currentLesson={currentLesson}
+                    getCommonPitfalls={getCommonPitfalls}
+                    getQuickPractice={getQuickPractice}
+                    practiceAnswers={practiceAnswers}
+                    setPracticeAnswers={setPracticeAnswers}
+                  />
+                )}
+              </div>
+
+              {/* Bottom Lesson Reader Footer */}
+              <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3 text-xs">
+                <button
+                  onClick={() => {
+                    if (currentLessonIndex > 0) {
+                      setSelectedLessonId(filteredLessons[currentLessonIndex - 1].id);
+                    }
+                  }}
+                  disabled={currentLessonIndex <= 0}
+                  className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 disabled:opacity-40 text-slate-700 font-bold flex items-center gap-1 cursor-pointer transition-all"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>មេរៀនមុន</span>
+                </button>
+
+                <span className="font-bold text-slate-400">
+                  មេរៀន {currentLessonIndex + 1} / {filteredLessons.length}
                 </span>
-                <h3 className="text-base font-bold text-slate-900 mt-2 mb-1.5">
-                  <MathFormattedText text={lesson.title} />
-                </h3>
-                <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
-                  {lesson.content}
-                </p>
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700">
-                  <span>{lesson.keyPoints.length} ចំណុចសំខាន់</span>
-                  <span className="flex items-center gap-1">
-                    មើលមេរៀន <ChevronRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
 
-      {/* ========================================================================= */}
-      {/* 3. VERTICAL LIST LAYOUT MODE */}
-      {/* ========================================================================= */}
-      {layoutMode === 'list' && (
-        <div className="space-y-3">
-          {filteredLessons.map((lesson) => (
-            <div
-              key={lesson.id}
-              onClick={() => {
-                setSelectedLessonId(lesson.id);
-                setLayoutMode('horizontal');
-              }}
-              className="p-4 rounded-2xl border border-slate-200 bg-white hover:border-emerald-400 cursor-pointer shadow-2xs transition-all flex items-center justify-between gap-3"
-            >
-              <div className="flex-1 min-w-0">
-                <span className="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 text-[11px] font-bold">
-                  {lesson.chapter}
-                </span>
-                <h3 className="text-sm font-bold text-slate-900 truncate mt-1">
-                  <MathFormattedText text={lesson.title} />
-                </h3>
+                <button
+                  onClick={() => {
+                    if (currentLessonIndex < filteredLessons.length - 1) {
+                      setSelectedLessonId(filteredLessons[currentLessonIndex + 1].id);
+                    }
+                  }}
+                  disabled={currentLessonIndex >= filteredLessons.length - 1}
+                  className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-40 text-white font-bold flex items-center gap-1 cursor-pointer transition-all shadow-3xs"
+                >
+                  <span>មេរៀនបន្ទាប់</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
-              <ChevronRight className="w-5 h-5 text-slate-400 shrink-0" />
+
             </div>
-          ))}
+          ) : (
+            <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-10 flex flex-col items-center justify-center text-slate-400 text-xs sm:text-sm">
+              <BookOpen className="w-10 h-10 text-slate-200 mb-2" />
+              <span>សូមជ្រើសរើសមេរៀនដើម្បីចាប់ផ្តើមសិក្សា</span>
+            </div>
+          )}
         </div>
-      )}
+
+      </div>
 
       {/* AI Tutor Modal */}
       {dummyQuestionForLesson && (
@@ -1476,7 +1181,6 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
               </p>
 
               <div className="space-y-3">
-                {/* Step 1 */}
                 <div className="flex gap-3 items-start p-3 rounded-2xl bg-slate-50 border border-slate-100">
                   <span className="w-6 h-6 rounded-lg bg-amber-100 text-amber-800 text-xs font-bold flex items-center justify-center shrink-0">
                     ១
@@ -1489,7 +1193,6 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
                   </div>
                 </div>
 
-                {/* Step 2 */}
                 <div className="flex gap-3 items-start p-3 rounded-2xl bg-slate-50 border border-slate-100">
                   <span className="w-6 h-6 rounded-lg bg-amber-100 text-amber-800 text-xs font-bold flex items-center justify-center shrink-0">
                     ២
@@ -1502,7 +1205,6 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
                   </div>
                 </div>
 
-                {/* Step 3 */}
                 <div className="flex gap-3 items-start p-3 rounded-2xl bg-slate-50 border border-slate-100">
                   <span className="w-6 h-6 rounded-lg bg-amber-100 text-amber-800 text-xs font-bold flex items-center justify-center shrink-0">
                     ៣
@@ -1515,7 +1217,6 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
                   </div>
                 </div>
 
-                {/* Step 4 */}
                 <div className="flex gap-3 items-start p-3 rounded-2xl bg-slate-50 border border-slate-100">
                   <span className="w-6 h-6 rounded-lg bg-amber-100 text-amber-800 text-xs font-bold flex items-center justify-center shrink-0">
                     ៤

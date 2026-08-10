@@ -828,7 +828,7 @@ export const EnglishGameModal: React.FC<EnglishGameModalProps> = ({
   );
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto animate-fade-in font-['Fredoka','Kantumruuy_Pro',sans-serif]">
+    <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto animate-fade-in font-siemreap">
       {/* Canvas Confetti */}
       <canvas
         ref={canvasRef}

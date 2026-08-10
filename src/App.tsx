@@ -397,7 +397,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen max-w-full overflow-x-hidden bg-[#FAF8F5] dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col font-['Siemreap','Khmer_OS_Siemreap','Kantumruuy_Pro',sans-serif] transition-colors duration-200">
+    <div className="min-h-screen max-w-full overflow-x-hidden bg-[#FAF8F5] dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col font-siemreap transition-colors duration-200">
       {/* Navigation Header */}
       <Header
         isVisible={isHeaderVisible}

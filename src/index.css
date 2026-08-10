@@ -13,12 +13,12 @@
   }
 
   body {
-    font-family: 'Siemreap', 'Khmer OS Siemreap', 'Kantumruuy Pro', system-ui, -apple-system, sans-serif;
+    font-family: 'Kantumruuy Pro', 'Siemreap', 'Khmer OS Siemreap', system-ui, -apple-system, sans-serif;
   }
 }
 
 .font-siemreap {
-  font-family: 'Siemreap', 'Khmer OS Siemreap', 'Kantumruuy Pro', sans-serif;
+  font-family: 'Kantumruuy Pro', 'Siemreap', 'Khmer OS Siemreap', sans-serif;
 }
 
 .font-moul {
