@@ -29,6 +29,7 @@ import { MathScratchpad } from './MathScratchpad';
 import { MathFormulaModal } from './MathFormulaModal';
 import { MathAIQuestionTutorModal } from './MathAIQuestionTutorModal';
 import { saveExamAttemptRecord } from '../utils/examTracking';
+import { KhmerDictationRunner } from './KhmerDictationRunner';
 
 interface ExamRunnerProps {
   exam: ExamPaper;
@@ -49,6 +50,18 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
   studentName,
   studentGender
 }) => {
+  if (exam.id === 'new_khmer_dictation_exam_2026_orussi') {
+    return (
+      <KhmerDictationRunner
+        exam={exam}
+        onBack={onBack}
+        onFinishExam={onFinishExam}
+        studentName={studentName}
+        studentGender={studentGender}
+      />
+    );
+  }
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
   const [matchingSelections, setMatchingSelections] = useState<Record<string, Record<number, string>>>({});

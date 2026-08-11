@@ -1140,5 +1140,235 @@ export const NEW_EXAM_PAPERS: ExamPaper[] = [
         explanation: 'ចម្លើយត្រឹមត្រូវគឺ ក.\n\nដំណោះស្រាយលម្អិត៖\nក. គណនាមុំផ្ចិតនៃផ្នែកនីមួយៗ (មុំសរុប 360°)៖\n- ស្រូវ៖ 40% x 360° = 0.40 x 360° = 144°\n- ពោត៖ 35% x 360° = 0.35 x 360° = 126°\n- បន្លែ៖ 25% x 360° = 0.25 x 360° = 90°\n\nខ. គណនាទម្ងន់ដំណាំនីមួយៗ (ទម្ងន់សរុប 1,200 kg)៖\n- ស្រូវ៖ 1,200 kg x 40% = 1,200 x 0.40 = 480 kg\n- ពោត៖ 1,200 kg x 35% = 1,200 x 0.35 = 420 kg\n- បន្លែ៖ 1,200 kg x 25% = 1,200 x 0.25 = 300 kg'
       }
     ]
+  },
+  {
+    id: 'new_khmer_dictation_exam_2026_orussi',
+    subjectId: 'khmer',
+    title: 'កម្រងអូរឫស្សីកណ្តាល សាលាបឋមសិក្សា - វិញ្ញាសាត្រៀមប្រឡងឆមាសលើកទី២ ថ្នាក់ទី៦ មុខវិជ្ជា៖ សរសេរតាមអាន',
+    description: 'វិញ្ញាសាស្តង់ដារត្រៀមប្រឡងឆមាសលើកទី២ ថ្នាក់ទី៦ មុខវិជ្ជា៖ សរសេរតាមអាន និងភាសាខ្មែរ រួមមាន ៥ ផ្នែក៖ សរសេរតាមអាន (Gemini AI Voice), សំណួរជ្រើសរើសចម្លើយ (QCM), បំពេញចន្លោះល្បះ, ខុស/ត្រូវ និងសំណួរអប់រំ/គំនិតច្នៃប្រឌិត',
+    durationMinutes: 60,
+    totalPoints: 10,
+    yearOrType: 'វិញ្ញាសាថ្មី ឆមាសទី២',
+    questions: [
+      // ផ្នែកទី១៖ សរសេរតាមអាន (២០ ពាក្យ)
+      { id: 'khmer_dict_1', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'អរិយធម៌', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_2', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'សាមគ្គីភាព', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_3', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'កតញ្ញូ', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_4', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'គរុកោសល្យ', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_5', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'សីលធម៌', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_6', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'មហន្តរាយ', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_7', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'វឌ្ឍនភាព', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_8', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'ឧស្សាហ៍', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_9', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'ប្រសិទ្ធភាព', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_10', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'សន្តិភាព', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_11', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'អនាគត', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_12', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'កិត្យានុភាព', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_13', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'វិរៈជន', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_14', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'បរិស្ថាន', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_15', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'សហគមន៍', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_16', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'ច្នៃប្រឌិត', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_17', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'រមណីយដ្ឋាន', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_18', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'អភិរក្ស', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_19', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'ធម្មជាតិ', options: [], correctAnswerIndex: 0, explanation: '' },
+      { id: 'khmer_dict_20', subjectId: 'khmer', category: 'ផ្នែកទី១៖ សរសេរតាមអាន', text: 'ស័ក្តិសិទ្ធិ', options: [], correctAnswerIndex: 0, explanation: '' },
+
+      // ផ្នែកទី២៖ សំណួរ QCM (១០ សំណួរ)
+      {
+        id: 'khmer_qcm_1',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '១. ពាក្យ «អភិរក្ស» មានន័យដូចម្តេច?',
+        options: ['ក. ការបំផ្លាញ', 'ខ. ការថែរក្សា', 'គ. ការលក់ដូរ', 'ឃ. ការសាងសង់'],
+        correctAnswerIndex: 1,
+        explanation: 'ពាក្យ «អភិរក្ស» មានន័យថា ការថែរក្សាឱ្យគង់វង្សស្ថិតស្ថេរ។'
+      },
+      {
+        id: 'khmer_qcm_2',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '២. ពាក្យ «មហន្តរាយ» មានន័យដូចម្តេច?',
+        options: ['ក. ការសប្បាយ', 'ខ. ការវិនាសធំ', 'គ. ជ័យជំនះ', 'ឃ. ភាពសំបូរបែប'],
+        correctAnswerIndex: 1,
+        explanation: 'ពាក្យ «មហន្តរាយ» មានន័យថា ការវិនាសហិនហោចធំធេង ឬគ្រោះកាចចង្រៃធំ។'
+      },
+      {
+        id: 'khmer_qcm_3',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '៣. ពាក្យ «សាសនា» សំដៅលើអ្វី?',
+        options: ['ក. ជំនួញលក់ដូរ', 'ខ. សម្ភារៈប្រើប្រាស់', 'គ. ពាក្យប្រដៅ ជំនឿ ឬការគោរព', 'ឃ. ច្បាប់រដ្ឋបាល'],
+        correctAnswerIndex: 2,
+        explanation: 'ពាក្យ «សាសនា» មានន័យថា ពាក្យប្រដៅ លទ្ធិ ឬសេចក្តីជំនឿគោរពតាមគោលការណ៍ផ្សេងៗ។'
+      },
+      {
+        id: 'khmer_qcm_4',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '៤. ពាក្យ «បរិវារ» មានន័យដូចម្តេច?',
+        options: ['ក. អ្នកហែហម ឬអ្នកអមដំណើរ', 'ខ. ផ្ទះសម្បែង និងដីធ្លី', 'គ. ម្ហូបអាហារ និងភេសជ្ជៈ', 'ឃ. សម្លៀកបំពាក់ និងគ្រឿងអលង្ការ'],
+        correctAnswerIndex: 0,
+        explanation: 'ពាក្យ «បរិវារ» សំដៅលើ ជនហែហម អ្នកអមដំណើរ ឬរបស់ក្បែរៗខ្លួន។'
+      },
+      {
+        id: 'khmer_qcm_5',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '៥. ពាក្យ «អرិយធម៌» សំដៅលើអ្វី?',
+        options: ['ក. សង្គ្រាម និងជម្លោះ', 'ខ. របរកសិកម្ម', 'គ. ធនធានរ៉ែធម្មជាតិ', 'ឃ. ការរីកចម្រើនខាងសីលធម៌ និងសម្ភារៈនៃសង្គម'],
+        correctAnswerIndex: 3,
+        explanation: 'ពាក្យ «អរិយធម៌» គឺការរីកចម្រើនខាងសណ្ដាប់ធ្នាប់ សីលធម៌ និងសម្ភារៈរបស់មនុស្សជាតិ។'
+      },
+      {
+        id: 'khmer_qcm_6',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '៦. ពាក្យ «កតញ្ញូ» សំដៅលើបុគ្គលបែបណា?',
+        options: ['ក. បុគ្គលដឹងគុណចំពោះអ្នកដទៃ', 'ខ. បុគ្គលបំផ្លិចបំផ្លាញសម្បត្តិរួម', 'គ. បុគ្គលរឹងរូសមិនស្តាប់បង្គាប់', 'ឃ. បុគ្គលដែលគ្មានសីលធម៌រស់នៅ'],
+        correctAnswerIndex: 0,
+        explanation: 'ពាក្យ «កតញ្ញូ» គឺបុគ្គលដែលស្គាល់គុណ ដឹងគុណ និងតបគុណចំពោះអ្នកមានគុណ។'
+      },
+      {
+        id: 'khmer_qcm_7',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '៧. ពាក្យ «សាមគ្គីភាព» មានសារៈសំខាន់យ៉ាងណា?',
+        options: ['ក. បង្កជម្លោះក្នុងថ្នាក់', 'ខ. បង្កើតកម្លាំងរួម និងសាមគ្គីភាពរឹងមាំ', 'គ. ធ្វើឱ្យសង្គមបែកបាក់', 'ឃ. ធ្វើឱ្យបាត់បង់សន្តិសុខ'],
+        correctAnswerIndex: 1,
+        explanation: '«សាមគ្គីភាព» គឺការរួមដៃគ្នា ជាកម្លាំងរួមដ៏រឹងមាំក្នុងការសម្រេចកិច្ចការនានា។'
+      },
+      {
+        id: 'khmer_qcm_8',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '៨. ពាក្យ «បរិស្ថាន» សំដៅលើអ្វី?',
+        options: ['ក. អ្វីៗដែលនៅជុំវិញខ្លួនយើង', 'ខ. ទ្រព្យសម្បត្តិផ្ទាល់ខ្លួន', 'គ. សៀវភៅសិក្សា', 'ឃ. គ្រឿងចក្ររោងចក្រ'],
+        correctAnswerIndex: 0,
+        explanation: '«បរិស្ថាន» គឺអ្វីៗទាំងអស់ដែលនៅជុំវិញខ្លួនយើង ទាំងមានជីវិត និងគ្មានជីវិត។'
+      },
+      {
+        id: 'khmer_qcm_9',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '៩. ពាក្យ «សន្តិភាព» សំដៅលើអ្វី?',
+        options: ['ក. ភាពស្ងប់ស្ងាត់ គ្មានសង្គ្រាម ឬជម្លោះ', 'ខ. ការតវ៉ាដណ្តើមយោបល់', 'គ. ភាពក្រីក្រគ្មានទីជម្រក', 'ឃ. ការបាត់បង់សេរីភាពផ្ទាល់ខ្លួន'],
+        correctAnswerIndex: 0,
+        explanation: '«សន្តិភាព» គឺស្ថានភាពស្ងប់ស្ងាត់ សន្តិសុខ និងគ្មានអំពើហិង្សា ឬសង្គ្រាម។'
+      },
+      {
+        id: 'khmer_qcm_10',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី២៖ QCM (ជ្រើសរើសចម្លើយ)',
+        text: '១០. ពាក្យ «កិត្យានុភាព» មានន័យដូចម្តេច?',
+        options: ['ក. ភាពទន់ខ្សោយលាក់មុខ', 'ខ. កេរ្តិ៍ឈ្មោះល្បីល្បាញ ឬអំណាចឥទ្ធិពលដ៏ឧត្តុង្គឧត្តម', 'គ. ភាពក្រីក្រខ្សត់ខ្សោយ', 'ឃ. ការប្រកួតប្រជែងគ្នាក្នុងសង្គម'],
+        correctAnswerIndex: 1,
+        explanation: '«កិត្យានុភាព» មានន័យថា កេរ្តិ៍ឈ្មោះល្អល្បីល្បាញ និងអំណាចឥទ្ធិពលឧត្តុង្គឧត្តមរបស់បុគ្គល ឬជាតិ។'
+      },
+
+      // ផ្នែកទី៣៖ បំពេញល្បះ (១០ ល្បះ)
+      { id: 'khmer_fill_1', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '១. ប្រទេសជាតិត្រូវការ [ចន្លោះ] ប្រាជ្ញដើរមុខ។', options: ['អ្នក', 'នាក់'], correctAnswerIndex: 0, explanation: 'ប្រទេសជាតិត្រូវការ «អ្នក» ប្រាជ្ញដើរមុខ។' },
+      { id: 'khmer_fill_2', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '២. សិស្សសាលាចំនួន ៥ [ចន្លោះ] ទទួលបានប័ណ្ណសរសើរ។', options: ['អ្នក', 'នាក់'], correctAnswerIndex: 1, explanation: 'សិស្សសាលាចំនួន ៥ «នាក់» ទទួលបានប័ណ្ណសរសើរ។' },
+      { id: 'khmer_fill_3', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '៣. យើងត្រូវ [ចន្លោះ] នៅក្នុងសង្គមដោយមានសន្តិភាព។', options: ['រស់', 'រស'], correctAnswerIndex: 0, explanation: 'យើងត្រូវ «រស់» នៅក្នុងសង្គមដោយសន្តិភាព។' },
+      { id: 'khmer_fill_4', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '៤. ម្ហូបអាហារនេះមាន [ចន្លោះ] ជាតិឆ្ងាញ់ពិសារណាស់។', options: ['រស់', 'រស'], correctAnswerIndex: 1, explanation: 'ម្ហូបអាហារនេះមាន «រស» ជាតិឆ្ងាញ់ពិសារណាស់។' },
+      { id: 'khmer_fill_5', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '៥. សិស្សានុសិស្សទាំងអស់បានចូលរួមគោរពវិញ្ញាណក្ខន្ធ [ចន្លោះ] នៃវីរបុរសជាតិ។', options: ['សព', 'សប់'], correctAnswerIndex: 0, explanation: 'គោរពវិញ្ញាណក្ខន្ធ «សព» នៃវីរបុរសជាតិ។' },
+      { id: 'khmer_fill_6', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '៦. គាត់ប្រឹងបូមខ្យល់ [ចន្លោះ] កង់ដើម្បីជិះទៅសាលារៀន។', options: ['សព', 'សប់'], correctAnswerIndex: 1, explanation: 'បូមខ្យល់ «សប់» កង់ដើម្បីជិះទៅសាលា។' },
+      { id: 'khmer_fill_7', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '៧. បុព្វបុរសបានបន្សល់ទុកនូវ [ចន្លោះ] ឈ្មោះដ៏ល្អស្អាត។', options: ['កេរ្តិ៍', 'គេ'], correctAnswerIndex: 0, explanation: 'បន្សល់ទុកនូវ «កេរ្តិ៍» ឈ្មោះដ៏ល្អស្អាត។' },
+      { id: 'khmer_fill_8', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '៨. យើងមិនត្រូវស្តាប់តាមពាក្យអាក្រក់របស់ [ចន្លោះ] ឡើយ។', options: ['កេរ្តិ៍', 'គេ'], correctAnswerIndex: 1, explanation: 'មិនត្រូវស្តាប់តាមពាក្យអាក្រក់របស់ «គេ» ឡើយ។' },
+      { id: 'khmer_fill_9', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '៩. កុមារត្រូវមាន [ចន្លោះ] ស្មោះត្រង់ និងខិតខំរៀនសូត្រ។', options: ['ចិត្ត', 'ចិត'], correctAnswerIndex: 0, explanation: 'កុមារត្រូវមាន «ចិត្ត» ស្មោះត្រង់ និងខិតខំរៀនសូត្រ។' },
+      { id: 'khmer_fill_10', subjectId: 'khmer', category: 'ផ្នែកទី៣៖ បំពេញល្បះ', text: '១០. ម្ដាយកំពុង [ចន្លោះ] បន្លែធ្វើម្ហូបក្នុងផ្ទះបាយ។', options: ['ចិត្ត', 'ចិត'], correctAnswerIndex: 1, explanation: 'ម្ដាយកំពុង «ចិត» បន្លែធ្វើម្ហូបក្នុងផ្ទះបាយ។' },
+
+      // ផ្នែកទី៤៖ ខុស ឬ ត្រូវ (៨ ល្បះ)
+      {
+        id: 'khmer_tf_1',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៤៖ សំណួរ ខុស ឬ ត្រូវ',
+        text: '១. «អ្នកដឹកនាំត្រូវប្រើ **អំណាច** ក្នុងផ្លូវត្រឹមត្រូវ។»',
+        options: ['ត្រូវ', 'ខុស'],
+        correctAnswerIndex: 0,
+        explanation: 'ត្រូវ៖ ពាក្យ «អំណាច» សរសេរបានត្រឹមត្រូវរួចហើយ។'
+      },
+      {
+        id: 'khmer_tf_2',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៤៖ សំណួរ ខុស ឬ ត្រូវ',
+        text: '២. «ឪពុកខ្ញុំមាន **អាជីព** ជាគ្រូបង្រៀន។»',
+        options: ['ត្រូវ', 'ខុស'],
+        correctAnswerIndex: 0,
+        explanation: 'ត្រូវ៖ ពាក្យ «អាជីព» សរសេរបានត្រឹមត្រូវរួចហើយ។'
+      },
+      {
+        id: 'khmer_tf_3',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៤៖ សំណួរ ខុស ឬ ត្រូវ',
+        text: '៣. «គ្រោះធម្មជាតិបង្កឱ្យមាន **មហន្តរាយ** ធ្ងន់ធ្ងរ។»',
+        options: ['ត្រូវ', 'ខុស'],
+        correctAnswerIndex: 0,
+        explanation: 'ត្រូវ៖ ពាក្យ «មហន្តរាយ» សរសេរបានត្រឹមត្រូវរួចហើយ។'
+      },
+      {
+        id: 'khmer_tf_4',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៤៖ សំណួរ ខុស ឬ ត្រូវ',
+        text: '៤. «យើងត្រូវរួមគ្នា **អភិរក្ស** សម្បត្តិវប្បធម៌ជាតិ។»',
+        options: ['ត្រូវ', 'ខុស'],
+        correctAnswerIndex: 0,
+        explanation: 'ត្រូវ៖ ពាក្យ «អភិរក្ស» សរសេរបានត្រឹមត្រូវរួចហើយ។'
+      },
+      {
+        id: 'khmer_tf_5',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៤៖ សំណួរ ខុស ឬ ត្រូវ',
+        text: '៥. «សាលារៀនបាន **ផ្សពផ្សាយ** ព័ត៌មានដល់សិស្ស។»',
+        options: ['ត្រូវ', 'ខុស'],
+        correctAnswerIndex: 1,
+        explanation: 'ខុស៖ ពាក្យ «ផ្សពផ្សាយ» សរសេរខុស អក្ខរាវិរុទ្ធត្រឹមត្រូវគឺ «ផ្សព្វផ្សាយ»។'
+      },
+      {
+        id: 'khmer_tf_6',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៤៖ សំណួរ ខុស ឬ ត្រូវ',
+        text: '៦. «ប្រទេសកម្ពុជា **សំបូរ** ធនធានធម្មជាតិណាស់។»',
+        options: ['ត្រូវ', 'ខុស'],
+        correctAnswerIndex: 1,
+        explanation: 'ខុស៖ ពាក្យ «សំបូរ» សរសេរខុស អក្ខរាវិរុទ្ធត្រឹមត្រូវគឺ «សម្បូរ»។'
+      },
+      {
+        id: 'khmer_tf_7',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៤៖ សំណួរ ខុស ឬ ត្រូវ',
+        text: '៧. «យើងត្រូវខិតខំសាងអំពើល្អដើម្បី **អនាគត** ភ្លឺស្វាង។»',
+        options: ['ត្រូវ', 'ខុស'],
+        correctAnswerIndex: 0,
+        explanation: 'ត្រូវ៖ ពាក្យ «អនាគត» សរសេរបានត្រឹមត្រូវរួចហើយ។'
+      },
+      {
+        id: 'khmer_tf_8',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៤៖ សំណួរ ខុស ឬ ត្រូវ',
+        text: '៨. «ការថែរក្សា **បរិស្ឋាន** ជាភារកិច្ចរបស់អ្នកទាំងអស់គ្នា។»',
+        options: ['ត្រូវ', 'ខុស'],
+        correctAnswerIndex: 1,
+        explanation: 'ខុស៖ ពាក្យ «បរិស្ឋាន» សរសេរខុស អក្ខរាវិរុទ្ធត្រឹមត្រូវគឺ «បរិស្ថាន»។'
+      },
+
+      // ផ្នែកទី៥៖ សំណួរអប់រំ និងគំនិតច្នៃប្រឌិត (២ សំណួរ)
+      {
+        id: 'khmer_essay_1',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៥៖ សំណួរអប់រំ និងគំនិតច្នៃប្រឌិត',
+        text: 'សំណួរទី១ (១ ពិន្ទុ)៖ តើសិស្សល្អគួរមានសកម្មភាព និងកាយវិការដូចម្តេចខ្លះ ទាំងនៅក្នុងសាលារៀន និងក្នុងគ្រួសារ? ចូររៀបរាប់យ៉ាងតិចឲ្យបាន ៣ ចំណុច។',
+        options: [],
+        correctAnswerIndex: 0,
+        explanation: 'ចម្លើយគំរូ៖ ១. ខិតខំរៀនសូត្រ និងស្តាប់បង្គាប់គ្រូបង្រៀន និងឪពុកម្តាយ។ ២. មានសីលធម៌ គោរពចាស់ទុំ និងជួយធ្វើការងារផ្ទះ/សាលា។ ៣. ថែរក្សាបរិស្ថាន មិនបោះសំរាមពាសវាលពាសកាល។'
+      },
+      {
+        id: 'khmer_essay_2',
+        subjectId: 'khmer',
+        category: 'ផ្នែកទី៥៖ សំណួរអប់រំ និងគំនិតច្នៃប្រឌិត',
+        text: 'សំណួរទី២ (១ ពិន្ទុ)៖ ប្រសិនបើអ្នកឃើញមិត្តភក្តិបោះសំរាមចោលផ្តេសផ្តាសក្នុងបរិវេណសាលារៀន តើអ្នកនឹងនិយាយ ឬធ្វើសកម្មភាពយ៉ាងណាដើម្បីអប់រំពួកគេ?',
+        options: [],
+        correctAnswerIndex: 0,
+        explanation: 'ចម្លើយគំរូ៖ និយាយពាក្យផ្អែមល្ហែម និងពន្យល់ណែនាំមិត្តភក្តិពីផលប៉ះពាល់នៃសំរាមចំពោះសុខភាព និងសោភ័ណភាពសាលា ព្រមទាំងធ្វើជាគំរូដោយរើសសំរាមនោះដាក់ក្នុងធុងសំរាមភ្លាមៗ។'
+      }
+    ]
   }
 ];
