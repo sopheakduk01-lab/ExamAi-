@@ -4,25 +4,25 @@
   "description": "កម្មវិធីត្រៀមប្រឡងស្វ័យសិក្សា និងប្រឡងសមត្ថភាពសម្រាប់សិស្សថ្នាក់ទី៦",
   "icons": [
     {
-      "src": "/app-icon.png",
+      "src": "/app-icon.png?v=2",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     },
     {
-      "src": "/favicon-192.png",
+      "src": "/favicon-192.png?v=2",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "/apple-touch-icon.png",
+      "src": "/apple-touch-icon.png?v=2",
       "type": "image/png",
       "sizes": "180x180",
       "purpose": "any"
     },
     {
-      "src": "/app-icon.svg",
+      "src": "/app-icon.svg?v=2",
       "type": "image/svg+xml",
       "sizes": "512x512",
       "purpose": "any"

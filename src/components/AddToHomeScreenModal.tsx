@@ -78,7 +78,7 @@ export const AddToHomeScreenModal: React.FC<AddToHomeScreenModalProps> = ({ isOp
             {/* App Icon preview */}
             <div className="w-14 h-14 rounded-2xl bg-white p-1 border-2 border-amber-200 shadow-md shrink-0 overflow-hidden">
               <img
-                src="/app-icon.png"
+                src="/app-icon.png?v=2"
                 alt="App Icon ត្រៀមប្រឡងទី៦"
                 className="w-full h-full object-cover rounded-xl"
                 referrerPolicy="no-referrer"

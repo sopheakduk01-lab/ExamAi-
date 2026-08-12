@@ -94,7 +94,7 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
               level="H"
               includeMargin={true}
               imageSettings={{
-                src: '/app-icon.png',
+                src: '/app-icon.png?v=2',
                 x: undefined,
                 y: undefined,
                 height: 36,
