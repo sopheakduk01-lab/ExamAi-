@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Home, GraduationCap, LayoutGrid, Award, Bell, Palette, Menu, MessageSquare } from 'lucide-react';
+import { Home, GraduationCap, LayoutGrid, Award, Bell, Palette, Menu, MessageSquare, BookOpen, Gamepad2 } from 'lucide-react';
 
 interface FacebookBottomNavProps {
   isVisible: boolean;
   onHomeClick: () => void;
   onOpenHomework?: () => void;
+  onOpenLessons?: () => void;
+  onOpenGames?: () => void;
   onOpenStudentChat?: () => void;
   onOpenMissions?: () => void;
   onOpenNotifications?: () => void;
@@ -22,6 +24,8 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
   isVisible,
   onHomeClick,
   onOpenHomework,
+  onOpenLessons,
+  onOpenGames,
   onOpenStudentChat,
   onOpenMissions,
   onOpenNotifications,
@@ -38,7 +42,7 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [activeTab, setActiveTab] = useState<'home' | 'homework' | 'library' | 'results' | 'notifications' | 'drawing' | 'menu'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'homework' | 'lessons' | 'games' | 'library' | 'results' | 'notifications' | 'drawing' | 'menu'>('home');
 
   // Smooth drag to scroll handler for desktop mouse drag
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -132,6 +136,54 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
             </div>
             <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul text-amber-800 dark:text-amber-300">
               កិច្ចការផ្ទះ
+            </span>
+          </button>
+
+          {/* Tab 3: រៀន (Lessons & Summaries) */}
+          <button
+            onClick={() => {
+              setActiveTab('lessons');
+              if (onOpenLessons) {
+                onOpenLessons();
+              }
+            }}
+            className={`flex flex-col items-center justify-center min-w-[60px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
+              activeTab === 'lessons'
+                ? 'bg-emerald-100/90 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-100 font-bold'
+                : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
+            }`}
+            id="nav-tab-lessons"
+            title="រៀនមេរៀនសង្ខេប (Lessons)"
+          >
+            <div className="w-5.5 h-5.5 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center shadow-xs">
+              <BookOpen className="w-4 h-4 stroke-[2.2]" />
+            </div>
+            <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul text-emerald-800 dark:text-emerald-300">
+              រៀន
+            </span>
+          </button>
+
+          {/* Tab 3.5: ល្បែងសិក្សា (Educational Games) */}
+          <button
+            onClick={() => {
+              setActiveTab('games');
+              if (onOpenGames) {
+                onOpenGames();
+              }
+            }}
+            className={`flex flex-col items-center justify-center min-w-[70px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
+              activeTab === 'games'
+                ? 'bg-violet-100/90 dark:bg-violet-950/60 text-violet-900 dark:text-violet-100 font-bold'
+                : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
+            }`}
+            id="nav-tab-games"
+            title="ល្បែងសិក្សា (Educational Games)"
+          >
+            <div className="w-5.5 h-5.5 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-500 text-white flex items-center justify-center shadow-xs">
+              <Gamepad2 className="w-4 h-4 stroke-[2.2]" />
+            </div>
+            <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul text-purple-800 dark:text-purple-300">
+              ល្បែងសិក្សា
             </span>
           </button>
 
@@ -235,7 +287,7 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
         onClick={onJoinClick || onOpenQRCode || onOpenMenu}
         className="w-16 h-16 sm:w-17 sm:h-17 bg-gradient-to-tr from-pink-500 via-purple-600 via-indigo-600 via-cyan-500 to-pink-500 bg-[length:300%_300%] animate-gradient-shift animate-join-glow border-2 border-white/50 dark:border-slate-800/50 shadow-2xl rounded-full flex flex-col items-center justify-center text-white hover:scale-110 active:scale-95 transition-all cursor-pointer shrink-0 pointer-events-auto group relative overflow-hidden"
         id="nav-tab-join"
-        title="Join Exam / Quiz"
+        title="ធ្វើតេស្តវិញ្ញាសា (Take Exam)"
       >
         {/* Shiny overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/30 pointer-events-none" />
@@ -255,8 +307,8 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
           </div>
         </div>
 
-        <span className="text-[11px] font-extrabold mt-0.5 tracking-wide text-white drop-shadow-[0_1.5px_3px_rgba(0,0,0,0.5)] font-sans">
-          Join
+        <span className="text-[10px] font-bold mt-0.5 tracking-tight text-white drop-shadow-[0_1.5px_3px_rgba(0,0,0,0.5)] font-moul">
+          តេស្ត
         </span>
       </button>
     </div>

@@ -26,6 +26,7 @@ interface SubjectDetailViewProps {
   examPapers: ExamPaper[];
   lessons: LessonSummary[];
   initialTab?: 'exams' | 'lessons';
+  initialLessonId?: string;
   onBack: () => void;
   onSelectExam: (exam: ExamPaper) => void;
   bookmarkedQuestionIds: string[];
@@ -39,6 +40,7 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
   examPapers,
   lessons,
   initialTab = 'exams',
+  initialLessonId,
   onBack,
   onSelectExam,
   onOpenEnglishGame,
@@ -468,6 +470,7 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
           subject={subject}
           lessons={lessons}
           onBack={() => setActiveTab('exams')}
+          initialLessonId={initialLessonId}
         />
       )}
     </div>

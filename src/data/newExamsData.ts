@@ -1,6 +1,6 @@
 import { ExamPaper } from '../types';
 
-export const NEW_EXAM_PAPERS: ExamPaper[] = [
+const RAW_NEW_EXAM_PAPERS: ExamPaper[] = [
   {
     id: 'new_science_exam_2026_orussi',
     subjectId: 'science',
@@ -2083,3 +2083,13 @@ export const NEW_EXAM_PAPERS: ExamPaper[] = [
     ]
   }
 ];
+
+export const NEW_EXAM_PAPERS: ExamPaper[] = (() => {
+  const papers = [...RAW_NEW_EXAM_PAPERS];
+  const plpIndex = papers.findIndex(exam => exam.id === 'new_science_exam_plp_2026');
+  if (plpIndex > -1) {
+    const [plpExam] = papers.splice(plpIndex, 1);
+    papers.unshift(plpExam);
+  }
+  return papers;
+})();

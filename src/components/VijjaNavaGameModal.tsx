@@ -1428,40 +1428,10 @@ export const VijjaNavaGameModal: React.FC<VijjaNavaGameModalProps> = ({
               {/* Scrollable Area */}
               <div className="overflow-y-auto pr-1 flex-1 text-left mb-3 space-y-3">
                 
-                {/* STEP 1: CHARACTER SELECTOR */}
-                <div>
-                  <label className="block text-[11px] font-black text-yellow-400 uppercase tracking-widest mb-1.5">
-                    ១. ជ្រើសរើសតួអង្គ (Select Character):
-                  </label>
-                  <div className="grid grid-cols-5 gap-1.5">
-                    {CHARACTERS.map(char => {
-                      const isSelected = char.id === selectedCharacter.id;
-                      return (
-                        <button
-                          key={char.id}
-                          type="button"
-                          onClick={() => setSelectedCharacter(char)}
-                          className={`flex flex-col items-center justify-center p-2 rounded-2xl border text-center transition cursor-pointer ${
-                            isSelected 
-                              ? 'border-yellow-400 bg-yellow-500/30 scale-105 shadow-[0_0_15px_rgba(250,204,21,0.5)]' 
-                              : 'border-slate-800 bg-slate-900/60 hover:border-slate-600'
-                          }`}
-                        >
-                          <span className="text-2xl">{char.icon}</span>
-                          <span className="text-[10px] font-bold text-white mt-1 line-clamp-1">{char.name}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <div className="mt-1.5 p-2 rounded-xl bg-slate-900/80 border border-amber-500/30 text-[11px] text-amber-200 flex items-center justify-between">
-                    <span>{selectedCharacter.desc}</span>
-                  </div>
-                </div>
-
-                {/* STEP 2: SUBJECT SELECTOR */}
+                {/* STEP 1: SUBJECT SELECTOR */}
                 <div>
                   <label className="block text-[11px] font-black text-sky-400 uppercase tracking-widest mb-1.5">
-                    ២. ជ្រើសរើសមុខវិជ្ជា (Subject):
+                    ១. ជ្រើសរើសមុខវិជ្ជា (Subject):
                   </label>
                   <div className="grid grid-cols-3 gap-1.5">
                     
@@ -1570,11 +1540,11 @@ export const VijjaNavaGameModal: React.FC<VijjaNavaGameModalProps> = ({
                   </div>
                 </div>
 
-                {/* STEP 3: TOPIC SELECTOR */}
+                {/* STEP 2: TOPIC SELECTOR */}
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <label className="block text-[11px] font-black text-amber-300 uppercase tracking-widest">
-                      ៣. ជ្រើសរើសប្រធានបទ (Topics):
+                      ២. ជ្រើសរើសប្រធានបទ (Topics):
                     </label>
                     <span className="text-[9px] font-bold text-yellow-400 bg-yellow-500/10 px-2 py-0.5 rounded-full border border-yellow-500/30">
                       {(GAME_SUBJECTS[selectedSubject] || []).length} ប្រធានបទ

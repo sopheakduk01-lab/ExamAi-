@@ -22,6 +22,7 @@ interface LessonSummaryViewerProps {
   subject: Subject;
   lessons: LessonSummary[];
   onBack: () => void;
+  initialLessonId?: string;
 }
 
 export interface SubModuleCategory {
@@ -240,10 +241,11 @@ const QuizTab: React.FC<{
 export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
   subject,
   lessons,
-  onBack
+  onBack,
+  initialLessonId
 }) => {
   const [selectedSubModuleId, setSelectedSubModuleId] = useState<string>('all');
-  const [selectedLessonId, setSelectedLessonId] = useState<string>(lessons[0]?.id || '');
+  const [selectedLessonId, setSelectedLessonId] = useState<string>(initialLessonId || lessons[0]?.id || '');
   const [searchQuery, setSearchQuery] = useState('');
   const [fontSize, setFontSize] = useState<'normal' | 'large'>('normal');
   const [readingId, setReadingId] = useState<string | null>(null);
@@ -251,8 +253,16 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
   const [isTtsTroubleOpen, setIsTtsTroubleOpen] = useState(false);
   const [aiTutorLesson, setAiTutorLesson] = useState<LessonSummary | null>(null);
   const [practiceAnswers, setPracticeAnswers] = useState<Record<string, number>>({});
-  const [mobileViewState, setMobileViewState] = useState<'list' | 'reader'>('list');
+  const [mobileViewState, setMobileViewState] = useState<'list' | 'reader'>(initialLessonId ? 'reader' : 'list');
   const [readerTab, setReaderTab] = useState<'summary' | 'example' | 'quiz'>('summary');
+
+  // Sync initialLessonId changes dynamically
+  useEffect(() => {
+    if (initialLessonId) {
+      setSelectedLessonId(initialLessonId);
+      setMobileViewState('reader');
+    }
+  }, [initialLessonId]);
 
   // Reset active tab to summary when selected lesson changes
   useEffect(() => {

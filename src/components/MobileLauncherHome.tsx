@@ -48,7 +48,6 @@ interface MobileLauncherHomeProps {
   onOpenBookmarks: () => void;
   onOpenProgress: () => void;
   onOpenMenu: () => void;
-  onOpenCharacterModal: () => void;
   onOpenAccountModal: () => void;
   onSelectExamWithRegistration: (paper: ExamPaper) => void;
   activeMainTab: 'exam' | 'lesson' | 'new_exam' | 'homework';
@@ -97,7 +96,6 @@ export const MobileLauncherHome: React.FC<MobileLauncherHomeProps> = ({
   onOpenBookmarks,
   onOpenProgress,
   onOpenMenu,
-  onOpenCharacterModal,
   onOpenAccountModal,
   onSelectExamWithRegistration,
   activeMainTab,

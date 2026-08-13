@@ -29,7 +29,6 @@ interface NavigationDrawerProps {
   onHomeClick: () => void;
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
-  onOpenCharacterModal?: () => void;
   onOpenOwnerTracking?: () => void;
 }
 
@@ -59,7 +58,6 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onHomeClick,
   userProfile,
   onOpenRegistrationModal,
-  onOpenCharacterModal,
   onOpenOwnerTracking
 }) => {
   if (!isOpen) return null;
@@ -140,19 +138,6 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
               )}
             </div>
 
-            {/* Character Selection Trigger Button */}
-            {onOpenCharacterModal && (
-              <button
-                onClick={() => {
-                  onOpenCharacterModal();
-                  onClose();
-                }}
-                className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-bold text-xs shadow-md active:scale-98 transition-all cursor-pointer flex items-center justify-center gap-2 border border-amber-200"
-                id="btn-drawer-character-modal"
-              >
-                <span>🎭 ជ្រើសរើសតួអង្គសិក្សា (៥០ តួអង្គ)</span>
-              </button>
-            )}
           </div>
 
           {/* Quick Nav Group 1: ទូទៅ & ការសិក្សា (General & Study) */}

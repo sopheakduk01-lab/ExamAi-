@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Lightbulb, GraduationCap, CheckCircle2, Sparkles, Trophy, Target, Bot, ArrowRight, Compass, Megaphone } from 'lucide-react';
+import { BookOpen, Lightbulb, Megaphone } from 'lucide-react';
 import { UserProfile } from '../types';
 
 interface HeroBannerProps {
@@ -12,24 +12,13 @@ interface HeroBannerProps {
   onOpenFishingGame?: () => void;
   userProfile?: UserProfile | null;
   onOpenRegistrationModal?: () => void;
-  onOpenCharacterModal?: () => void;
 }
 
 export const HeroBanner: React.FC<HeroBannerProps & {
   activeMainTab?: 'exam' | 'lesson' | 'new_exam' | 'homework';
   onSelectMainTab?: (tab: 'exam' | 'lesson' | 'new_exam' | 'homework') => void;
 }> = ({
-  onStartExamClick,
-  onStartLessonClick,
-  onOpenMissions,
-  onOpenModernLibrary,
-  onOpenAITutor,
-  onOpenStudentChat,
-  onOpenFishingGame,
   userProfile,
-  onOpenRegistrationModal,
-  onOpenCharacterModal,
-  activeMainTab = 'exam',
   onSelectMainTab
 }) => {
   const [touchStartX, setTouchStartX] = React.useState<number | null>(null);
@@ -48,8 +37,8 @@ export const HeroBanner: React.FC<HeroBannerProps & {
       onSelectMainTab('lesson');
     }
     // Swipe Left -> Open Modern Library
-    else if (diff < -50 && onOpenModernLibrary) {
-      onOpenModernLibrary();
+    else if (diff < -50 && onSelectMainTab) {
+      onSelectMainTab('new_exam'); // fallback
     }
     setTouchStartX(null);
   };
@@ -100,17 +89,12 @@ export const HeroBanner: React.FC<HeroBannerProps & {
             </div>
           </div>
 
-          {onOpenCharacterModal && (
-            <button
-              onClick={onOpenCharacterModal}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/30 to-yellow-500/30 hover:from-amber-500/50 hover:to-yellow-500/50 border border-amber-400/60 text-yellow-200 text-xs font-bold transition-all cursor-pointer backdrop-blur-md active:scale-95 shadow-md"
-              id="btn-hero-character-modal"
-            >
-              <span>{userProfile?.avatar || '👦'}</span>
-              <span>សួស្តី, {userProfile?.name || 'សុខា'}! 👋</span>
-              <span className="bg-amber-400 text-amber-950 px-1.5 py-0.2 rounded-md text-[10px]">🎭 ៥០ តួអង្គ</span>
-            </button>
-          )}
+          <div
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#59301A]/80 border border-amber-500/40 text-amber-200 text-xs font-bold shadow-md"
+          >
+            <span>{userProfile?.avatar || '🎓'}</span>
+            <span>សួស្តី, {userProfile?.name || 'សុខា'}! 👋</span>
+          </div>
         </div>
 
         {/* Center Icon Emblem with glowing ring */}
@@ -135,87 +119,7 @@ export const HeroBanner: React.FC<HeroBannerProps & {
         <p className="text-sm sm:text-base text-amber-100/90 font-medium leading-relaxed max-w-xl mb-6">
           ប្រព័ន្ធសាកល្បងសមត្ថភាព មេរៀនសង្ខេប និងវិញ្ញាសាគំរូផ្លូវការ គ្រប់មុខវិជ្ជា៖ <span className="text-yellow-300 font-bold">ភាសាខ្មែរ, គណិតវិទ្យា, វិទ្យាសាស្ត្រ, សិក្សាសង្គម & អង់គ្លេស</span>
         </p>
-
-
       </div>
-
-      {/* Bottom Main Tabs Inside Card */}
-      {onSelectMainTab && (
-        <div className="relative z-10 pt-4 border-t border-amber-600/30 flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-          <button
-            onClick={() => onSelectMainTab('exam')}
-            className={`py-2 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 font-moul ${
-              activeMainTab === 'exam'
-                ? 'bg-amber-400 text-amber-950 shadow-lg scale-105 font-bold'
-                : 'bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30'
-            }`}
-            id="hero-tab-exam"
-          >
-            <GraduationCap className="w-4 h-4" />
-            <span>វិញ្ញាសាប្រឡង</span>
-          </button>
-
-          <button
-            onClick={() => onSelectMainTab('lesson')}
-            className={`py-2 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 font-moul ${
-              activeMainTab === 'lesson'
-                ? 'bg-amber-400 text-amber-950 shadow-lg scale-105 font-bold'
-                : 'bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30'
-            }`}
-            id="hero-tab-lesson"
-          >
-            <BookOpen className="w-4 h-4" />
-            <span>មេរៀនសង្ខេប</span>
-          </button>
-
-          <button
-            onClick={() => onSelectMainTab('new_exam')}
-            className={`py-2 px-5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 relative font-moul ${
-              activeMainTab === 'new_exam'
-                ? 'bg-amber-400 text-amber-950 shadow-lg scale-105 font-bold'
-                : 'bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30'
-            }`}
-            id="hero-tab-new-exam"
-          >
-            <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
-            <span>តេស្តវិញ្ញាសាថ្មី</span>
-            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full animate-bounce shadow-xs">
-              NEW!
-            </span>
-          </button>
-
-          <button
-            onClick={() => onSelectMainTab('homework')}
-            className={`py-2 px-5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 relative font-moul ${
-              activeMainTab === 'homework'
-                ? 'bg-amber-400 text-amber-950 shadow-lg scale-105 font-bold'
-                : 'bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30'
-            }`}
-            id="hero-tab-homework"
-          >
-            <GraduationCap className="w-4 h-4 text-amber-300" />
-            <span>កិច្ចការផ្ទះ</span>
-            <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-extrabold px-1.5 py-0.2 rounded-full animate-bounce shadow-xs">
-              ថ្មី
-            </span>
-          </button>
-
-          {onOpenModernLibrary && (
-            <button
-              onClick={onOpenModernLibrary}
-              className="py-2 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 font-moul bg-amber-950/60 text-amber-200 hover:bg-amber-900/80 border border-amber-500/30"
-              id="hero-tab-modern-library"
-              title="អូសស្តាំលើផ្ទាំងនេះ ឬចុចទីនេះដើម្បីបើកបណ្ណាល័យទំនើប"
-            >
-              <Compass className="w-4 h-4 text-amber-300" />
-              <span>បណ្ណាល័យទំនើប</span>
-            </button>
-          )}
-        </div>
-      )}
-
-
     </div>
   );
 };
-
