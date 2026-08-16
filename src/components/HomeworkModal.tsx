@@ -324,7 +324,7 @@ export const HomeworkModal: React.FC<HomeworkModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 animate-fade-in overflow-y-auto">
-      <div className="bg-slate-100 dark:bg-slate-900 rounded-3xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+      <div className="bg-slate-100 dark:bg-slate-900 rounded-3xl w-full max-w-6xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
         
         {/* Top bar with tabs and close button */}
         <div className="bg-[#8C5E3C] text-amber-50 px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-md shrink-0">
@@ -470,7 +470,7 @@ export const HomeworkModal: React.FC<HomeworkModalProps> = ({
               {/* Paper Worksheet Container mimicking an official MoEYS A4 printout */}
               <div 
                 id="homework-printable-area" 
-                className="w-full bg-white text-slate-950 rounded-3xl p-6 sm:p-8 shadow-md border border-slate-300/80 max-w-[620px] relative overflow-hidden flex flex-col justify-between min-h-[680px]"
+                className="w-full bg-white text-slate-950 rounded-3xl p-6 sm:p-9 shadow-md border border-slate-300/80 max-w-[760px] relative overflow-hidden flex flex-col justify-between min-h-[720px]"
               >
                 {/* Decorative background lines mimicking paper watermark */}
                 <div className="absolute inset-0 pointer-events-none opacity-[0.02] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] z-0"></div>
@@ -610,7 +610,7 @@ export const HomeworkModal: React.FC<HomeworkModalProps> = ({
               </div>
 
               {/* Action buttons under worksheet sheet */}
-              <div className="w-full max-w-[620px] flex flex-wrap items-center justify-between gap-3 pt-4">
+              <div className="w-full max-w-[760px] flex flex-wrap items-center justify-between gap-3 pt-4">
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handlePrint}
@@ -653,7 +653,7 @@ export const HomeworkModal: React.FC<HomeworkModalProps> = ({
 
               {/* Visual score card popup if results are shown */}
               {showResults && (
-                <div className="w-full max-w-[620px] mt-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-800 text-white shadow-lg border border-amber-400 flex items-center justify-between gap-4 animate-bounce-short">
+                <div className="w-full max-w-[760px] mt-4 p-4 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-600 to-amber-800 text-white shadow-lg border border-amber-400 flex items-center justify-between gap-4 animate-bounce-short">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-2xl shadow-inner border border-white/20">
                       🏆

@@ -73,7 +73,7 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
             </div>
             <div>
               <h2 className="font-bold text-base font-moul tracking-wide text-amber-100">
-                ត្រៀមប្រឡងទី៦
+                រៀនបន្ថែមទី៦
               </h2>
               <p className="text-[11px] text-amber-200/80">កម្រងវិញ្ញាសា និងមេរៀនសង្ខេប</p>
             </div>
@@ -577,7 +577,7 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
 
         {/* Footer info */}
         <div className="p-3.5 border-t border-slate-100 text-center text-xs text-slate-500 bg-slate-50 flex flex-col items-center justify-center gap-1">
-          <p className="font-semibold text-slate-700">ត្រៀមប្រឡងថ្នាក់ទី៦ v1.0</p>
+          <p className="font-semibold text-slate-700">រៀនបន្ថែមថ្នាក់ទី៦ v1.0</p>
           <button
             onClick={() => {
               if (onOpenAbout) {

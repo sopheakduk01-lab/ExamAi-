@@ -303,7 +303,7 @@ export const Grade6ExamCarousel: React.FC<Grade6ExamCarouselProps> = ({
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <h2 className="font-moul text-sm sm:text-base text-amber-200 tracking-wide">
-                ត្រៀមប្រឡងបញ្ចប់បឋមសិក្សា ថ្នាក់ទី៦
+                រៀនបន្ថែម សម្រាប់កូនៗថ្នាក់ទី៦
               </h2>
             </div>
             <p className="text-xs text-slate-300/90 font-medium">

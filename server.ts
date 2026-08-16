@@ -119,6 +119,17 @@ async function startServer() {
 
       if (isRawPcm) {
         const rawPcmBuffer = Buffer.from(base64Audio, "base64");
+        
+        // Convert big-endian L16 PCM (network byte order) to standard little-endian PCM for standard WAV compatibility
+        if (mimeType.toLowerCase().includes("l16") || mimeType.toLowerCase().includes("linear")) {
+          if (rawPcmBuffer.length % 2 === 0) {
+            rawPcmBuffer.swap16();
+          } else {
+            const evenBuffer = rawPcmBuffer.subarray(0, rawPcmBuffer.length - 1);
+            evenBuffer.swap16();
+          }
+        }
+
         // Parse sample rate if specified in the mimeType, e.g. "audio/pcm;rate=24000" or "audio/L16;rate=24000"
         let sampleRate = 24000;
         const rateMatch = mimeType.match(/rate=(\d+)/i);

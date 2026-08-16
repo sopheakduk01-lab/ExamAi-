@@ -33,6 +33,7 @@ interface SubjectDetailViewProps {
   onToggleBookmark: (qId: string) => void;
   onOpenEnglishGame?: () => void;
   onOpenFishingGame?: () => void;
+  activeMainTab?: 'exam' | 'lesson' | 'new_exam' | 'homework' | 'games';
 }
 
 export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
@@ -44,9 +45,12 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
   onBack,
   onSelectExam,
   onOpenEnglishGame,
-  onOpenFishingGame
+  onOpenFishingGame,
+  activeMainTab
 }) => {
-  const [activeTab, setActiveTab] = useState<'exams' | 'lessons'>(initialTab);
+  const [activeTab, setActiveTab] = useState<'exams' | 'lessons'>(
+    activeMainTab === 'lesson' ? 'lessons' : (activeMainTab === 'exam' ? 'exams' : initialTab)
+  );
   const [filterType, setFilterType] = useState<'all' | 'lesson' | 'comprehensive'>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -62,6 +66,8 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX === null || touchStartY === null) return;
+    // Disable horizontal swipe switching when activeMainTab is strictly lessons or exams to keep them isolated
+    if (activeMainTab === 'lesson' || activeMainTab === 'exam') return;
 
     const touchEndX = e.changedTouches[0].clientX;
     const touchEndY = e.changedTouches[0].clientY;
@@ -84,10 +90,14 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
     setTouchStartY(null);
   };
   useEffect(() => {
-    if (initialTab) {
+    if (activeMainTab === 'lesson') {
+      setActiveTab('lessons');
+    } else if (activeMainTab === 'exam') {
+      setActiveTab('exams');
+    } else if (initialTab) {
       setActiveTab(initialTab);
     }
-  }, [initialTab]);
+  }, [initialTab, activeMainTab]);
 
   useEffect(() => {
     // Load exam scores from localStorage
@@ -141,12 +151,14 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
       className="max-w-5xl mx-auto py-3 px-4 space-y-4 touch-pan-y"
     >
       {/* Swipe Left/Right Quick Tip Badge */}
-      <div className="flex items-center justify-between text-[11px] font-bold text-slate-600 bg-slate-100/90 px-3.5 py-1.5 rounded-full border border-slate-200/80 shadow-2xs">
-        <span className="flex items-center gap-1.5 text-emerald-800">
-          <span>👈👉 អូសទៅឆ្វេង ឬស្តាំ ដើម្បីផ្លាស់ប្តូរផ្នែក (វិញ្ញាសា / មេរៀន / AI)</span>
-        </span>
-        <span className="text-slate-400 font-mono hidden sm:inline">Touch Swipe Enabled</span>
-      </div>
+      {activeMainTab !== 'lesson' && activeMainTab !== 'exam' && (
+        <div className="flex items-center justify-between text-[11px] font-bold text-slate-600 bg-slate-100/90 px-3.5 py-1.5 rounded-full border border-slate-200/80 shadow-2xs">
+          <span className="flex items-center gap-1.5 text-emerald-800">
+            <span>👈👉 អូសទៅឆ្វេង ឬស្តាំ ដើម្បីផ្លាស់ប្តូរផ្នែក (វិញ្ញាសា / មេរៀន / AI)</span>
+          </span>
+          <span className="text-slate-400 font-mono hidden sm:inline">Touch Swipe Enabled</span>
+        </div>
+      )}
       {/* Subject Title & Section Status Header Banner */}
       <div className={`p-4 rounded-3xl border-2 transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs ${
         activeTab === 'lessons'
@@ -199,33 +211,35 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
       </div>
 
       {/* Main Tabs Segmented Navigation */}
-      <div className="flex items-center gap-2 bg-slate-200/80 p-1.5 rounded-2xl font-bold text-xs sm:text-sm shadow-inner">
-        <button
-          onClick={() => setActiveTab('exams')}
-          className={`flex-1 py-3 px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 font-moul ${
-            activeTab === 'exams'
-              ? 'bg-amber-600 text-white shadow-md scale-[1.01]'
-              : 'text-slate-700 hover:bg-slate-300/60'
-          }`}
-          id="tab-subject-exams"
-        >
-          <GraduationCap className="w-4 h-4" />
-          <span>កន្លែងវិញ្ញាសាប្រឡង ({examPapers.length})</span>
-        </button>
+      {activeMainTab !== 'lesson' && activeMainTab !== 'exam' && (
+        <div className="flex items-center gap-2 bg-slate-200/80 p-1.5 rounded-2xl font-bold text-xs sm:text-sm shadow-inner">
+          <button
+            onClick={() => setActiveTab('exams')}
+            className={`flex-1 py-3 px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 font-moul ${
+              activeTab === 'exams'
+                ? 'bg-amber-600 text-white shadow-md scale-[1.01]'
+                : 'text-slate-700 hover:bg-slate-300/60'
+            }`}
+            id="tab-subject-exams"
+          >
+            <GraduationCap className="w-4 h-4" />
+            <span>កន្លែងវិញ្ញាសាប្រឡង ({examPapers.length})</span>
+          </button>
 
-        <button
-          onClick={() => setActiveTab('lessons')}
-          className={`flex-1 py-3 px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 font-moul ${
-            activeTab === 'lessons'
-              ? 'bg-emerald-600 text-white shadow-md scale-[1.01]'
-              : 'text-slate-700 hover:bg-slate-300/60'
-          }`}
-          id="tab-subject-lessons"
-        >
-          <BookOpen className="w-4 h-4" />
-          <span>កន្លែងមេរៀនសង្ខេប ({lessons.length})</span>
-        </button>
-      </div>
+          <button
+            onClick={() => setActiveTab('lessons')}
+            className={`flex-1 py-3 px-3 rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 font-moul ${
+              activeTab === 'lessons'
+                ? 'bg-emerald-600 text-white shadow-md scale-[1.01]'
+                : 'text-slate-700 hover:bg-slate-300/60'
+            }`}
+            id="tab-subject-lessons"
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>កន្លែងមេរៀនសង្ខេប ({lessons.length})</span>
+          </button>
+        </div>
+      )}
 
       {/* Tab Contents */}
       {activeTab === 'exams' && (
@@ -469,7 +483,13 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
         <LessonSummaryViewer
           subject={subject}
           lessons={lessons}
-          onBack={() => setActiveTab('exams')}
+          onBack={() => {
+            if (activeMainTab === 'lesson') {
+              onBack(); // Go back to subject selection directly instead of shifting tab to exams
+            } else {
+              setActiveTab('exams');
+            }
+          }}
           initialLessonId={initialLessonId}
         />
       )}

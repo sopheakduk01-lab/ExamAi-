@@ -2846,7 +2846,7 @@ export const HomeworkSection: React.FC<HomeworkSectionProps> = ({ onEarnCoins })
                         setSelectedLessonKey(null);
                         setActiveSheetId(null);
                       }}
-                      className={`w-80 h-60 sm:w-[380px] sm:h-64 shrink-0 snap-start rounded-3xl p-6 bg-gradient-to-br ${subject.gradient} border-2 ${subject.borderColor} shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer group flex flex-col justify-between relative overflow-hidden backdrop-blur-md`}
+                      className={`w-[340px] h-[300px] sm:w-[450px] sm:h-[340px] shrink-0 snap-start rounded-[32px] p-6 sm:p-8 bg-gradient-to-br ${subject.gradient} border-2 ${subject.borderColor} shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer group flex flex-col justify-between relative overflow-hidden backdrop-blur-md`}
                     >
                       {/* Background icon element */}
                       <div className="absolute -right-8 -bottom-8 text-9xl opacity-15 pointer-events-none select-none transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500">
@@ -2854,29 +2854,29 @@ export const HomeworkSection: React.FC<HomeworkSectionProps> = ({ onEarnCoins })
                       </div>
 
                       <div className="flex items-center justify-between z-10">
-                        <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-3xl shadow-inner group-hover:scale-110 transition-transform">
+                        <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-3xl sm:text-4xl shadow-inner group-hover:scale-110 transition-transform">
                           {subject.icon}
                         </div>
-                        <span className={`px-3.5 py-1.5 rounded-full text-xs font-bold border backdrop-blur-md ${subject.badgeBg}`}>
+                        <span className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold border backdrop-blur-md ${subject.badgeBg}`}>
                           {subject.lessonCount} មេរៀន
                         </span>
                       </div>
 
-                      <div className="z-10 space-y-2 mt-auto">
-                        <h4 className="font-moul text-xl sm:text-2xl text-white group-hover:text-amber-300 transition-colors drop-shadow-md">
+                      <div className="z-10 space-y-3 mt-auto">
+                        <h4 className="font-moul text-2xl sm:text-3xl text-white group-hover:text-amber-300 transition-colors drop-shadow-md">
                           {subject.title}
                         </h4>
-                        <p className="text-xs sm:text-sm text-slate-200 font-medium line-clamp-1 leading-relaxed opacity-90">
+                        <p className="text-xs sm:text-base text-slate-200 font-medium line-clamp-1 leading-relaxed opacity-90">
                           {subject.subtitle}
                         </p>
 
                         {/* Subject Percentage Progress Indicator */}
-                        <div className="space-y-1 pt-1">
-                          <div className="flex justify-between items-center text-[11px] font-bold text-amber-200">
+                        <div className="space-y-1.5 pt-1">
+                          <div className="flex justify-between items-center text-[11px] sm:text-xs font-bold text-amber-200">
                             <span>ភាគរយបានធ្វើ៖</span>
                             <span>{subjPct}% ({subjDone}/{subjSheets.length} ផ្នែក)</span>
                           </div>
-                          <div className="w-full bg-black/40 h-2 rounded-full overflow-hidden border border-white/20">
+                          <div className="w-full bg-black/40 h-2.5 rounded-full overflow-hidden border border-white/20">
                             <div
                               className="bg-gradient-to-r from-amber-400 to-emerald-400 h-full rounded-full transition-all duration-500"
                               style={{ width: `${subjPct}%` }}
@@ -2967,8 +2967,51 @@ export const HomeworkSection: React.FC<HomeworkSectionProps> = ({ onEarnCoins })
                 </div>
               </div>
 
+              {/* Scroll controls and navigation info for Lessons */}
+              <div className="flex items-center justify-between flex-wrap gap-2 pt-2">
+                <div>
+                  <h4 className="font-moul text-xs sm:text-sm text-amber-200/90 flex items-center gap-1.5">
+                    <span>📚 មេរៀនទាំងអស់ក្នុងវិជ្ជា {selectedSubject?.title}</span>
+                  </h4>
+                  <p className="text-[11px] text-slate-400 mt-0.5">
+                    អូសទៅឆ្វេង ឬស្តាំ 👈👉 ឬប្រើប៊ូតុងព្រួញខាងស្តាំ ដើម្បីជ្រើសរើសមេរៀន
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-[10px] font-bold border border-amber-500/30">
+                    ស្វែងយល់ពីមេរៀន
+                  </span>
+                  <button
+                    onClick={() => {
+                      if (lessonsScrollRef.current) {
+                        lessonsScrollRef.current.scrollBy({ left: -330, behavior: 'smooth' });
+                      }
+                    }}
+                    className="p-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 transition-all cursor-pointer shadow-md active:scale-95"
+                    title="មេរៀនមុន"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (lessonsScrollRef.current) {
+                        lessonsScrollRef.current.scrollBy({ left: 330, behavior: 'smooth' });
+                      }
+                    }}
+                    className="p-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 transition-all cursor-pointer shadow-md active:scale-95"
+                    title="មេរៀនបន្ទាប់"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+
               {/* Beautiful Syllabus Row layout with Lesson Completion Percentages & Unique Vibrant Lesson Colors */}
-              <div className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 px-1 no-scrollbar sm:scroll-smooth">
+              <div 
+                ref={lessonsScrollRef}
+                className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 px-1 no-scrollbar sm:scroll-smooth"
+              >
                 {groupedLessons.map((group, idx) => {
                   const palette = LESSON_COLOR_PALETTES[idx % LESSON_COLOR_PALETTES.length];
                   const groupSheets = group.sheets;
@@ -2986,36 +3029,36 @@ export const HomeworkSection: React.FC<HomeworkSectionProps> = ({ onEarnCoins })
                       onClick={() => {
                         setSelectedLessonKey(group.lessonKey);
                       }}
-                      className={`group relative rounded-3xl p-5 bg-gradient-to-br ${palette.cardBg} border-2 ${palette.borderColor} shadow-2xl ${palette.shadowGlow} hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden min-h-[220px] backdrop-blur-md shrink-0 w-[290px] sm:w-[320px] snap-start`}
+                      className={`group relative rounded-[32px] p-6 bg-gradient-to-br ${palette.cardBg} border-2 ${palette.borderColor} shadow-2xl ${palette.shadowGlow} hover:scale-[1.03] hover:rotate-1 transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden min-h-[250px] backdrop-blur-md shrink-0 w-[320px] sm:w-[360px] snap-start`}
                     >
                       <div className="absolute -right-4 -bottom-4 p-4 opacity-15 text-7xl pointer-events-none group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
                         {group.icon}
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-md ${palette.badgeBg}`}>
+                        <span className={`px-3.5 py-1.5 rounded-full text-xs font-bold border backdrop-blur-md ${palette.badgeBg}`}>
                           {group.lessonKey}
                         </span>
-                        <div className="w-10 h-10 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
+                        <div className="w-11 h-11 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
                           {group.icon}
                         </div>
                       </div>
 
-                      <div className="space-y-1 mt-3 my-auto">
-                        <h4 className={`font-moul text-sm sm:text-base transition-colors line-clamp-2 ${palette.titleColor}`}>
+                      <div className="space-y-1.5 mt-4 my-auto">
+                        <h4 className={`font-moul text-base sm:text-lg leading-relaxed transition-colors line-clamp-2 ${palette.titleColor}`}>
                           {group.lessonTitle}
                         </h4>
                       </div>
 
                       {/* Lesson Level Percentage Display */}
-                      <div className="space-y-1.5 mt-3 pt-2 border-t border-white/10">
+                      <div className="space-y-1.5 mt-4 pt-3 border-t border-white/10">
                         <div className="flex items-center justify-between text-xs">
                           <span className={`text-[11px] font-bold ${palette.subTextColor}`}>ភាគរយបានធ្វើ៖</span>
                           <span className={`font-bold text-xs ${lessonCompletionPct === 100 ? 'text-emerald-300' : lessonCompletionPct > 0 ? 'text-amber-300' : 'text-slate-400'}`}>
                             {lessonCompletionPct}% ({partsDone}/{partsTotal} ផ្នែក)
                           </span>
                         </div>
-                        <div className="w-full bg-black/40 h-2 rounded-full overflow-hidden border border-white/20">
+                        <div className="w-full bg-black/40 h-2.5 rounded-full overflow-hidden border border-white/20">
                           <div
                             className={`h-full rounded-full transition-all duration-500 ${
                               lessonCompletionPct === 100
@@ -3029,13 +3072,13 @@ export const HomeworkSection: React.FC<HomeworkSectionProps> = ({ onEarnCoins })
                         </div>
                       </div>
 
-                      <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between">
-                        <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-lg border ${palette.badgeBg}`}>
+                      <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+                        <span className={`text-[11px] font-bold px-3 py-1 rounded-xl border ${palette.badgeBg}`}>
                           📋 {partsTotal} ផ្នែក {partsDone > 0 && `• ពិន្ទុ ${lessonAvgScore}%`}
                         </span>
-                        <span className={`text-[11px] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform ${palette.iconColor}`}>
-                          <span>ចូលមើល</span>
-                          <ChevronRight className="w-3.5 h-3.5" />
+                        <span className={`text-[11px] sm:text-xs font-bold flex items-center gap-1.5 group-hover:translate-x-1.5 transition-transform ${palette.iconColor}`}>
+                          <span>ចូលមើលមេរៀន</span>
+                          <ChevronRight className="w-4 h-4" />
                         </span>
                       </div>
                     </div>
@@ -3214,7 +3257,7 @@ export const HomeworkSection: React.FC<HomeworkSectionProps> = ({ onEarnCoins })
 
               {/* Centered Printable Paper Sheet */}
               <div className="flex justify-center">
-                <div className="w-full max-w-[660px] bg-[#FAF8F5] text-slate-950 rounded-3xl p-6 sm:p-9 shadow-2xl border-4 border-amber-900/20 relative overflow-hidden flex flex-col justify-between min-h-[680px]">
+                <div className="w-full max-w-[800px] bg-[#FAF8F5] text-slate-950 rounded-3xl p-6 sm:p-10 shadow-2xl border-4 border-amber-900/20 relative overflow-hidden flex flex-col justify-between min-h-[720px]">
                   
                   {/* Decorative Paper Corners */}
                   <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-amber-800/40 rounded-tl-xl pointer-events-none"></div>

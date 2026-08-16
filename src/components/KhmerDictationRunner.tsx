@@ -127,7 +127,17 @@ export const KhmerDictationRunner: React.FC<KhmerDictationRunnerProps> = ({
       const data = await res.json();
       if (!data.audio) throw new Error('No audio');
 
-      const audioUrl = `data:${data.mimeType || 'audio/mp3'};base64,${data.audio}`;
+      const mimeType = data.mimeType || 'audio/mp3';
+      
+      // Convert base64 to Blob URL for highly stable playback across modern browsers
+      const binaryString = window.atob(data.audio);
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      const blob = new Blob([bytes], { type: mimeType });
+      const audioUrl = URL.createObjectURL(blob);
+      
       const audio = new Audio(audioUrl);
       audioRef.current = audio;
 

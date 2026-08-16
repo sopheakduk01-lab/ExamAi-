@@ -127,6 +127,22 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
       );
     });
 
+    // Sort matchedLessons by subjectId and then chapter number
+    matchedLessons.sort((a, b) => {
+      if (a.subjectId !== b.subjectId) {
+        return a.subjectId.localeCompare(b.subjectId);
+      }
+      return a.chapter.localeCompare(b.chapter, undefined, { numeric: true, sensitivity: 'base' });
+    });
+
+    // Sort matchedExams by subjectId and then title
+    matchedExams.sort((a, b) => {
+      if (a.subjectId !== b.subjectId) {
+        return a.subjectId.localeCompare(b.subjectId);
+      }
+      return a.title.localeCompare(b.title);
+    });
+
     return {
       subjects: matchedSubjects,
       exams: matchedExams,

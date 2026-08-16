@@ -71,7 +71,7 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
       id="modern-kahoot-nav"
     >
       {/* 1. Main Floating Capsule Container */}
-      <div className="relative flex-1 min-w-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl shadow-indigo-950/20 rounded-[40px] overflow-hidden pointer-events-auto">
+      <div className="relative flex-1 min-w-0 bg-white/60 dark:bg-slate-900/50 backdrop-blur-md border border-white/40 dark:border-slate-800/40 shadow-2xl shadow-indigo-950/15 rounded-[40px] overflow-hidden pointer-events-auto">
         
         {/* Soft Gradient Top Glow (Cyan/Teal on Left blending into Soft Purple on Right) */}
         <div className="absolute top-0 inset-x-0 h-4 bg-gradient-to-r from-cyan-300/60 via-teal-200/50 to-purple-400/60 blur-xs pointer-events-none" />
@@ -97,16 +97,20 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
               setActiveTab('home');
               onHomeClick();
             }}
-            title="ត្រៀមប្រឡងបញ្ចប់បឋមសិក្សា ថ្នាក់ទី៦ (Home)"
+            title="រៀនបន្ថែម សម្រាប់កូនៗថ្នាក់ទី៦ (Home)"
             className={`flex flex-col items-center justify-center min-w-[58px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'home'
-                ? 'bg-purple-100/90 dark:bg-purple-950/60 text-purple-900 dark:text-purple-100 font-bold'
+                ? 'bg-blue-100/90 dark:bg-blue-950/60 text-blue-900 dark:text-blue-100 font-bold'
                 : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
             }`}
             id="nav-tab-home"
           >
-            <Home className="w-5 h-5 fill-slate-900 dark:fill-slate-100 stroke-none" />
-            <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul">
+            <div className="w-5.5 h-5.5 rounded-lg bg-gradient-to-tr from-blue-600 to-sky-500 text-white flex items-center justify-center shadow-xs">
+              <Home className="w-4 h-4 stroke-[2.2]" />
+            </div>
+            <span className={`text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul ${
+              activeTab === 'home' ? 'text-blue-800 dark:text-blue-300' : 'text-slate-700 dark:text-slate-300'
+            }`}>
               ទំព័រដើម
             </span>
           </button>
@@ -187,7 +191,7 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
             </span>
           </button>
 
-          {/* Tab 4: Library (4 rounded squares icon - 2x2 grid) */}
+          {/* Tab 4: Library (📚 បណ្ណាល័យ) */}
           <button
             onClick={() => {
               setActiveTab('library');
@@ -201,14 +205,18 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
             }}
             className={`flex flex-col items-center justify-center min-w-[58px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'library'
-                ? 'bg-purple-100/90 dark:bg-purple-950/60 text-purple-900 dark:text-purple-100 font-bold'
+                ? 'bg-rose-100/90 dark:bg-rose-950/60 text-rose-900 dark:text-rose-100 font-bold'
                 : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
             }`}
             id="nav-tab-library"
           >
-            <LayoutGrid className="w-5 h-5 text-slate-900 dark:text-slate-100 fill-slate-900 dark:fill-slate-100" />
-            <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap">
-              Library
+            <div className="w-5.5 h-5.5 rounded-lg bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center shadow-xs">
+              <BookOpen className="w-4 h-4 stroke-[2.2]" />
+            </div>
+            <span className={`text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul ${
+              activeTab === 'library' ? 'text-rose-800 dark:text-rose-300' : 'text-slate-700 dark:text-slate-300'
+            }`}>
+              បណ្ណាល័យ
             </span>
           </button>
 
@@ -221,19 +229,24 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
               }}
               className={`flex flex-col items-center justify-center min-w-[58px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
                 activeTab === 'results'
-                  ? 'bg-purple-100/90 dark:bg-purple-950/60 text-purple-900 dark:text-purple-100 font-bold'
+                  ? 'bg-amber-100/90 dark:bg-amber-950/60 text-amber-900 dark:text-amber-100 font-bold'
                   : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
               }`}
               id="nav-tab-results"
+              title="វឌ្ឍនភាព (Results)"
             >
-              <Award className="w-5 h-5 text-amber-600 dark:text-amber-400" />
-              <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap">
-                Results
+              <div className="w-5.5 h-5.5 rounded-lg bg-gradient-to-tr from-amber-500 to-yellow-500 text-white flex items-center justify-center shadow-xs">
+                <Award className="w-4 h-4 stroke-[2.2]" />
+              </div>
+              <span className={`text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul ${
+                activeTab === 'results' ? 'text-amber-800 dark:text-amber-300' : 'text-slate-700 dark:text-slate-300'
+              }`}>
+                វឌ្ឍនភាព
               </span>
             </button>
           )}
 
-          {/* Optional Tab 6: Notifications */}
+          {/* Optional Tab 6: Notifications (🔔 ដំណឹង) */}
           {onOpenNotifications && (
             <button
               onClick={() => {
@@ -242,21 +255,26 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
               }}
               className={`flex flex-col items-center justify-center min-w-[58px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 relative ${
                 activeTab === 'notifications'
-                  ? 'bg-purple-100/90 dark:bg-purple-950/60 text-purple-900 dark:text-purple-100 font-bold'
+                  ? 'bg-indigo-100/90 dark:bg-indigo-950/60 text-indigo-900 dark:text-indigo-100 font-bold'
                   : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
               }`}
               id="nav-tab-notifications"
+              title="ដំណឹង (Alerts)"
             >
               <div className="relative">
-                <Bell className="w-5 h-5 text-slate-900 dark:text-slate-100" />
+                <div className="w-5.5 h-5.5 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-500 text-white flex items-center justify-center shadow-xs">
+                  <Bell className="w-4 h-4 stroke-[2.2]" />
+                </div>
                 {unreadNotificationsCount > 0 && (
-                  <span className="absolute -top-1 -right-1 min-w-[14px] h-3.5 px-0.5 bg-rose-500 text-white text-[8px] font-extrabold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1.5 -right-1.5 min-w-[15px] h-3.5 px-0.5 bg-rose-500 text-white text-[8px] font-extrabold rounded-full flex items-center justify-center border border-white dark:border-slate-900 animate-pulse">
                     {unreadNotificationsCount}
                   </span>
                 )}
               </div>
-              <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap">
-                Alerts
+              <span className={`text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul ${
+                activeTab === 'notifications' ? 'text-indigo-800 dark:text-indigo-300' : 'text-slate-700 dark:text-slate-300'
+              }`}>
+                ដំណឹង
               </span>
             </button>
           )}
@@ -269,14 +287,19 @@ export const FacebookBottomNav: React.FC<FacebookBottomNavProps> = ({
             }}
             className={`flex flex-col items-center justify-center min-w-[58px] px-2 py-1 rounded-2xl shrink-0 transition-all cursor-pointer active:scale-95 ${
               activeTab === 'menu'
-                ? 'bg-purple-100/90 dark:bg-purple-950/60 text-purple-900 dark:text-purple-100 font-bold'
+                ? 'bg-fuchsia-100/90 dark:bg-fuchsia-950/60 text-fuchsia-900 dark:text-fuchsia-100 font-bold'
                 : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100/70 dark:hover:bg-slate-800/70'
             }`}
             id="nav-tab-menu"
+            title="ម៉ឺនុយ (Menu)"
           >
-            <Menu className="w-5 h-5 text-slate-900 dark:text-slate-100" />
-            <span className="text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap">
-              Menu
+            <div className="w-5.5 h-5.5 rounded-lg bg-gradient-to-tr from-fuchsia-500 to-purple-500 text-white flex items-center justify-center shadow-xs">
+              <Menu className="w-4 h-4 stroke-[2.2]" />
+            </div>
+            <span className={`text-[10px] font-bold mt-0.5 tracking-tight whitespace-nowrap font-moul ${
+              activeTab === 'menu' ? 'text-fuchsia-800 dark:text-fuchsia-300' : 'text-slate-700 dark:text-slate-300'
+            }`}>
+              ម៉ឺនុយ
             </span>
           </button>
         </nav>

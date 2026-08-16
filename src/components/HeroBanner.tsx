@@ -21,32 +21,8 @@ export const HeroBanner: React.FC<HeroBannerProps & {
   userProfile,
   onSelectMainTab
 }) => {
-  const [touchStartX, setTouchStartX] = React.useState<number | null>(null);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchEndX - touchStartX;
-    
-    // Swipe Right -> Switch to Lesson tab
-    if (diff > 50 && onSelectMainTab) {
-      onSelectMainTab('lesson');
-    }
-    // Swipe Left -> Open Modern Library
-    else if (diff < -50 && onSelectMainTab) {
-      onSelectMainTab('new_exam'); // fallback
-    }
-    setTouchStartX(null);
-  };
-
   return (
     <div
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
       className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3D2012] via-[#59301A] to-[#2B150A] text-amber-50 p-6 sm:p-9 shadow-2xl shadow-amber-950/30 border border-amber-600/40 space-y-6 select-none"
     >
       {/* Decorative ambient glowing orbs & radial background elements */}
@@ -112,7 +88,7 @@ export const HeroBanner: React.FC<HeroBannerProps & {
 
         {/* Title in Khmer Moul font */}
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-moul tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-yellow-200 to-amber-100 drop-shadow-md mb-3">
-          ត្រៀមប្រឡងបញ្ចប់បឋមសិក្សា ថ្នាក់ទី៦
+          រៀនបន្ថែម សម្រាប់កូនៗថ្នាក់ទី៦
         </h1>
 
         {/* Subtitle */}

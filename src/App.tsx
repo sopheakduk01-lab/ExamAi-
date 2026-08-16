@@ -221,6 +221,35 @@ export default function App() {
     }
   };
 
+  // Subject filter horizontal scroll & drag handlers
+  const subjectFilterScrollRef = useRef<HTMLDivElement>(null);
+  const [isSubjMouseDown, setIsSubjMouseDown] = useState(false);
+  const [subjStartX, setSubjStartX] = useState(0);
+  const [subjScrollLeft, setSubjScrollLeft] = useState(0);
+
+  const handleSubjMouseDown = (e: React.MouseEvent) => {
+    if (!subjectFilterScrollRef.current) return;
+    setIsSubjMouseDown(true);
+    setSubjStartX(e.pageX - subjectFilterScrollRef.current.offsetLeft);
+    setSubjScrollLeft(subjectFilterScrollRef.current.scrollLeft);
+  };
+
+  const handleSubjMouseLeave = () => {
+    setIsSubjMouseDown(false);
+  };
+
+  const handleSubjMouseUp = () => {
+    setIsSubjMouseDown(false);
+  };
+
+  const handleSubjMouseMove = (e: React.MouseEvent) => {
+    if (!isSubjMouseDown || !subjectFilterScrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - subjectFilterScrollRef.current.offsetLeft;
+    const walk = (x - subjStartX) * 1.5;
+    subjectFilterScrollRef.current.scrollLeft = subjScrollLeft - walk;
+  };
+
   const handleGoHome = () => {
     setSelectedSubjectId(null);
     setSelectedLessonId(null);
@@ -549,6 +578,7 @@ export default function App() {
             lessons={subjectLessons}
             initialTab={selectedLessonId ? 'lessons' : (activeMainTab === 'lesson' ? 'lessons' : 'exams')}
             initialLessonId={selectedLessonId || undefined}
+            activeMainTab={activeMainTab}
             onBack={() => {
               setSelectedSubjectId(null);
               setSelectedLessonId(null);
@@ -797,11 +827,23 @@ export default function App() {
                 </div>
 
                 {/* 2. Horizontal Scrollable Subject Filter Tags */}
-                <div className="space-y-2">
-                  <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">
-                    តម្រងតាមមុខវិជ្ជា (Filter by Subject)
-                  </span>
-                  <div className="flex gap-2 overflow-x-auto pb-1.5 pt-0.5 no-scrollbar scroll-smooth">
+                <div className="space-y-2 select-none">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">
+                      តម្រងតាមមុខវិជ្ជា (Filter by Subject)
+                    </span>
+                    <span className="text-[10px] text-amber-600/80 dark:text-amber-400/80 font-bold animate-pulse">
+                      👈 អូសឆ្វេងស្តាំ 👉
+                    </span>
+                  </div>
+                  <div 
+                    ref={subjectFilterScrollRef}
+                    onMouseDown={handleSubjMouseDown}
+                    onMouseLeave={handleSubjMouseLeave}
+                    onMouseUp={handleSubjMouseUp}
+                    onMouseMove={handleSubjMouseMove}
+                    className="flex gap-2 overflow-x-auto pb-1.5 pt-0.5 no-scrollbar scroll-smooth cursor-grab active:cursor-grabbing"
+                  >
                     {/* "All" subject button */}
                     <button
                       onClick={() => setSelectedFilterSubject('all')}
@@ -1426,6 +1468,7 @@ export default function App() {
         }}
         onSelectLesson={(lesson, subjectId) => {
           setSelectedSubjectId(subjectId);
+          setSelectedLessonId(lesson.id);
           setActiveMainTab('lesson');
         }}
         onSelectArticle={() => {
@@ -1492,7 +1535,7 @@ export default function App() {
 
       {/* Floating Kahoot-style Bottom Navigation Bar */}
       <FacebookBottomNav
-        isVisible={isBottomNavVisible}
+        isVisible={isBottomNavVisible && !isEnglishGameOpen && !isFishingGameOpen && !isVijjaNavaGameOpen}
         onHomeClick={handleGoHome}
         onOpenHomework={() => {
           setActiveMainTab('homework');
