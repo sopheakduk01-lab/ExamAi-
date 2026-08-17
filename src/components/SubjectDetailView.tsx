@@ -148,7 +148,7 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
     <div
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="max-w-5xl mx-auto py-3 px-4 space-y-4 touch-pan-y"
+      className="max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1720px] w-full mx-auto py-3 px-2 sm:px-4 space-y-4 touch-pan-y"
     >
       {/* Swipe Left/Right Quick Tip Badge */}
       {activeMainTab !== 'lesson' && activeMainTab !== 'exam' && (
@@ -329,7 +329,7 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
             </div>
           ) : viewMode === 'grid' ? (
             /* Modern Student-Friendly Grid View */
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {filteredExams.map((paper, index) => {
                 const isLesson = paper.yearOrType.includes('មេរៀន') || paper.title.includes('មេរៀន');
                 const prevScore = examScores[paper.id];

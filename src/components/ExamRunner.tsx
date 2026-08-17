@@ -410,7 +410,7 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
 
   if (isCompleted) {
     return (
-      <div className="max-w-3xl mx-auto py-6 px-4">
+      <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto py-6 px-3 sm:px-6">
         {/* Exam Completion Screen */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-lg text-center">
           <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-inner">
@@ -615,7 +615,7 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
   }
 
   return (
-    <div className="max-w-3xl mx-auto py-4 px-4">
+    <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto py-4 px-3 sm:px-6">
       {/* Exam Header Topbar */}
       <div className="flex items-center justify-between gap-2 mb-3 bg-white p-3 rounded-xl border border-slate-200 shadow-xs">
         <button

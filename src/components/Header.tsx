@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
     <header className={`fixed top-0 inset-x-0 z-40 w-full max-w-full overflow-x-hidden bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 border-b border-slate-200/80 dark:border-slate-800/80 shadow-sm backdrop-blur-xl transition-transform duration-300 ease-in-out ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     }`}>
-      <div className="max-w-5xl mx-auto px-3 sm:px-5 py-2.5 flex items-center justify-between gap-2">
+      <div className="max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1720px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 py-2.5 flex items-center justify-between gap-2">
         {/* Left: Three-line menu button */}
         <button
           onClick={onOpenMenu}

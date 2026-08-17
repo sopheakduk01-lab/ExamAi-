@@ -560,7 +560,7 @@ export default function App() {
       />
 
       {/* Main Body */}
-      <main className="flex-1 max-w-4xl w-full mx-auto px-4 pt-24 sm:pt-28 pb-20 space-y-6">
+      <main className="flex-1 max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1720px] w-full mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 pt-20 sm:pt-24 lg:pt-26 pb-24 space-y-6">
         {/* If taking an exam */}
         {selectedExam ? (
           <ExamRunner
@@ -1128,7 +1128,7 @@ export default function App() {
                           </button>
                         </div>
                       ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-4">
                           {filteredDocuments.map((doc) => {
                             const subject = SUBJECTS.find(s => s.id === doc.subjectId);
                             const subjectName = subject ? subject.nameKhmer.split(' ')[0] : 'ទូទៅ';
@@ -1328,7 +1328,7 @@ export default function App() {
                         </div>
                       ) : (
                         /* Subject List Cards Grid */
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-3.5 sm:gap-4">
                           {filteredSubjects.map((subject) => (
                             <SubjectCard
                               key={subject.id}
