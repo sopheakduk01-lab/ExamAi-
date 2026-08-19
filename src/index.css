@@ -1,6 +1,29 @@
 @import "tailwindcss";
 
+:root {
+  --app-font-family: 'Battambang', 'Kantumruuy Pro', 'Noto Sans Khmer', 'Siemreap', system-ui, -apple-system, sans-serif;
+  --app-font-scale: 100%;
+  --app-line-height: 1.75;
+  --app-font-weight-offset: 0;
+  --app-bg-color: #FAF8F5;
+  --app-text-color: #1e293b;
+  --app-bg-pattern: none;
+  --app-bg-size: auto;
+}
+
+.bg-app-dynamic {
+  background-color: var(--app-bg-color) !important;
+  color: var(--app-text-color) !important;
+  background-image: var(--app-bg-pattern) !important;
+  background-size: var(--app-bg-size, auto) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 @layer base {
+  html {
+    font-size: var(--app-font-scale, 100%);
+  }
+
   html, body {
     max-width: 100vw;
     overflow-x: hidden;
@@ -10,27 +33,67 @@
   #root {
     max-width: 100vw;
     overflow-x: hidden;
+    font-family: var(--app-font-family);
+    line-height: var(--app-line-height);
   }
 
   body {
-    font-family: 'Kantumruuy Pro', 'Siemreap', 'Khmer OS Siemreap', system-ui, -apple-system, sans-serif;
+    font-family: var(--app-font-family);
+    line-height: var(--app-line-height);
+    background-color: var(--app-bg-color);
+    color: var(--app-text-color);
+    background-image: var(--app-bg-pattern);
+    background-size: var(--app-bg-size, auto);
+    letter-spacing: 0.012em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Khmer text clarity & anti-clipping rules */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.48;
+    letter-spacing: 0.01em;
+  }
+
+  p, span, div, li, td, th {
+    line-height: inherit;
+  }
+
+  button, input, textarea, select {
+    font-family: inherit;
   }
 }
 
-.font-siemreap {
-  font-family: 'Kantumruuy Pro', 'Siemreap', 'Khmer OS Siemreap', sans-serif;
-}
-
-.font-moul {
-  font-family: 'Moul', 'Siemreap', 'Khmer OS Siemreap', serif;
-}
-
-.font-preahvihear {
-  font-family: 'Preahvihear', 'Siemreap', 'Khmer OS Siemreap', sans-serif;
+/* Specific Font Classes */
+.font-battambang {
+  font-family: 'Battambang', 'Kantumruuy Pro', 'Noto Sans Khmer', sans-serif !important;
 }
 
 .font-kantumruuy {
-  font-family: 'Kantumruuy Pro', 'Siemreap', 'Khmer OS Siemreap', sans-serif;
+  font-family: 'Kantumruuy Pro', 'Battambang', 'Noto Sans Khmer', sans-serif !important;
+}
+
+.font-noto {
+  font-family: 'Noto Sans Khmer', 'Battambang', 'Kantumruuy Pro', sans-serif !important;
+}
+
+.font-siemreap {
+  font-family: 'Siemreap', 'Battambang', 'Kantumruuy Pro', sans-serif !important;
+}
+
+.font-moul {
+  font-family: 'Moul', 'Khmer OS Muol Light', serif !important;
+  letter-spacing: 0.02em;
+}
+
+.font-koulen {
+  font-family: 'Koulen', 'Moul', cursive !important;
+}
+
+.font-preahvihear {
+  font-family: 'Preahvihear', 'Battambang', sans-serif !important;
 }
 
 /* Custom scrollbars */

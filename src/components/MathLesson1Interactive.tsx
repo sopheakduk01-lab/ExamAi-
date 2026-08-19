@@ -710,7 +710,7 @@ export const MathLesson1Interactive: React.FC = () => {
                     </span>
                     <span className="text-[11px] font-bold text-amber-800 dark:text-amber-400">អំណាន និងសំណេរចំនួន</span>
                   </div>
-                  <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើធ្វើដូចម្តេចដើម្បីអានចំនួនធំៗបានលឿន និងត្រឹមត្រូវ?»</h4>
+                  <h4 className="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើធ្វើដូចម្តេចដើម្បីអានចំនួនធំៗបានលឿន និងត្រឹមត្រូវ?»</h4>
                   <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-white/70 dark:bg-slate-900/60 p-3.5 rounded-2xl border border-amber-200/50 dark:border-amber-900/30 space-y-1.5">
                     <p>• <b>អានតាមខ្ទង់ ៖</b> ហៅឈ្មោះតួលេខ + ឈ្មោះខ្ទង់គ្រប់លេខតាមលំដាប់ (ឧ. <b>៨រយលាន ៧ដប់លាន... ៤សែន</b>)។</p>
                     <p>• <b>អានតាមថ្នាក់ (និយមប្រើ) ៖</b> បែងចែកលេខជាក្រុមៗ <b>៣ ខ្ទង់</b> (រាយ, ដប់, រយ) រាប់ពីស្តាំទៅឆ្វេង រួចអានឈ្មោះថ្នាក់នៅចុងបញ្ចប់នៃក្រុមនីមួយៗ (<b>...លាន, ...ពាន់, ...ឯកតា</b>)។</p>
@@ -793,7 +793,7 @@ export const MathLesson1Interactive: React.FC = () => {
                     </span>
                     <span className="text-[11px] font-bold text-amber-800 dark:text-amber-400">ទម្រង់ពង្រាយ</span>
                   </div>
-                  <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើអ្វីជាសមីការទម្រង់ពង្រាយនៃចំនួន?»</h4>
+                  <h4 className="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើអ្វីជាសមីការទម្រង់ពង្រាយនៃចំនួន?»</h4>
                   <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-white/70 dark:bg-slate-900/60 p-3.5 rounded-2xl border border-amber-200/50 dark:border-amber-900/30 space-y-1.5">
                     <p>• <b>ទម្រង់ពង្រាយ ៖</b> គឺយក <b>(តួលេខ × តម្លៃខ្ទង់)</b> នៃខ្ទង់នីមួយៗ មក <b>បូកបញ្ចូលគ្នា</b> (ឧ. <b>3024103 = 3000000 + 20000 + 4000 + 100 + 3</b>)។</p>
                     <p>• <b>ចំណាំសំខាន់ ៖</b> ខ្ទង់ណាដែលមាន <b>លេខ ០</b> យើងមិនបាច់សរសេរចូលក្នុងទម្រង់ពង្រាយក៏បាន ព្រោះតម្លៃវានៅតែស្មើ ០ ដដែល។</p>
@@ -956,7 +956,7 @@ export const MathLesson1Interactive: React.FC = () => {
                     </span>
                     <span className="text-[11px] font-bold text-amber-800 dark:text-amber-400">ការប្រៀបធៀប និងរៀបលំដាប់</span>
                   </div>
-                  <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើត្រូវប្រៀបធៀប និងរៀបលំដាប់ចំនួនយ៉ាងដូចម្តេចឱ្យត្រឹមត្រូវ?»</h4>
+                  <h4 className="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើត្រូវប្រៀបធៀប និងរៀបលំដាប់ចំនួនយ៉ាងដូចម្តេចឱ្យត្រឹមត្រូវ?»</h4>
                   <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-white/70 dark:bg-slate-900/60 p-3.5 rounded-2xl border border-amber-200/50 dark:border-amber-900/30 space-y-1.5">
                     <p>• <b>ជំហានទី១ (រាប់ចំនួនខ្ទង់) ៖</b> ចំនួនណាដែលមាន <b>ចំនួនខ្ទង់ច្រើនជាង ➔ មានតម្លៃធំជាង!</b></p>
                     <p>• <b>ជំហានទី២ (បើចំនួនខ្ទង់ស្មើគ្នា) ៖</b> ប្រៀបធៀបតួលេខពី <b>ឆ្វេងទៅស្តាំ</b> ម្តងមួយខ្ទង់ៗ។ ខ្ទង់ដំបូងណាដែលមានលេខធំជាង ➔ ចំនួននោះធំជាង!</p>
@@ -1069,7 +1069,7 @@ export const MathLesson1Interactive: React.FC = () => {
                     </span>
                     <span className="text-[11px] font-bold text-amber-800 dark:text-amber-400">ច្បាប់មាសនៃការបង្កត់ចំនួន</span>
                   </div>
-                  <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើពេលណាត្រូវបង្កត់ចុះ ហើយពេលណាត្រូវបង្កត់ឡើង?»</h4>
+                  <h4 className="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើពេលណាត្រូវបង្កត់ចុះ ហើយពេលណាត្រូវបង្កត់ឡើង?»</h4>
                   <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-white/70 dark:bg-slate-900/60 p-3.5 rounded-2xl border border-amber-200/50 dark:border-amber-900/30 space-y-1.5">
                     <p>• <b>កំណត់ខ្ទង់បង្កត់ ៖</b> ពិនិត្យមើលលេខនៅ <b>ខ្ទង់ខាងស្តាំបន្ទាប់</b> ភ្លាម!</p>
                     <p>• <b>⬇️ បើជាលេខ [០, ១, ២, ៣, ៤] ➔ បង្កត់ចុះ ៖</b> រក្សាខ្ទង់បង្កត់នៅដដែល ឯខ្ទង់ខាងស្តាំទាំងអស់ប្រែជា <b>០</b>។</p>
@@ -1276,7 +1276,7 @@ export const MathLesson1Interactive: React.FC = () => {
                   <span className="text-[11px] text-slate-400">ទំព័រ ៤ លំហាត់ទី២ & ៣</span>
                 </div>
                 <h3 className="font-extrabold text-base sm:text-lg text-slate-900 dark:text-slate-100 leading-relaxed">
-                  សំណួរ ៖ ប្រជាជនកម្ពុជា <span className="text-indigo-600 font-bold">13 395 682 នាក់</span> (បង្កត់ត្រឹមខ្ទង់លាន) និងផ្ទៃក្រឡា <span class="text-indigo-600 font-bold">181 035 km²</span> (បង្កត់ត្រឹមខ្ទង់ម៉ឺន) ស្មើនឹង៖
+                  សំណួរ ៖ ប្រជាជនកម្ពុជា <span className="text-indigo-600 font-bold">13 395 682 នាក់</span> (បង្កត់ត្រឹមខ្ទង់លាន) និងផ្ទៃក្រឡា <span className="text-indigo-600 font-bold">181 035 km²</span> (បង្កត់ត្រឹមខ្ទង់ម៉ឺន) ស្មើនឹង៖
                 </h3>
                 
                 <div className="space-y-3">
@@ -1365,7 +1365,7 @@ export const MathLesson1Interactive: React.FC = () => {
                     </span>
                     <span className="text-[11px] font-bold text-amber-800 dark:text-amber-400">យុទ្ធសាស្ត្រលំហាត់ ⭐១ ដល់ ⭐៥</span>
                   </div>
-                  <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើធ្វើដូចម្តេចដើម្បីដោះស្រាយលំហាត់គ្រប់កម្រិតបានពិន្ទុពេញ?»</h4>
+                  <h4 className="font-extrabold text-slate-900 dark:text-slate-100 text-sm">«តើធ្វើដូចម្តេចដើម្បីដោះស្រាយលំហាត់គ្រប់កម្រិតបានពិន្ទុពេញ?»</h4>
                   <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed bg-white/70 dark:bg-slate-900/60 p-3.5 rounded-2xl border border-amber-200/50 dark:border-amber-900/30 space-y-1.5">
                     <p>• <b>⭐១ = ស្គាល់ខ្ទង់</b> | <b>⭐⭐២ = បំបែកទម្រង់ពង្រាយ</b> | <b>⭐⭐⭐៣ = ប្រៀបធៀប & រៀបលំដាប់</b> | <b>⭐⭐⭐⭐៤ = បង្កត់ចំនួន</b> | <b>⭐⭐⭐⭐⭐៥ = លំហាត់ស្មុគស្មាញ!</b></p>
                     <p>• <b>តិចនិក ៖</b> ផ្ទៀងផ្ទាត់លេខតាមខ្ទង់នីមួយៗឱ្យបានច្បាស់លាស់ មុននឹងសម្រេចចិត្តជ្រើសរើសចម្លើយ។</p>

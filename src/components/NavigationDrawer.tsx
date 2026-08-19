@@ -1,7 +1,7 @@
 import React from 'react';
 import { SubjectId, UserProfile } from '../types';
 import { SUBJECTS } from '../data/grade6Data';
-import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3, Bell, QrCode, Smartphone, Sun, Moon, ShieldCheck } from 'lucide-react';
+import { X, Home, BookOpen, GraduationCap, Bookmark, Award, Palette, ChevronRight, Target, Sparkles, User, Edit3, Bell, QrCode, Smartphone, Sun, Moon, ShieldCheck, Type } from 'lucide-react';
 
 interface NavigationDrawerProps {
   isOpen: boolean;
@@ -10,6 +10,7 @@ interface NavigationDrawerProps {
   onSelectMainTab?: (tab: 'exam' | 'lesson' | 'new_exam' | 'homework') => void;
   onOpenBookmarks: () => void;
   onOpenProgress: () => void;
+  onOpenFontPreferences?: () => void;
   onOpenMissions?: () => void;
   onOpenModernLibrary?: () => void;
   onOpenDrawing?: () => void;
@@ -39,6 +40,7 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
   onSelectMainTab,
   onOpenBookmarks,
   onOpenProgress,
+  onOpenFontPreferences,
   onOpenMissions,
   onOpenModernLibrary,
   onOpenDrawing,
@@ -436,6 +438,28 @@ export const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                   <Palette className="w-4 h-4" />
                 </div>
                 <span className="font-semibold">គំនូសសេរី (Art Canvas)</span>
+              </button>
+            )}
+
+            {/* Font Preferences Menu Item */}
+            {onOpenFontPreferences && (
+              <button
+                onClick={() => {
+                  onOpenFontPreferences();
+                  onClose();
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg font-medium text-slate-800 dark:text-slate-100 hover:bg-amber-100/70 dark:hover:bg-amber-950/40 transition-colors flex items-center justify-between text-sm cursor-pointer border border-amber-200/80 dark:border-amber-900/40 bg-amber-50/60 dark:bg-slate-800/60"
+                id="btn-font-preferences-drawer-item"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-md bg-amber-600 text-white flex items-center justify-center shrink-0 shadow-2xs font-bold text-xs">
+                    <Type className="w-4 h-4" />
+                  </div>
+                  <span className="font-bold text-amber-950 dark:text-amber-100">កែទម្រង់ & ទំហំអក្សរ</span>
+                </div>
+                <span className="text-[10px] bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200 font-bold px-2 py-0.5 rounded-md">
+                  បាត់ដំបង/កន្តុំរុយ
+                </span>
               </button>
             )}
 

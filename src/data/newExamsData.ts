@@ -1,6 +1,8 @@
 import { ExamPaper } from '../types';
+import { GRADE6_PREP_MATH_EXAM } from './grade6PrepMathExam';
 
 const RAW_NEW_EXAM_PAPERS: ExamPaper[] = [
+  GRADE6_PREP_MATH_EXAM,
   {
     id: 'new_science_exam_2026_orussi',
     subjectId: 'science',

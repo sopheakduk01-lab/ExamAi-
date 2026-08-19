@@ -34,13 +34,19 @@ import { AICreatorStudioModal } from './components/AICreatorStudioModal';
 import { HomeworkModal } from './components/HomeworkModal';
 import { HomeworkSection } from './components/HomeworkSection';
 import {
+  FontPreferencesModal,
+  getSavedFontSettings,
+  applyFontSettingsToDOM,
+  FontSettings
+} from './components/FontPreferencesModal';
+import {
   migrateLegacyDataIfNeeded,
   syncStudentState,
   getCurrentStudentAccount,
   getOrCreateDefaultStudentAccount,
   updateStudentAccount
 } from './utils/studentAccounts';
-import { Search, GraduationCap, BookOpen, Sparkles, Filter, Trophy, ArrowRight, Target, Layers, Palette, Swords, Music, Globe, Clock, CheckCircle2, ChevronRight, Award, ChevronLeft, Bot, Gamepad2 } from 'lucide-react';
+import { Search, GraduationCap, BookOpen, Sparkles, Filter, Trophy, ArrowRight, Target, Layers, Palette, Swords, Music, Globe, Clock, CheckCircle2, ChevronRight, Award, ChevronLeft, Bot, Gamepad2, Type } from 'lucide-react';
 
 export default function App() {
   const [selectedSubjectId, setSelectedSubjectId] = useState<SubjectId | null>(null);
@@ -53,6 +59,14 @@ export default function App() {
   const [selectedFilterSubject, setSelectedFilterSubject] = useState<string>('all');
   const [selectedFilterType, setSelectedFilterType] = useState<string>('all');
   const newExamsScrollRef = useRef<HTMLDivElement>(null);
+
+  // Font preferences & typography customizer state
+  const [fontSettings, setFontSettings] = useState<FontSettings>(getSavedFontSettings);
+  const [isFontPreferencesOpen, setIsFontPreferencesOpen] = useState(false);
+
+  useEffect(() => {
+    applyFontSettingsToDOM(fontSettings);
+  }, [fontSettings]);
 
   // Modals
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -549,14 +563,20 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen max-w-full overflow-x-hidden bg-[#FAF8F5] dark:bg-slate-950 text-slate-800 dark:text-slate-100 flex flex-col font-siemreap transition-colors duration-200">
+    <div className="min-h-screen max-w-full overflow-x-hidden bg-app-dynamic flex flex-col">
       {/* Navigation Header */}
       <Header
         isVisible={isHeaderVisible}
         onOpenMenu={() => setIsMenuOpen(true)}
         onOpenSearch={() => setIsGlobalSearchOpen(true)}
+        onOpenFontPreferences={() => setIsFontPreferencesOpen(true)}
         isDarkMode={isDarkMode}
         onToggleDarkMode={() => setIsDarkMode((prev) => !prev)}
+        onHomeClick={handleGoHome}
+        bookmarkedCount={bookmarkedQuestionIds.length}
+        onOpenBookmarks={() => setIsBookmarksOpen(true)}
+        onOpenProgress={() => setIsProgressOpen(true)}
+        unreadNotificationsCount={unreadNotificationsCount}
       />
 
       {/* Main Body */}
@@ -1356,6 +1376,7 @@ export default function App() {
         onSelectMainTab={(tab) => setActiveMainTab(tab)}
         onOpenBookmarks={() => setIsBookmarksOpen(true)}
         onOpenProgress={() => setIsProgressOpen(true)}
+        onOpenFontPreferences={() => setIsFontPreferencesOpen(true)}
         onOpenMissions={() => setIsMissionsOpen(true)}
         onOpenModernLibrary={() => setIsModernLibraryOpen(true)}
         onOpenDrawing={() => setIsDrawingOpen(true)}
@@ -1531,6 +1552,13 @@ export default function App() {
         isOpen={isAICreatorOpen}
         onClose={() => setIsAICreatorOpen(false)}
         onStartCustomQuiz={handleStartCustomQuiz}
+      />
+
+      <FontPreferencesModal
+        isOpen={isFontPreferencesOpen}
+        onClose={() => setIsFontPreferencesOpen(false)}
+        currentSettings={fontSettings}
+        onUpdateSettings={(newSettings) => setFontSettings(newSettings)}
       />
 
       {/* Floating Kahoot-style Bottom Navigation Bar */}

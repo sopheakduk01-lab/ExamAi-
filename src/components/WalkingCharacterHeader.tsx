@@ -90,11 +90,6 @@ export const WalkingCharacterHeader: React.FC<WalkingCharacterHeaderProps> = ({ 
         }`}>
           <span className="text-sm">🧑‍🎓</span>
         </div>
-
-        {/* Mini Book */}
-        <div className="w-4 h-4 rounded-md bg-amber-400 text-slate-900 flex items-center justify-center shadow-md text-[9px] font-extrabold border border-amber-200">
-          📖
-        </div>
       </div>
     </div>
   );
