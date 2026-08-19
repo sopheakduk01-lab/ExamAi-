@@ -12,7 +12,8 @@ import {
   Zap,
   ArrowLeft,
   ArrowRight,
-  GraduationCap
+  GraduationCap,
+  Maximize2
 } from 'lucide-react';
 import { MathFormattedText } from './MathFormattedText';
 import { MathAIQuestionTutorModal } from './MathAIQuestionTutorModal';
@@ -24,6 +25,8 @@ interface LessonSummaryViewerProps {
   lessons: LessonSummary[];
   onBack: () => void;
   initialLessonId?: string;
+  isFluidWidth?: boolean;
+  onToggleFluidWidth?: () => void;
 }
 
 export interface SubModuleCategory {
@@ -243,7 +246,9 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
   subject,
   lessons,
   onBack,
-  initialLessonId
+  initialLessonId,
+  isFluidWidth,
+  onToggleFluidWidth
 }) => {
   const [selectedSubModuleId, setSelectedSubModuleId] = useState<string>('all');
   const [selectedLessonId, setSelectedLessonId] = useState<string>(initialLessonId || lessons[0]?.id || '');
@@ -785,7 +790,7 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
   } : null;
 
   return (
-    <div className="max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1720px] mx-auto py-4 px-3 sm:px-6 space-y-5">
+    <div className={`${isFluidWidth ? 'max-w-none w-full px-1 sm:px-2' : 'max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1720px] px-3 sm:px-6'} mx-auto py-4 space-y-5`}>
       {/* 1. Header controls (Always visible) */}
       <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
@@ -813,15 +818,33 @@ export const LessonSummaryViewer: React.FC<LessonSummaryViewerProps> = ({
           </div>
         </div>
 
-        {/* Font Size Toggle */}
-        <button
-          onClick={() => setFontSize(fontSize === 'normal' ? 'large' : 'normal')}
-          className="p-2 sm:px-3 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors"
-          title="ផ្លាស់ប្តូរទំហំអក្សរ"
-        >
-          <Type className="w-4 h-4 text-slate-500" />
-          <span className="hidden sm:inline">{fontSize === 'normal' ? 'អក្សរធំ' : 'អក្សរធម្មតា'}</span>
-        </button>
+        <div className="flex items-center gap-2">
+          {/* Font Size Toggle */}
+          <button
+            onClick={() => setFontSize(fontSize === 'normal' ? 'large' : 'normal')}
+            className="p-2 sm:px-3 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors"
+            title="ផ្លាស់ប្តូរទំហំអក្សរ"
+          >
+            <Type className="w-4 h-4 text-slate-500" />
+            <span className="hidden sm:inline">{fontSize === 'normal' ? 'អក្សរធំ' : 'អក្សរធម្មតា'}</span>
+          </button>
+
+          {/* Fluid Width Toggle */}
+          {onToggleFluidWidth && (
+            <button
+              onClick={onToggleFluidWidth}
+              className={`p-2 sm:px-3 sm:py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-colors ${
+                isFluidWidth 
+                  ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200' 
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+              }`}
+              title={isFluidWidth ? "បង្រួមកម្រិតធម្មតា" : "ពង្រីកពេញអេក្រង់សម្រាប់រៀន"}
+            >
+              <Maximize2 className="w-4 h-4" />
+              <span className="hidden sm:inline">{isFluidWidth ? 'ធម្មតា' : 'ពេញអេក្រង់'}</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* 2. Main Workspace (Split Pane) */}

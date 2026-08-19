@@ -22,7 +22,8 @@ import {
   Layers,
   Edit3,
   Calculator,
-  Target
+  Target,
+  Maximize2
 } from 'lucide-react';
 import { MathFormattedText } from './MathFormattedText';
 import { MathScratchpad } from './MathScratchpad';
@@ -39,6 +40,8 @@ interface ExamRunnerProps {
   onToggleBookmark: (questionId: string) => void;
   studentName?: string;
   studentGender?: 'ប្រុស' | 'ស្រី';
+  isFluidWidth?: boolean;
+  onToggleFluidWidth?: () => void;
 }
 
 export const ExamRunner: React.FC<ExamRunnerProps> = ({
@@ -48,7 +51,9 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
   bookmarkedQuestionIds,
   onToggleBookmark,
   studentName,
-  studentGender
+  studentGender,
+  isFluidWidth,
+  onToggleFluidWidth
 }) => {
   if (exam.id === 'new_khmer_dictation_exam_2026_orussi') {
     return (
@@ -410,7 +415,7 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
 
   if (isCompleted) {
     return (
-      <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto py-6 px-3 sm:px-6">
+      <div className={`${isFluidWidth ? 'max-w-none w-full px-1 sm:px-2' : 'max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-3 sm:px-6'} mx-auto py-6`}>
         {/* Exam Completion Screen */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-lg text-center">
           <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-inner">
@@ -615,17 +620,34 @@ export const ExamRunner: React.FC<ExamRunnerProps> = ({
   }
 
   return (
-    <div className="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto py-4 px-3 sm:px-6">
+    <div className={`${isFluidWidth ? 'max-w-none w-full px-1 sm:px-2' : 'max-w-5xl xl:max-w-6xl 2xl:max-w-7xl px-3 sm:px-6'} mx-auto py-4`}>
       {/* Exam Header Topbar */}
       <div className="flex items-center justify-between gap-2 mb-3 bg-white p-3 rounded-xl border border-slate-200 shadow-xs">
-        <button
-          onClick={onBack}
-          className="flex items-center gap-1 text-xs sm:text-sm font-bold text-slate-700 hover:text-amber-900 transition-colors cursor-pointer"
-          id="btn-back-exam"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          ត្រឡប់
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onBack}
+            className="flex items-center gap-1 text-xs sm:text-sm font-bold text-slate-700 hover:text-amber-900 transition-colors cursor-pointer"
+            id="btn-back-exam"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            ត្រឡប់
+          </button>
+
+          {onToggleFluidWidth && (
+            <button
+              onClick={onToggleFluidWidth}
+              className={`flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2 py-1 rounded-lg transition-colors cursor-pointer ${
+                isFluidWidth 
+                  ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
+                  : 'bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200'
+              }`}
+              title={isFluidWidth ? "បង្រួមកម្រិតធម្មតា" : "ពង្រីកពេញអេក្រង់សម្រាប់ប្រឡង"}
+            >
+              <Maximize2 className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">{isFluidWidth ? 'ធម្មតា' : 'ពេញអេក្រង់'}</span>
+            </button>
+          )}
+        </div>
 
         {/* Timer */}
         <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-100 text-amber-900 font-mono text-xs sm:text-sm font-bold border border-amber-300/60">

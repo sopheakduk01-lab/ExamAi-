@@ -318,6 +318,19 @@ export default function App() {
     return migrateLegacyDataIfNeeded() || getOrCreateDefaultStudentAccount();
   });
 
+  // Fluid layout for learning content (Full Screen option)
+  const [isLearningFluid, setIsLearningFluid] = useState<boolean>(() => {
+    return localStorage.getItem('is_learning_fluid') === 'true';
+  });
+
+  const handleToggleFluidWidth = () => {
+    setIsLearningFluid((prev) => {
+      const next = !prev;
+      localStorage.setItem('is_learning_fluid', next ? 'true' : 'false');
+      return next;
+    });
+  };
+
   // Bookmarks state tied to current student
   const [bookmarkedQuestionIds, setBookmarkedQuestionIds] = useState<string[]>(() => {
     return currentAccount?.bookmarks || [];
@@ -580,7 +593,11 @@ export default function App() {
       />
 
       {/* Main Body */}
-      <main className="flex-1 max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1720px] w-full mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 pt-20 sm:pt-24 lg:pt-26 pb-24 space-y-6">
+      <main className={
+        (selectedExam || selectedSubject) && isLearningFluid
+          ? "flex-1 w-full mx-auto px-1 sm:px-4 pt-16 sm:pt-20 pb-20 space-y-4 transition-all duration-300"
+          : "flex-1 max-w-7xl xl:max-w-[1536px] 2xl:max-w-[1720px] w-full mx-auto px-3 sm:px-6 lg:px-8 xl:px-10 pt-20 sm:pt-24 lg:pt-26 pb-24 space-y-6 transition-all duration-300"
+      }>
         {/* If taking an exam */}
         {selectedExam ? (
           <ExamRunner
@@ -589,6 +606,8 @@ export default function App() {
             onFinishExam={handleFinishExam}
             bookmarkedQuestionIds={bookmarkedQuestionIds}
             onToggleBookmark={handleToggleBookmark}
+            isFluidWidth={isLearningFluid}
+            onToggleFluidWidth={handleToggleFluidWidth}
           />
         ) : selectedSubject ? (
           /* Subject Detail View */
@@ -611,6 +630,8 @@ export default function App() {
               setFishingInitialSubject(selectedSubject.id);
               setIsFishingGameOpen(true);
             }}
+            isFluidWidth={isLearningFluid}
+            onToggleFluidWidth={handleToggleFluidWidth}
           />
         ) : useMobileLauncher ? (
           /* Mobile Launcher View matching reference design image (Easy to click) */

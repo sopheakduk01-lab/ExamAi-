@@ -34,6 +34,8 @@ interface SubjectDetailViewProps {
   onOpenEnglishGame?: () => void;
   onOpenFishingGame?: () => void;
   activeMainTab?: 'exam' | 'lesson' | 'new_exam' | 'homework' | 'games';
+  isFluidWidth?: boolean;
+  onToggleFluidWidth?: () => void;
 }
 
 export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
@@ -46,7 +48,9 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
   onSelectExam,
   onOpenEnglishGame,
   onOpenFishingGame,
-  activeMainTab
+  activeMainTab,
+  isFluidWidth,
+  onToggleFluidWidth
 }) => {
   const [activeTab, setActiveTab] = useState<'exams' | 'lessons'>(
     activeMainTab === 'lesson' ? 'lessons' : (activeMainTab === 'exam' ? 'exams' : initialTab)
@@ -491,6 +495,8 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
             }
           }}
           initialLessonId={initialLessonId}
+          isFluidWidth={isFluidWidth}
+          onToggleFluidWidth={onToggleFluidWidth}
         />
       )}
     </div>
